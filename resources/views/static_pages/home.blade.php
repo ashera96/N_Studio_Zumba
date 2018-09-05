@@ -19,34 +19,34 @@
     <!--All Css Here-->
 
     <!--Bootstrap Css-->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
     <!--revolution slider-->
-    <link rel="stylesheet" href="assets/css/vendor/rev_slider/settings.css">
-    <link rel="stylesheet" href="assets/css/vendor/rev_slider/navigation.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/settings.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/navigation.css') }}">
     <!--Font-Awesome Css-->
-    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
     <!--flat-icon-->
-    <link rel="stylesheet" href="assets/css/vendor/flaticon.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/flaticon.css') }}">
     <!--Owl-Carousel Css-->
-    <link rel="stylesheet" href="assets/css/vendor/owl.carousel.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
     <!--Animate Css-->
-    <link rel="stylesheet" href="assets/css/vendor/animate.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
     <!--Animate Css-->
-    <link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/magnific-popup.css') }}">
     <!--Jquery Ui Css-->
-    <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.min.css') }}">
     <!--Style Css-->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}"
     <!--Responsive Css-->
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
     <!--Modernizr Css-->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="{{ URL::asset('js/modernizr-2.8.3.min.js') }}"></script>
 
 
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    {{--<!--[if lt IE 9]>--}}
+    {{--<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>--}}
+    {{--<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
+    {{--<![endif]-->--}}
 
 </head>
 
@@ -60,82 +60,49 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html"><img src="assets/images/logo/logo.png"  alt="BEFIT logo"></a>
+                    <a class="navbar-brand" href="index"><img height="100px" width="100px" src={{ URL::asset('images/logo.png') }}  alt="BEFIT-logo"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown active">
-                            <a class="nav-link " href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="index">
                                 home<span class="sr-only">(current)</span>
                             </a>
-                            <div class="dropdown-menu animation  slideUpIn">
-                                <a class="dropdown-item" href="index.html">home1</a>
-                                <a class="dropdown-item" href="home2.html">home2</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " href="about-us.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                about<span class="sr-only">(current)</span>
-                            </a>
-                            <div class="dropdown-menu animation  slideUpIn">
-                                <a class="dropdown-item" href="about-us.html">about us</a>
-                                <a class="dropdown-item" href="services.html">services</a>
-                                <a class="dropdown-item" href="service-single.html">service single</a>
-                                <a class="dropdown-item" href="trainers.html">trainers</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                pages<span class="sr-only">(current)</span>
-                            </a>
-                            <div class="dropdown-menu animation  slideUpIn">
-                                <a class="dropdown-item" href="pricing-plan.html">pricing-plan</a>
-                                <a class="dropdown-item" href="contact.html">contact</a>
-                                <a class="dropdown-item" href="contact-2.html">contact 2</a>
-                                <a class="dropdown-item" href="error.html">404</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                classes<span class="sr-only">(current)</span>
-                            </a>
-                            <div class="dropdown-menu animation  slideUpIn">
-                                <a class="dropdown-item" href="single-class.html">single class</a>
-                                <a class="dropdown-item" href="booking.html">booking</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                shop<span class="sr-only">(current)</span>
-                            </a>
-                            <div class="dropdown-menu animation  slideUpIn">
-                                <a class="dropdown-item" href="shopping.html">shopping</a>
-                                <a class="dropdown-item" href="single-product.html">single product</a>
-                                <a class="dropdown-item" href="shopping-cart.html">shopping cart</a>
-                                <a class="dropdown-item" href="checkout.html">checkout</a>
-                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="schedule.html">schedule</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                blog<span class="sr-only">(current)</span>
+                            <a class="nav-link " href="index/about">
+                                about us<span class="sr-only">(current)</span>
                             </a>
-                            <div class="dropdown-menu animation  slideUpIn">
-                                <a class="dropdown-item" href="blog.html">blog</a>
-                                <a class="dropdown-item" href="blog-2.html">blog 2</a>
-                                <a class="dropdown-item" href="blog-left.html">blog left</a>
-                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="index/gallery">
+                                gallery<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="index/class_packages">
+                                classes<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="index/schedule">
+                                schedule<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="index/testimonials">
+                                testimonials<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index/contact">contact</a>
                         </li>
                         <li class="nav-item d-none d-lg-inline">
                             <div class="icon-menu">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    <li>|</li>
                                     <li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>
                                 </ul>
                             </div>
