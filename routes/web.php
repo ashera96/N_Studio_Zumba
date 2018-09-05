@@ -17,7 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::get('/index/class_packages', 'StaticPageController@show_packages');
 Route::get('/index/schedule', 'StaticPageController@show_schedule');
 Route::get('/index/testimonials', 'StaticPageController@show_testimonials');
 Route::get('/index/contact', 'StaticPageController@show_contact');
+
+
