@@ -55,6 +55,7 @@ class RegisterController extends Controller
             'dob' => 'required',
             'address' => 'required',
             'contactno' => 'required|min:10|numeric',
+            'medicissue' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -75,6 +76,7 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
             'address' => $data['address'],
             'contactno' => $data['contactno'],
+            'medicissue' => $data['medicissue'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
