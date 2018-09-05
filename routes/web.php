@@ -17,4 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');;
+
+Route::get('/static/home', 'StaticPageController@index');
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+

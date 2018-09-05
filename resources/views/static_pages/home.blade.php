@@ -1,16 +1,3 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-
-</body>
-</html>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +19,7 @@
     <!--All Css Here-->
 
     <!--Bootstrap Css-->
-    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app.css">
     <!--revolution slider-->
     <link rel="stylesheet" href="assets/css/vendor/rev_slider/settings.css">
     <link rel="stylesheet" href="assets/css/vendor/rev_slider/navigation.css">
