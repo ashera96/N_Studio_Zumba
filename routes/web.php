@@ -33,8 +33,13 @@ Route::get('/index/class_packages', 'StaticPageController@show_packages');
 Route::get('/index/schedule', 'StaticPageController@show_schedule');
 Route::get('/index/testimonials', 'StaticPageController@show_testimonials');
 Route::get('/index/contact', 'StaticPageController@show_contact');
-Route::get('/dashboard',function(){
-    return view('dashboard');
-});
 
+
+/*
+|--------------------------------------------------------------------------
+| Administrator Panel Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/dashboard', 'AdminController@show_dashboard');
 
