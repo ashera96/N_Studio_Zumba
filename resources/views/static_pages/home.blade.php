@@ -36,7 +36,7 @@
     <!--Jquery Ui Css-->
     <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.min.css') }}">
     <!--Style Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}"
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
     <!--Responsive Css-->
     <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
     <!--Modernizr Css-->
@@ -60,7 +60,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index"><img height="100px" width="100px" src={{ URL::asset('images/logo.png') }}  alt="BEFIT-logo"></a>
+                    <a class="navbar-brand" href="index"><img height="80px" width="80px" src={{ URL::asset('images/logo_nav.png') }}  alt="N_Studio_Zumba_Logo"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -124,60 +124,48 @@
                     <!-- SLIDE  -->
                     <li data-index="rs-1" data-transition="slideoververtical">
                         <!-- MAIN IMAGE -->
-                        <img src="assets/images/slider-show/s-1.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                        <img height="1080px" width="1920px" src={{ URL::asset('images/s-1.jpg') }} alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption slide-text-one tp-resizeme" id="slide-1-layer-1" data-x="['left','center','center','center']" data-hoffset="['65','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-250px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>muscle <span>power</span></h1>
+                            <h1>healthy <span>life</span></h1>
                         </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption slide-text-two tp-resizeme" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-200px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
                             <h1>fitness is not a destination it is a way of life</h1>
                         </div>
-
-                        <!-- LAYER NR. 3 -->
-                        <div class="tp-caption rev-btn white-btn" id="slide-1-layer-4" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','bottom','bottom']" data-voffset="['100','160','320','200']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;" data-style_hover="c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);" data-transform_in="y:bottom;s:1200;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-start="1250" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]' data-responsive_offset="on" data-responsive="off" style="z-index: 8; white-space: nowrap; font-size: 18px; line-height: 15px; color: rgba(255, 255, 255, 1.00);font-family:'Roboto Condensed', sans-serif;text-transform: uppercase;">learn more
-                        </div>
                     </li>
 
                     <!-- SLIDE  2-->
                     <li data-index="rs-2" data-transition="slideoververtical">
                         <!-- MAIN IMAGE -->
-                        <img src="assets/images/slider-show/s-2.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                        <img src={{ URL::asset('images/s-2.jpg') }} alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
                         <!-- LAYER NR. 1 -->
-                        <div class="tp-caption slide-text-one tp-resizeme" id="slide-2-layer-1" data-x="['right','center','center','center']" data-hoffset="['65','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:right;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
+                        <div class="tp-caption slide-text-one tp-resizeme" id="slide-1-layer-1" data-x="['left','center','center','center']" data-hoffset="['65','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-250px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
                             <h1>goal <span>digger</span></h1>
                         </div>
 
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption slide-text-two tp-resizeme" id="slide-2-layer-2" data-x="['right','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:right;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
+                        <div class="tp-caption slide-text-two tp-resizeme" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-200px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
                             <h1>fitness is not a destination it is a way of life</h1>
-                        </div>
-
-                        <!-- LAYER NR. 3 -->
-                        <div class="tp-caption rev-btn white-btn" id="slide-2-layer-4" data-x="['right','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','bottom','bottom']" data-voffset="['100','160','320','200']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;" data-style_hover="c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);" data-transform_in="y:bottom;s:1000;e:Power4.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1200;e:Power2.easeInOut;" data-start="1250" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]' data-responsive_offset="on" data-responsive="off" style="z-index: 8; white-space: nowrap; font-size: 18px; line-height: 15px; color: rgba(255, 255, 255, 1.00);font-family:'Roboto Condensed', sans-serif;text-transform: uppercase;">learn more
                         </div>
                     </li>
 
                     <!-- SLIDE  3-->
                     <li data-index="rs-3" data-transition="slideoververtical">
                         <!-- MAIN IMAGE -->
-                        <img src="assets/images/slider-show/s-3.jpg" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
+                        <img src={{ URL::asset('images/s-3.jpg') }} alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
 
                         <!-- LAYER NR. 1 -->
-                        <div class="tp-caption slide-text-one tp-resizeme" id="slide-3-layer-1" data-x="['left','center','center','center']" data-hoffset="['65','100','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-250px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>befit <span>strong</span></h1>
+                        <div class="tp-caption slide-text-one tp-resizeme" id="slide-1-layer-1" data-x="['left','center','center','center']" data-hoffset="['65','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-250px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
+                            <h1>be <span>strong</span></h1>
                         </div>
 
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption slide-text-two tp-resizeme" id="slide-3-layer-2" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-200px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>it never gets easier. You just get strong</h1>
-                        </div>
-
-                        <!-- LAYER NR. 3 -->
-                        <div class="tp-caption rev-btn white-btn" id="slide-3-layer-4" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','bottom','bottom']" data-voffset="['100','160','320','200']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;" data-style_hover="c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);" data-transform_in="y:bottom;s:1000;e:Power4.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1200;e:Power2.easeInOut;" data-start="1250" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]' data-responsive_offset="on" data-responsive="off" style="z-index: 8; white-space: nowrap; font-size: 18px; line-height: 15px; color: rgba(255, 255, 255, 1.00);font-family:'Roboto Condensed', sans-serif;text-transform: uppercase;">learn more
+                        <div class="tp-caption slide-text-two tp-resizeme" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-200px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
+                            <h1>fitness is not a destination it is a way of life</h1>
                         </div>
                     </li>
                 </ul>
@@ -196,7 +184,7 @@
                         <div class="features-box text-center">
                             <div class="features-elements">
                                 <a href="#"><i class="fa fa flaticon-exercise"></i></a>
-                                <h4 class="mb20">bodybuilding</h4>
+                                <h4 class="mb20">zumba classes</h4>
                                 <p class="mb20">Lorem ipsum dolor sit amet, ei veritus consetetur repudiandae eam, duo ne homero nostro moderatius.</p>
                             </div>
                             <div class="features-box-img ">
@@ -206,7 +194,7 @@
                         <div class="features-box text-center">
                             <div class="features-elements">
                                 <a href="#"><i class="fa fa flaticon-weightlifting"></i></a>
-                                <h4 class="mb20">fitness</h4>
+                                <h4 class="mb20">workout classes</h4>
                                 <p class="mb20">Lorem ipsum dolor sit amet, ei veritus consetetur repudiandae eam, duo ne homero nostro moderatius.</p>
                             </div>
                             <div class="features-box-img">
@@ -216,7 +204,7 @@
                         <div class="features-box text-center">
                             <div class="features-elements">
                                 <a href="#"><i class="fa fa flaticon-dumbbell"></i></a>
-                                <h4 class="mb20">weight left</h4>
+                                <h4 class="mb20">fitness</h4>
                                 <p class="mb20">Lorem ipsum dolor sit amet, ei veritus consetetur repudiandae eam, duo ne homero nostro moderatius.</p>
                             </div>
                             <div class="features-box-img ">
@@ -233,34 +221,6 @@
     </div>
     <!--features-area end-->
 
-    <!--call to action-1 start-->
-    <div class="call-to-action1">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="cta-img">
-                        <img src="assets/images/call-to-action/cta.jpg" alt="girl-img">
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-lg-6">
-                    <div class="cta-box">
-                        <h4 class="sub-title mb30">Joined Today Get The Best </h4>
-                        <h5 class="title mb30">Membership Offer Of the year </h5>
-                        <p class="mb30">Decore quidam bonorum vis eu, omnium instructior disputationi pro ei. An decore omittam duo, sed noluisse petentium instructior ad, pro no vidit error maiestatis. Ut qui errem quidam feugiat, ea eum vero mutat aliquip, ne erat postulant argumentum vim. Aliquip </p>
-                        <div class="bttn">
-                            <button type="submit" class="btn active btn-primary">sign up</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </div>
-    <!--call to action-1 end-->
-
     <!--portfolio area start-->
     <div class="portfolio-area title-white bg1 parallax overlay pad90">
         <div class="container">
@@ -268,73 +228,15 @@
                 <div class="col-lg-12">
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
-                            <img src="assets/images/logo/ttl-bar.png" alt="title-img">
+                            <img src="{{ URL::asset('images/ttl-bar.png') }}" alt="title-img">
                         </div>
-                        <h3>workout classes</h3>
-                        <p>Physical activity or exercise can improve your health </p>
+                        <h3>Stay Healthy</h3>
+                        <p>Calculate Your Body Mass Index </p>
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
-        </div>
-        <!-- /.container -->
-        <div class="port-carousel port-zoom">
-            <div class="port-box primary-overlay">
-                <div class="port-img">
-                    <a href="assets/images/class-schedule/big1.jpg">
-                        <img src="assets/images/class-schedule/1.jpg"  alt="schedule img"><i class="ovrlay fa fa-search"></i></a>
-                </div>
-                <div class="port-dtl">
-                    <h5>muscle building</h5>
-                    <p>Lorem ipsum dolor sit amet, ei melius saperet mediocritatem quo, mea ad atomorum periculis, ne pri </p>
-                </div>
-            </div>
-
-            <div class="port-box primary-overlay">
-                <div class="port-img">
-                    <a href="assets/images/class-schedule/big2.jpg">
-                        <img src="assets/images/class-schedule/2.jpg"  alt="schedule img"><i class="ovrlay fa fa-search"></i></a>
-                </div>
-                <div class="port-dtl">
-                    <h5>muscle building</h5>
-                    <p>Lorem ipsum dolor sit amet, ei melius saperet mediocritatem quo, mea ad atomorum periculis, ne pri </p>
-                </div>
-            </div>
-
-            <div class="port-box primary-overlay">
-                <div class="port-img">
-                    <a href="assets/images/class-schedule/big3.jpg">
-                        <img src="assets/images/class-schedule/3.jpg"  alt="schedule img"><i class="ovrlay fa fa-search"></i></a>
-                </div>
-                <div class="port-dtl">
-                    <h5>muscle building</h5>
-                    <p>Lorem ipsum dolor sit amet, ei melius saperet mediocritatem quo, mea ad atomorum periculis, ne pri </p>
-                </div>
-            </div>
-
-            <div class="port-box primary-overlay">
-                <div class="port-img">
-                    <a href="assets/images/class-schedule/big4.jpg">
-                        <img src="assets/images/class-schedule/4.jpg"  alt="schedule img"><i class="ovrlay fa fa-search"></i></a>
-                </div>
-                <div class="port-dtl">
-                    <h5>muscle building</h5>
-                    <p>Lorem ipsum dolor sit amet, ei melius saperet mediocritatem quo, mea ad atomorum periculis, ne pri </p>
-                </div>
-            </div>
-
-            <div class="port-box primary-overlay">
-                <div class="port-img">
-                    <a href="assets/images/class-schedule/big1.jpg">
-                        <img src="assets/images/class-schedule/1.jpg"  alt="schedule img"><i class="ovrlay fa fa-search"></i></a>
-                </div>
-                <div class="port-dtl">
-                    <h5>muscle building</h5>
-                    <p>Lorem ipsum dolor sit amet, ei melius saperet mediocritatem quo, mea ad atomorum periculis, ne pri </p>
-                </div>
-            </div>
-
         </div>
         <!-- /.port carousel -->
     </div>
@@ -981,34 +883,34 @@
 
 <!--All Js Here-->
 <!-- jquery latest version -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/vendor/jquery-3.2.1.min.js"></script>
+<script data-cfasync="false" src="{{ URL::asset('js/email-decode.min.js') }}"></script><script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
 <!--Migrate Js-->
-<script src="assets/js/vendor/jquery-migrate.js"></script>
+<script src="{{ URL::asset('js/jquery-migrate.js') }}"></script>
 <!--Popper Js-->
-<script src="assets/js/vendor/popper-1.12.3.min.js"></script>
+<script src="{{ URL::asset('js/popper-1.12.3.min.js') }}"></script>
 <!--Bootstrap Js-->
-<script src="assets/js/vendor/bootstrap.min.js"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
 <!--Owl-Carousel Js-->
-<script src="assets/js/vendor/owl.carousel.min.js"></script>
+<script src="{{ URL::asset('js/owl.carousel.min.js') }}"></script>
 <!--counter Js-->
-<script src="assets/js/vendor/jquery.counterup.min.js"></script>
-<script src="assets/js/vendor/waypoints-jquery.js"></script>
+<script src="{{ URL::asset('js/jquery.counterup.min.js') }}"></script>
+<script src="{{ URL::asset('js/waypoints-jquery.js') }}"></script>
 <!--Isotop Js-->
-<script src="assets/js/vendor/isotope.pkgd.min.js"></script>
+<script src="{{ URL::asset('js/isotope.pkgd.min.js') }}"></script>
 
 <!-- revolution slider js files start -->
-<script src="assets/js/vendor/rev_slider/jquery.themepunch.tools.min.js"></script>
-<script src="assets/js/vendor/rev_slider/jquery.themepunch.revolution.min.js"></script>
+<script src="{{ URL::asset('js/jquery.themepunch.tools.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.min.js') }}"></script>
 
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.actions.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.carousel.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.kenburn.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.layeranimation.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.migration.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.navigation.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.parallax.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.slideanims.min.js"></script>
-<script src="assets/js/vendor/rev_slider/extensions/revolution.extension.video.min.js"></script>
+<script src="{{ URL::asset('js/revolution.extension.actions.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.carousel.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.kenburn.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.layeranimation.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.migration.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.navigation.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.parallax.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.slideanims.min.js') }}"></script>
+<script src="{{ URL::asset('js/revolution.extension.video.min.js') }}"></script>
 <script type="text/javascript">
     function setREVStartSize(e) {
         try {
@@ -1043,16 +945,16 @@
 </script>
 
 <!--magnific popup Js-->
-<script src="assets/js/vendor/jquery.magnific-popup.min.js"></script>
+<script src="{{ URL::asset('js/jquery.magnific-popup.min.js') }}"></script>
 <!--scrollUp js-->
-<script src="assets/js/vendor/jquery.scrollUp.js"></script>
+<script src="{{ URL::asset('js/jquery.scrollUp.js') }}"></script>
 <!--Jquery Ui Js-->
-<script src="assets/js/vendor/jquery-ui.min.js"></script>
+<script src="{{ URL::asset('js/jquery-ui.min.js') }}"></script>
 <!--Wow Js-->
-<script src="assets/js/vendor/wow.min.js"></script>
+<script src="{{ URL::asset('js/wow.min.js') }}"></script>
 
 <!-- template main js file -->
-<script src="assets/js/main.js"></script>
+<script src="{{ URL::asset('js/main.js') }}"></script>
 </body>
 
 </html>
