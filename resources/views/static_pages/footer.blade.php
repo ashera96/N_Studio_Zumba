@@ -6,7 +6,7 @@
                     <div class="footer-logo footer-content">
                         <img height="34px" width="104px" src="{{ URL::asset('images/logo/zumba_logo2.png') }}" alt="footer logo">
                     </div>
-                    <p>N Studio Zumba is a dance and fitness company owned by Ms. Nilrukshi De Silva, a licensed Zumba® Instructor. <br>Zumba® classes and much more are provided.</p>
+                    <p>N Studio Zumba is a dance and fitness company owned by Nilrukshi De Silva, a licensed Zumba® Instructor. <br>Zumba® classes and much more are provided.</p>
                     <div class="add-info">
                         <p><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a>N Studio Zumba, No. 176D, Negombo Road, Rilaulla, Kandana, Sri Lanka.</p>
                         <p><a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>ninidisilva@gmail.com</p>

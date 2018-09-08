@@ -22,10 +22,10 @@ class StaticPageController extends Controller
         return view('static_pages.gallery');
     }
 
-    public function show_packages()
-    {
-        return view('static_pages.class_packages');
-    }
+//    public function show_packages()
+//    {
+//        return view('static_pages.class_packages');
+//    }
 
     public function show_schedule()
     {
