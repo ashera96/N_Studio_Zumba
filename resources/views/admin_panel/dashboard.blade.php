@@ -55,25 +55,25 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="calendar"></span>
-                            Package
+                            Packages
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="clock"></span>
-                            Schedule
+                            Schedules
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="bell"></span>
-                            Notification
+                            Notifications
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="dollar-sign"></span>
-                            Payment
+                            Payments
                         </a>
                     </li>
                     <li class="nav-item">
