@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\User;
+use Illuminate\Http\Request;
 use App\SystemUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
-class RegisterController extends Controller
+class SystemUserController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -49,14 +50,9 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        //validating fields
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+
             'username' => 'required|string|min:4|unique:users',
-            'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            'dob' => 'required|before:-18 years',
-            'address' => 'required',
-            'contactno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -68,33 +64,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    //put data into db
     protected function create(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'username' => $data['username'],
-            'nic' => $data['nic'],
-            'dob' => $data['dob'],
-            'address' => $data['address'],
-            'contactno' => $data['contactno'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return SystemUser::create([
 
-        $userID = $user -> id;
-
-        $systemuser = SystemUser::create([
-            'id' => $userID, //add the on delete cascade to this*********foreign key
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        return $user;
-
-
-
 
     }
 }
