@@ -69,7 +69,6 @@
     <!--header end-->
 
 
-
     <!-- page title & breadcrumbs start -->
     <div class="pricing-plan-bg page-head parallax overlay">
         <div class="container">
@@ -96,6 +95,7 @@
     <!-- /.page-header -->
     <!-- page title & breadcrumbs end -->
 
+
     <!--pricing area start-->
     <div class="pricing-area text-center pad90">
         <div class="container">
@@ -110,87 +110,39 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="price-box">
-                        <div class="price-empty">
-                        </div>
-                        <div class="price-quantity">
-                            <div class="qnty-box">
-                                <div class="box-element">
-                                    <h5>£85.00</h5>
-                                    <p>Quarterly</p>
+
+
+                @if(count($packages)>0)
+                    @foreach($packages as $package)
+                        <div class="col-md-6">
+                            <div class="price-box">
+                                <div class="price-empty">
                                 </div>
-                            </div>
-                            <div class="price-dtl">
-                                <ul>
-                                    <li class="first-child">3 Days of the week</li>
-                                    <li>professional trainer</li>
-                                    <li>Bodybuilding</li>
-                                    <li>Free Hand</li>
-                                    <li>Fitness & Boxing</li>
-                                </ul>
-                                <div class="price-btn bttn">
-                                    <button type="submit" class="btn btn-primary">Buy now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="price-box active">
-                        <div class="price-empty">
-                        </div>
-                        <div class="price-quantity">
-                            <div class="qnty-box">
-                                <div class="box-element">
-                                    <h5>£130.00</h5>
-                                    <p>half yearly</p>
-                                </div>
-                            </div>
-                            <div class="price-dtl">
-                                <ul>
-                                    <li class="first-child">3 Days of the week</li>
-                                    <li>professional trainer</li>
-                                    <li>Bodybuilding</li>
-                                    <li>Free Hand</li>
-                                    <li>Fitness & Boxing</li>
-                                </ul>
-                                <div class="price-btn bttn">
-                                    <button type="submit" class="btn btn-primary">Buy now</button>
+                                <div class="price-quantity">
+                                    <div class="qnty-box">
+                                        <div class="box-element">
+                                            <h5>Rs. {{$package->price}}</h5>
+                                            <p>Monthly</p>
+                                        </div>
+                                    </div>
+                                    <div class="price-dtl">
+                                        <ul>
+                                            <li class="first-child"><h3>{{$package->name}} Package</h3></li>
+                                            <li>{{$package->services}}</li>
+                                            <li><h3>Rs. {{$package->price}}</h3></li>
+                                        </ul>
+                                        <div class="price-btn bttn">
+                                            <a href="/N_Studio_Zumba/public/index" class="btn btn-primary">Buy now</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-md-4">
-                    <div class="price-box">
-                        <div class="price-empty">
-                        </div>
-                        <div class="price-quantity">
-                            <div class="qnty-box">
-                                <div class="box-element">
-                                    <h5>£85.00</h5>
-                                    <p>£210.00</p>
-                                </div>
-                            </div>
-                            <div class="price-dtl">
-                                <ul>
-                                    <li class="first-child">3 Days of the week</li>
-                                    <li>professional trainer</li>
-                                    <li>Bodybuilding</li>
-                                    <li>Free Hand</li>
-                                    <li>Fitness & Boxing</li>
-                                </ul>
-                                <div class="price-btn bttn">
-                                    <button type="submit" class="btn btn-primary">Buy now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col -->
+                        <!-- /.col -->
+                    @endforeach
+                @endif
+
+
             </div>
             <!-- /.row -->
         </div>
