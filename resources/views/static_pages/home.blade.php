@@ -1,59 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>N Studio Zumba</title>
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="{{ URL::asset('favicon/logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ URL::asset('favicon/apple-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ URL::asset('favicon/apple-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ URL::asset('favicon/apple-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ URL::asset('favicon/apple-icon-144x144.png') }}">
-
-    <!--All Css Here-->
-
-    <!--Bootstrap Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
-    <!--revolution slider-->
-    <link rel="stylesheet" href="{{ URL::asset('css/settings.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/navigation.css') }}">
-    <!--Font-Awesome Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
-    <!--flat-icon-->
-    <link rel="stylesheet" href="{{ URL::asset('css/flaticon.css') }}">
-    <!--Owl-Carousel Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
-    <!--Animate Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
-    <!--Animate Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/magnific-popup.css') }}">
-    <!--Jquery Ui Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.min.css') }}">
-    <!--Style Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-    <!--Responsive Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
-    <!--Modernizr Css-->
-    <script src="{{ URL::asset('js/modernizr-2.8.3.min.js') }}"></script>
+@extends('layouts.static_app')
 
 
-    {{--<!--[if lt IE 9]>--}}
-    {{--<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>--}}
-    {{--<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
-    {{--<![endif]-->--}}
-
-</head>
-
-<body>
-
-<!--main-container-->
-<div class="main-container">
+@section('content')
 
     <!-- /.header start -->
     @include('static_pages.navbar');
@@ -172,7 +120,7 @@
                 <div class="col-lg-12">
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
-                            <img src="{{ URL::asset('images/ttl-bar.png') }}" alt="title-img">
+                            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
                         <h3>Stay Healthy</h3>
                         <p>Calculate Your Body Mass Index </p>
@@ -191,111 +139,43 @@
     <h2 style="color: #e83e8c">Notifications</h2>
     <br>
 
-    <!--Footer start-->
-    @include('static_pages.footer');
-    {{--Footer end--}}
-
-</div>
-<!--main-container-->
-
-<!--Search Popup-->
-<div id="search-popup" class="search-popup">
-    <div class="close-search theme-btn"><span class="fa fa-close"></span></div>
-    <div class="popup-inner">
-
-        <div class="search-form">
-            <form method="post" action="index">
-                <div class="form-group">
-                    <fieldset>
-                        <input type="search" class="form-control" name="search-input" value="" placeholder="Search Here" required>
-                        <input type="submit" value="Search" class="theme-btn">
-                    </fieldset>
-                </div>
-            </form>
-
-            <br>
-            <h3>Recent Search Keywords</h3>
-        </div>
-    </div>
-</div>
-<!--End Search Popup-->
+@endsection
 
 
+@section('js_styling')
+    <script type="text/javascript">
+        function setREVStartSize(e) {
+            try {
+                var i = jQuery(window).width(),
+                    t = 9999,
+                    r = 0,
+                    n = 0,
+                    l = 0,
+                    f = 0,
+                    s = 0,
+                    h = 0;
+                if (e.responsiveLevels && (jQuery.each(e.responsiveLevels, function(e, f) {
+                    f > i && (t = r = f, l = e), i > f && f > r && (r = f, n = e)
+                }), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s = e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f = Math.round(h * f), "fullscreen" == e.sliderLayout) {
+                    var u = (e.c.width(), jQuery(window).height());
+                    if (void 0 != e.fullScreenOffsetContainer) {
+                        var c = e.fullScreenOffsetContainer.split(",");
+                        if (c) jQuery.each(c, function(e, i) {
+                            u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u
+                        }), e.fullScreenOffset.split("%").length > 1 && void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100 : void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 && (u -= parseInt(e.fullScreenOffset, 0))
+                    }
+                    f = u
+                } else void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight);
+                e.c.closest(".rev_slider_wrapper").css({
+                    height: f
+                })
+            } catch (d) {
+                console.log("Failure at Presize of Slider:" + d)
+            }
+        };
 
-<!--All Js Here-->
-<!-- jquery latest version -->
-<script data-cfasync="false" src="{{ URL::asset('js/email-decode.min.js') }}"></script><script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
-<!--Migrate Js-->
-<script src="{{ URL::asset('js/jquery-migrate.js') }}"></script>
-<!--Popper Js-->
-<script src="{{ URL::asset('js/popper-1.12.3.min.js') }}"></script>
-<!--Bootstrap Js-->
-<script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-<!--Owl-Carousel Js-->
-<script src="{{ URL::asset('js/owl.carousel.min.js') }}"></script>
-<!--counter Js-->
-<script src="{{ URL::asset('js/jquery.counterup.min.js') }}"></script>
-<script src="{{ URL::asset('js/waypoints-jquery.js') }}"></script>
-<!--Isotop Js-->
-<script src="{{ URL::asset('js/isotope.pkgd.min.js') }}"></script>
+    </script>
+@endsection
 
-<!-- revolution slider js files start -->
-<script src="{{ URL::asset('js/jquery.themepunch.tools.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.min.js') }}"></script>
 
-<script src="{{ URL::asset('js/revolution.extension.actions.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.carousel.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.kenburn.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.layeranimation.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.migration.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.navigation.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.parallax.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.slideanims.min.js') }}"></script>
-<script src="{{ URL::asset('js/revolution.extension.video.min.js') }}"></script>
-<script type="text/javascript">
-    function setREVStartSize(e) {
-        try {
-            var i = jQuery(window).width(),
-                t = 9999,
-                r = 0,
-                n = 0,
-                l = 0,
-                f = 0,
-                s = 0,
-                h = 0;
-            if (e.responsiveLevels && (jQuery.each(e.responsiveLevels, function(e, f) {
-                f > i && (t = r = f, l = e), i > f && f > r && (r = f, n = e)
-            }), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s = e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f = Math.round(h * f), "fullscreen" == e.sliderLayout) {
-                var u = (e.c.width(), jQuery(window).height());
-                if (void 0 != e.fullScreenOffsetContainer) {
-                    var c = e.fullScreenOffsetContainer.split(",");
-                    if (c) jQuery.each(c, function(e, i) {
-                        u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u
-                    }), e.fullScreenOffset.split("%").length > 1 && void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100 : void 0 != e.fullScreenOffset && e.fullScreenOffset.length > 0 && (u -= parseInt(e.fullScreenOffset, 0))
-                }
-                f = u
-            } else void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight);
-            e.c.closest(".rev_slider_wrapper").css({
-                height: f
-            })
-        } catch (d) {
-            console.log("Failure at Presize of Slider:" + d)
-        }
-    };
 
-</script>
-
-<!--magnific popup Js-->
-<script src="{{ URL::asset('js/jquery.magnific-popup.min.js') }}"></script>
-<!--scrollUp js-->
-<script src="{{ URL::asset('js/jquery.scrollUp.js') }}"></script>
-<!--Jquery Ui Js-->
-<script src="{{ URL::asset('js/jquery-ui.min.js') }}"></script>
-<!--Wow Js-->
-<script src="{{ URL::asset('js/wow.min.js') }}"></script>
-
-<!-- template main js file -->
-<script src="{{ URL::asset('js/main.js') }}"></script>
-</body>
-
-</html>
