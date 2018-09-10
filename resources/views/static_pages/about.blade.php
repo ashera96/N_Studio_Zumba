@@ -144,7 +144,7 @@
                             <h3>Nilru De Silva</h3>
                         </div>
                         <div class="opening-img">
-                            <img src="{{ URL::asset('images/nilru_3.jpg') }}" >
+                            <img src="{{ URL::asset('images/about/1.jpg') }}" >
                         </div>
                     </div>
                 </div>

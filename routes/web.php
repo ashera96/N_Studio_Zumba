@@ -31,7 +31,8 @@ Route::get('/index/about', 'StaticPageController@show_about');
 Route::get('/index/gallery', 'StaticPageController@show_gallery');
 Route::resource('/index/class_packages', 'PackageController');
 //Route::get('/index/class_packages', 'StaticPageController@show_packages');
-Route::get('/index/schedule', 'StaticPageController@show_schedule');
+Route::resource('/index/schedule', 'ScheduleController');
+//Route::get('/index/schedule', 'StaticPageController@show_schedule');
 Route::get('/index/testimonials', 'StaticPageController@show_testimonials');
 Route::get('/index/contact', 'StaticPageController@show_contact');
 
