@@ -1,5 +1,28 @@
 @extends('layouts.static_app')
-
+<script language="JavaScript">
+    <!--
+    function calculateBmi() {
+        var weight = document.bmiForm.weight.value
+        var height = document.bmiForm.height.value
+        if(weight > 0 && height > 0){
+            var finalBmi = weight/(height/100*height/100)
+            document.bmiForm.bmi.value = finalBmi
+            if(finalBmi < 18.5){
+                document.bmiForm.meaning.value = "Under Weight"
+            }
+            if(finalBmi > 18.5 && finalBmi < 25){
+                document.bmiForm.meaning.value = "Healthy"
+            }
+            if(finalBmi > 25){
+                document.bmiForm.meaning.value = "Over Weight"
+            }
+        }
+        else{
+            alert("Please Fill in everything correctly")
+        }
+    }
+    //-->
+</script>
 
 @section('content')
 
@@ -124,7 +147,31 @@
                         </div>
                         <h3>Stay Healthy</h3>
                         <p>Calculate Your Body Mass Index </p>
+                        <form name="bmiForm">
+                            <label  >Weight</label>
+                            <input  type="text" name="weight" class="form-control"  aria-describedby="weightHelp" placeholder="Your Weight in kg" size="10" ><br />
+
+                            <label  >Height</label>
+                            <input type="text" name="height" class="form-control"  aria-describedby="heightHelp" placeholder="Your Height in cm" size="10"><br />
+
+
+                            <input type="button" class="btn btn-primary" value="Calculate BMI" onClick="calculateBmi()"><br /><br />
+
+                            <label  >Your BMI : </label>
+                            <input type="text" name="bmi" class="form-control"  aria-describedby="weightHelp" placeholder="Your BMI" size="10"><br />
+
+                            <label  >Status : </label>
+                            <input type="text" name="meaning" class="form-control"  aria-describedby="weightHelp" placeholder="BMI Status" size="25"><br />
+
+
+                            <input type="reset" class="btn btn-success" value="Reset" /><br />
+
+
+                        </form>
                     </div>
+
+
+
 
                 </div>
                 <!-- /.col -->
