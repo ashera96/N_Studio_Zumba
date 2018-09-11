@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Rules\nicValidation;
 
 class RegisterController extends Controller
 {
@@ -53,12 +54,13 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'username' => 'required|string|min:4|unique:users',
-            'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            'dob' => 'required|before:-18 years',
+            'nic' => ['required',new nicValidation],//custom
+            //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+            'dob' => 'required|before:-18 years|after:65 years',
             'address' => 'required',
             'contactno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
         ]);
     }
 
