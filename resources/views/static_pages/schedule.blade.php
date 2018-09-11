@@ -8,7 +8,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/N_Studio_Zumba/public/index"><img height="80px" width="80px" src="{{ URL::asset('images/logo_nav.png') }}"  alt="N_Studio_Zumba_Logo"></a>
+                    <a class="navbar-brand" href="/index"><img height="80px" width="80px" src="{{ URL::asset('images/logo_nav.png') }}"  alt="N_Studio_Zumba_Logo"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -16,37 +16,37 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link " href="/N_Studio_Zumba/public/index">
+                            <a class="nav-link " href="/index">
                                 home<span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/N_Studio_Zumba/public/index/about">
+                            <a class="nav-link " href="/index/about">
                                 about<span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/N_Studio_Zumba/public/index/gallery">
+                            <a class="nav-link " href="/index/gallery">
                                 gallery<span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/N_Studio_Zumba/public/index/class_packages">
+                            <a class="nav-link " href="/index/class_packages">
                                 classes<span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link " href="/N_Studio_Zumba/public/index/schedule">
+                            <a class="nav-link " href="/index/schedule">
                                 schedule<span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/N_Studio_Zumba/public/index/testimonials">
+                            <a class="nav-link " href="/index/testimonials">
                                 testimonials<span class="sr-only">(current)</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/N_Studio_Zumba/public/index/contact">contact</a>
+                            <a class="nav-link" href="/index/contact">contact</a>
                         </li>
                         <li class="nav-item d-none d-lg-inline">
                             <div class="icon-menu">
@@ -56,10 +56,10 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">login</a>
+                            <a class="nav-link" href="{{ route('login') }}">login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">register</a>
+                            <a class="nav-link" href="{{ route('register') }}">register</a>
                         </li>
                     </ul>
                 </div>
@@ -80,7 +80,7 @@
                 <!-- /.colour-service-1-->
                 <div class="col-md-12">
                     <ol class="breadcrumb">
-                        <li><a href="/N_Studio_Zumba/public/index">home</a></li>
+                        <li><a href="/index">home</a></li>
                         <li>।</li>
                         <li>Schedule</li>
                     </ol>
@@ -113,6 +113,14 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-md-12">
+
+                </div>
+                @if(count($schedules)>0)
+                    @foreach($schedules as $schedule)
+                        <h3>{{$schedule->day}}</h3>
+                    @endforeach
+                @endif
+                <div class="col-md-12">
                     <ul id="tabsJustified" class="nav nav-tabs schdl-tab-area">
                         <li class="nav-item full-width"><a href="#" data-target="#level1" data-toggle="tab" class="nav-link small text-uppercase active">monday </a></li>
                         <li class="nav-item full-width"><a href="#" data-target="#level2" data-toggle="tab" class="nav-link small text-uppercase ">tuesday</a></li>
@@ -122,12 +130,6 @@
                         <li class="nav-item full-width"><a href="#" data-target="#level6" data-toggle="tab" class="nav-link small text-uppercase ">saturday</a></li>
                         <li class="nav-item full-width"><a href="#" data-target="#level7" data-toggle="tab" class="nav-link small text-uppercase ">sunday</a></li>
                     </ul>
-
-                    @if(count($schedules)>0)
-                        @foreach($schedules as $schedule)
-                            <h3>{{$schedule->day}}</h3>
-                        @endforeach
-                    @endif
 
                 </div>
                 <!-- /.col -->
