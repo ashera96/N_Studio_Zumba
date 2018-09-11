@@ -144,10 +144,14 @@
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
-                        </div>
+
                         <h3>Stay Healthy</h3>
                         <p>Calculate Your Body Mass Index </p>
-                        <form name="bmiForm">
+
+                        <form name="bmiForm" >
+
+                            <div class="row"  >
+                                <div class="col-lg-4 form-group" ><br>
                             <label  >Weight</label>
                             <input  type="text" name="weight" class="form-control"  aria-describedby="weightHelp" placeholder="Your Weight in kg" size="10" ><br />
 
@@ -165,10 +169,15 @@
 
 
                             <input type="reset" class="btn btn-success" value="Reset" /><br />
-
+                            </div>
+                            </div>
 
                         </form>
+
                     </div>
+
+                    </div>
+
 
 
 
