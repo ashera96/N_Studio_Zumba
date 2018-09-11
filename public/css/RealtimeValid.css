@@ -1,0 +1,153 @@
+
+#message {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+#message2 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#message2 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+ #message3 {
+     display:none;
+     background: #ffffff;
+     color: #000;
+     position: relative;
+     padding: 0px;
+     margin-top: 5px;
+ }
+
+ #message3 p {
+     padding: 10px 35px;
+     font-size: 12px;
+ }
+ #message4 {
+     display:none;
+     background: #ffffff;
+     color: #000;
+     position: relative;
+     padding: 0px;
+     margin-top: 5px;
+ }
+
+ #message4 p {
+     padding: 10px 35px;
+     font-size: 12px;
+ }
+#message5 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#message5 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+
+#message6 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#message6 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+
+#message7 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#message7 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+#message8 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#message8 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+#message9 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#message9 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+#message10 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#message10 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+ .valid {
+    color: #1af010;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    <!-- content: "✔"; -->
+}
+
+  .invalid {
+    color: #f11531;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+  <!--  content: "✖"; -->
+}

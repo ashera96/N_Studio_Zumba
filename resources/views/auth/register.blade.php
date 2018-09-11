@@ -8,14 +8,14 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                        <form method="POST" action="{{ route('register') }}"  aria-label="{{ __('Register') }}">
                             @csrf
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                                    <input id="name" type="text"  placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -29,8 +29,10 @@
                                 <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
-
+                                    <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="At least 4 characters" name="username" value="{{ old('username') }}" required>
+                                    <div id="message2">
+                                        <p id="lengthofusername" class="invalid"><b>Username should be at least 4 characters</b></p>
+                                    </div>
                                     @if ($errors->has('username'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('username') }}</strong>
@@ -44,8 +46,10 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
+                                    <input id="email" type="email" placeholder="test@gmail.com" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                    <div id="message3">
+                                        <p id="emailformat" class="invalid"><b>Invalid email format</b></p>
+                                    </div>
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -58,8 +62,10 @@
                                 <label for="nic" class="col-md-4 col-form-label text-md-right">{{ __('NIC') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="nic" type="text" class="form-control{{ $errors->has('nic') ? ' is-invalid' : '' }}" name="nic" value="{{ old('nic') }}" required autofocus>
-
+                                    <input id="nic" type="text" placeholder="123456789V" class="form-control{{ $errors->has('nic') ? ' is-invalid' : '' }}" name="nic" value="{{ old('nic') }}" required autofocus>
+                                    <div id="message4">
+                                        <p id="nicformat" class="invalid"><b>Invalid & unacceptable NIC format</b></p>
+                                    </div>
                                     @if ($errors->has('nic'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('nic') }}</strong>
@@ -72,8 +78,10 @@
                                 <label for="dob" class="col-md-4 col-form-label text-md-right">{{ __('Date Of Birth') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="dob" type="date" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required autofocus>
-
+                                    <input id="dob" type="date"  class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required autofocus>
+                                    <div id="message5">
+                                        <p id="age" class="invalid"><b>Your age is not suitable for Zumba Fitness</b></p>
+                                    </div>
                                     @if ($errors->has('dob'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('dob') }}</strong>
@@ -86,7 +94,7 @@
                                 <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
+                                    <input id="address" type="text" placeholder="Enter address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
 
                                     @if ($errors->has('address'))
                                         <span class="invalid-feedback" role="alert">
@@ -100,8 +108,10 @@
                                 <label for="contactno" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="contactno" type="text" class="form-control{{ $errors->has('contactno') ? ' is-invalid' : '' }}" name="contactno" value="{{ old('contactno') }}" required autofocus>
-
+                                    <input id="contactno" type="text" class="form-control{{ $errors->has('contactno') ? ' is-invalid' : '' }}" name="contactno" placeholder="xxxxxxxxxx" value="{{ old('contactno') }}" required autofocus>
+                                    <div id="message6">
+                                        <p id="phonenum" class="invalid"><b>Invalid phone number</b></p>
+                                    </div>
                                     @if ($errors->has('contactno'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('contactno') }}</strong>
@@ -114,7 +124,7 @@
                                 <label for="medicissue" class="col-md-4 col-form-label text-md-right">{{ __('Medical Issues(If any)') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="medicissue" type="text" class="form-control{{ $errors->has('medicissue') ? ' is-invalid' : '' }}" placeholder="Medical Issues" name="medicissue" value="{{ old('medicissue') }}" >
+                                    <input id="medicissue" type="text" class="form-control{{ $errors->has('medicissue') ? ' is-invalid' : '' }}" placeholder="Enter any medical issues" name="medicissue" value="{{ old('medicissue') }}" >
 
                                     @if ($errors->has('medicissue'))
                                         <span class="invalid-feedback" role="alert">
@@ -129,8 +139,16 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
+                                    <input id="password" type="password" placeholder="Atleast 6 characters" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                    <div id="message7">
+                                        <p id="pwv" class="invalid"><b>Must contain at least 6 characters</br>At least 1 uppercase letter</br>At least 1 lowercase letter</br>At least 1 digit</br>At least 1 special character( ex: @ , * , ! )</b></p>
+                                    </div>
+                                    <div id="message8">
+                                        <p id="pwstr" class="invalid"><b>Password Strength: Weak</b></p>
+                                    </div>
+                                    <div id="message9">
+                                        <p id="pwstr2" class="invalid"><b>Password Strength: Strong</b></p>
+                                    </div>
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -143,13 +161,17 @@
                                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+
+                                    <input id="password-confirm" type="password" placeholder="Re-enter password" class="form-control" name="password_confirmation" required>
+                                    <div id="message10">
+                                        <p id="con" class="invalid"><b>Password mismatched !</b></p>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" id="signup">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
@@ -159,6 +181,8 @@
                 </div>
             </div>
         </div>
+
     </div>
+
 @endsection
 

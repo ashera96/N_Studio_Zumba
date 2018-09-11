@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'username' => 'required|string|min:4|unique:users',
             'nic' => ['required',new nicValidation],//custom
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            'dob' => 'required|before:-18 years|after:65 years',
+
+            'dob' => ['required',new ageValidation], //custom
             'address' => 'required',
             'contactno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
             'email' => 'required|string|email|max:255|unique:users',
