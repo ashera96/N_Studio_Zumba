@@ -29,8 +29,10 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/index', 'StaticPageController@show_index');
 Route::get('/index/about', 'StaticPageController@show_about');
 Route::get('/index/gallery', 'StaticPageController@show_gallery');
-Route::get('/index/class_packages', 'StaticPageController@show_packages');
-Route::get('/index/schedule', 'StaticPageController@show_schedule');
+Route::resource('/index/class_packages', 'PackageController');
+//Route::get('/index/class_packages', 'StaticPageController@show_packages');
+Route::resource('/index/schedule', 'ScheduleController');
+//Route::get('/index/schedule', 'StaticPageController@show_schedule');
 Route::get('/index/testimonials', 'StaticPageController@show_testimonials');
 Route::get('/index/contact', 'StaticPageController@show_contact');
 
@@ -43,3 +45,4 @@ Route::get('/index/contact', 'StaticPageController@show_contact');
 
 Route::get('/dashboard', 'AdminController@show_dashboard');
 
+Route::resource('receptionist','recepController');
