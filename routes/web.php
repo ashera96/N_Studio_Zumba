@@ -45,4 +45,4 @@ Route::get('/index/contact', 'StaticPageController@show_contact');
 
 Route::get('/dashboard', 'AdminController@show_dashboard');
 
-Route::resource('receptionist','recepController');
+Route::resource('/receptionist','ReceptionistController');

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\receptionist;
+use App\Receptionist;
 
-class recepController extends Controller
+class ReceptionistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class recepController extends Controller
      */
     public function index()
     {
-        $receps=receptionist::all();
+        $receps=Receptionist::all();
         return view('admin_panel.index',['receptionists'=>$receps]);
     }
 
@@ -36,7 +36,7 @@ class recepController extends Controller
      */
     public function store(Request $request)
     {
-        $recepnew =new receptionist;
+        $recepnew =new Receptionist;
         $recepnew ->name =$request ->name;
         $recepnew ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
@@ -68,7 +68,7 @@ class recepController extends Controller
      */
     public function edit($id)
     {
-        $recepfind = receptionist::findOrFail($id);
+        $recepfind = Receptionist::findOrFail($id);
         return view('admin_panel.edit',['receptionist'=>$recepfind]);
     }
 
@@ -81,7 +81,7 @@ class recepController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $recepnew =receptionist::findOrFail($id);
+        $recepnew =Receptionist::findOrFail($id);
         $recepnew ->name =$request ->name;
         $recepnew ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
@@ -101,7 +101,7 @@ class recepController extends Controller
      */
     public function destroy($id)
     {
-        $recepfind=receptionist::findOrFail($id);
+        $recepfind=Receptionist::findOrFail($id);
         $recepfind->delete();
         return redirect('/receptionist');
     }
