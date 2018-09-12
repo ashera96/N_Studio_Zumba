@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Rules\ageValidation;
+use App\Rules\nicValidation;
 use App\User;
 use App\SystemUser;
 use App\Http\Controllers\Controller;
+use http\Env\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Rules\nicValidation;
 
 class RegisterController extends Controller
 {
@@ -48,22 +50,24 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(array $data)
     {
         //validating fields
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'username' => 'required|string|min:4|unique:users',
-            'nic' => ['required',new nicValidation],//custom
+            'nic' => ['required','unique:users',new nicValidation],//custom
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
             'dob' => ['required',new ageValidation], //custom
             'address' => 'required',
-            'contactno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+            'contactno' => 'required|unique:users|regex:/^[0]{1}[0-9]{9}$/',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/',
-            'medicissue' => 'string|max:255',
+            'password' => 'required|string|min:6|confirmed',
         ]);
     }
+
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -83,7 +87,6 @@ class RegisterController extends Controller
             'contactno' => $data['contactno'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'medicissue' => $data['medicissue'],
         ]);
 
         $userID = $user -> id;
@@ -101,4 +104,5 @@ class RegisterController extends Controller
 
 
     }
+
 }
