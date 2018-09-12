@@ -10,6 +10,16 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}"  aria-label="{{ __('Register') }}">
                             @csrf
+                            <div class="alert-danger">
+                                @if(count($errors)>0)
+                                    @foreach($errors->all() as $error)
+                                        <ul>
+                                            <li>{{ $error }}</li>
+                                        </ul>
+                                    @endforeach
+                                @endif
+                            </div>
+
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Full Name') }}</label>
@@ -17,11 +27,11 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"  placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!--       @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -33,11 +43,11 @@
                                     <div id="message2">
                                         <p id="lengthofusername" class="invalid"><b>Username should be at least 4 characters</b></p>
                                     </div>
-                                    @if ($errors->has('username'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!--  @if ($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('username') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -50,11 +60,11 @@
                                     <div id="message3">
                                         <p id="emailformat" class="invalid"><b>Invalid email format</b></p>
                                     </div>
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!-- @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -66,11 +76,11 @@
                                     <div id="message4">
                                         <p id="nicformat" class="invalid"><b>Invalid & unacceptable NIC format</b></p>
                                     </div>
-                                    @if ($errors->has('nic'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!-- @if ($errors->has('nic'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('nic') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -82,11 +92,12 @@
                                     <div id="message5">
                                         <p id="age" class="invalid"><b>Your age is not suitable for Zumba Fitness</b></p>
                                     </div>
-                                    @if ($errors->has('dob'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!--
+                                @if ($errors->has('dob'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('dob') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -95,12 +106,12 @@
 
                                 <div class="col-md-6">
                                     <input id="address" type="text" placeholder="Enter address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
-
-                                    @if ($errors->has('address'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!--
+                                @if ($errors->has('address'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('address') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -108,15 +119,16 @@
                                 <label for="contactno" class="col-md-4 col-form-label text-md-right">{{ __('Contact Number') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="contactno" type="text" class="form-control{{ $errors->has('contactno') ? ' is-invalid' : '' }}" name="contactno" placeholder="xxxxxxxxxx" value="{{ old('contactno') }}" required autofocus>
+                                    <input id="contactno" pattern="[0]{1}[0-9]{9}" minlength="10" type="text" class="form-control{{ $errors->has('contactno') ? ' is-invalid' : '' }}" name="contactno" placeholder="xxxxxxxxxx" value="{{ old('contactno') }}" required autofocus>
                                     <div id="message6">
                                         <p id="phonenum" class="invalid"><b>Invalid phone number</b></p>
                                     </div>
-                                    @if ($errors->has('contactno'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!--
+                                @if ($errors->has('contactno'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('contactno') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -125,12 +137,12 @@
 
                                 <div class="col-md-6">
                                     <input id="medicissue" type="text" class="form-control{{ $errors->has('medicissue') ? ' is-invalid' : '' }}" placeholder="Enter any medical issues" name="medicissue" value="{{ old('medicissue') }}" >
-
-                                    @if ($errors->has('medicissue'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!--
+                                @if ($errors->has('medicissue'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('medicissue') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 
@@ -139,21 +151,22 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" placeholder="Atleast 6 characters" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                    <input id="password" type="password" minlength="6"  placeholder="Atleast 6 characters" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
                                     <div id="message7">
-                                        <p id="pwv" class="invalid"><b>Must contain at least 6 characters</br>At least 1 uppercase letter</br>At least 1 lowercase letter</br>At least 1 digit</br>At least 1 special character( ex: @ , * , ! )</b></p>
+                                        <p id="weak" class="invalid"><b>Password Strength: Weak</b></p>
                                     </div>
                                     <div id="message8">
-                                        <p id="pwstr" class="invalid"><b>Password Strength: Weak</b></p>
+                                        <p id="medium" class="invalid"><b>Password Strength: Medium</b></p>
                                     </div>
                                     <div id="message9">
-                                        <p id="pwstr2" class="invalid"><b>Password Strength: Strong</b></p>
+                                        <p id="strong" class="invalid"><b>Password Strength: Strong</b></p>
                                     </div>
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
+                                <!--
+                            @if ($errors->has('password'))
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                    @endif
+                                @endif -->
                                 </div>
                             </div>
 

@@ -26,32 +26,32 @@
     padding: 10px 35px;
     font-size: 12px;
 }
- #message3 {
-     display:none;
-     background: #ffffff;
-     color: #000;
-     position: relative;
-     padding: 0px;
-     margin-top: 5px;
- }
+#message3 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
 
- #message3 p {
-     padding: 10px 35px;
-     font-size: 12px;
- }
- #message4 {
-     display:none;
-     background: #ffffff;
-     color: #000;
-     position: relative;
-     padding: 0px;
-     margin-top: 5px;
- }
+#message3 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
+#message4 {
+    display:none;
+    background: #ffffff;
+    color: #000;
+    position: relative;
+    padding: 0px;
+    margin-top: 5px;
+}
 
- #message4 p {
-     padding: 10px 35px;
-     font-size: 12px;
- }
+#message4 p {
+    padding: 10px 35px;
+    font-size: 12px;
+}
 #message5 {
     display:none;
     background: #ffffff;
@@ -132,22 +132,30 @@
     padding: 10px 35px;
     font-size: 12px;
 }
- .valid {
+.valid {
     color: #1af010;
 }
 
 .valid:before {
     position: relative;
     left: -35px;
-    <!-- content: "✔"; -->
+<!-- content: "✔"; -->
 }
 
-  .invalid {
+.invalid {
     color: #f11531;
 }
 
 .invalid:before {
     position: relative;
     left: -35px;
-  <!--  content: "✖"; -->
+<!--  content: "✖"; -->
+}
+
+.mediumclr {
+    color: slateblue;
+}
+
+.strngclr {
+    color: #1af010;
 }
