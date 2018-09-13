@@ -10471,16 +10471,19 @@ a.text-dark:focus {
   }
 }
 
+#features-box-img {
+  padding: 20px;
+}
+
+#bmi-button {
+  background: #fc328a;
+  border-color: #fc328a;
+  width: 120px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.head-contact{
-    color: deeppink;
-}
-
-.contact-details{
-    color: #0b0b0b;
-}
