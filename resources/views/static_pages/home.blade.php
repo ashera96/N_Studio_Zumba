@@ -172,14 +172,14 @@
                                                 <input  type="text" name="height" class="form-control"  placeholder="160cm" size="10" ><br />
                                             </div>
                                         </div>
-                                        <input type="button" class="btn active btn-primary" value="Calculate BMI" onClick="calculateBmi()"><br /><br />
+                                        <input type="button" class="btn active btn-primary" id="bmi-button" value="Calculate BMI" onClick="calculateBmi()"><br /><br />
 
                                         <div class="row">
                                             <div class="col-sm-6 text-left">
                                                 <label>Your BMI</label>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input  type="text" name="bmi" class="form-control"  placeholder="BMI" size="10" ><br />
+                                                <input  type="text" name="bmi" class="form-control" placeholder="BMI Value" size="10" ><br />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -190,7 +190,7 @@
                                                 <input  type="text" name="meaning" class="form-control"  placeholder="BMI Status" size="25" ><br />
                                             </div>
                                         </div>
-                                        <input type="reset" class="btn active btn-success" value="Reset" /><br />
+                                        <input type="reset" class="btn active btn-success" id="bmi-button" value="Reset" /><br />
 
                                     </form>
                                 </div>
