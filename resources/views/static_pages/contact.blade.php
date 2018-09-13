@@ -1,68 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>N Studio Zumba </title>
-    <meta name="author" content="iThemesLab">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-    <link rel="apple-touch-icon" href="assets/favicon/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
-
-    <!--All Css Here-->
-
-    <!--Bootstrap Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
-    <!--revolution slider-->
-    <link rel="stylesheet" href="{{ URL::asset('css/settings.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/navigation.css') }}">
-    <!--Font-Awesome Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/font-awesome.css') }}">
-    <!--flat-icon-->
-    <link rel="stylesheet" href="{{ URL::asset('css/flaticon.css') }}">
-    <!--Owl-Carousel Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
-    <!--Animate Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
-    <!--Animate Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/magnific-popup.css') }}">
-    <!--Jquery Ui Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.min.css') }}">
-    <!--Style Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
-    <!--Responsive Css-->
-    <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
-    <!--Modernizr Css-->
-    <script src="{{ URL::asset('js/modernizr-2.8.3.min.js') }}"></script>
+@extends('layouts.static_app')
 
 
-    {{--<!--[if lt IE 9]>--}}
-    {{--<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>--}}
-    {{--<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
-    {{--<![endif]-->--}}
+@section('content')
 
-</head>
+    <!-- /.header start -->
+    <header class="header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/index"><img height="80px" width="80px" src="{{ URL::asset('images/logo_nav.png') }}"  alt="N_Studio_Zumba_Logo"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link " href="/index">
+                                home<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/index/about">
+                                about<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/index/gallery">
+                                gallery<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/index/class_packages">
+                                classes<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/index/schedule">
+                                schedule<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/index/testimonials">
+                                testimonials<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/index/contact">contact</a>
+                        </li>
+                        <li class="nav-item d-none d-lg-inline">
+                            <div class="icon-menu">
+                                <ul>
+                                    <li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--header end-->
 
-<body>
 
 <!--main-container-->
 <div class="main-container">
 
-    <!-- /.header start -->
-    @include('static_pages.navbar');
-    <!--header end-->
-
 <!--main container --end-->
 
 <!-- page title & breadcrumbs start -->
-<div class="about-bg page-head parallax overlay">
+<div class="contact-bg page-head parallax overlay">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -91,38 +104,37 @@
 
 
 
+
 <!-- Start contact-page Area -->
 <section class="contact-page-area section-gap">
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-6">
-                <form class="form-area contact-form text-right" id="myForm" action="mail.php" method="post">
-                    <div class="row">
-                        <div class="col-lg-8 form-group"><br>
-                            <div class="head-contact" align="left">
-                                <h3><span>Contact Us</span></h3><br>
-                            </div>
+            <div class="col-lg-6"><br>
+                <div class="head-contact" align="left">
+                    <h3><span>Contact Us</span></h3><br>
+                </div>
 
+                {!! Form::open(['url' => '/index/contact']) !!}
+                <div class="col-lg-8 form-group"><br>
+                    {{Form::text('name', '',['class' => 'form-control' , 'placeholder' => 'Enter name'])}}
+                    <br>
+                    {{Form::text('email', '',['class' => 'form-control', 'placeholder' => 'example@gmail.com'])}}
+                    <br>
+                    {{Form::text('contact', '',['class' => 'form-control' , 'placeholder' => 'Enter contact-no'])}}
+                    <br>
+                    {{Form::textarea('message', '', ['class' => 'form-control', 'placeholder' => 'Enter message', 'height ' => "10", 'cols' => "10", 'rows' => "5" ])}}<br>
+                    {{Form::submit('Send Message',['class' => 'btn btn-primary'])}}
+                </div>
 
-                            <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20  form-control" required="" type="text">
-                            <br>
-                            <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
-                            <br>
-                            <input name="subject" placeholder="Enter contact number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter subject'" class="common-input mb-20 form-control" required="" type="text">
-                            <br>
-
-                            <textarea class="common-textarea form-control" name="message" placeholder="Enter Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Messege'" required=""></textarea>
-                            <br>
-                            <div class="alert-msg" style="text-align: left;"></div> <br>
-                            <button class="genric-btn primary" style="float: right;">Send Message</button>
-                        </div>
-                    </div>
-                </form>
+            {!! Form::close() !!}
             </div>
 
+
+
+
             <div class="col-lg-6 d-flex flex-column address-wrap">
-                <div class="single-contact-address d-flex flex-row">
+                 <div class="single-contact-address d-flex flex-row">
                     <div class="contact-details">
                         <div class="head-contact" align="left"><br>
                             <h3><span>Contact Info</span></h3><br>
@@ -135,16 +147,25 @@
                 </div>
 
             </div>
+            @include('inc.messages')
+
+            <br>
+
+            <div class="col-lg-12 d-flex flex-column address-wrap">
+                <div class="head-contact" align="left"><br>
+                    <h3><span>Location</span></h3><br>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6017395566364!2d79.89487731431873!3d7.055993994903764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f74786e080f3%3A0xd9aad78356eed66e!2s170c+Negombo+Rd%2C+Kandana!5e0!3m2!1sen!2slk!4v1536772243066" width="1200" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <br><br>
+            </div>
+
+
         </div>
     </div>
 </section>
 <!-- End contact-page Area -->
 
-<!--Footer start-->
-@include('static_pages.footer');
-{{--Footer end--}}
 
 </div>
+    @endsection
 
-</body>
-</html>
