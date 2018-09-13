@@ -1,28 +1,4 @@
 @extends('layouts.static_app')
-<script language="JavaScript">
-    <!--
-    function calculateBmi() {
-        var weight = document.bmiForm.weight.value
-        var height = document.bmiForm.height.value
-        if(weight > 0 && height > 0){
-            var finalBmi = weight/(height/100*height/100)
-            document.bmiForm.bmi.value = finalBmi
-            if(finalBmi < 18.5){
-                document.bmiForm.meaning.value = "Under Weight"
-            }
-            if(finalBmi > 18.5 && finalBmi < 25){
-                document.bmiForm.meaning.value = "Healthy"
-            }
-            if(finalBmi > 25){
-                document.bmiForm.meaning.value = "Over Weight"
-            }
-        }
-        else{
-            alert("Please Fill in everything correctly")
-        }
-    }
-    //-->
-</script>
 
 @section('content')
 
@@ -136,6 +112,33 @@
     </div>
     <!--features-area end-->
 
+    {{--JS Files to calculate the BMI start--}}
+    <script language="JavaScript">
+        <!--
+        function calculateBmi() {
+            var weight = document.bmiForm.weight.value
+            var height = document.bmiForm.height.value
+            if(weight > 0 && height > 0){
+                var finalBmi = weight/(height/100*height/100)
+                document.bmiForm.bmi.value = finalBmi
+                if(finalBmi < 18.5){
+                    document.bmiForm.meaning.value = "Under Weight"
+                }
+                if(finalBmi > 18.5 && finalBmi < 25){
+                    document.bmiForm.meaning.value = "Healthy"
+                }
+                if(finalBmi > 25){
+                    document.bmiForm.meaning.value = "Over Weight"
+                }
+            }
+            else{
+                alert("Please Fill in everything correctly")
+            }
+        }
+        //-->
+    </script>
+    {{--JS Files to calculate the BMI end--}}
+
     <!--BMI calculating area start-->
     <div class="portfolio-area title-white bg1 parallax overlay pad90">
         <div class="container">
@@ -147,39 +150,53 @@
                         </div>
                         <h3>Calculate your BMI</h3>
                         <p>Body mass index (BMI) is a measure of body fat based on height and weight.</p>
-                        <div class="container-fluid">
+                        <div class="container">
                             <div class="row">
-                                <div class="col-md-6 rounded">
-                                    <img src="{{ URL::asset('') }}" alt="BMI_Image">
+                                <div class="col-sm-3">
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <form name="bmiForm">
-                                        <label  >Weight</label>
-                                        <input  type="text" name="weight" class="form-control"  aria-describedby="weightHelp" placeholder="Your Weight in kg" size="10" ><br />
+                                        <div class="row">
+                                            <div class="col-sm-6 text-left">
+                                                <label>Your Weight</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input  type="text" name="weight" class="form-control"  placeholder="50kg" size="10" ><br />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6 text-left">
+                                                <label>Your Height</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input  type="text" name="height" class="form-control"  placeholder="160cm" size="10" ><br />
+                                            </div>
+                                        </div>
+                                        <input type="button" class="btn active btn-primary" value="Calculate BMI" onClick="calculateBmi()"><br /><br />
 
-                                        <label  >Height</label>
-                                        <input type="text" name="height" class="form-control"  aria-describedby="heightHelp" placeholder="Your Height in cm" size="10"><br />
+                                        <div class="row">
+                                            <div class="col-sm-6 text-left">
+                                                <label>Your BMI</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input  type="text" name="bmi" class="form-control"  placeholder="BMI" size="10" ><br />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6 text-left">
+                                                <label>Your Status</label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input  type="text" name="meaning" class="form-control"  placeholder="BMI Status" size="25" ><br />
+                                            </div>
+                                        </div>
+                                        <input type="reset" class="btn active btn-success" value="Reset" /><br />
 
-
-                                        <input type="button" class="btn btn-primary" value="Calculate BMI" onClick="calculateBmi()"><br /><br />
-
-                                        <label  >Your BMI : </label>
-                                        <input type="text" name="bmi" class="form-control"  aria-describedby="weightHelp" placeholder="Your BMI" size="10"><br />
-
-                                        <label  >Status : </label>
-                                        <input type="text" name="meaning" class="form-control"  aria-describedby="weightHelp" placeholder="BMI Status" size="25"><br />
-
-
-                                        <input type="reset" class="btn btn-success" value="Reset" /><br />
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
                 <!-- /.col -->
             </div>
