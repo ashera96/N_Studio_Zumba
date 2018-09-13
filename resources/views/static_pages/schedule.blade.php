@@ -111,6 +111,58 @@
                 <!-- /.col -->
             </div>
             <!-- /.row -->
+
+            {{--Testing  Schdeule --}}
+            <div class="container-fluid bg-dark">
+                <div class="row">
+                    <div col-md-3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>TEsaaaaaaaaaaaaaaaaaaaaaaaaaaaaat</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>aaaaaaaaaaaaaaaaaaaaaaTEst</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div col-md-3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>TEst</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>TEst</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div col-md-3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>TEst</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>TEst</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div col-md-3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h2>TEst</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <h2>TEst</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{--Testing  Schdeule --}}
+
+
+
+
             <div class="row">
                 <div class="col-md-12">
 
