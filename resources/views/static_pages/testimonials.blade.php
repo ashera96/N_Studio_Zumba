@@ -70,12 +70,12 @@
 
 
     <!-- page title & breadcrumbs start -->
-    <div class="about-bg page-head parallax overlay">
+    <div class="testimonials-bg page-head parallax overlay">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center">
-                        <h3>about us</h3>
+                        <h3>testimonials</h3>
                     </div>
                 </div>
                 <!-- /.colour-service-1-->
@@ -83,7 +83,7 @@
                     <ol class="breadcrumb">
                         <li><a href="/index">home</a></li>
                         <li>।</li>
-                        <li>About</li>
+                        <li>Testimonials</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -95,7 +95,7 @@
     <!-- /.page-header -->
     <!-- page title & breadcrumbs end -->
 
-    <!--about-area start-->
+    <!--testimonials-area start-->
     <div class="about-area pad90">
         <div class="container">
             <div class="row">
@@ -104,55 +104,102 @@
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
-                        <h3>Welcome to N Studio Zumba</h3>
-                        <p>Push Harder Than Yesterday If You Want A Better Tomorrow </p>
+                        <h3>Success Stories</h3>
+                        <p>You're only one workout away from a good mood</p>
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-8 col-md-12">
-                    <div class="aboutus-box">
-                        <div class="about-desc">
-                            <p>"It is not a dance class it is a party! No one is judging you by your dance abilities just have fun and feel the music."</p> <br>
-                        </div>
-                        <div class="about-benefit">
-                            <a href="#"><span><i class="fa fa fa-stop-circle"></i></span>ZIN™ Since</a>
-                            <p>February 2018</p>
-                        </div>
-                        <div class="about-benefit">
-                            <a href="#"><span><i class="fa fa fa-stop-circle"></i></span>Location</a>
-                            <p>No. 176D, Negombo Road, Rilaulla, Kandana, Gampaha LK</p>
-                        </div>
-                        <div class="about-benefit">
-                            <a href="#"><span><i class="fa fa fa-stop-circle"></i></span>Licensed To Teach</a>
-                            <p>Zumba</p>
-                        </div>
-                        <div class="about-benefit mt50">
-                            <h4><p>Hello! I'm Nilru De Silva. I've been a ZIN™ Member since Feb 2018 and I absolutely love teaching Zumba classes. The reason is simple: Every class feels like a party! I am currently licensed to teach Zumba. Come join me, I guarantee you will have a blast! Got questions, don't hesitate to drop me a message!</p></h4>
-                            <p>We have been teaching women of all walks of life how to love themselves trough music & dance. That's very powerful and brings us joy and satisfaction. Music and dance helps us connect with people on a different level. It gives us an opportunity to empower them, rejuvenate them, brings them closer to their friends and family while improving their health and happiness. We hope to see you on the dance floor!
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
-                <!--Side Image Start-->
-                <div class="col-lg-4 col-md-12">
-                    <div class="about-opening">
-                        <div class="opening-hours text-center">
-                            <h3>Nilru De Silva</h3>
+                <!--image before-after start-->
+                <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="about-opening">
+                                <div class="opening-hours text-center">
+                                    <h3>Before</h3>
+                                </div>
+                                <div class="opening-img">
+                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                </div>
+                            </div>
                         </div>
-                        <div class="opening-img">
-                            <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                        <div class="col-sm-6">
+                            <div class="about-opening">
+                                <div class="opening-hours text-center">
+                                    <h3>After</h3>
+                                </div>
+                                <div class="opening-img">
+                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--Side Image End-->
+                <p class="pad30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consectetur culpa dicta, distinctio exercitationem fugiat ipsam itaque labore laborum libero minus molestiae, nulla odio possimus, reprehenderit tempora vel? Fuga, sed.</p>
+                <!--image before-after end-->
+
+                <!--image before-after start-->
+                <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="about-opening">
+                                <div class="opening-hours text-center">
+                                    <h3>Before</h3>
+                                </div>
+                                <div class="opening-img">
+                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-opening">
+                                <div class="opening-hours text-center">
+                                    <h3>After</h3>
+                                </div>
+                                <div class="opening-img">
+                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="pad30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consectetur culpa dicta, distinctio exercitationem fugiat ipsam itaque labore laborum libero minus molestiae, nulla odio possimus, reprehenderit tempora vel? Fuga, sed.</p>
+                <!--image before-after end-->
+
+                <!--image before-after start-->
+                <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="about-opening">
+                                <div class="opening-hours text-center">
+                                    <h3>Before</h3>
+                                </div>
+                                <div class="opening-img">
+                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="about-opening">
+                                <div class="opening-hours text-center">
+                                    <h3>After</h3>
+                                </div>
+                                <div class="opening-img">
+                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="pad30">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus consectetur culpa dicta, distinctio exercitationem fugiat ipsam itaque labore laborum libero minus molestiae, nulla odio possimus, reprehenderit tempora vel? Fuga, sed.</p>
+                <!--image before-after end-->
 
             </div>
         </div>
     </div>
-    <!-- about-area end-->
+    <!-- testimonials-area end-->
 
 @endsection
