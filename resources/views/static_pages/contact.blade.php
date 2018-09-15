@@ -129,14 +129,14 @@
                                 <div class="row">
                                     {!! Form::open(['url' => '/index/contact']) !!}
                                     <div class="col-lg-12 form-group"><br>
-                                        {{Form::text('name', '',['class' => 'form-control' , 'placeholder' => 'Enter name'])}}
+                                        {{Form::text('name', '',['class' => 'form-control form-dimensions' , 'placeholder' => 'Enter name'])}}
                                         <br>
-                                        {{Form::text('email', '',['class' => 'form-control', 'placeholder' => 'example@gmail.com'])}}
+                                        {{Form::text('email', '',['class' => 'form-control form-dimensions', 'placeholder' => 'test@gmail.com'])}}
                                         <br>
-                                        {{Form::text('contact', '',['class' => 'form-control' , 'placeholder' => 'Enter contact-no'])}}
+                                        {{Form::text('contact', '',['class' => 'form-control form-dimensions' , 'placeholder' => 'Enter contact number'])}}
                                         <br>
-                                        {{Form::textarea('message', '', ['class' => 'form-control', 'placeholder' => 'Enter message', 'height ' => "10", 'cols' => "10", 'rows' => "5" ])}}<br>
-                                        {{Form::submit('Send Message',['class' => 'btn btn-primary full-width active'])}}
+                                        {{Form::textarea('message', '', ['class' => 'form-control form-dimensions', 'placeholder' => 'Enter message', 'height ' => "10", 'cols' => "10", 'rows' => "5" ])}}<br>
+                                        {{Form::submit('Send Message',['class' => 'btn btn-primary full-width active form-dimensions'])}}
                                     </div>
 
                                     {!! Form::close() !!}
