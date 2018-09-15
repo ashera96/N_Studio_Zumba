@@ -672,6 +672,7 @@ h1, h2, h3, h4, h5, h6 {
 /*3.2 slider area end*/
 /*3.3 features area start*/
 .features-area .features-body {
+  margin-top: 70px;
   position: relative;
   background: #fff;
   transform: translateY(-59px);
