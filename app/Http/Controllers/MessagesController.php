@@ -28,14 +28,14 @@ class MessagesController extends Controller
         //Save message
         $message->save();
 
-        Mail::send('inc.messages', [
+        /*Mail::send('inc.messages', [
             'msg' => $request -> message
             ], function($mail) use($request){
                 $mail->from($request -> email, $request -> name);
 
                 $mail-> to('sspirakavi@gmail.com')->subject('Contact Message');
         }
-        );
+        );*/
 
         //Redirect
         return redirect('/index/contact')->with('success', 'Your Message has been sent Successfully');
