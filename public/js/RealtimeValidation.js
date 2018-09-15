@@ -250,28 +250,20 @@ myInput7.onkeypress = function () {
         myInput7.onblur = function () {
             document.getElementById("message6").style.display = "none";
         }
-        regexPhone = /^[0]{1}[0-9]{9}$/;
+        var re = /^[0]{1}[0-9]{9}$/;
 
-// validate for require and max length
-
-        if ((myInput7.value.match(regexPhone)) && (myInput7.value.length > 0 && myInput.value.length <= 10)) {
-            //document.getElementById("signup").disabled = false;
+        if (myInput7.value.match(re)) {
             document.getElementById("contactno").style.borderColor = "#1af010";
-            phonenum.classList.remove("invalid");
-            //phonenum.classList.add("valid");
             document.getElementById("message6").style.display = "none";
-        }
-        else {
-            //document.getElementById("signup").disabled = true;
-            document.getElementById("contactno").style.borderColor = "#f11531";
-            phonenum.classList.add("invalid");
-            //phonenum.classList.remove("valid");
+            phonenum.classList.remove("wrong");
+        } else {
             document.getElementById("message6").style.display = "block";
+            phonenum.classList.add("wrong");
+            document.getElementById("contactno").style.borderColor = "#f11531";
         }
-
     }
 }
-//when the user try to type on password field
+
 myInput8.onkeypress = function () {
     myInput8.onkeyup = function () {
         myInput8.onblur = function () {
@@ -314,7 +306,6 @@ myInput8.onkeypress = function () {
         }
     }
 }
-//confirm pw
 myInput9.onkeypress = function() {
     myInput9.onkeyup = function () {
         myInput9.onblur = function () {

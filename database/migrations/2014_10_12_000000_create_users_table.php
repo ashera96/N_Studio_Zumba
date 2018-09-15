@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->date('dob');
             $table->string('address');
             $table->string('contactno');
-            $table->string('medicissue');
+            $table->string('medicissue')->nullable();
+            $table->integer('role_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });
