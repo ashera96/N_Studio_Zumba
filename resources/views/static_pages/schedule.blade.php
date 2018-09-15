@@ -8,7 +8,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/index"><img height="80px" width="80px" src="{{ URL::asset('images/logo_nav.png') }}"  alt="N_Studio_Zumba_Logo"></a>
+                    <a class="navbar-brand" href="/index"><img src="{{ URL::asset('images/logo/nav_logo.png') }}"  alt="N_Studio_Zumba_Logo"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -112,81 +112,129 @@
             </div>
             <!-- /.row -->
 
-            {{--Testing  Schdeule --}}
-            <div class="container-fluid bg-dark">
+            {{--Schdeule Timetable Start--}}
+            <div class="container-fluid">
                 <div class="row">
-                    <div col-md-3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h2>TEsaaaaaaaaaaaaaaaaaaaaaaaaaaaaat</h2>
-                            </div>
-                            <div class="col-md-6">
-                                <h2>aaaaaaaaaaaaaaaaaaaaaaTEst</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div col-md-3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h2>TEst</h2>
-                            </div>
-                            <div class="col-md-6">
-                                <h2>TEst</h2>
+                    {{--<div col-md-1>--}}
+                    {{--</div>--}}
+                    <div class="col-lg-2 offset-lg-1 offset-md-0">
+                        <h3 class="text-uppercase text-center pad30">Monday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
+                                @if(count($schedule_monday)>0)
+                                    @foreach($schedule_monday as $schedule)
+                                        <div class="schdl-box1">
+                                            <h5>{{$schedule->type}}</h5>
+                                            <p class="mb-0">{{$schedule->time_slot}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div col-md-3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h2>TEst</h2>
-                            </div>
-                            <div class="col-md-6">
-                                <h2>TEst</h2>
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Tuesday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
+                                @if(count($schedule_tuesday)>0)
+                                    @foreach($schedule_tuesday as $schedule)
+                                        <div class="schdl-box1">
+                                            <h5>{{$schedule->type}}</h5>
+                                            <p class="mb-0">{{$schedule->time_slot}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div col-md-3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h2>TEst</h2>
-                            </div>
-                            <div class="col-md-6">
-                                <h2>TEst</h2>
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Wednesday</h3>
+                        <div id="tabsJustifiedContent" class="tab-content1">
+                            <div class="tab-pane1 fade active show">
+                                @if(count($schedule_wednesday)>0)
+                                    @foreach($schedule_wednesday as $schedule)
+                                        <div class="schdl-box1">
+                                            <h5>{{$schedule->type}}</h5>
+                                            <p class="mb-0">{{$schedule->time_slot}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Thursday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
+                                @if(count($schedule_thursday)>0)
+                                    @foreach($schedule_thursday as $schedule)
+                                        <div class="schdl-box1">
+                                            <h5>{{$schedule->type}}</h5>
+                                            <p class="mb-0">{{$schedule->time_slot}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Friday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
+                                @if(count($schedule_friday)>0)
+                                    @foreach($schedule_friday as $schedule)
+                                        <div class="schdl-box1">
+                                            <h5>{{$schedule->type}}</h5>
+                                            <p class="mb-0">{{$schedule->time_slot}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    {{--<div col-md-1>--}}
+                    {{--</div>--}}
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Saturday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
+                                @if(count($schedule_saturday)>0)
+                                    @foreach($schedule_saturday as $schedule)
+                                        <div class="schdl-box1">
+                                            <h5>{{$schedule->type}}</h5>
+                                            <p class="mb-0">{{$schedule->time_slot}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Sunday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
+                                @if(count($schedule_sunday)>0)
+                                    @foreach($schedule_sunday as $schedule)
+                                        <div class="schdl-box1">
+                                            <h5>{{$schedule->type}}</h5>
+                                            <p class="mb-0">{{$schedule->time_slot}}</p>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
                     </div>
                 </div>
             </div>
 
-            {{--Testing  Schdeule --}}
+            {{--Schdeule Timetable End--}}
 
-
-
-
-            <div class="row">
-                <div class="col-md-12">
-
-                </div>
-                @if(count($schedules)>0)
-                    @foreach($schedules as $schedule)
-                        <h3>{{$schedule->day}}</h3>
-                    @endforeach
-                @endif
-                <div class="col-md-12">
-                    <ul id="tabsJustified" class="nav nav-tabs schdl-tab-area">
-                        <li class="nav-item full-width"><a href="#" data-target="#level1" data-toggle="tab" class="nav-link small text-uppercase active">monday </a></li>
-                        <li class="nav-item full-width"><a href="#" data-target="#level2" data-toggle="tab" class="nav-link small text-uppercase ">tuesday</a></li>
-                        <li class="nav-item full-width"><a href="#" data-target="#level3" data-toggle="tab" class="nav-link small text-uppercase ">wednesday</a></li>
-                        <li class="nav-item full-width"><a href="#" data-target="#level4" data-toggle="tab" class="nav-link small text-uppercase ">thursday</a></li>
-                        <li class="nav-item full-width"><a href="#" data-target="#level5" data-toggle="tab" class="nav-link small text-uppercase ">friday</a></li>
-                        <li class="nav-item full-width"><a href="#" data-target="#level6" data-toggle="tab" class="nav-link small text-uppercase ">saturday</a></li>
-                        <li class="nav-item full-width"><a href="#" data-target="#level7" data-toggle="tab" class="nav-link small text-uppercase ">sunday</a></li>
-                    </ul>
-
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
         </div>
         <!-- /.container -->
     </div>
@@ -195,180 +243,3 @@
 
 
 @endsection
-
-
-
-
-
-                {{--<div id="tabsJustifiedContent" class="tab-content">--}}
-                    {{--<div id="level1" class="tab-pane fade active show">--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>boxing</h5>--}}
-                            {{--<p class="mb-0">06.00 am – 07.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">07.00 am – 08.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>bodybuiling</h5>--}}
-                            {{--<p class="mb-0">08.00 am – 09.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">09.00 am – 10.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>crosfit</h5>--}}
-                            {{--<p class="mb-0">10.00 am – 11.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">1.00 am – 12.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>fitness</h5>--}}
-                            {{--<p class="mb-0">04.00 pm – 05.00pm</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>cardio</h5>--}}
-                            {{--<p class="mb-0">05.00 pm – 06.00pm</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">07.00 pm – 08.00pm</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>bodybuiling</h5>--}}
-                            {{--<p class="mb-0">08.00 pm – 09.00pm</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div id="level2" class="tab-pane fade">--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>boxing</h5>--}}
-                            {{--<p class="mb-0">06.00 am – 07.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">07.00 am – 08.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>bodybuiling</h5>--}}
-                            {{--<p class="mb-0">08.00 am – 09.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">09.00 am – 10.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>crosfit</h5>--}}
-                            {{--<p class="mb-0">10.00 am – 11.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">1.00 am – 12.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>fitness</h5>--}}
-                            {{--<p class="mb-0">04.00 pm – 05.00pm</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div id="level3" class="tab-pane fade">--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>boxing</h5>--}}
-                            {{--<p class="mb-0">06.00 am – 07.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">09.00 am – 10.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>crosfit</h5>--}}
-                            {{--<p class="mb-0">10.00 am – 11.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">1.00 am – 12.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>fitness</h5>--}}
-                            {{--<p class="mb-0">04.00 pm – 05.00pm</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div id="level4" class="tab-pane fade">--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>boxing</h5>--}}
-                            {{--<p class="mb-0">06.00 am – 07.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">07.00 am – 08.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">1.00 am – 12.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>fitness</h5>--}}
-                            {{--<p class="mb-0">04.00 pm – 05.00pm</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div id="level5" class="tab-pane fade">--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>boxing</h5>--}}
-                            {{--<p class="mb-0">06.00 am – 07.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">07.00 am – 08.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>bodybuiling</h5>--}}
-                            {{--<p class="mb-0">08.00 am – 09.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">09.00 am – 10.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>crosfit</h5>--}}
-                            {{--<p class="mb-0">10.00 am – 11.00am</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div id="level6" class="tab-pane fade">--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">09.00 am – 10.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>crosfit</h5>--}}
-                            {{--<p class="mb-0">10.00 am – 11.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">1.00 am – 12.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>fitness</h5>--}}
-                            {{--<p class="mb-0">04.00 pm – 05.00pm</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div id="level7" class="tab-pane fade">--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>bodybuiling</h5>--}}
-                            {{--<p class="mb-0">08.00 am – 09.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">09.00 am – 10.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>crosfit</h5>--}}
-                            {{--<p class="mb-0">10.00 am – 11.00am</p>--}}
-                        {{--</div>--}}
-                        {{--<div class="schdl-box">--}}
-                            {{--<h5>-----</h5>--}}
-                            {{--<p class="mb-0">1.00 am – 12.00am</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}

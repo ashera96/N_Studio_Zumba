@@ -149,6 +149,12 @@ body {
   transition: all 0.5s ease 0s;
   opacity: 0; }
 
+.cntn{
+  background: #000;
+
+  height: 120px;
+}
+
 .bttn {
   width: 100%;
   display: block;
@@ -209,7 +215,7 @@ ul {
     color: #fff; }
 
 .wht-txt {
-  color: #fff important; }
+    color: #fff important; }
 
 .form-group {
   margin-bottom: 1.5rem; }
@@ -436,8 +442,8 @@ h1, h2, h3, h4, h5, h6 {
 .blog-bg {
   background: rgba(0, 0, 0, 0) url("../images/breadcrumb/blog.jpg"); }
 
-.blog2-bg {
-  background: rgba(0, 0, 0, 0) url("../images/breadcrumb/blog2.jpg"); }
+.testimonials-bg {
+  background: rgba(0, 0, 0, 0) url("../images/breadcrumb/testimonials.jpg"); }
 
 .single-class-bg {
   background: rgba(0, 0, 0, 0) url("../images/breadcrumb/single-class.jpg"); }
@@ -626,6 +632,12 @@ h1, h2, h3, h4, h5, h6 {
           background: #fc328a;
           color: #ffffff; }
 
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
 /*icon-menu*/
 /*02	Navbar Styles*/
 /*3.2 slider area start*/
@@ -660,6 +672,7 @@ h1, h2, h3, h4, h5, h6 {
 /*3.2 slider area end*/
 /*3.3 features area start*/
 .features-area .features-body {
+  margin-top: 70px;
   position: relative;
   background: #fff;
   transform: translateY(-59px);
@@ -2502,3 +2515,39 @@ shop end-------------*/
 /*04	Footer*/
 
 /*# sourceMappingURL=style.css.map */
+
+.tabledesign{
+  height: 1000px;
+  width: 1000px;
+
+}
+
+.button-add {
+  font-size: 20px;
+  background: deeppink;
+  color: white;
+}
+
+.button-edit {
+  font-size: 15px;
+  background-color: limegreen;
+  color: black;
+}
+
+.button-delete {
+  font-size: 15px;
+  background: red;
+  color: white;
+}
+
+.invalid-feedback{
+  display: inline-block;
+  color: red;
+}
+
+.msgfont{
+  font-family: "Century Gothic";
+  color: red;
+}
+
+

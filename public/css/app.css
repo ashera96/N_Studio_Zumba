@@ -10471,16 +10471,85 @@ a.text-dark:focus {
   }
 }
 
+#features-box-img {
+  padding: 20px;
+}
+
+#bmi-button {
+  background: #fc328a;
+  border-color: #fc328a;
+  width: 120px;
+}
+
+/* schedule area styling start*/
+
+.schedule-area h3 {
+  color: #fc328a;
+}
+
+.schedule-area .tab-content1 {
+  width: auto;
+  margin: auto;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.schedule-area .tab-content1 .tab-pane1 {
+  margin-left: 10px;
+}
+
+.schedule-area .tab-content1 .tab-pane1 .active {
+  background: transparent;
+}
+
+.schedule-area .tab-content1 .tab-pane1 .schdl-box1 {
+  width: auto;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  float: none;
+  font-weight: bold;
+  padding: 25px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #6b6b6b;
+  -webkit-transition: all 0.5s ease 0s;
+  transition: all 0.5s ease 0s;
+}
+
+.schedule-area .tab-content1 .tab-pane1 .schdl-box1:hover {
+  background: #fc328a;
+  border: 1px solid transparent;
+}
+
+.schedule-area .tab-content1 .tab-pane1 .schdl-box1:hover h5 {
+  color: white;
+}
+
+.schedule-area .tab-content1 .tab-pane1 .schdl-box1:hover p {
+  color: #fff;
+}
+
+.schedule-area .tab-content1 .tab-pane1 .schdl-box1 h5 {
+  font-size: 20px;
+  color: #000;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.schedule-area .tab-content1 .tab-pane1 .schdl-box1 p {
+  word-spacing: 0;
+}
+
+/* schedule area styling end*/
+
+.form-dimensions {
+  width: 600px;
+  height: 50px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.head-contact{
-    color: deeppink;
-}
-
-.contact-details{
-    color: #0b0b0b;
-}

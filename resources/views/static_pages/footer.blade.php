@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-12 text-center">
                     <div class="footer-logo footer-content">
-                        <img height="34px" width="104px" src="{{ URL::asset('images/logo/zumba_logo2.png') }}" alt="footer logo">
+                        <img height="34px" width="104px" src="{{ URL::asset('images/logo/zumba_logo.png') }}" alt="footer logo">
                     </div>
                     <p>N Studio Zumba is a dance and fitness company owned by Nilrukshi De Silva, a licensed Zumba® Instructor. <br>Zumba® classes and much more are provided.</p>
                     <div class="add-info">

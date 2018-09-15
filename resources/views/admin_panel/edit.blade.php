@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+<a href="/receptionist" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
 <div class="container">
     <div class = "card-panel grey lighten-2"><h3 style="text-align: center ;font-family:century gothic">Employees Edit</h3></div>
 
@@ -20,11 +21,17 @@
                         <i class="material-icons prefix">account_circle</i>
                         <input id="name" type="text" class="validate" name="name" value="{{ $receptionist->name }}">
                         <label for="name" >Name</label>
+                        @if($errors->has('name'))
+                            <small class="form-text invalid-feedback">{{$errors->first('name')}}</small>
+                        @endif
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">email</i>
                         <input id="email" type="tel" class="validate" name="email" value="{{ $receptionist->email }}">
                         <label for="email">Email</label>
+                        @if($errors->has('email'))
+                            <small class="form-text invalid-feedback">{{$errors->first('email')}}</small>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
@@ -32,11 +39,17 @@
                         <i class="material-icons prefix">contact_mail</i>
                         <input id="nic" type="text" class="validate" name="nic" value="{{ $receptionist->nic }}">
                         <label for="nic">NIC</label>
+                        @if($errors->has('nic'))
+                            <small class="form-text invalid-feedback">{{$errors->first('nic')}}</small>
+                        @endif
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">cake</i>
-                        <input id="dob" type="tel" class="validate" name="dob" value="{{ $receptionist->dob }}">
+                        <input id="dob" type="date" class="validate" name="dob" value="{{ $receptionist->dob }}">
                         <label for="dob">DOB</label>
+                        @if($errors->has('dob'))
+                            <small class="form-text invalid-feedback">{{$errors->first('dob')}}</small>
+                        @endif
                     </div>
                 </div>
                 <div class="row">
@@ -44,11 +57,17 @@
                         <i class="material-icons prefix">home</i>
                         <input id="address" type="text" class="validate" name="address" value="{{ $receptionist->address }}">
                         <label for="address">Address</label>
+                        @if($errors->has('address'))
+                            <small class="form-text invalid-feedback">{{$errors->first('address')}}</small>
+                        @endif
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">phone</i>
                         <input id="tpno" type="tel" class="validate" name="tpno" value="{{ $receptionist->tpno }}">
                         <label for="tpno">TPNO</label>
+                        @if($errors->has('tpno'))
+                            <small class="form-text invalid-feedback">{{$errors->first('tpno')}}</small>
+                        @endif
                     </div>
                 </div>
                 <input type="submit" name="submit" class="btn blue right" value="Update">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Message;
 
@@ -27,12 +28,8 @@ class MessagesController extends Controller
         $message->save();
 
         //Redirect
-        return redirect('/index/contact')->with('success', 'Message sent');
+        return redirect('/index/contact')->with('success', 'Your Message has been sent Successfully. Thank You for your Message');
     }
 
-    /*public function getMessages(){
-        $messages = Message::all();
 
-        return view('messages')->with('messages',$messages);
-    }*/
 }

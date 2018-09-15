@@ -64,6 +64,7 @@ class RegisterController extends Controller
             'contactno' => 'required|unique:users|regex:/^[0]{1}[0-9]{9}$/',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'medicissue' => 'string|max:255',
         ]);
     }
 
@@ -87,8 +88,12 @@ class RegisterController extends Controller
             'contactno' => $data['contactno'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'medicissue'=>$data['medicissue'],
+
+            
             'role_id'=>1,
+
+            'medicissue' => $data['medicissue'],
+
         ]);
 
         $userID = $user -> id;
@@ -103,9 +108,6 @@ class RegisterController extends Controller
         ]);
 
         return $user;
-
-
-
 
     }
 

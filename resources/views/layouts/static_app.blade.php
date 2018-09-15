@@ -10,14 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{ URL::asset('favicon/logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ URL::asset('favicon/apple-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ URL::asset('favicon/apple-icon-72x72.png') }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ URL::asset('favicon/apple-icon-114x114.png') }}">
-    <link rel="apple-touch-icon" sizes="144x144" href="{{ URL::asset('favicon/apple-icon-144x144.png') }}">
+    <link rel="shortcut icon" href="{{ URL::asset('favicon/logo144x144.png') }}">
+    <link rel="apple-touch-icon" href="{{ URL::asset('favicon/logo_57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ URL::asset('favicon/logo_72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ URL::asset('favicon/logo114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ URL::asset('favicon/logo144x144.png') }}">
 
     <!--All Css Here-->
 
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="{{ URL::asset('css/style-slider.css') }}" />
     <!--Bootstrap Css-->
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
     <!--revolution slider-->
