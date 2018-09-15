@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Message;
-use App\Mail;
+use Mail;
 
 class MessagesController extends Controller
 {
     public function submit(Request $request)
     {
-        $this->validate($request, [
+        return view('/index/contact');
+        /*$this->validate($request, [
             'name' => 'required',
             'email' => 'required',
             'contact' => 'required',
@@ -28,17 +29,31 @@ class MessagesController extends Controller
         //Save message
         $message->save();
 
-        /*Mail::send('inc.messages', [
+
+        //Redirect
+        return redirect('/index/contact');*/
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email',
+            'contact' => 'required',
+            'message' => 'required'
+        ]);
+
+        Mail::send('emails.contact-messages', [
             'msg' => $request -> message
             ], function($mail) use($request){
                 $mail->from($request -> email, $request -> name);
 
-                $mail-> to('sspirakavi@gmail.com')->subject('Contact Message');
+                $mail-> to('sspirakavi@gmail.com')->subject('message');
         }
-        );*/
+        );
 
         //Redirect
-        return redirect('/index/contact')->with('success', 'Your Message has been sent Successfully');
+        return redirect('/index/contact')->with('flash_message', 'Your Message has been sent Successfully. Thank You for your Message');
     }
 
 

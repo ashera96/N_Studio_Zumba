@@ -47,4 +47,11 @@ Route::get('/dashboard', 'AdminController@show_dashboard');
 
 Route::resource('/receptionist','ReceptionistController');
 
-Route::post('/index/contact', 'MessagesController@submit');
+Route::post('/index/contact',[
+    'uses' => 'MessagesController@submit'
+]);
+
+Route::post('/index/contact',[
+    'uses' => 'MessagesController@store',
+    'as' => 'contact.store'
+]);
