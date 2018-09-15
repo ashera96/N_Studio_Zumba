@@ -104,6 +104,7 @@
 
 
 
+    @include('inc.messages')
 
     <!--contact-area start-->
     <div class="contact-area pad90">
@@ -123,13 +124,11 @@
             <!-- /.row -->
             <div class="row">
                 <div class="col-md-8">
-                    <div class="contact-form mt20">
-                        <div class="appointment-schedule">
-                            <form action="#" class="appointment-form">
+                    <!--<div class="contact-form">
+                       <div class="appointment-schedule">-->
                                 <div class="row">
-
                                     {!! Form::open(['url' => '/index/contact']) !!}
-                                    <div class="col-lg-8 form-group"><br>
+                                    <div class="col-lg-12 form-group"><br>
                                         {{Form::text('name', '',['class' => 'form-control' , 'placeholder' => 'Enter name'])}}
                                         <br>
                                         {{Form::text('email', '',['class' => 'form-control', 'placeholder' => 'example@gmail.com'])}}
@@ -139,14 +138,16 @@
                                         {{Form::textarea('message', '', ['class' => 'form-control', 'placeholder' => 'Enter message', 'height ' => "10", 'cols' => "10", 'rows' => "5" ])}}<br>
                                         {{Form::submit('Send Message',['class' => 'btn btn-primary full-width active'])}}
                                     </div>
+
                                     {!! Form::close() !!}
 
                                 </div>
                                 <!-- /.row -->
-                            </form>
-                        </div>
-                    </div>
+                        <!--</div>
+                    </div>-->
                 </div>
+
+
                 <!-- /.col -->
                 <div class="col-md-4">
                     <div class="location mt20">
@@ -167,80 +168,27 @@
                             <p>     ninidisilva@gmail.com</p>
                         </div>
                     </div>
-                    <hr>
+                    <br>
                 </div>
                 <!-- /.col -->
-                @include('inc.messages')
+
 
                 <br>
 
                 <div class="col-lg-12 d-flex flex-column address-wrap">
                     <div class="head-contact" align="left"><br>
-                        <h3>Location </h3>
+                        <h4>Location</h4>
                     </div>
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6017395566364!2d79.89487731431873!3d7.055993994903764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f74786e080f3%3A0xd9aad78356eed66e!2s170c+Negombo+Rd%2C+Kandana!5e0!3m2!1sen!2slk!4v1536772243066" width="1200" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
                     <br><br>
                 </div>
-                {{--//--}}
-                {{--<div class="col-lg-8"><br>--}}
-                    {{--<div class="head-contact" align="left">--}}
-                       {{--<font color="#ff1493" > <h3>Contact Us</h3></font><br>--}}
-                    {{--</div>--}}
-
-                    {{--{!! Form::open(['url' => '/index/contact']) !!}--}}
-                    {{--<div class="col-lg-8 form-group"><br>--}}
-                        {{--{{Form::text('name', '',['class' => 'form-control' , 'placeholder' => 'Enter name'])}}--}}
-                        {{--<br>--}}
-                        {{--{{Form::text('email', '',['class' => 'form-control', 'placeholder' => 'example@gmail.com'])}}--}}
-                        {{--<br>--}}
-                        {{--{{Form::text('contact', '',['class' => 'form-control' , 'placeholder' => 'Enter contact-no'])}}--}}
-                        {{--<br>--}}
-                        {{--{{Form::textarea('message', '', ['class' => 'form-control', 'placeholder' => 'Enter message', 'height ' => "10", 'cols' => "10", 'rows' => "5" ])}}<br>--}}
-                        {{--{{Form::submit('Send Message',['class' => 'btn btn-primary full-width active'])}}--}}
-                    {{--</div>--}}
-
-                {{--{!! Form::close() !!}--}}
-                {{--</div>--}}
-
-                {{--<div class="col-lg-4 d-flex flex-column address-wrap">--}}
-                     {{--<div class="single-contact-address d-flex flex-row">--}}
-                        {{--<div class="contact-details">--}}
-                            {{--<div class="head-contact" align="left"><br>--}}
-                                {{--<font color="#ff1493" >  <h3>Contact Info</h3></font><br><br>--}}
-                            {{--</div>--}}
-                            {{--<div class="ctc-content">--}}
-                                {{--<i class="fa fa-mobile" style="color:#fc328a; font-size: 25px"></i>--}}
-                                {{--<font color="#2f4f4f" ><h5>0778378162</h5></font>--}}
-                                {{--<br>--}}
-                                {{--<i class="fa fa-location-arrow" style="color:#fc328a; font-size: 25px"></i>--}}
-                                {{--<font color="#2f4f4f" ><h5>N Studio Zumba,--}}
-                                    {{--<br>No.176D, Negombo Road,--}}
-                                    {{--<br>Rilaulla, Kandana,--}}
-                                        {{--<br> Sri Lanka.</h5></font><br>--}}
-                                {{--<i class="fa fa-envelope-o" style="color:#fc328a; font-size: 25px"></i>--}}
-                                {{--<font color="#2f4f4f" ><h5>ninidisilva@gmail.com.</h5></font>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                {{--</div>--}}
-                {{--@include('inc.messages')--}}
-
-                {{--<br>--}}
-
-                {{--<div class="col-lg-12 d-flex flex-column address-wrap">--}}
-                    {{--<div class="head-contact" align="left"><br>--}}
-                        {{--<font color="#ff1493" >  <h3>Location </h3></font><br>--}}
-                    {{--</div>--}}
-                    {{--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6017395566364!2d79.89487731431873!3d7.055993994903764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f74786e080f3%3A0xd9aad78356eed66e!2s170c+Negombo+Rd%2C+Kandana!5e0!3m2!1sen!2slk!4v1536772243066" width="1200" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
-                    {{--<br><br>--}}
-                {{--</div>--}}
-                {{--//--}}
 
             </div>
         </div>
         <!--/.container-->
     </div>
     <!--contact-area end-->
+
+    </div>
 @endsection
 
