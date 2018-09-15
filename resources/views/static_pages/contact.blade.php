@@ -127,9 +127,7 @@
                     <!--<div class="contact-form">
                        <div class="appointment-schedule">-->
                                 <div class="row">
-                                    {{ Form::open(array('url' => '/index/contact', 'method' => 'post','action' => "route('contact.store')")) }}
-                                    {{-- {!! Form::open(['url' => '/index/contact']) !!} --}}
-                                    {{ csrf_field() }}
+                                    {!! Form::open(['url' => '/index/contact']) !!}
                                     <div class="col-lg-12 form-group"><br>
                                         {{Form::text('name', '',['class' => 'form-control form-dimensions' , 'placeholder' => 'Enter name'])}}
                                         @if($errors -> has('name'))
