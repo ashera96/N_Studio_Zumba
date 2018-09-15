@@ -6,6 +6,43 @@
     @include('static_pages.navbar');
     <!--header end-->
 
+    {{--<!-- Slider Area Start Here-->--}}
+    {{--<!-- Gallery -->--}}
+    {{--<div id="galery">--}}
+        {{--<!-- container -->--}}
+        {{--<div class="container">--}}
+            {{--<!-- row -->--}}
+            {{--<div class="row">--}}
+                {{--<!-- galery owl -->--}}
+                {{--<div id="galery-owl" class="owl-carousel owl-theme">--}}
+                    {{--<!-- galery item -->--}}
+                    {{--<div class="galery-item">--}}
+                        {{--<img src="./img/galery01.jpg" alt="">--}}
+                    {{--</div>--}}
+                    {{--<!-- /galery item -->--}}
+
+                    {{--<!-- galery item -->--}}
+                    {{--<div class="galery-item">--}}
+                        {{--<img src="./img/galery02.jpg" alt="">--}}
+                    {{--</div>--}}
+                    {{--<!-- /galery item -->--}}
+
+                    {{--<!-- galery item -->--}}
+                    {{--<div class="galery-item">--}}
+                        {{--<img src="./img/galery03.jpg" alt="">--}}
+                    {{--</div>--}}
+                    {{--<!-- /galery item -->--}}
+
+                {{--</div>--}}
+                {{--<!-- /galery owl -->--}}
+            {{--</div>--}}
+            {{--<!-- /row -->--}}
+        {{--</div>--}}
+        {{--<!-- /container -->--}}
+    {{--</div>--}}
+    {{--<!-- /Gallery -->--}}
+    {{--<!-- Slider Area End Here-->--}}
+    <br><br><br>
 
     <!-- Slider Area Start Here-->
     <div class="slider-area1">
@@ -214,6 +251,7 @@
 
 
 @section('js_styling')
+    <script src="{{ URL::asset('js/main-slider.js') }}"></script>
     <script type="text/javascript">
         function setREVStartSize(e) {
             try {

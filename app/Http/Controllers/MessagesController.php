@@ -48,7 +48,7 @@ class MessagesController extends Controller
             ], function($mail) use($request){
                 $mail->from($request -> email, $request -> name);
 
-                $mail-> to('sspirakavi@gmail.com')->subject('message');
+                $mail-> to('asherasilva100@gmail.com')->subject('message');
         }
         );
 
