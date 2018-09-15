@@ -49,19 +49,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/index/contact">contact</a>
                         </li>
-                        <li class="nav-item d-none d-lg-inline">
-                            <div class="icon-menu">
-                                <ul>
-                                    <li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">register</a>
-                        </li>
+                        {{--<li class="nav-item">--}}
+                            {{--<a class="nav-link" href="{{ route('login') }}">login</a>--}}
+                        {{--</li>--}}
                     </ul>
                 </div>
             </div>
