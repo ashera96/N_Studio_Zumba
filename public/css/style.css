@@ -2515,3 +2515,6 @@ shop end-------------*/
 
 /*# sourceMappingURL=style.css.map */
 
+.invalid-feedback{
+    display: block;
+}
