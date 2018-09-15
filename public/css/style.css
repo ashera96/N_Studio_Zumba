@@ -152,7 +152,7 @@ body {
 .cntn{
   background: #000;
 
-  height: 100px;
+  height: 120px;
 }
 
 .bttn {
@@ -2514,3 +2514,29 @@ shop end-------------*/
 /*04	Footer*/
 
 /*# sourceMappingURL=style.css.map */
+
+.tabledesign{
+  height: 1000px;
+  width: 1000px;
+
+}
+
+.button-add {
+  font-size: 20px;
+  background: deeppink;
+  color: white;
+}
+
+
+.button-edit {
+  font-size: 15px;
+  background-color: limegreen;
+  color: black;
+}
+
+
+.button-delete {
+  font-size: 15px;
+  background: red;
+  color: white;
+}
