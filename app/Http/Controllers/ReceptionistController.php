@@ -18,6 +18,24 @@ class ReceptionistController extends Controller
         return view('admin_panel.index',['receptionists'=>$receps]);
     }
 
+    protected function validator(array $data)
+    {
+        //validating fields
+        return Validator::make($data, [
+            'name' => 'required|string|min:2',
+            'email' => 'required|string|email|max:255|unique:users',
+            'nic' => ['required',new nicValidation],//custom
+            //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+            'dob' => 'required|before:-18 years|after:65 years',
+            'address' => 'required',
+            'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+
+
+        ]);
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -35,7 +35,7 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">cake</i>
-                        <input id="dob" type="tel" class="validate" name="dob" value="{{ $receptionist->dob }}">
+                        <input id="dob" type="date" class="validate" name="dob" value="{{ $receptionist->dob }}">
                         <label for="dob">DOB</label>
                     </div>
                 </div>

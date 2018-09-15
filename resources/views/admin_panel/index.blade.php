@@ -1,17 +1,39 @@
+
+
 <html>
 <head>
     <title>Employees</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>N-Studio Zumba</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/app.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
 </head>
+
 <body>
+
+
+
+
+
 
 <div class="container">
     <div class = "card-panel grey lighten-2"><h3 style="text-align:center ;font-family:century gothic ">Employees Management</h3></div>
 
 
-    <div class = "card-panel center">
+    <div class = "card-panel right">
         <div style="float: right">
             <a class="btn-floating btn-large waves-effect waves-light red" href="{{url('receptionist/create')}}"><i class="material-icons float-left green">add</i></a>
         </div>
@@ -48,8 +70,8 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach
-                </table>
+            @endforeach
+        </table>
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
