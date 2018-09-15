@@ -442,8 +442,8 @@ h1, h2, h3, h4, h5, h6 {
 .blog-bg {
   background: rgba(0, 0, 0, 0) url("../images/breadcrumb/blog.jpg"); }
 
-.blog2-bg {
-  background: rgba(0, 0, 0, 0) url("../images/breadcrumb/blog2.jpg"); }
+.testimonials-bg {
+  background: rgba(0, 0, 0, 0) url("../images/breadcrumb/testimonials.jpg"); }
 
 .single-class-bg {
   background: rgba(0, 0, 0, 0) url("../images/breadcrumb/single-class.jpg"); }
