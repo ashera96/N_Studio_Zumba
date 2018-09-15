@@ -2539,3 +2539,14 @@ shop end-------------*/
   color: white;
 }
 
+.invalid-feedback{
+  display: inline-block;
+  color: red;
+}
+
+.msgfont{
+  font-family: "Century Gothic";
+  color: red;
+}
+
+
