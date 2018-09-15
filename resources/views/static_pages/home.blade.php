@@ -251,7 +251,7 @@
 
 
 @section('js_styling')
-    <script src="{{ URL::asset('js/main-slider.js') }}"></script>
+    {{--<script src="{{ URL::asset('js/main-slider.js') }}"></script>--}}
     <script type="text/javascript">
         function setREVStartSize(e) {
             try {
