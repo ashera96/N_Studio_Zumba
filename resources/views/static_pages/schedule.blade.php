@@ -113,17 +113,17 @@
             <!-- /.row -->
 
             {{--Schdeule Timetable Start--}}
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div col-md-1>
-                    </div>
-                    <div class="col-md-2">
-                        <h3 class="text-uppercase text-center text-dark pad30">Monday</h3>
-                        <div id="tabsJustifiedContent" class="tab-content">
-                            <div id="level1" class="tab-pane fade active show">
+                    {{--<div col-md-1>--}}
+                    {{--</div>--}}
+                    <div class="col-lg-2 offset-lg-1 offset-md-0">
+                        <h3 class="text-uppercase text-center pad30">Monday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
                                 @if(count($schedule_monday)>0)
                                     @foreach($schedule_monday as $schedule)
-                                        <div class="schdl-box">
+                                        <div class="schdl-box1">
                                             <h5>{{$schedule->type}}</h5>
                                             <p class="mb-0">{{$schedule->time_slot}}</p>
                                         </div>
@@ -132,13 +132,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <h3 class="text-uppercase text-center text-dark pad30">Tuesday</h3>
-                        <div id="tabsJustifiedContent" class="tab-content">
-                            <div id="level1" class="tab-pane fade active show">
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Tuesday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
                                 @if(count($schedule_tuesday)>0)
                                     @foreach($schedule_tuesday as $schedule)
-                                        <div class="schdl-box">
+                                        <div class="schdl-box1">
                                             <h5>{{$schedule->type}}</h5>
                                             <p class="mb-0">{{$schedule->time_slot}}</p>
                                         </div>
@@ -147,13 +147,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <h3 class="text-uppercase text-center text-dark pad30">Wednesday</h3>
-                        <div id="tabsJustifiedContent" class="tab-content">
-                            <div id="level1" class="tab-pane fade active show">
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Wednesday</h3>
+                        <div id="tabsJustifiedContent" class="tab-content1">
+                            <div class="tab-pane1 fade active show">
                                 @if(count($schedule_wednesday)>0)
                                     @foreach($schedule_wednesday as $schedule)
-                                        <div class="schdl-box">
+                                        <div class="schdl-box1">
                                             <h5>{{$schedule->type}}</h5>
                                             <p class="mb-0">{{$schedule->time_slot}}</p>
                                         </div>
@@ -162,13 +162,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <h3 class="text-uppercase text-center text-dark pad30">Thursday</h3>
-                        <div id="tabsJustifiedContent" class="tab-content">
-                            <div id="level1" class="tab-pane fade active show">
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Thursday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
                                 @if(count($schedule_thursday)>0)
                                     @foreach($schedule_thursday as $schedule)
-                                        <div class="schdl-box">
+                                        <div class="schdl-box1">
                                             <h5>{{$schedule->type}}</h5>
                                             <p class="mb-0">{{$schedule->time_slot}}</p>
                                         </div>
@@ -177,13 +177,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <h3 class="text-uppercase text-center text-dark pad30">Friday</h3>
-                        <div id="tabsJustifiedContent" class="tab-content">
-                            <div id="level1" class="tab-pane fade active show">
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Friday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
                                 @if(count($schedule_friday)>0)
                                     @foreach($schedule_friday as $schedule)
-                                        <div class="schdl-box">
+                                        <div class="schdl-box1">
                                             <h5>{{$schedule->type}}</h5>
                                             <p class="mb-0">{{$schedule->time_slot}}</p>
                                         </div>
@@ -192,19 +192,19 @@
                             </div>
                         </div>
                     </div>
-                    <div col-md-1>
-                    </div>
+                    {{--<div col-md-1>--}}
+                    {{--</div>--}}
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                     </div>
-                    <div class="col-md-2">
-                        <h3 class="text-uppercase text-center text-dark pad30">Saturday</h3>
-                        <div id="tabsJustifiedContent" class="tab-content">
-                            <div id="level1" class="tab-pane fade active show">
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Saturday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
                                 @if(count($schedule_saturday)>0)
                                     @foreach($schedule_saturday as $schedule)
-                                        <div class="schdl-box">
+                                        <div class="schdl-box1">
                                             <h5>{{$schedule->type}}</h5>
                                             <p class="mb-0">{{$schedule->time_slot}}</p>
                                         </div>
@@ -213,13 +213,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <h3 class="text-uppercase text-center text-dark pad30">Sunday</h3>
-                        <div id="tabsJustifiedContent" class="tab-content">
-                            <div id="level1" class="tab-pane fade active show">
+                    <div class="col-lg-2">
+                        <h3 class="text-uppercase text-center pad30">Sunday</h3>
+                        <div class="tab-content1">
+                            <div class="tab-pane1 fade active show">
                                 @if(count($schedule_sunday)>0)
                                     @foreach($schedule_sunday as $schedule)
-                                        <div class="schdl-box">
+                                        <div class="schdl-box1">
                                             <h5>{{$schedule->type}}</h5>
                                             <p class="mb-0">{{$schedule->time_slot}}</p>
                                         </div>
@@ -228,7 +228,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                     </div>
                 </div>
             </div>
