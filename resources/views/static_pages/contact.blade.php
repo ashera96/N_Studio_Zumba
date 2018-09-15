@@ -130,12 +130,25 @@
                                     {!! Form::open(['url' => '/index/contact']) !!}
                                     <div class="col-lg-12 form-group"><br>
                                         {{Form::text('name', '',['class' => 'form-control form-dimensions' , 'placeholder' => 'Enter name'])}}
+                                        @if($errors -> has('name'))
+                                            <small class = "form-text invalid-feedback"> {{$errors -> first('name')}}</small>
+                                        @endif
                                         <br>
                                         {{Form::text('email', '',['class' => 'form-control form-dimensions', 'placeholder' => 'test@gmail.com'])}}
+                                        @if($errors -> has('email'))
+                                            <small class = "form-text invalid-feedback"> {{$errors -> first('email')}}</small>
+                                        @endif
                                         <br>
                                         {{Form::text('contact', '',['class' => 'form-control form-dimensions' , 'placeholder' => 'Enter contact number'])}}
+                                        @if($errors -> has('contact'))
+                                            <small class = "form-text invalid-feedback"> {{$errors -> first('contact')}}</small>
+                                        @endif
                                         <br>
-                                        {{Form::textarea('message', '', ['class' => 'form-control form-dimensions', 'placeholder' => 'Enter message', 'height ' => "10", 'cols' => "10", 'rows' => "5" ])}}<br>
+                                        {{Form::textarea('message', '', ['class' => 'form-control form-dimensions', 'placeholder' => 'Enter message', 'height ' => "10", 'cols' => "10", 'rows' => "5" ])}}
+                                        @if($errors -> has('message'))
+                                            <small class = "form-text invalid-feedback"> {{$errors -> first('message')}}</small>
+                                        @endif
+                                        <br>
                                         {{Form::submit('Send Message',['class' => 'btn btn-primary full-width active form-dimensions'])}}
                                     </div>
 

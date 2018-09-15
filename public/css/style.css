@@ -152,7 +152,7 @@ body {
 .cntn{
   background: #000;
 
-  height: 120px;
+  height: 100px;
 }
 
 .bttn {
@@ -442,8 +442,8 @@ h1, h2, h3, h4, h5, h6 {
 .blog-bg {
   background: rgba(0, 0, 0, 0) url("../images/breadcrumb/blog.jpg"); }
 
-.testimonials-bg {
-  background: rgba(0, 0, 0, 0) url("../images/breadcrumb/testimonials.jpg"); }
+.blog2-bg {
+  background: rgba(0, 0, 0, 0) url("../images/breadcrumb/blog2.jpg"); }
 
 .single-class-bg {
   background: rgba(0, 0, 0, 0) url("../images/breadcrumb/single-class.jpg"); }
@@ -2515,28 +2515,6 @@ shop end-------------*/
 
 /*# sourceMappingURL=style.css.map */
 
-.tabledesign{
-  height: 1000px;
-  width: 1000px;
-
-}
-
-.button-add {
-  font-size: 20px;
-  background: deeppink;
-  color: white;
-}
-
-
-.button-edit {
-  font-size: 15px;
-  background-color: limegreen;
-  color: black;
-}
-
-
-.button-delete {
-  font-size: 15px;
-  background: red;
-  color: white;
+.invalid-feedback{
+    display: block;
 }
