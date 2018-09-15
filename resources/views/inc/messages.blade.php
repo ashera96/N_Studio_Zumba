@@ -6,8 +6,8 @@
     @endforeach
 @endif --}}
 
-@if(session('success'))
+@if(Session::has('flash_message'))
     <div class='alert alert-success' align="center">
-        {{session('success')}}
+        {{Session::get('flash-message')}}
     </div>
 @endif
