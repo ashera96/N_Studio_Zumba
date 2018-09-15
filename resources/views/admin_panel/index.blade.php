@@ -200,13 +200,13 @@
                                         <td>{{ $receptionist->tpno }}</td>
                                         <td>
                                             <div class="row"><div class="col">
-                                                    <a href="{{url('receptionist/'.$receptionist->id.'/edit')}}"><button class="btn button-edit"><i class="fa fa-edit" style="font-size:30px;color: black"  ></i></button></a>
+                                                    <a href="{{url('receptionist/'.$receptionist->id.'/edit')}}"><button class="btn button-edit">Edit</button></a>
                                                 </div>
                                                 <div class="col">
                                                     <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn button-delete"><i class="fa fa-trash" style="font-size:30px;" ></i></button>
+                                                        <button type="submit" class="btn button-delete">Delete</button>
                                                     </form>
                                                 </div>
                                             </div>

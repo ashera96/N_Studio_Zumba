@@ -18,25 +18,37 @@
 
     <div class = "card-panel center">
         <div class="row">
+
+
             <form class="col s12" method="POST" action="{{url('/receptionist')}}">
+
                 @csrf
+                <div class="alert-danger">
+                    @if(count($errors)>0)
+                        @foreach($errors->all() as $error)
+                            <ul>
+                                <li>{{ $error }}</li>
+                            </ul>
+                        @endforeach
+                    @endif
+                </div>
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                        <!--<input id="name" type="text" class="validate" name="name">-->
-                        <input id="name" type="text"  placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                        <input id="name" type="text" class="validate" name="name">
+                        <!--<input id="name" type="text"  placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>  -->
 
                         <label for="name">Name</label>
-                        @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                        @if($errors->has('name'))
+                            <small class="form-text invalid-feedback">{{$errors->first('name')}}</small>
                         @endif
+
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">email</i>
                         <input id="email" type="tel" class="validate" name="email">
                         <label for="email">Email</label>
+
                     </div>
                 </div>
                 <div class="row">
