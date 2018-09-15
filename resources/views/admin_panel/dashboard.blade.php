@@ -118,7 +118,7 @@
 
 
 
-            <div class=" col-md-2 ">
+            <div class=" col-md-2 col-xs-1">
                 <nav class=" menu-sidebar d-none d-lg-block bg-dark  " >
                     <!-- col-md-4 d-none d-md-block bg-dark sidebar-->
                     <div   class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -169,7 +169,7 @@
 
 
 
-            <div role="main" class="col-md-10 px-4" >
+            <div role="main" class="col-md-10 col-xs-2 px-4" >
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <img src="{{ URL::asset('images/services/1.jpg') }}" alt="title-img" width="1090">
                     <!--<div class=" col-md-6 col-lg-8" style="background-color:#FF1493;"> -->
