@@ -116,23 +116,23 @@
                 <!--image before-after start-->
                 <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-lg-6">
                             <div class="about-opening">
                                 <div class="opening-hours text-center">
                                     <h3>Before</h3>
                                 </div>
                                 <div class="opening-img">
-                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                    <img height="380px" width="320px" src="{{ URL::asset('images/testimonial/2-before.jpg') }}" >
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-lg-6">
                             <div class="about-opening">
                                 <div class="opening-hours text-center">
                                     <h3>After</h3>
                                 </div>
                                 <div class="opening-img">
-                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                    <img height="380px" width="320px" src="{{ URL::asset('images/testimonial/2-after.jpg') }}" >
                                 </div>
                             </div>
                         </div>
@@ -144,23 +144,23 @@
                 <!--image before-after start-->
                 <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-lg-6">
                             <div class="about-opening">
                                 <div class="opening-hours text-center">
                                     <h3>Before</h3>
                                 </div>
                                 <div class="opening-img">
-                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                    <img height="380px" width="320px" src="{{ URL::asset('images/testimonial/1-before.jpg') }}" >
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-lg-6">
                             <div class="about-opening">
                                 <div class="opening-hours text-center">
                                     <h3>After</h3>
                                 </div>
                                 <div class="opening-img">
-                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                    <img height="380px" width="320px" src="{{ URL::asset('images/testimonial/1-after.jpg') }}" >
                                 </div>
                             </div>
                         </div>
@@ -172,23 +172,23 @@
                 <!--image before-after start-->
                 <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-lg-6">
                             <div class="about-opening">
                                 <div class="opening-hours text-center">
                                     <h3>Before</h3>
                                 </div>
                                 <div class="opening-img">
-                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                    <img height="380px" width="320px" src="{{ URL::asset('images/testimonial/3-before.jpg') }}" >
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-lg-6">
                             <div class="about-opening">
                                 <div class="opening-hours text-center">
                                     <h3>After</h3>
                                 </div>
                                 <div class="opening-img">
-                                    <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                                    <img height="380px" width="320px" src="{{ URL::asset('images/testimonial/3-after.jpg') }}" >
                                 </div>
                             </div>
                         </div>
