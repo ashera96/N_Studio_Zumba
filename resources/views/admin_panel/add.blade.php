@@ -31,18 +31,18 @@
 
                         <label for="name">Name</label>
                         @if($errors->has('name'))
-                            <small class="form-text invalid-feedback">{{$errors->first('name')}}</small>
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('name')}}</span>
                         @endif
 
                     </div>
-                    <div class="input-field col s6">
+                    <div class="input-field col s6 ">
                         <i class="material-icons prefix">email</i>
                         <input id="email" type="email"  placeholder="Enter email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                       <!--  <input id="email" type="tel" class="validate" name="email" value="{{Request::old('email')}}"> -->
                         <label for="email">Email</label>
                         @if($errors->has('email'))
-                            <small class="form-text invalid-feedback" >{{$errors->first('email')}}</small>
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('email')}}</span>
                         @endif
 
                     </div>
@@ -55,7 +55,7 @@
 
                         <label for="nic">NIC</label>
                         @if($errors->has('nic'))
-                            <small class="form-text invalid-feedback">{{$errors->first('nic')}}</small>
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('nic')}}</span>
                         @endif
                     </div>
                     <div class="input-field col s6">
@@ -65,7 +65,7 @@
 
                         <label for="dob">DOB</label>
                         @if($errors->has('dob'))
-                            <small class="form-text invalid-feedback">{{$errors->first('dob')}}</small>
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('dob')}}</span>
                         @endif
                     </div>
                 </div>
@@ -77,7 +77,7 @@
 
                         <label for="address">Address</label>
                         @if($errors->has('address'))
-                            <small class="form-text invalid-feedback">{{$errors->first('address')}}</small>
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('address')}}</span>
                         @endif
                     </div>
                     <div class="input-field col s6">
@@ -87,7 +87,7 @@
 
                         <label for="tpno">TPno</label>
                         @if($errors->has('tpno'))
-                            <small class="form-text  invalid-feedback">{{$errors->first('tpno')}}</small>
+                            <span class="form-text  invalid-feedback" style="color: red">{{$errors->first('tpno')}}</span>
                         @endif
                     </div>
                 </div>
