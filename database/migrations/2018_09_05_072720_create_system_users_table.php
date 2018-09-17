@@ -18,7 +18,7 @@ class CreateSystemUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('role_id')->unsigned();
+//            $table->integer('role_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
         });

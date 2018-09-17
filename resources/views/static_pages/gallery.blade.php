@@ -95,7 +95,7 @@
     <!-- /.page-header -->
     <!-- page title & breadcrumbs end -->
 
-    <!--about-area start-->
+    <!--gallery-area start-->
     <div class="about-area pad90">
         <div class="container">
             <div class="row">
@@ -183,6 +183,6 @@
         </div>
         </div>
     </div>
-    <!-- about-area end-->
+    <!--gallery-area end-->
 
 @endsection
