@@ -10,7 +10,7 @@ class SystemUser extends Model
 {
     use Notifiable;
     protected $fillable = [
-       'id', 'username', 'email','password',
+       'id', 'username', 'email','password','role_id',
     ];
 
     protected $hidden = [

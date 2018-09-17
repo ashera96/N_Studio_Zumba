@@ -88,16 +88,23 @@ class RegisterController extends Controller
             'contactno' => $data['contactno'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+
+            
+            'role_id'=>1,
+
             'medicissue' => $data['medicissue'],
+
         ]);
 
         $userID = $user -> id;
+        $roleID = $user -> role_id;
 
         $systemuser = SystemUser::create([
             'id' => $userID, //add the on delete cascade to this*********foreign key
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' => $roleID,
         ]);
 
         return $user;

@@ -159,3 +159,11 @@
 .strngclr {
     color: #1af010;
 }
+
+.wrong {
+    color: #f11531;
+}
+
+.correct{
+    color: #1af010;
+}
