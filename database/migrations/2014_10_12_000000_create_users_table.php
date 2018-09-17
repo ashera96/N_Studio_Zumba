@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('contactno');
             $table->string('medicissue')->nullable();
 
-            $table->integer('role_id')->unsigned();
+//            $table->integer('role_id')->unsigned();
 
             $table->rememberToken();
             $table->timestamps();

@@ -29,10 +29,10 @@ class HomeController extends Controller
         $role = Auth::user()->role->name;
 
         if($role == 'customer'){
-            return view("home");
+            return view('home');
         }
         if($role == 'admin'){
-            return view("admin_panel/dashboard");
+            return view('admin_panel.dashboard');
         }
     }
 }

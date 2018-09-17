@@ -64,7 +64,8 @@ class RegisterController extends Controller
             'contactno' => 'required|unique:users|regex:/^[0]{1}[0-9]{9}$/',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'medicissue' => 'string|max:255',
+            'medicissue'=>'max:255',
+
         ]);
     }
 
@@ -107,6 +108,7 @@ class RegisterController extends Controller
             'role_id' => $roleID,
         ]);
 
+        //return $user;
         return $user;
 
     }
