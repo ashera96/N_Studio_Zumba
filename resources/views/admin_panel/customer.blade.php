@@ -30,7 +30,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/index/class_packages">
+                            <a class="nav-link " href="/dashboard/class_packages">
                                 classes<span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -142,7 +142,7 @@
                                         <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>User Name</th>
+                                            <th>Username</th>
                                             <th>Email</th>
                                             <th>Status</th>
                                             <th></th>
@@ -157,7 +157,7 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <form method="POST" {{--action="{{route('user.destroy',$user->id)}}--}}">
+                                                            <form method="POST">
                                                                 @csrf
                                                                 @method('DELETE')
                                                                 <button type="submit" class="btn button-editing" style="background: #4dc0b5">Active</button>
@@ -190,10 +190,3 @@
         </nav>
 
     </header>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    </body>
-@endsection
