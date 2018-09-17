@@ -49,4 +49,8 @@ Route::resource('/receptionist','ReceptionistController');
 
 Route::post('/index/contact','MessagesController@submit');
 
+Route::get('/customers','CustomerController@show_customers');
+
+Route::resource('/customers', 'CustomerController');
+
 
