@@ -53,4 +53,6 @@ Route::get('/customers','CustomerController@show_customers');
 
 Route::resource('/customers', 'CustomerController');
 
+Route::get('/dashboard/class_packages', 'PackageController@admin');
+
 

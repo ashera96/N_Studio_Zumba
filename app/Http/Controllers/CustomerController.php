@@ -14,7 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $new  =User::all();
+        $new  =User::all()->where('role_id', '=', '1');
         return view('admin_panel.customer',['users'=>$new]);
     }
 
@@ -94,8 +94,8 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        /*$usrfind=User::findOrFail($id);
-        $usrfind->delete();
-        return redirect('/customers');*/
+//        $usrfind=User::findOrFail($id);
+//        $usrfind->delete();
+//        return redirect('/customers');
     }
 }
