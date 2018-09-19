@@ -18,7 +18,7 @@
         <div class="col-md-8 offset-md-2">
             <div class="contact-form mt20">
                 <div class="appointment-schedule">
-                    <form class="appointment-form" method="POST" action="{{url('/dashboard/class_packages')}}">
+                    <form class="appointment-form" method="POST" action="/index/class_packages">
 
                         @csrf
 
