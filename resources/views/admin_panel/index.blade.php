@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/index/class_packages">
+                            <a class="nav-link " href="/dashboard/class_packages">
                                 classes<span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -138,7 +138,7 @@
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
+                                        <a class="nav-link" href="/customers">
                                             <span data-feather="users"></span>
                                             CUSTOMERS
                                         </a>

@@ -10547,6 +10547,11 @@ a.text-dark:focus {
   height: 50px;
 }
 
+.editt-package-form-dimensions {
+  width: auto;
+  height: 50px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

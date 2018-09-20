@@ -42,7 +42,7 @@ class ReceptionistController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'email'=>'required|email|unique:receptionists',
+            'email'=>'required|email',
             'name'=>'required|string|min:2',
            // 'nic' => ['required|min:10|max:10'],//custom
             'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
@@ -99,7 +99,7 @@ class ReceptionistController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'email'=>'required|email|unique:receptionists',
+            'email'=>'required|email',
             'name'=>'required|string|min:2',
             // 'nic' => ['required|min:10|max:10'],//custom
             'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
