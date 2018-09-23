@@ -90,7 +90,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
 
-            
+
             'role_id'=>1,
 
             'medicissue' => $data['medicissue'],
@@ -108,9 +108,16 @@ class RegisterController extends Controller
             'role_id' => $roleID,
         ]);
 
-        //return $user;
+
+        $thisUser = User::findOrFail($user->id);
+        $this->sendMail($thisUser);
+
         return $user;
 
     }
 
+    public function sendMail($thisUser){ //function to send an email after successful registration
+        Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
+
+    }
 }
