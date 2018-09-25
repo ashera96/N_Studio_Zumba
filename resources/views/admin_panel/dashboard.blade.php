@@ -106,7 +106,7 @@
 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="/">
+                                        <a class="nav-link" href="/dashboard">
                                             <span data-feather="home"></span>
                                             DASHBOARD <span class="sr-only">(current)</span>
                                         </a>
