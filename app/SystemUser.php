@@ -18,7 +18,6 @@ class SystemUser extends Authenticatable
         'password', 'remember_token',
     ];
 
-    //newly added after pulling
     public function role(){
         return $this->belongsTo('App\Role');
     }
