@@ -23,7 +23,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()   //controlling user roles
     {
         //return view('home');
         //return view(Auth::user()->role->name);
@@ -32,8 +32,16 @@ class HomeController extends Controller
         if($role == 'customer'){
             return view('home');
         }
-        if($role == 'admin'){
+        elseif($role == 'admin'){
             return view('admin_panel.dashboard');
+        }
+        elseif($role == 'receptionist'){
+            return view('receptionist_pages.dashboard');
+        }else{
+            return view('index');
         }
     }
 }
+
+
+

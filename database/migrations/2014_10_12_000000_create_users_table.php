@@ -15,21 +15,23 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('username')->unique();
+            //$table->string('username')->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('nic');
+            //$table->string('email')->unique();
+            //$table->string('password');
+            $table->string('nic')->unique();
             $table->date('dob');
             $table->string('address');
-            $table->string('contactno');
+            $table->string('contactno')->unique();
             $table->string('medicissue')->nullable();
 
-//            $table->integer('role_id')->unsigned();
+            //$table->integer('role_id')->unsigned();
 
-            $table->rememberToken();
+            //$table->rememberToken();
             $table->timestamps();
+
         });
+        DB::statement("ALTER TABLE users AUTO_INCREMENT = 1001;");
     }
 
     /**

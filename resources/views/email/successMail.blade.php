@@ -1,3 +1,14 @@
-Welcome to NStudio Zumba Fitness!
+<html>
+<head>
+    <style>
+        p{
+            color : black;
+        }
+    </style>
 
-You are registered successfully!
+</head>
+<body>
+<p> Welcome to NStudio Zumba Fitness!</p>
+<p> You are registered successfully!</p>
+</body>
+</html>

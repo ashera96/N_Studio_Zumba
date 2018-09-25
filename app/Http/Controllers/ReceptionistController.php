@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Receptionist;
+use App\Rules\ageValidation;
+use App\Rules\nicValidation;
+use Illuminate\Support\Facades\Hash;
+use App\SystemUser;
+use Mail;
+use App\Mail\welcome;
 
 class ReceptionistController extends Controller
 {
@@ -42,29 +48,50 @@ class ReceptionistController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'email'=>'required|email',
+            'email'=>'required|unique:system_users|email',
             'name'=>'required|string|min:2',
-           // 'nic' => ['required|min:10|max:10'],//custom
-            'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            'dob' => 'required|before:-18 years|after:65 years',
+            'nic' => ['required','unique:receptionists',new nicValidation],
+            'dob' => ['required',new ageValidation],
+            //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+            //'dob' => 'required|before:-18 years|after:65 years',
             'address' => 'required',
-            'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+            'tpno' => 'required|unique:receptionists|regex:/^[0]{1}[0-9]{9}$/',
 
 
         ]);
-
+        $systemUser = new SystemUser;
         $recepnew =new Receptionist;
         $recepnew ->name =$request ->name;
-        $recepnew ->email =$request ->email;
+        //$recepnew ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;
         $recepnew ->tpno =$request ->tpno;
+        $recepnew -> role_id =3;
         $recepnew ->save();
+
+        $receptionistID = $recepnew->id;
+        $recepRoleID = $recepnew->role_id;
+        $nic = $recepnew -> nic;
+        $systemUser -> id = $receptionistID;
+        $systemUser -> email =$request ->email;
+        $systemUser -> username= $request ->email;
+        $systemUser -> password = Hash::make($nic);
+        $systemUser -> role_id =$recepRoleID;
+        $systemUser->save();
+
+        $thisUser = SystemUser::findOrFail($systemUser->id);
+        $this->sendMail($thisUser);
 
         return redirect('receptionist')->with('success','Staff Created');
 
     }
+
+    //function to send email
+    public function sendMail($thisUser){
+        Mail::to($thisUser['email'])->send(new welcome($thisUser));
+
+    }//sending email
 
     /**
      * Display the specified resource.
@@ -99,13 +126,14 @@ class ReceptionistController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'email'=>'required|email',
+            'email'=>'required|unique:receptionists|email',
             'name'=>'required|string|min:2',
-            // 'nic' => ['required|min:10|max:10'],//custom
-            'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            'dob' => 'required|before:-18 years|after:65 years',
+            'nic' => ['required','unique:receptionists',new nicValidation],
+            'dob' => ['required',new ageValidation],
+            //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+            //'dob' => 'required|before:-18 years|after:65 years',
             'address' => 'required',
-            'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+            'tpno' => 'required|unique:receptionists|regex:/^[0]{1}[0-9]{9}$/',
 
 
         ]);
