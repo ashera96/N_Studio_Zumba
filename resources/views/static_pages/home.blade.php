@@ -6,104 +6,7 @@
     @include('static_pages.navbar');
     <!--header end-->
 
-    {{--<!-- Slider Area Start Here-->--}}
-    {{--<!-- Gallery -->--}}
-    {{--<div id="galery">--}}
-        {{--<!-- container -->--}}
-        {{--<div class="container">--}}
-            {{--<!-- row -->--}}
-            {{--<div class="row">--}}
-                {{--<!-- galery owl -->--}}
-                {{--<div id="galery-owl" class="owl-carousel owl-theme">--}}
-                    {{--<!-- galery item -->--}}
-                    {{--<div class="galery-item">--}}
-                        {{--<img src="./img/galery01.jpg" alt="">--}}
-                    {{--</div>--}}
-                    {{--<!-- /galery item -->--}}
-
-                    {{--<!-- galery item -->--}}
-                    {{--<div class="galery-item">--}}
-                        {{--<img src="./img/galery02.jpg" alt="">--}}
-                    {{--</div>--}}
-                    {{--<!-- /galery item -->--}}
-
-                    {{--<!-- galery item -->--}}
-                    {{--<div class="galery-item">--}}
-                        {{--<img src="./img/galery03.jpg" alt="">--}}
-                    {{--</div>--}}
-                    {{--<!-- /galery item -->--}}
-
-                {{--</div>--}}
-                {{--<!-- /galery owl -->--}}
-            {{--</div>--}}
-            {{--<!-- /row -->--}}
-        {{--</div>--}}
-        {{--<!-- /container -->--}}
-    {{--</div>--}}
-    {{--<!-- /Gallery -->--}}
-    {{--<!-- Slider Area End Here-->--}}
     <br><br><br>
-
-    <!-- Slider Area Start Here-->
-    <div class="slider-area1">
-        <div id="rev_slider_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="photography1" style="background-color:transparent;padding:0px;">
-            <div id="rev_slider_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.0.7">
-                <ul>
-                    <!-- SLIDE  -->
-                    <li data-index="rs-1" data-transition="slideoververtical">
-                        <!-- MAIN IMAGE -->
-                        <img height="1080px" width="1920px" src="{{ URL::asset('images/slider-show/s-1.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption slide-text-one tp-resizeme" id="slide-1-layer-1" data-x="['left','center','center','center']" data-hoffset="['65','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-250px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>healthy <span>life</span></h1>
-                        </div>
-
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption slide-text-two tp-resizeme" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-200px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>fitness is not a destination it is a way of life</h1>
-                            <h1>exercise in disguise</h1>
-                        </div>
-                    </li>
-
-                    <!-- SLIDE  2-->
-                    <li data-index="rs-2" data-transition="slideoververtical">
-                        <!-- MAIN IMAGE -->
-                        <img src="{{ URL::asset('images/slider-show/s-2.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption slide-text-one tp-resizeme" id="slide-1-layer-1" data-x="['left','center','center','center']" data-hoffset="['65','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-250px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>goal <span>digger</span></h1>
-                        </div>
-
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption slide-text-two tp-resizeme" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-200px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>fitness is not a destination it is a way of life</h1>
-                        </div>
-                    </li>
-
-                    <!-- SLIDE  3-->
-                    <li data-index="rs-3" data-transition="slideoververtical">
-                        <!-- MAIN IMAGE -->
-                        <img src="{{ URL::asset('images/slider-show/s-3.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption slide-text-one tp-resizeme" id="slide-1-layer-1" data-x="['left','center','center','center']" data-hoffset="['65','50','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-100','-145','-60','-100']" data-fontsize="['inherit','20','20','17']" data-lineheight="['60','30','30','26']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-250px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="500" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>be <span>strong</span></h1>
-                        </div>
-
-                        <!-- LAYER NR. 2 -->
-                        <div class="tp-caption slide-text-two tp-resizeme" id="slide-1-layer-2" data-x="['left','left','center','center']" data-hoffset="['65','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-0','-80','30','0']" data-fontsize="['60','60','60','30']" data-lineheight="['60','60','60','40']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_in="x:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2300;e:Power4.easeInOut;" data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_in="x:-200px;y:0;s:inherit;e:inherit;" data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" data-start="750" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6; white-space: nowrap; font-family: 'Roboto Condensed', sans-serif">
-                            <h1>fitness is not a destination it is a way of life</h1>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--#rev_slider_1_wrapper-->
-    </div>
-    <!-- Slider Area End Here-->
-
 
     <!--features-area start-->
     <div class="features-area pb30">
@@ -122,8 +25,8 @@
                         </div>
                         <div class="features-box text-center">
                             <div class="features-elements">
-                                <h4 class="mb20">workout classes</h4>
-                                <p class="mb20">A total workout combining cardio, muscle conditioning,boosted energy, balance and flexibility.</p>
+                                <h4 class="mb20">workout sessions</h4>
+                                <p class="mb20">A total workout combining cardio, muscle conditioning, boosted energy, balance and flexibility.</p>
                             </div>
                             <div class="features-box-img">
                                 <a class="primary-overlay" href="#"><img src="{{ URL::asset('images/feature/2.jpg') }}"  alt="feature img"></a>
@@ -133,7 +36,6 @@
                             <div class="features-elements" style="margin-bottom: 18px">
                                 <h4 class="mb20">cardio fitness</h4>
                                 <p class="mb20">Effective cardiovascular program to optimize fat burning, improve mood and reduce stress.<br></p>
-                                {{--<p class="mb20">Everybody and every body! Each zumba class is designed to bring people together to sweat it on.<br></p>--}}
                             </div>
                             <div class="features-box-img">
                                 <a class="primary-overlay" href="#"><img src="{{ URL::asset('images/feature/3.jpg') }}"  alt="feature img"></a>
@@ -251,7 +153,6 @@
 
 
 @section('js_styling')
-    {{--<script src="{{ URL::asset('js/main-slider.js') }}"></script>--}}
     <script type="text/javascript">
         function setREVStartSize(e) {
             try {

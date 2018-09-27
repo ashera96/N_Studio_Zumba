@@ -25,3 +25,5 @@ class UserRoleSeeder extends Seeder
         $role_receptionist->save();
     }
 }
+
+

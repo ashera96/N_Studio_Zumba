@@ -16,11 +16,12 @@ class CreateReceptionistsTable extends Migration
         Schema::create('receptionists', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email');
-            $table->string('nic');
+            //$table->string('email')->unique();
+            $table->string('nic')->unique();
             $table->date('dob');
             $table->string('address');
-            $table->integer('tpno');
+            $table->string('tpno')->unique();
+            $table->integer('role_id')->unsigned(); //added role_id
             $table->timestamps();
         });
     }

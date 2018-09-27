@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Mail;
+use App\Mail\verifyEmail;
 use App\Rules\ageValidation;
 use App\Rules\nicValidation;
 use App\User;
@@ -56,16 +57,14 @@ class RegisterController extends Controller
         //validating fields
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'username' => 'required|string|min:4|unique:users',
+            'username' => 'required|string|min:4|unique:system_users',
             'nic' => ['required','unique:users',new nicValidation],//custom
-            //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
             'dob' => ['required',new ageValidation], //custom
             'address' => 'required',
             'contactno' => 'required|unique:users|regex:/^[0]{1}[0-9]{9}$/',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:system_users',
             'password' => 'required|string|min:6|confirmed',
             'medicissue'=>'max:255',
-
         ]);
     }
 
@@ -82,17 +81,16 @@ class RegisterController extends Controller
     {
         $user = User::create([
             'name' => $data['name'],
-            'username' => $data['username'],
             'nic' => $data['nic'],
             'dob' => $data['dob'],
             'address' => $data['address'],
             'contactno' => $data['contactno'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
 
-            
+            //'email' => $data['email'],
+            //'password' => Hash::make($data['password']),
+            //'username' => $data['username'],
+
             'role_id'=>1,
-
             'medicissue' => $data['medicissue'],
 
         ]);
@@ -101,16 +99,22 @@ class RegisterController extends Controller
         $roleID = $user -> role_id;
 
         $systemuser = SystemUser::create([
-            'id' => $userID, //add the on delete cascade to this*********foreign key
+            'id' => $userID,
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' => $roleID,
         ]);
 
-        //return $user;
-        return $user;
+
+        $thisUser = SystemUser::findOrFail($systemuser->id);
+        $this->sendMail($thisUser);
+
+        return $systemuser;
+        }
+
+    public function sendMail($thisUser){ //function to send an email after successful registration
+        Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
 
     }
-
-}
+}//RegisterController class

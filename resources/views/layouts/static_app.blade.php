@@ -18,8 +18,6 @@
 
     <!--All Css Here-->
 
-    <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="{{ URL::asset('css/style-slider.css') }}" />
     <!--Bootstrap Css-->
     <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
     <!--revolution slider-->
