@@ -70,7 +70,7 @@
 
 
     <!-- page title & breadcrumbs start -->
-    <div class="blog-bg page-head parallax overlay">
+    <div class="gallery-bg page-head parallax overlay">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

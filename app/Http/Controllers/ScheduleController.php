@@ -24,6 +24,19 @@ class ScheduleController extends Controller
         return view('static_pages.schedule', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday'));
     }
 
+    public function admin()
+    {
+        $schedule_monday = Schedule::all()->where('day','=','Monday');
+        $schedule_tuesday = Schedule::all()->where('day','=','Tuesday');
+        $schedule_wednesday = Schedule::all()->where('day','=','Wednesday');
+        $schedule_thursday = Schedule::all()->where('day','=','Thursday');
+        $schedule_friday = Schedule::all()->where('day','=','Friday');
+        $schedule_saturday = Schedule::all()->where('day','=','Saturday');
+        $schedule_sunday = Schedule::all()->where('day','=','Sunday');
+        return view('admin_panel.schedule', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -21,6 +21,16 @@
                     <form class="appointment-form" method="POST" action="/index/class_packages">
 
                         @csrf
+                        {{--<div class="alert-danger">--}}
+                            {{--@if(count($errors)>0)--}}
+                                {{--@foreach($errors->all() as $error)--}}
+                                    {{--<ul>--}}
+                                        {{--<li>{{ $error }}</li>--}}
+                                    {{--</ul>--}}
+                                {{--@endforeach--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
+
 
                         <div class="row">
                             <div class="col-md-12">

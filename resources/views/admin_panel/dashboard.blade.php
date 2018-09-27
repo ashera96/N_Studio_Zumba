@@ -37,7 +37,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/index/schedule">
+                            <a class="nav-link " href="/dashboard/schedule">
                                 schedule<span class="sr-only">(current)</span>
                             </a>
                         </li>

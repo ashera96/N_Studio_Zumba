@@ -46,7 +46,7 @@ class PackageController extends Controller
             'name'=>'required|string',
             'price'=>'required|string',
             'services'=>'required|string',
-            'classes_to_cover'=>'required|string',
+            'classes_to_cover'=>'required',
         ]);
 
 

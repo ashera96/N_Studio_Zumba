@@ -36,6 +36,7 @@ Route::resource('/index/schedule', 'ScheduleController');
 Route::get('/index/testimonials', 'StaticPageController@show_testimonials');
 Route::get('/index/contact', 'StaticPageController@show_contact');
 
+Route::post('/index/contact','MessagesController@submit');
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +48,10 @@ Route::get('/dashboard', 'AdminController@show_dashboard');
 
 Route::resource('/receptionist','ReceptionistController');
 
-Route::post('/index/contact','MessagesController@submit');
-
 Route::get('/customers','CustomerController@show_customers');
 
 Route::resource('/customers', 'CustomerController');
 
 Route::get('/dashboard/class_packages', 'PackageController@admin');
 
-
+Route::get('dashboard/schedule', 'ScheduleController@admin');
