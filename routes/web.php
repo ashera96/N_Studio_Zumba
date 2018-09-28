@@ -40,6 +40,23 @@ Route::post('/index/contact','MessagesController@submit');
 
 /*
 |--------------------------------------------------------------------------
+| Customer Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/home', 'CustomerPageController@show_home');
+Route::get('/home/about', 'CustomerPageController@show_about');
+Route::get('/home/gallery', 'CustomerPageController@show_gallery');
+Route::get('/home/class_packages', 'PackageController@customer');
+
+//Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
+Route::get('/home/testimonials', 'CustomerPageController@show_testimonials');
+Route::get('/home/contact', 'CustomerPageController@show_contact');
+Route::get('/home/payment', 'CustomerPageController@show_payment');
+Route::get('/home/reports', 'CustomerPageController@show_reports');
+
+/*
+|--------------------------------------------------------------------------
 | Administrator Panel Routes
 |--------------------------------------------------------------------------
 */
