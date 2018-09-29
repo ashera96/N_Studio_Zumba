@@ -24,6 +24,12 @@ class PackageController extends Controller
         return view('admin_panel.class_packages')->with('packages', $packages);
     }
 
+    public function customer()
+    {
+        $packages = Package::all();
+        return view('customer_pages.class_packages')->with('packages', $packages);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

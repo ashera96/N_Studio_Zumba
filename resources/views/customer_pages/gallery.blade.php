@@ -106,4 +106,61 @@
 
     <!--gallery-area end-->
 
+
+    <!--portfolio area start-->
+    <div class="portfolio-area parallax pad90">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <div class="title-bar full-width mb20">
+                            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
+                        </div>
+                        <h3>workout classes</h3>
+                        <p>Physical activity or exercise can improve your health </p>
+                    </div>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+        <div class="container-fluid pad30">
+            <div class="port-carousel port-zoom">
+                <div class="port-bcx primary-overlay">
+                    <div class="port-img">
+                        <img src="{{ URL::asset('images/gallery/1.jpg') }}" alt="Test">
+                    </div>
+                </div>
+                <div class="port-bcx primary-overlay">
+                    <div class="port-img">
+                        <img src="{{ URL::asset('images/gallery/2.jpg') }}" alt="Test">
+                    </div>
+                </div>
+                <div class="port-bcx primary-overlay">
+                    <div class="port-img">
+                        <img src="{{ URL::asset('images/gallery/4.jpg') }}" alt="Test">
+                    </div>
+                </div>
+                <div class="port-bcx primary-overlay">
+                    <div class="port-img">
+                        <img src="{{ URL::asset('images/gallery/5.jpg') }}" alt="Test">
+                    </div>
+                </div>
+                <div class="port-bcx primary-overlay">
+                    <div class="port-img">
+                        <img src="{{ URL::asset('images/gallery/2.jpg') }}" alt="Test">
+                    </div>
+                </div>
+                <div class="port-bcx primary-overlay">
+                    <div class="port-img">
+                        <img src="{{ URL::asset('images/gallery/5.jpg') }}" alt="Test">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.port carousel -->
+    </div>
+    <!--portfolio area end-->
+
 @endsection
