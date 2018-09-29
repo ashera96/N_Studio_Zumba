@@ -36,6 +36,24 @@ Route::resource('/index/schedule', 'ScheduleController');
 Route::get('/index/testimonials', 'StaticPageController@show_testimonials');
 Route::get('/index/contact', 'StaticPageController@show_contact');
 
+Route::post('/index/contact','MessagesController@submit');
+
+/*
+|--------------------------------------------------------------------------
+| Customer Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/home', 'CustomerPageController@show_home');
+Route::get('/home/about', 'CustomerPageController@show_about');
+Route::get('/home/gallery', 'CustomerPageController@show_gallery');
+Route::get('/home/class_packages', 'PackageController@customer');
+
+//Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
+Route::get('/home/testimonials', 'CustomerPageController@show_testimonials');
+Route::get('/home/contact', 'CustomerPageController@show_contact');
+Route::get('/home/payment', 'CustomerPageController@show_payment');
+Route::get('/home/reports', 'CustomerPageController@show_reports');
 
 /*
 |--------------------------------------------------------------------------
@@ -47,12 +65,10 @@ Route::get('/dashboard', 'AdminController@show_dashboard');
 
 Route::resource('/receptionist','ReceptionistController');
 
-Route::post('/index/contact','MessagesController@submit');
-
 Route::get('/customers','CustomerController@show_customers');
 
 Route::resource('/customers', 'CustomerController');
 
 Route::get('/dashboard/class_packages', 'PackageController@admin');
 
-
+Route::get('dashboard/schedule', 'ScheduleController@admin');

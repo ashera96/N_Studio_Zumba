@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin area | Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ URL::asset('favicon/logo144x144.png') }}">
     <!-- Bootstrap core CSS -->
     <link href="css/dashboard-css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard-css/style.css" rel="stylesheet">
@@ -178,7 +180,7 @@
 </section>
 
 <footer id="footer">
-    <p>Copyright AdminStrap, &copy; 2018</p>
+    <p>Copyright © <span>N Studio Zumba.</span> All Rights Reserved</p>
 </footer>
 
 <!-- Modals -->
@@ -221,10 +223,9 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
+            </form>
         </div>
-        </form>
     </div>
-</div>
 </div>
 
 
