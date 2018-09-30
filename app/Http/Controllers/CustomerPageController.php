@@ -22,11 +22,6 @@ class CustomerPageController extends Controller
         return view('customer_pages.gallery');
     }
 
-//    public function show_packages()
-//    {
-//        return view('static_pages.class_packages');
-//    }
-
     public function show_schedule()
     {
         return view('customer_pages.schedule');
