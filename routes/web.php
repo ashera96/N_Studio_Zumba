@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+//Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
 /*
@@ -40,7 +40,7 @@ Route::post('/index/contact','MessagesController@submit');
 
 /*
 |--------------------------------------------------------------------------
-| Customer Routes
+| User Routes
 |--------------------------------------------------------------------------
 */
 
@@ -61,14 +61,24 @@ Route::get('/home/reports', 'CustomerPageController@show_reports');
 |--------------------------------------------------------------------------
 */
 
-Route::get('/dashboard', 'AdminController@show_dashboard');
+Route::prefix('admin')->group(function() {
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    Route::resource('/receptionist','ReceptionistController');
+    Route::get('/customers','CustomerController@show_customers');
+    Route::resource('/customers', 'CustomerController');
+    Route::get('/dashboard/class_packages', 'PackageController@admin');
+    Route::get('dashboard/schedule', 'ScheduleController@admin');
+    Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
+});
 
-Route::resource('/receptionist','ReceptionistController');
 
-Route::get('/customers','CustomerController@show_customers');
+/*
+|--------------------------------------------------------------------------
+| Receptionist Routes
+|--------------------------------------------------------------------------
+*/
 
-Route::resource('/customers', 'CustomerController');
-
-Route::get('/dashboard/class_packages', 'PackageController@admin');
-
-Route::get('dashboard/schedule', 'ScheduleController@admin');
+Route::prefix('receptionist')->group(function() {
+   Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard');
+});

@@ -3,7 +3,7 @@
 
 
 @section('content')
-    <a href="/dashboard/class_packages" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
+    <a href="/admin/dashboard/class_packages" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
     <div class="row">
         <div class="col-md-12">
             <div class="section-title text-center">
