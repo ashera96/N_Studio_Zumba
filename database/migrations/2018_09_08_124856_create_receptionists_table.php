@@ -15,13 +15,14 @@ class CreateReceptionistsTable extends Migration
     {
         Schema::create('receptionists', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('username')->unique();
             $table->string('name');
-            //$table->string('email')->unique();
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string('nic')->unique();
             $table->date('dob');
             $table->string('address');
             $table->string('tpno')->unique();
-            $table->integer('role_id')->unsigned(); //added role_id
             $table->timestamps();
         });
     }

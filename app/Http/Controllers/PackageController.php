@@ -62,7 +62,7 @@ class PackageController extends Controller
         $new_package ->services =$request ->services;
         $new_package ->classes_to_cover =$request ->classes_to_cover;
         $new_package ->save();
-        return redirect('/dashboard/class_packages')->with('success','Package Created Successfully');
+        return redirect('/admin/dashboard/class_packages')->with('success','Package Created Successfully');
     }
 
     /**
@@ -111,7 +111,7 @@ class PackageController extends Controller
         $new_package ->services =$request ->services;
         $new_package ->classes_to_cover =$request ->classes_to_cover;
         $new_package ->save();
-        return redirect('/dashboard/class_packages')->with('success','Package Updated Successfully');
+        return redirect('/admin/dashboard/class_packages')->with('success','Package Updated Successfully');
     }
 
     /**
@@ -124,6 +124,6 @@ class PackageController extends Controller
     {
         $package = Package::findOrFail($id);
         $package->delete();
-        return redirect('/dashboard/class_packages');
+        return redirect('/admin/dashboard/class_packages');
     }
 }

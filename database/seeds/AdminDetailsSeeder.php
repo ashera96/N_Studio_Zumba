@@ -11,13 +11,11 @@ class AdminDetailsSeeder extends Seeder
      */
     public function run()
     {
-        $admin = new App\SystemUser;
+        $admin = new App\Admin;
 
         $admin->username="Admin";
         $admin->email="nstudioz950@gmail.com";
-        $admin->password=Hash::make('Nstudio3*');
-        $admin->role_id=2;
-        $admin->id=1000;
+        $admin->password=Hash::make('123123');
 
         $admin->save();
     }
