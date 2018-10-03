@@ -26,6 +26,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">N Studio Zumba</a>
+
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -178,7 +179,7 @@
 </section>
 
 <footer id="footer">
-    <p>Copyright AdminStrap, &copy; 2018</p>
+    <p>Copyright N-Studio Zumba, &copy; 2018</p>
 </footer>
 
 <!-- Modals -->
@@ -221,8 +222,8 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
-        </div>
-        </form>
+            </div>
+            </form>
     </div>
 </div>
 </div>
