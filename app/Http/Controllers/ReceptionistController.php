@@ -7,7 +7,6 @@ use App\Receptionist;
 use App\Rules\ageValidation;
 use App\Rules\nicValidation;
 use Illuminate\Support\Facades\Hash;
-use App\SystemUser;
 use Mail;
 use App\Mail\welcome;
 
@@ -58,32 +57,23 @@ class ReceptionistController extends Controller
 
 
         ]);
-        $systemUser = new SystemUser;
+
         $recepnew =new Receptionist;
         $recepnew ->name =$request ->name;
-        //$recepnew ->email =$request ->email;
+        $recepnew ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
+        $nic = $recepnew -> nic;
+        $recepnew -> username= $request ->email;
+        $recepnew -> password = Hash::make($nic);
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;
         $recepnew ->tpno =$request ->tpno;
-        $recepnew -> role_id =3;
         $recepnew ->save();
 
-        $receptionistID = $recepnew->id;
-        $recepRoleID = $recepnew->role_id;
-        $nic = $recepnew -> nic;
-        $systemUser -> id = $receptionistID;
-        $systemUser -> email =$request ->email;
-        $systemUser -> username= $request ->email;
-        $systemUser -> password = Hash::make($nic);
-        $systemUser -> role_id =$recepRoleID;
-        $systemUser->save();
-
-        $thisUser = SystemUser::findOrFail($systemUser->id);
+        $thisUser = SystemUser::findOrFail($recepnew->id);
         $this->sendMail($thisUser);
 
         return redirect('receptionist')->with('success','Staff Created');
-
     }
 
     //function to send email
