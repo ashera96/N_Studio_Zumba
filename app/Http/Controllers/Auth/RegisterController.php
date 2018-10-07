@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 use Mail;
-use App\Mail\verifyEmail;
+use App\Mail\welcomeUser;
 use App\Rules\ageValidation;
 use App\Rules\nicValidation;
 use App\User;
 use App\Http\Controllers\Controller;
-use http\Env\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -78,7 +77,7 @@ class RegisterController extends Controller
     //put data into db
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
@@ -91,12 +90,14 @@ class RegisterController extends Controller
             'status' => true,
         ]);
 
-//        $this->sendMail($thisUser);
+        $thisUser = User::findOrFail($user->id);
+        $this->sendMail($thisUser);
+
+        return $user;
 
         }
+        public function sendMail($thisUser){ //function to send an email after successful registration
+        Mail::to($thisUser['email'])->send(new welcomeUser($thisUser));
 
-//    public function sendMail($thisUser){ //function to send an email after successful registration
-//        Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
-//
-//    }
+    }
 }//RegisterController class
