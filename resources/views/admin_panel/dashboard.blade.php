@@ -9,8 +9,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('favicon/logo144x144.png') }}">
     <!-- Bootstrap core CSS -->
-    <link href="css/dashboard-css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/dashboard-css/style.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/dashboard-css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/dashboard-css/style.css') }}" rel="stylesheet">
     <!-- Materil icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -269,7 +269,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/dashboard-js/bootstrap.min.js"></script>
+<script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
 
 
 </body>
