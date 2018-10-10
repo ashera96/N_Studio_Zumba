@@ -80,5 +80,7 @@ Route::prefix('admin')->group(function() {
 */
 
 Route::prefix('receptionist')->group(function() {
-   Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard');
+    Route::get('/login', 'Auth\ReceptionistLoginController@showLoginForm')->name('receptionist.login');
+    Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
+    Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard');
 });

@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 
 class CustomerPageController extends Controller
 {
-    //
+
+    public function __construct()
+    {
+        $this->middleware('auth:web');
+    }
+
     public function show_home()
     {
         return view('customer_pages.home');
