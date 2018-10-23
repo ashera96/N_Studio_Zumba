@@ -83,7 +83,7 @@
             <div class="col-md-10">
                 <h1><i class="material-icons prefix">settings</i> Dashboard <small>Manage your site</small></h1>
             </div>
-            <div class="col-md-2">
+           <!-- <div class="col-md-2">
                 <div class="dropdown create">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Create Content
@@ -97,7 +97,12 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/create_notifications">Create Notifications</a>
+            </li>
+
         </div>
     </div>
 </header>

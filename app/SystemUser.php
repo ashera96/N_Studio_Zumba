@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class SystemUser extends Authenticatable
 {
     use Notifiable;
 
@@ -15,15 +15,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id','name','nic','dob','address','contactno',
+        'id','username','email','password','status','role_id'
     ];
 
- /*   protected $hidden = [
-        'password', 'remember_token',
-    ]; */
+
+       protected $hidden = [
+           'password', 'remember_token',
+       ];
 
     //Make the relationship with the Model-Role
-   public function role(){
+    public function role(){
         return $this->belongsTo('App\Role');
     }
 }

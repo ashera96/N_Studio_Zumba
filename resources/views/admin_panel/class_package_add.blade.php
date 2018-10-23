@@ -1,7 +1,6 @@
 @extends('layouts.dashboard_app')
 
 
-
 @section('content')
     <a href="/admin/dashboard/class_packages" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
     <div class="row">
