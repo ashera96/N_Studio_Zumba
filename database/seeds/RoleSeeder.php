@@ -15,12 +15,14 @@ class RoleSeeder extends Seeder
         $role2 = new App\Role;
         $role3 = new App\Role;
 
-        $role1-> name = 'admin';
-        $role2-> name = 'customer';
-        $role3-> name = 'receptionist';
+        $role1->name = "admin";
+        $role2->name = "customer";
+        $role3->name = "receptionist";
+
 
         $role1->save();
         $role2->save();
         $role3->save();
+
     }
 }
