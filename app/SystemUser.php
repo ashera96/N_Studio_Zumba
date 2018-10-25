@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class SystemUser extends Authenticatable
 {
@@ -27,4 +28,33 @@ class SystemUser extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
+
+//functions to check the user roles
+    public function checkAdmin(){
+        $role_id = Auth::user()->role->id;
+
+        if($role_id==1){
+            return true;
+        }
+        return false;
+    }
+
+    public function checkCustomer(){
+        $role_id = Auth::user()->role->id;
+
+        if($role_id==2){
+            return true;
+        }
+        return false;
+    }
+
+    public function checkReceptionist(){
+        $role_id = Auth::user()->role->id;
+
+        if($role_id==3){
+            return true;
+        }
+        return false;
+    }
+
 }
