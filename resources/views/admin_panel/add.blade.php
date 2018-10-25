@@ -19,9 +19,14 @@
         <div class="row">
 
 
-            <form class="col s12" method="POST" action="{{url('/receptionist')}}">
+            <form class="col s12" method="POST" action="{{url('admin/dashboard/receptionist')}}">
 
                 @csrf
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
 
                 <div class="row">
                     <div class="input-field col s6">
@@ -92,6 +97,7 @@
                     </div>
                 </div>
                 <input type="submit" name="submit" class="btn blue right" value="Save">
+
             </form>
         </div>
     </div>

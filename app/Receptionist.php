@@ -9,23 +9,22 @@ class Receptionist extends Authenticatable
 {
     use Notifiable;
 
-    protected $guard = 'receptionist';
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'username','name','email','password','nic','dob','address','tpno',
+        'id','name','nic','dob','address','tpno',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
+    /*protected $hidden = [
         'password', 'remember_token',
-    ];
+    ]; */
+
+    //make the relationship with Role-model
+    public function role(){
+        return $this->belongsTo('App\Role');
+    }
+
 }

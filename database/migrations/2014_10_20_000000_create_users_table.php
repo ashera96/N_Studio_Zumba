@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReceptionistsTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateReceptionistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('receptionists', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('nic')->unique();
             $table->date('dob');
             $table->string('address');
-            $table->string('tpno')->unique();
-            $table->foreign('id')->references('id')->on('system_users');
+            $table->string('contactno')->unique();
             $table->timestamps();
+            $table->foreign('id')->references('id')->on('system_users');
         });
+//        DB::statement("ALTER TABLE users AUTO_INCREMENT = 1001;");
     }
 
     /**
@@ -32,6 +33,6 @@ class CreateReceptionistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('receptionists');
+        Schema::dropIfExists('users');
     }
 }

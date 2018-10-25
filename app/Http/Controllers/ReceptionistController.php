@@ -9,6 +9,7 @@ use App\Rules\nicValidation;
 use Illuminate\Support\Facades\Hash;
 use Mail;
 use App\Mail\welcome;
+use App\SystemUser;
 
 class ReceptionistController extends Controller
 {
@@ -51,36 +52,40 @@ class ReceptionistController extends Controller
             'nic' => ['required','unique:receptionists',new nicValidation],
             'dob' => ['required',new ageValidation],
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            //'dob' => 'required|before:-18 years|after:65 years',
             'address' => 'required',
             'tpno' => 'required|unique:receptionists|regex:/^[0]{1}[0-9]{9}$/',
-
-
         ]);
 
         $recepnew =new Receptionist;
+        $system_users = new SystemUser;
+
         $recepnew ->name =$request ->name;
-        $recepnew ->email =$request ->email;
+        $system_users ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
-        $nic = $recepnew -> nic;
-        $recepnew -> username= $request ->email;
-        $recepnew -> password = Hash::make($nic);
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;
         $recepnew ->tpno =$request ->tpno;
-        $recepnew ->save();
+        $email = $system_users -> email;
+        $nic = $recepnew -> nic;
+        $system_users -> username= $email;
+        $system_users -> password = Hash::make($nic);
+        $system_users -> role_id =3;
+        $system_users -> status = true;
 
-        $thisUser = SystemUser::findOrFail($recepnew->id);
+        $system_users ->save();
+        $recepnew -> id = $system_users->id;
+        $recepnew ->save();
+        $thisUser = SystemUser::findOrFail($system_users->id);
         $this->sendMail($thisUser);
 
-        return redirect('receptionist')->with('success','Staff Created');
+        return redirect()->back()->with('success','Staff Created');
     }
 
     //function to send email
     public function sendMail($thisUser){
         Mail::to($thisUser['email'])->send(new welcome($thisUser));
 
-    }//sending email
+    }
 
     /**
      * Display the specified resource.
@@ -115,26 +120,27 @@ class ReceptionistController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'email'=>'required|unique:receptionists|email',
+            'email'=>'required|unique:system_users|email',
             'name'=>'required|string|min:2',
             'nic' => ['required','unique:receptionists',new nicValidation],
             'dob' => ['required',new ageValidation],
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            //'dob' => 'required|before:-18 years|after:65 years',
             'address' => 'required',
             'tpno' => 'required|unique:receptionists|regex:/^[0]{1}[0-9]{9}$/',
-
-
         ]);
 
         $recepnew =Receptionist::findOrFail($id);
+        $system_users = SystemUser::findOrFail($id);
         $recepnew ->name =$request ->name;
-        $recepnew ->email =$request ->email;
+        $system_users ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;
         $recepnew ->tpno =$request ->tpno;
+        $system_users ->status=true;
         $recepnew ->save();
+        $system_users ->save();
+
         return redirect('receptionist')->with('success','Staff Updated');
 
     }
@@ -149,6 +155,11 @@ class ReceptionistController extends Controller
     {
         $recepfind=Receptionist::findOrFail($id);
         $recepfind->delete();
+        //receptionists table is reffering the primary key of the system_users table as a foreign key.
+        //so after deleting a receptionist, data in both tables should be removed.
+        //but need to discuss further about this destroy method !!!!!!!!!!!!!!
+        $systemuser = SystemUser::findOrFail($id);
+        $systemuser->delete();
         return redirect('/receptionist');
     }
 }

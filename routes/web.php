@@ -17,8 +17,7 @@
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');//provides security by auth middleware
 
 /*
 |--------------------------------------------------------------------------
@@ -62,14 +61,19 @@ Route::get('/home/reports', 'CustomerPageController@show_reports');
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
+    //Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::resource('/receptionist','ReceptionistController');
     Route::get('/customers','CustomerController@show_customers');
     Route::resource('/customers', 'CustomerController');
     Route::get('/dashboard/class_packages', 'PackageController@admin');
     Route::get('dashboard/schedule', 'ScheduleController@admin');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
+    Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add');
+    Route::post('dashboard/receptionist','ReceptionistController@store');
+    Route::get('/create_notifications',function (){
+        return view('admin_panel.create_notifications');
+    })->name('admin.create_notifications');
 });
 
 
@@ -80,7 +84,7 @@ Route::prefix('admin')->group(function() {
 */
 
 Route::prefix('receptionist')->group(function() {
-    Route::get('/login', 'Auth\ReceptionistLoginController@showLoginForm')->name('receptionist.login');
-    Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
+    //Route::get('/login', 'Auth\ReceptionistLoginController@showLoginForm')->name('receptionist.login');
+    //Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard');
 });
