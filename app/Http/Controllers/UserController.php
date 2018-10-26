@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 
-class CustomerController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $new  =User::all()->where('role_id', '=', '1');
-        return view('admin_panel.customer',['users'=>$new]);
+        $new  =User::all(); //->where('status', '=', '1');
+        return view('admin_panel.user_index',['users'=>$new]);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -28,18 +27,6 @@ class CustomerController extends Controller
     {
         //
     }
-
-    /*function getData()
-    {
-        $data['data'] = DB::table('users')->get();
-        if(count($data >0))
-        {
-            return view('customer',$data);
-        }
-        else {
-            return view('customer');
-        }
-    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -71,7 +58,11 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cusfind = User::findOrFail($id);
+        return view('admin_panel.user_edit',['user'=>$cusfind]);
+
+        /*$cusfind = User::find($id);
+        return view('admin_panel.user_edit',compact('cusfind','id')); */
     }
 
     /**
@@ -83,7 +74,22 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'id' => 'required',
+            'name'=>'required',
+            'username'=>'required',
+
+        ]);
+
+        $cusfind =User::find($id);
+        $cusfind ->id =$request ->get('id');
+        $cusfind ->name =$request ->get('name');
+        $cusfind ->username =$request ->get('username');
+        $cusfind ->nic =$request ->get('nic');
+        $cusfind ->email =$request ->get('email');
+        $cusfind ->status =$request ->get('status');
+        $cusfind ->save();
+        return redirect('/admin/customers')->with('success','Customer Updated');
     }
 
     /**
@@ -94,8 +100,6 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-//        $usrfind=User::findOrFail($id);
-//        $usrfind->delete();
-//        return redirect('/customers');
+        //
     }
 }
