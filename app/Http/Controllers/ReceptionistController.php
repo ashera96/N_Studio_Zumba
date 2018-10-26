@@ -61,6 +61,7 @@ class ReceptionistController extends Controller
 
         $recepnew ->name =$request ->name;
         $system_users ->email =$request ->email;
+        //$recepnew ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;
@@ -120,13 +121,13 @@ class ReceptionistController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'email'=>'required|unique:system_users|email',
+            'email'=>'required|email',
             'name'=>'required|string|min:2',
-            'nic' => ['required','unique:receptionists',new nicValidation],
+            'nic' => ['required',new nicValidation],
             'dob' => ['required',new ageValidation],
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
             'address' => 'required',
-            'tpno' => 'required|unique:receptionists|regex:/^[0]{1}[0-9]{9}$/',
+            'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
         ]);
 
         $recepnew =Receptionist::findOrFail($id);
@@ -160,6 +161,6 @@ class ReceptionistController extends Controller
         //but need to discuss further about this destroy method !!!!!!!!!!!!!!
         $systemuser = SystemUser::findOrFail($id);
         $systemuser->delete();
-        return redirect('/receptionist');
+        return redirect('admin/receptionist');
     }
 }

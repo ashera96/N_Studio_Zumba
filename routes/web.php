@@ -69,6 +69,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard/class_packages', 'PackageController@admin');
     Route::get('dashboard/schedule', 'ScheduleController@admin');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
+
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add');
     Route::post('dashboard/receptionist','ReceptionistController@store');
     Route::get('/create_notifications',function (){
