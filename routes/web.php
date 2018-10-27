@@ -17,8 +17,8 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');//provides security by auth middleware
-
+//provides security for after login re-directions by auth middleware
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 /*
 |--------------------------------------------------------------------------
 | Static Pages Routes
@@ -43,16 +43,15 @@ Route::post('/index/contact','MessagesController@submit');
 |--------------------------------------------------------------------------
 */
 
-Route::get('/home', 'CustomerPageController@show_home');
-Route::get('/home/about', 'CustomerPageController@show_about');
-Route::get('/home/gallery', 'CustomerPageController@show_gallery');
-Route::get('/home/class_packages', 'PackageController@customer');
+Route::get('/home/about', 'CustomerPageController@show_about')->middleware('customer');
+Route::get('/home/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
+Route::get('/home/class_packages', 'PackageController@customer')->middleware('customer');
 
 //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
-Route::get('/home/testimonials', 'CustomerPageController@show_testimonials');
-Route::get('/home/contact', 'CustomerPageController@show_contact');
-Route::get('/home/payment', 'CustomerPageController@show_payment');
-Route::get('/home/reports', 'CustomerPageController@show_reports');
+Route::get('/home/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
+Route::get('/home/contact', 'CustomerPageController@show_contact')->middleware('customer');
+Route::get('/home/payment', 'CustomerPageController@show_payment')->middleware('customer');
+Route::get('/home/reports', 'CustomerPageController@show_reports')->middleware('customer');
 
 /*
 |--------------------------------------------------------------------------
@@ -63,17 +62,17 @@ Route::get('/home/reports', 'CustomerPageController@show_reports');
 Route::prefix('admin')->group(function() {
     //Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::resource('/receptionist','ReceptionistController');
-    Route::get('/customers','CustomerController@show_customers');
-    Route::resource('/customers', 'CustomerController');
-    Route::get('/dashboard/class_packages', 'PackageController@admin');
-    Route::get('dashboard/schedule', 'ScheduleController@admin');
-    Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
-    Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add');
-    Route::post('dashboard/receptionist','ReceptionistController@store');
+    Route::resource('/receptionist','ReceptionistController')->middleware('admin');
+    Route::get('/customers','CustomerController@show_customers')->middleware('admin');
+    Route::resource('/customers', 'CustomerController')->middleware('admin');
+    Route::get('/dashboard/class_packages', 'PackageController@admin')->middleware('admin');
+    Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
+    Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
+    Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
+    Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin');
     Route::get('/create_notifications',function (){
         return view('admin_panel.create_notifications');
-    })->name('admin.create_notifications');
+    })->name('admin.create_notifications')->middleware('admin');
 });
 
 
@@ -86,5 +85,5 @@ Route::prefix('admin')->group(function() {
 Route::prefix('receptionist')->group(function() {
     //Route::get('/login', 'Auth\ReceptionistLoginController@showLoginForm')->name('receptionist.login');
     //Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
-    Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard');
+    Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');
 });
