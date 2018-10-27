@@ -9,8 +9,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('favicon/logo144x144.png') }}">
     <!-- Bootstrap core CSS -->
-    <link href="css/dashboard-css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/dashboard-css/style.css" rel="stylesheet">
+    <link href="{{ URL::asset('css/dashboard-css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/dashboard-css/style.css') }}" rel="stylesheet">
     <!-- Materil icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -31,13 +31,13 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="pages.html">About</a></li>
-                <li><a href="posts.html">Gallery</a></li>
-                <li><a href="users.html">Classes</a></li>
+                <li class="active"><a href="/index">Home</a></li>
+                <li><a href="/index/about">About</a></li>
+                <li><a href="/index/gallery">Gallery</a></li>
+                <li><a href="/class_packages">Classes</a></li>
                 <li><a href="posts.html">Schedules</a></li>
-                <li><a href="users.html">Testimonials</a></li>
-                <li><a href="users.html">Contact</a></li>
+                <li><a href="/index/testimonials">Testimonials</a></li>
+                <li><a href="/index/contact">Contact</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Welcome, Admin</a></li>
@@ -83,7 +83,7 @@
             <div class="col-md-10">
                 <h1><i class="material-icons prefix">settings</i> Dashboard <small>Manage your site</small></h1>
             </div>
-            <div class="col-md-2">
+           <!-- <div class="col-md-2">
                 <div class="dropdown create">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         Create Content
@@ -98,6 +98,13 @@
                     </ul>
                 </div>
             </div>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/create_notifications">Create Notifications</a>
+            </li>
+            -->
+
+
+
         </div>
     </div>
 </header>
@@ -115,12 +122,13 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <a href="index.html" class="list-group-item active main-color-bg ">
+                    <a href="/admin/dashboard" class="list-group-item active main-color-bg ">
 
                         <i class="material-icons prefix ">settings</i> Dashboard
                     </a>
-                    <a href="pages.html" class="list-group-item"><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
-                    <a href="admin/customers" class="list-group-item"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
+
+                    <a href="/admin/receptionist" class="list-group-item"><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
+                    <a href="/admin/customer" class="list-group-item"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
                     <a href="users.html" class="list-group-item"><i class="material-icons prefix">notifications</i> Notifications<span class="badge">5</span></a>
                     <a href="posts.html" class="list-group-item"><i class="material-icons prefix">attach_money</i> Payments<span class="badge">56</span></a>
                     <a href="admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
@@ -269,7 +277,7 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/dashboard-js/bootstrap.min.js"></script>
+<script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
 
 
 </body>

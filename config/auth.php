@@ -41,16 +41,6 @@ return [
             'provider' => 'users',
         ],
 
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
-
-        'receptionist' => [
-            'driver' => 'session',
-            'provider' => 'receptionists',
-        ],
-
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -77,19 +67,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class, //Changed to SystemUser
+            'model' => App\SystemUser::class, //Decides which table to retrieve data for login
         ],
-
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Admin::class, //Changed to SystemUser
-        ],
-
-        'receptionists' => [
-            'driver' => 'eloquent',
-            'model' => App\Receptionist::class, //Changed to SystemUser
-        ],
-
 
         // 'users' => [
         //     'driver' => 'database',
@@ -117,18 +96,6 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
-        ],
-
-        'admins' => [
-            'provider' => 'admins',
-            'table' => 'password_resets',
-            'expire' => 15,
-        ],
-
-        'receptionists' => [
-            'provider' => 'receptionists',
-            'table' => 'password_resets',
-            'expire' => 15,
         ],
     ],
 

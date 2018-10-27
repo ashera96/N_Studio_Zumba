@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+use App\SystemUser;
 
 class Role extends Model
 {
@@ -11,8 +11,9 @@ class Role extends Model
         'name',
     ];
 
+    //make the relationship with SystemUser model
     public function users(){
-        return $this->hasMany('App\User');
-
+        return $this->hasMany('App\SystemUser');
     }
+
 }

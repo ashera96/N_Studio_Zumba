@@ -15,18 +15,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username','name','email','password','nic','dob','address','contactno','medicissue','status',
+        'id','name','nic','dob','address','contactno',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
+ /*   protected $hidden = [
         'password', 'remember_token',
-    ];
-//    public function role(){
-//        return $this->belongsTo('App\Role');
-//    }
+    ]; */
+
+    //Make the relationship with the Model-Role
+   public function role(){
+        return $this->belongsTo('App\Role');
+    }
 }

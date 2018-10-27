@@ -1,16 +1,18 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use App\MedicalIssue;
 use Mail;
-use App\Mail\verifyEmail;
+use App\Mail\welcomeUser;
 use App\Rules\ageValidation;
 use App\Rules\nicValidation;
 use App\User;
 use App\Http\Controllers\Controller;
-use http\Env\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\SystemUser;
+
 
 class RegisterController extends Controller
 {
@@ -56,12 +58,12 @@ class RegisterController extends Controller
         //validating fields
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'username' => 'required|string|min:4|unique:users',
+            'username' => 'required|string|min:4|unique:system_users',
             'nic' => ['required','unique:users',new nicValidation],//custom
             'dob' => ['required',new ageValidation], //custom
             'address' => 'required',
             'contactno' => 'required|unique:users|regex:/^[0]{1}[0-9]{9}$/',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:system_users',
             'password' => 'required|string|min:6|confirmed',
             'medicissue'=>'max:255',
         ]);
@@ -78,25 +80,40 @@ class RegisterController extends Controller
     //put data into db
     protected function create(array $data)
     {
-        return User::create([
+        //put the data in to the system_users table
+        $systemuser = SystemUser::create([
             'username' => $data['username'],
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id' =>2,
+            'status' => true,
+        ]);
+
+        //put the data in to the users table
+        $user = User::create([
+            'name' => $data['name'],
             'nic' => $data['nic'],
             'dob' => $data['dob'],
             'address' => $data['address'],
             'contactno' => $data['contactno'],
-            'medicissue' => $data['medicissue'],
-            'status' => true,
+            'id' => $systemuser->id,
         ]);
 
-//        $this->sendMail($thisUser);
+        //put the data in to medical_issues table
+        $medicalissue = MedicalIssue::create([
+            'id' => $systemuser->id,
+            'medicissue' => $data['medicissue'],
+        ]);
 
-        }
+        $thisUser = SystemUser::findOrFail($systemuser->id);
+        $this->sendMail($thisUser);
 
-//    public function sendMail($thisUser){ //function to send an email after successful registration
-//        Mail::to($thisUser['email'])->send(new verifyEmail($thisUser));
-//
-//    }
+        return $systemuser;
+    }
+
+        //function to send email when a user is registered,to user's email address
+        public function sendMail($thisUser){ //function to send an email after successful registration
+        Mail::to($thisUser['email'])->send(new welcomeUser($thisUser));
+    }
+
 }//RegisterController class
