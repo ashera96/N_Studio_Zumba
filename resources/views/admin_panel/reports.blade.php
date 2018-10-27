@@ -103,7 +103,7 @@
                                             </a>
                                         </li>
 
-                                        <li class="nav-item active">
+                                        <li class="nav-item">
                                             <a class="nav-link" href="/customers">
                                                 <span data-feather="users"></span>
                                                 CUSTOMERS
@@ -122,7 +122,7 @@
                                                 PAYMENTS
                                             </a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item active">
                                             <a class="nav-link disabled" href="#">
                                                 <span data-feather="file-text"></span>
                                                 REPORTS
@@ -133,54 +133,11 @@
                             </nav>
                         </div>
 
-
                         <div role="main" class="col-md-10 px-4" >
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
                                 <div class="tabledesign">
-                                    <br>
-                                    <table class="table table-dark" width="80%"  >
-                                        <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Status</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        @foreach($users as $user)
-                                        <tbody>
-                                            <tr>
-                                                <td>{{$user -> name}}</td>
-                                                <td>{{$user -> username}}</td>
-                                                <td>{{$user -> email}}</td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <form method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn button-editing" style="background: #4dc0b5">Active</button>
-                                                                <button type="submit" class="btn button-editing" style="background: #4dc0b5">Inactive</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <form method="POST" {{--action="{{route('user.destroy',$user->id)}}"--}}>
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn button-delete">Delete</button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        @endforeach
-                                    </table>
+
+
                                 </div>
                             </div>
                         </div>

@@ -126,11 +126,12 @@
 
                         <i class="material-icons prefix ">settings</i> Dashboard
                     </a>
+
                     <a href="/admin/receptionist" class="list-group-item"><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
                     <a href="/admin/customer" class="list-group-item"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
                     <a href="users.html" class="list-group-item"><i class="material-icons prefix">notifications</i> Notifications<span class="badge">5</span></a>
                     <a href="posts.html" class="list-group-item"><i class="material-icons prefix">attach_money</i> Payments<span class="badge">56</span></a>
-                    <a href="posts.html" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
+                    <a href="admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
 
                 </div>
                 <div class="well">
