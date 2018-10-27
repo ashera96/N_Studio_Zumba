@@ -125,7 +125,7 @@
 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item ">
-                                        <a class="nav-link" href="/dashboard">
+                                        <a class="nav-link" href="/admin/dashboard">
                                             <span data-feather="home"></span>
                                             DASHBOARD <span class="sr-only">(current)</span>
                                         </a>
@@ -174,7 +174,7 @@
                             <div class="tabledesign">
                                 <div style="float: right">
 
-                                    <a class=" btn  button-add " href="{{url('receptionist/create')}}"><i class="fa fa-plus-circle" style="font-size:48px;"></i></a>
+                                    <a class=" btn  button-add " href="{{url('/admin/receptionist/create')}}"><i class="fa fa-plus-circle" style="font-size:48px;"></i></a>
                                 </div>
                                 <br>
                             <table class="table table-dark" width="80%" height="50%" >
@@ -200,7 +200,7 @@
                                         <td>{{ $receptionist->tpno }}</td>
                                         <td>
                                             <div class="row"><div class="col">
-                                                    <a href="{{url('receptionist/'.$receptionist->id.'/edit')}}"><button class="btn button-edit">Edit</button></a>
+                                                    <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="btn button-edit">Edit</button></a>
                                                 </div>
                                                 <div class="col">
                                                     <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">

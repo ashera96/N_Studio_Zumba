@@ -70,6 +70,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
     Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin');
+
     Route::get('/create_notifications',function (){
         return view('admin_panel.create_notifications');
     })->name('admin.create_notifications')->middleware('admin');
