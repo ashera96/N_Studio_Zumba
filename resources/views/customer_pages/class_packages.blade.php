@@ -109,7 +109,7 @@
                 <!-- /.colour-service-1-->
                 <div class="col-md-12">
                     <ol class="breadcrumb">
-                        <li><a href="/index">home</a></li>
+                        <li><a href="/home">home</a></li>
                         <li>।</li>
                         <li>Classes</li>
                     </ol>

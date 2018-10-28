@@ -19,6 +19,7 @@ Auth::routes();
 
 //provides security for after login re-directions by auth middleware
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
 /*
 |--------------------------------------------------------------------------
 | Static Pages Routes
@@ -70,10 +71,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
     Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin');
-
-    Route::get('/create_notifications',function (){
-        return view('admin_panel.create_notifications');
-    })->name('admin.create_notifications')->middleware('admin');
+    Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
+    Route::post('/create_notifications','NotificationController@store_health_tips')->middleware('admin');
 });
 Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');

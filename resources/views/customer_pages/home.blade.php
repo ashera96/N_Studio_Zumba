@@ -61,6 +61,7 @@
                                 </ul>
                             </div>
                         </li>
+                       <!-- notification bell commented out
                         <li class="nav-item d-none d-lg-inline">
                             <div class="icon-menu">
                                 <ul>
@@ -68,6 +69,31 @@
                                 </ul>
                             </div>
                         </li>
+                        -->
+                        <!-- new notification dropdown for testing-->
+                        @if(Auth::check())
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i><span class="badge badge-danger" id="count-notification">
+                                    {{auth()->user()->unreadNotifications->count()}}
+                                </span><span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    @if(auth()->user()->unreadNotifications->count())
+                                        @foreach(auth()->user()->unreadNotifications as $notification)
+                                        <a class="dropdown-item" href="#" >
+                                            {{$notification->data['data']}}
+                                        </a>
+                                        @endforeach
+                                    @else
+                                        <a class="dropdown-item" href="#">
+                                            No notifications
+                                        </a>
+                                    @endif
+                            </div>
+                        </li>
+                        @endif
+                            <!--end of testing -->
 
                         {{--User name and logout button start--}}
                         <li class="nav-item dropdown">

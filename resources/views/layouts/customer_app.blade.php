@@ -86,7 +86,6 @@
 </div>
 <!--End Search Popup-->
 
-
 <!--All Js Here-->
 <!-- jquery latest version -->
 <script data-cfasync="false" src="{{ URL::asset('js/email-decode.min.js') }}"></script><script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
