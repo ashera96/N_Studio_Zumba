@@ -53,7 +53,7 @@ class ReceptionistController extends Controller
             'dob' => ['required',new ageValidation],
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
             'address' => 'required',
-            'tpno' => 'required|unique:receptionists|regex:/^[0]{1}[0-9]{9}$/',
+            'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
         ]);
 
         $recepnew =new Receptionist;

@@ -74,7 +74,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
     Route::post('/create_notifications','NotificationController@store_health_tips')->middleware('admin');
 });
-Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
+//Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');
 
 
