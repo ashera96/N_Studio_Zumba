@@ -42,10 +42,6 @@ class HomeController extends Controller
         }
     }
 
-    public function error_page(){
-        return view('errors.404page_not_found');
-    }
-
 }
 
 
