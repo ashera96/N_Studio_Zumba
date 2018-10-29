@@ -64,8 +64,8 @@ Route::prefix('admin')->group(function() {
     //Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::resource('/receptionist','ReceptionistController')->middleware('admin');
-    Route::get('/customers','CustomerController@show_customers')->middleware('admin');
-    Route::resource('/customers', 'CustomerController')->middleware('admin');
+    Route::get('/customers','UserController@show_user_index')->middleware('admin');
+    Route::resource('/customers', 'UserController')->middleware('admin');
     Route::get('/dashboard/class_packages', 'PackageController@admin')->middleware('admin');
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
