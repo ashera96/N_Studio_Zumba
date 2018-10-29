@@ -1,7 +1,14 @@
+<link rel="shortcut icon" href="{{ URL::asset('favicon/logo144x144.png') }}">
+<link rel="apple-touch-icon" href="{{ URL::asset('favicon/logo_57x57.png') }}">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ URL::asset('favicon/logo_72x72.png') }}">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ URL::asset('favicon/logo114x114.png') }}">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ URL::asset('favicon/logo144x144.png') }}">
 
 <div class="container">
     <!-- form for health tips notification-->
-     <form method="POST" action="{{ route('register') }}"  aria-label="{{ __('Register') }}">
+     <form method="POST" action="{{ url('admin/create_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
+         {{csrf_field()}}
+
         <div class="form-group row">
 
             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Create Health Tips Notifications') }}</label>

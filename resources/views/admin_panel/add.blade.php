@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<a href="/receptionist" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
+<a href="/admin/receptionist" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
 <div class="container">
 
     <div class = "card-panel grey lighten-2"><h3 style="text-align: center ;font-family:century gothic">Employees Add</h3></div>

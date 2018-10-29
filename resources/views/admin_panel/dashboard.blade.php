@@ -83,25 +83,25 @@
             <div class="col-md-10">
                 <h1><i class="material-icons prefix">settings</i> Dashboard <small>Manage your site</small></h1>
             </div>
-           <!-- <div class="col-md-2">
-                <div class="dropdown create">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Create Content
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a type="button" data-toggle="modal" data-target="#addPage">Add Notification</a></li>
-                        <li><a href="#">Add Report</a></li>
+            <!-- <div class="col-md-2">
+                 <div class="dropdown create">
+                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                         Create Content
+                         <span class="caret"></span>
+                     </button>
+                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                         <li><a type="button" data-toggle="modal" data-target="#addPage">Add Notification</a></li>
+                         <li><a href="#">Add Report</a></li>
 
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
-                </div>
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="/admin/create_notifications">Create Notifications</a>
-            </li>
-            -->
+                         <li role="separator" class="divider"></li>
+                         <li><a href="#">Separated link</a></li>
+                     </ul>
+                 </div>
+             </div>
+             <li class="nav-item">
+                 <a class="nav-link" href="/admin/create_notifications">Create Notifications</a>
+             </li>
+             -->
 
 
 

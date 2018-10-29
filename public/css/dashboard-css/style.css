@@ -164,6 +164,32 @@ body{
   background-color: #f23175 !important;
   color: #ffffff !important;
 }
+.addbtn{
+  background-color: #00A8FF !important;
+  color: #ffffff !important;
+  border-width: 0px;
+  border-radius: 5px;
+  height: 30px;
+  width: 50px;
+}
+.editbtn{
+  background-color: #2d995b !important;
+  color: #ffffff !important;
+  border-width: 0px;
+  border-radius: 5px;
+  height: 30px;
+  width: 50px;
+  font-size: 11px;
+}
+.delbtn{
+  background-color: #b91d19 !important;
+  color: #ffffff !important;
+  border-width: 0px;
+  border-radius: 5px;
+  height: 30px;
+  width: 55px;
+  font-size: 11px;
+}
 
 /* Header */
 #header{

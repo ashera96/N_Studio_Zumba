@@ -1,321 +1,263 @@
-@extends('layouts.dashboard_app')
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin area | Dashboard</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ URL::asset('favicon/logo144x144.png') }}">
+    <!-- Bootstrap core CSS -->
+    <link href="{{ URL::asset('css/dashboard-css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/dashboard-css/style.css') }}" rel="stylesheet">
+    <!-- Materil icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <script src="https://cdn.ckeditor.com/4.10.1/standard/ckeditor.js"></script>
+</head>
 
-@section('content')
+<body>
+<nav class="navbar navbar-default ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">N Studio Zumba</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/index">Home</a></li>
+                <li><a href="/index/about">About</a></li>
+                <li><a href="/index/gallery">Gallery</a></li>
+                <li><a href="/class_packages">Classes</a></li>
+                <li><a href="posts.html">Schedules</a></li>
+                <li><a href="/index/testimonials">Testimonials</a></li>
+                <li><a href="/index/contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Welcome, Admin</a></li>
 
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->username }} <span class="caret"></span>
+                            </a>
 
-    <header class="header fixed-top">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/index"><img height="80px" width="80px" src="{{ URL::asset('images/logo_nav.png') }}"  alt="N_Studio_Zumba_Logo"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link " href="/index">
-                                home<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="/index/about">
-                                about<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="/index/gallery">
-                                gallery<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="/dashboard/class_packages">
-                                classes<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="/index/schedule">
-                                schedule<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="/index/testimonials">
-                                testimonials<span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/index/contact">contact</a>
-                        </li>
-                        <li class="nav-item d-none d-lg-inline">
-                            <div class="icon-menu">
-                                <ul>
-                                    <li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>
-                                </ul>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">register</a>
-                        </li>
-                    </ul>
-                </div>
+                    @endguest
+                </ul>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h1><i class="material-icons prefix">settings</i> Dashboard <small>Manage your site</small></h1>
             </div>
-        </nav>
-    </header>
-
-
-
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="../../../../favicon.ico">
-
-        <title>N-Studio Zumba</title>
-
-        <!-- Bootstrap core CSS -->
-        <!--<link href="css/app.css" rel="stylesheet"> -->
-        <link href="css/dash-style.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <!-- Custom styles for this template -->
-        <link href="dashboard.css" rel="stylesheet">
 
 
 
 
+        </div>
+    </div>
+</header>
 
+<section id="breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="active">Employees</li>
+        </ol>
+    </div>
+</section>
 
-    </head>
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="/admin/dashboard" class="list-group-item  ">
 
-    <body>
+                        <i class="material-icons prefix ">settings</i> Dashboard
+                    </a>
 
+                    <a href="/admin/receptionist" class="list-group-item active main-color-bg"><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
+                    <a href="/admin/customer" class="list-group-item"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
+                    <a href="users.html" class="list-group-item"><i class="material-icons prefix">notifications</i> Notifications<span class="badge">5</span></a>
+                    <a href="posts.html" class="list-group-item"><i class="material-icons prefix">attach_money</i> Payments<span class="badge">56</span></a>
+                    <a href="admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
 
-
-
-
-
-
-    <div class="cntn"></div>
-
-
-    <header class="header">
-        <nav class="navbar  navbar-dark">
-            <div class="container-fluid">
-
-                <!--  <div class="row"> -->
-
-                <div class="navbar-header">
-
-
-
-
-                    <div class=" col-md-2 ">
-                        <nav class=" menu-sidebar d-none d-lg-block bg-dark  " >
-                            <!-- col-md-4 d-none d-md-block bg-dark sidebar-->
-                            <div   class="collapse navbar-collapse" id="navbarNavDropdown">
-
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item ">
-                                        <a class="nav-link" href="/admin/dashboard">
-                                            <span data-feather="home"></span>
-                                            DASHBOARD <span class="sr-only">(current)</span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-link " href="/receptionist">
-                                            <span data-feather="user"></span>
-                                            RECEPTIONIST
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/customers">
-                                            <span data-feather="users"></span>
-                                            CUSTOMERS
-                                        </a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">
-                                            <span data-feather="bell"></span>
-                                            NOTIFICATIONS
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">
-                                            <span data-feather="dollar-sign"></span>
-                                            PAYMENTS
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#">
-                                            <span data-feather="file-text"></span>
-                                            REPORTS
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-
-
-
-                    <div role="main" class="col-md-10 px-4" >
-                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-                            <div class="tabledesign">
-                                <div style="float: right">
-
-                                    <a class=" btn  button-add " href="{{url('/admin/receptionist/create')}}"><i class="fa fa-plus-circle" style="font-size:48px;"></i></a>
-                                </div>
-                                <br>
-                            <table class="table table-dark" width="80%" height="50%" >
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>NIC</th>
-                                    <th>DOB</th>
-                                    <th>Address</th>
-                                    <th>TPno</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($receptionists as $receptionist)
-                                    <tr>
-                                        <td>{{ $receptionist->name }}</td>
-                                        <td>{{ $receptionist->email }}</td>
-                                        <td>{{ $receptionist->nic }}</td>
-                                        <td>{{ $receptionist->dob }}</td>
-                                        <td>{{ $receptionist->address }}</td>
-                                        <td>{{ $receptionist->tpno }}</td>
-                                        <td>
-                                            <div class="row"><div class="col">
-                                                    <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="btn button-edit">Edit</button></a>
-                                                </div>
-                                                <div class="col">
-                                                    <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn button-delete">Delete</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                            </div>
-                            <!--<div class=" col-md-6 col-lg-8" style="background-color:#FF1493;"> -->
+                </div>
+                <div class="well">
+                    <h4>Disk Space Used</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                            60%
                         </div>
                     </div>
+                    <h4>Bandwidth Used</h4>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                            40%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <!-- Website Overview -->
+                <div class="panel panel-default">
+                    <div class="panel-heading main-color-bg">
+                        <h3 class="panel-title">Employees Overview</h3>
 
-    </header>
+                    </div>
+                    <div style="float: right;" >
+                        <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn  ">ADD</button></a>
+                         </div>
 
+                </div>
+                <!-- Latest Users -->
+                <div class="panel panel-default">
 
-    <!--  <div class="container">
-          <div class="row">
-              <div class="col-md-2">left side</div>
-              <div class="col-md-8">middle</div>
-              <div class="col-md-2">right side</div>
-          </div>
-      </div>  -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    <div class="panel-body">
 
 
 
+                        <table class="table thread-dark" width="80%" height="50%" >
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>NIC</th>
+                                <th>DOB</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($receptionists as $receptionist)
+                                <tr>
+                                    <td>{{ $receptionist->name }}</td>
+                                    <td>{{ $receptionist->email }}</td>
+                                    <td>{{ $receptionist->nic }}</td>
+                                    <td>{{ $receptionist->dob }}</td>
+                                    <td>{{ $receptionist->address }}</td>
+                                    <td>{{ $receptionist->tpno }}</td>
+                                    <td>
+                                        <div class="row"><div class="col">
+                                                <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                            </div>
+
+                                    </td>  <td>
+                                                <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="delbtn">DELETE</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <p>Copyright © <span>N Studio Zumba.</span> All Rights Reserved</p>
+</footer>
+
+<!-- Modals -->
+
+<!-- Add Page -->
+<div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Page</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Page Title</label>
+                        <input type="text" class="form-control" placeholder="Page Title">
+                    </div>
+                    <div class="form-group">
+                        <label>Page Body</label>
+                        <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Published
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Tags</label>
+                        <input type="text" class="form-control" placeholder="Add some Tags....">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Description</label>
+                        <input type="text" class="form-control" placeholder="Add some Description....">
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 
+<script>
+    CKEDITOR.replace( 'editor1' );
+</script>
 
 
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
 
 
-
-
-
-
-
-
-    <!-- <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
-
-         </div>
-
-         <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-
-
-     </main>
-     </div>
-     </div> -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-
-    <!-- Icons
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-        feather.replace()
-    </script>
-
-    Graphs
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-                datasets: [{
-                    data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                    lineTension: 0,
-                    backgroundColor: 'transparent',
-                    borderColor: '#007bff',
-                    borderWidth: 4,
-                    pointBackgroundColor: '#007bff'
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: false
-                        }
-                    }]
-                },
-                legend: {
-                    display: false,
-                }
-            }
-        });
-    </script> -->
+</body>
+</html>
