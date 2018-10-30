@@ -1,3 +1,6 @@
+
+
+
 @extends('layouts.static_app')
 
 
@@ -112,75 +115,22 @@
             </div>
             <!-- /.row -->
 
+/////////////////////////////////
 
 
-        <div class="container-fluid">
-
-            <div class="row " style="margin-bottom: 20px">
-                <div class="col-lg-4 col-md-2">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/p6.png') }}" width="350" >
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-2">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/p7.png') }}" width="350">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-2">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/p8.png') }}" width="350">
-                    </div>
-                </div>
-
+            <div class="gallery">
+                <a href="{{ URL::asset('images/about/p6.png') }}"><img src="{{ URL::asset('images/about/p6.png') }}"  height="280px"></a>
+                <a href="{{ URL::asset('images/about/p7.png') }}"><img src="{{ URL::asset('images/about/p7.png') }}"  height="280px"></a>
+                <a href="{{ URL::asset('images/about/p8.png') }}"><img src="{{ URL::asset('images/about/p8.png') }}"  height="280px"></a>
+                <a href="{{ URL::asset('images/about/pic9.jpg') }}"><img src="{{ URL::asset('images/about/pic9.jpg') }}"  height="300px"></a>
+                <a href="{{ URL::asset('images/about/pic7.jpg') }}"><img src="{{ URL::asset('images/about/pic7.jpg') }}"  height="300px"></a>
+                <a href="{{ URL::asset('images/about/pic6.jpg') }}"><img src="{{ URL::asset('images/about/pic6.jpg') }}"  height="300px"></a>
+                <a href="{{ URL::asset('images/about/1.jpg') }}"><img src="{{ URL::asset('images/about/1.jpg') }}"  height="450px"></a>
+                <a href="{{ URL::asset('images/about/p2.png') }}"><img src="{{ URL::asset('images/about/p2.png') }}"  height="450px"></a>
+                <a href="{{ URL::asset('images/about/p3.png') }}"><img src="{{ URL::asset('images/about/p3.png') }}" height="450px"></a>
             </div>
 
-
-
-
-            <div class="row " style="margin-bottom: 20px" >
-                <div class="col-lg-4 col-md-3">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/pic9.jpg') }}" width="350" height="300">
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-3">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/pic7.jpg') }}" width="350" height="300">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/pic6.jpg') }}" width="350" height="300">
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row " style="margin-bottom: 20px">
-                <div class="col-lg-4 col-md-2">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/1.jpg') }}" width="350" height="450" >
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-2">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/p2.png') }}" width="350" height="450">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-2">
-                    <div class="opening-img">
-                        <img src="{{ URL::asset('images/about/p3.png') }}" width="350" height="450">
-                    </div>
-                </div>
-
-                <div class="row "></div>
-
-
-            </div>
-
-        </div>
+            ////////////////////////
         </div>
     </div>
     <!--gallery-area end-->

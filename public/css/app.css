@@ -10558,3 +10558,16 @@ a.text-dark:focus {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.gallery{
+  margin: 10px 10px;
+}
+.gallery img{
+  width: 350px;
+  padding: 20px;
+  filter: grayscale(100%);
+  transition: 1s;
+}
+.gallery img:hover{
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
