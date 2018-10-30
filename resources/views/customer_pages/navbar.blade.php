@@ -26,12 +26,12 @@
                         </a>
                     </li>
                     <li class="nav-item {{Request::is('home/class_packages') ? "active" : ""}}">
-                        <a class="nav-link " href="/index/class_packages">
+                        <a class="nav-link " href="/home/class_packages">
                             classes<span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item {{Request::is('home/schedule') ? "active" : ""}}">
-                        <a class="nav-link " href="/index/schedule">
+                        <a class="nav-link " href="/home/schedule">
                             schedule<span class="sr-only">(current)</span>
                         </a>
                     </li>

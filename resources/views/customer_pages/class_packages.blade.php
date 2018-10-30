@@ -61,14 +61,40 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item d-none d-lg-inline">
+                        <!--<li class="nav-item d-none d-lg-inline">
                             <div class="icon-menu">
                                 <ul>
                                     <li><a href="#" class="search-btn search-box-btn"><i class="fa fa-bell"></i></a></li>
                                 </ul>
                             </div>
-                        </li>
+                        </li>-->
 
+                        <!-- new notification dropdown for testing-->
+                        @if(Auth::check())
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-bell"></i><span class="badge badge-danger" id="count-notification">
+                                    {{auth()->user()->unreadNotifications->count()}}
+                                </span><span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="max-width:1200px;max-height:400px;overflow-x:auto;overflow-y: auto;" >
+                                    @if(auth()->user()->notifications->count())
+                                        @foreach(auth()->user()->notifications as $notification)
+                                            <a class="dropdown-item" href="#" style="background-color:#000000">
+                                                <b style="color: #4c5054">HealthTip : </b>{{$notification->data['data']}}<br>
+                                                <small style="color: #4c5054">{{$notification->created_at->diffForHumans()}}</small>
+                                                <?php $notification->markAsRead()?>
+                                            </a>
+                                        @endforeach
+                                    @else
+                                        <a class="dropdown-item" href="#">
+                                            No Notifications
+                                        </a>
+                                    @endif
+                                </div>
+                            </li>
+                        @endif
+                    <!--end of testing -->
                         {{--User name and logout button start--}}
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
