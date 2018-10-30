@@ -66,7 +66,7 @@ Route::prefix('admin')->group(function() {
     Route::resource('/receptionist','ReceptionistController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin');
     Route::resource('/customers', 'UserController')->middleware('admin');
-    Route::get('/dashboard/class_packages', 'PackageController@admin')->middleware('admin');
+    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
