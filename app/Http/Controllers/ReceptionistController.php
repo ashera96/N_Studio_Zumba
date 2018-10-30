@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Mail;
 use App\Mail\welcome;
 use App\SystemUser;
+use DB;
 
 class ReceptionistController extends Controller
 {
@@ -20,7 +21,12 @@ class ReceptionistController extends Controller
      */
     public function index()
     {
-        $receps=Receptionist::all();
+        //$receps=Receptionist::all();
+        //return view('admin_panel.index',['receptionists'=>$receps]);
+        $receps =DB::table('receptionists')
+            ->join('system_users','receptionists.id','=','system_users.id')
+            ->select('system_users.*','receptionists.*')
+            ->get();
         return view('admin_panel.index',['receptionists'=>$receps]);
     }
 
@@ -142,7 +148,7 @@ class ReceptionistController extends Controller
         $recepnew ->save();
         $system_users ->save();
 
-        return redirect('receptionist')->with('success','Staff Updated');
+        return redirect('admin/receptionist')->with('success','Staff Updated');
 
     }
 
