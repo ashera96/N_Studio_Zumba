@@ -61,20 +61,20 @@ Route::prefix('home')->group(function() {
 | Administrator Panel Routes
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('admin')->group(function() {
     //Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::resource('/receptionist','ReceptionistController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin');
     Route::resource('/customers', 'UserController')->middleware('admin');
-    Route::get('/dashboard/class_packages', 'PackageController@admin')->middleware('admin');
+    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
     Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin');
     Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
-    Route::post('/create_notifications','NotificationController@store_health_tips')->middleware('admin');
+    Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin');
+    Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin');
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');

@@ -80,7 +80,7 @@
                                     @if(auth()->user()->notifications->count())
                                         @foreach(auth()->user()->notifications as $notification)
                                             <a class="dropdown-item" href="#" style="background-color:#000000">
-                                                <b style="color: #4c5054">HealthTip : </b>{{$notification->data['data']}}<br>
+                                                {{$notification->data['data']}}<br>
                                                 <small style="color: #4c5054">{{$notification->created_at->diffForHumans()}}</small>
                                                 <?php $notification->markAsRead()?>
                                             </a>

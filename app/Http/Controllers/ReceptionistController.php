@@ -30,10 +30,6 @@ class ReceptionistController extends Controller
         return view('admin_panel.index',['receptionists'=>$receps]);
     }
 
-
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -115,6 +111,10 @@ class ReceptionistController extends Controller
     {
         $recepfind = Receptionist::findOrFail($id);
         return view('admin_panel.edit',['receptionist'=>$recepfind]);
+
+        $recepfind = SystemUser::findOrFail($id);
+        return view('admin_panel.edit',['system_users'=>$recepfind]);
+
     }
 
     /**
@@ -139,6 +139,7 @@ class ReceptionistController extends Controller
         $recepnew =Receptionist::findOrFail($id);
         $system_users = SystemUser::findOrFail($id);
         $recepnew ->name =$request ->name;
+        //$recepnew ->email =$request ->email;
         $system_users ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
         $recepnew ->dob =$request ->dob;
