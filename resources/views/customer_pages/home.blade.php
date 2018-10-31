@@ -267,6 +267,7 @@
 
     <br>
     <h2 style="color: #e83e8c">Notifications</h2>
+
     <br>
 
 @endsection
