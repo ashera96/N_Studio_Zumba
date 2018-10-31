@@ -51,7 +51,6 @@ class NotificationController extends Controller
            $current_user = Auth::user();
            //check 4 d sysUser's role_id==2 for send to customers
            $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
-
            Notification::send($system_user, new AddGeneralNews($general_notification));
 
            $data = [
@@ -60,18 +59,16 @@ class NotificationController extends Controller
            Mail::send('email.generalNews',$data,function ($general_news) use ($data){
                $current_user = Auth::user();
 
-               $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->first();
+               $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
 
-               $general_news -> to($system_user->email);
+               foreach ($system_user as $su){
+                   $general_news -> bcc($su->email); //for hide others email addresses
+                   $general_news -> subject('General Notifications');
+               }
            });
        }
 
        return redirect()->back();
    }
-
-    /*public function sendGeneralMail($system_user){ //function to send an email
-        Mail::to($system_user)->send(new generalNewsNotification($system_user));
-    }*/
-
 
 }
