@@ -43,7 +43,6 @@ Route::post('/index/contact','MessagesController@submit');
 | User Routes
 |--------------------------------------------------------------------------
 */
-
 Route::get('/home/about', 'CustomerPageController@show_about')->middleware('customer');
 Route::get('/home/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
 Route::get('/home/class_packages', 'PackageController@customer')->middleware('customer');
@@ -53,13 +52,11 @@ Route::get('/home/testimonials', 'CustomerPageController@show_testimonials')->mi
 Route::get('/home/contact', 'CustomerPageController@show_contact')->middleware('customer');
 Route::get('/home/payment', 'CustomerPageController@show_payment')->middleware('customer');
 Route::get('/home/reports', 'CustomerPageController@show_reports')->middleware('customer');
-
 /*
 |--------------------------------------------------------------------------
 | Administrator Panel Routes
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('admin')->group(function() {
     //Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -72,7 +69,8 @@ Route::prefix('admin')->group(function() {
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
     Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin');
     Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
-    Route::post('/create_notifications','NotificationController@store_health_tips')->middleware('admin');
+    Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin');
+    Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin');
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');

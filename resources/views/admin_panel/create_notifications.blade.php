@@ -52,7 +52,7 @@
 
 <div class="container">
     <!-- form for health tips notification-->
-     <form method="POST" action="{{ url('admin/create_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
+     <form method="POST" action="{{ url('admin/create_health_tips') }}"  aria-label="{{ __('Create_Notifications') }}">
          {{csrf_field()}}
 
         <div class="form-group row">
@@ -78,20 +78,21 @@
                             </div>
         </div>
      </form>
-
+</div>
     <!-- forrm for general notifications -->
-
-    <form method="POST" action="{{ route('register') }}"  aria-label="{{ __('Register') }}">
+<div class="container">
+    <form method="POST" action="{{ url('admin/create_general_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
+        {{csrf_field()}}
         <div class="form-group row">
 
             <h style="color: #ae003e">Send General Notifications</h>
             <br>
             <div class="col-md-6">
-                <textarea id="post" type="text" class="form-control{{ $errors->has('post') ? ' is-invalid' : '' }}" placeholder="General Notifications" name="post" value="{{ old('post') }}" required></textarea>
+                <textarea id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" placeholder="General Notifications" name="general" value="{{ old('general') }}" required></textarea>
                 <br>
-                @if ($errors->has('post'))
+                @if ($errors->has('general'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('post') }}</strong>
+                        <strong>{{ $errors->first('general') }}</strong>
                     </span>
                 @endif
             </div>
@@ -105,8 +106,9 @@
             </div>
         </div>
     </form>
-
+</div>
     <!-- forrm for general notification e-mail -->
+<div class="container">
     <form method="POST" action="{{ route('register') }}"  aria-label="{{ __('Register') }}">
         <div class="form-group row">
 
@@ -131,10 +133,8 @@
 
         </div>
     </form>
-
+</div>
     <!-- forrm for medical issues notifications -->
-
-
 
 
 

@@ -14,21 +14,21 @@ class AddHealthTip extends Notification
 
     protected $health_tip;
 
-    public function __construct(HealthTip $health_tip)
+    public function __construct(HealthTip $health_tip) //pass a HealthTip model variable to the constructor
     {
         $this->health_tip = $health_tip;
     }
 
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database']; //notify through the database
     }
 
 
     public function toArray($notifiable)
     {
         return [
-            'data' => "".$this->health_tip->healthtips
+            'data' => "HealthTip : ".$this->health_tip->healthtips //return data for notification table data column
         ];
     }
 }

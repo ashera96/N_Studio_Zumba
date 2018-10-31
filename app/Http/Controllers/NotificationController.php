@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\GeneralNews;
 use App\HealthTip;
 use App\Notifications\AddHealthTip;
+use App\Notifications\AddGeneralNews;
 use App\SystemUser;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,7 +18,7 @@ class NotificationController extends Controller
         return view('admin_panel.create_notifications');
     }
 
-   public function store_health_tips(Request $request){
+   public function store_health_tips(Request $request){ //function to store healthtips in th db
         $this->validate($request, [
             'healthtips' => 'required',
         ]);
@@ -34,4 +36,21 @@ class NotificationController extends Controller
        return redirect()->back();
    }
 
+   public function store_general_news(Request $request){   //function to store general_news in db
+       $this->validate($request, [
+           'general' => 'required',
+       ]);
+
+        $general_notification = new GeneralNews();
+        $general_notification ->general_news = $request->general;
+
+       if($general_notification ->save()){
+           $current_user = Auth::user();
+           //check 4 d sysUser's role_id==2 for send to customers
+           $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
+
+           Notification::send($system_user, new AddGeneralNews($general_notification));
+       }
+       return redirect()->back();
+   }
 }
