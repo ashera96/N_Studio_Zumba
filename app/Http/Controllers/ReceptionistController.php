@@ -30,10 +30,6 @@ class ReceptionistController extends Controller
         return view('admin_panel.index',['receptionists'=>$receps]);
     }
 
-
-
-
-
     /**
      * Show the form for creating a new resource.
      *
