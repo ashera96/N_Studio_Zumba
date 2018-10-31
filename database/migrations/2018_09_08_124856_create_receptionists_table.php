@@ -19,7 +19,7 @@ class CreateReceptionistsTable extends Migration
             $table->string('nic')->unique();
             $table->date('dob');
             $table->string('address');
-            $table->string('tpno')->unique();
+            $table->string('tpno'); //changed
             $table->foreign('id')->references('id')->on('system_users');
             $table->timestamps();
         });
