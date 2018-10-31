@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 
 class UserController extends Controller
 {
@@ -14,7 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $new  =User::all(); //->where('status', '=', '1');
+       // $new  =User::all(); //->where('status', '=', '1');
+       // return view('admin_panel.user_index',['users'=>$new]);
+        $new=DB::table('users')
+            ->join('system_users','users.id','=','system_users.id')
+            ->select('system_users.*','users.*')
+            ->get();
         return view('admin_panel.user_index',['users'=>$new]);
     }
 

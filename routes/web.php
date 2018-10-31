@@ -40,18 +40,22 @@ Route::post('/index/contact','MessagesController@submit');
 
 /*
 |--------------------------------------------------------------------------
-| User Routes
+| Customer Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/home/about', 'CustomerPageController@show_about')->middleware('customer');
-Route::get('/home/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
-Route::get('/home/class_packages', 'PackageController@customer')->middleware('customer');
 
-//Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
-Route::get('/home/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
-Route::get('/home/contact', 'CustomerPageController@show_contact')->middleware('customer');
-Route::get('/home/payment', 'CustomerPageController@show_payment')->middleware('customer');
-Route::get('/home/reports', 'CustomerPageController@show_reports')->middleware('customer');
+Route::prefix('home')->group(function() {
+    Route::get('/about', 'CustomerPageController@show_about')->middleware('customer');
+    Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
+    Route::get('/class_packages', 'PackageController@customer')->middleware('customer');
+
+    //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
+    Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
+    Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
+    Route::get('/payment', 'CustomerPageController@show_payment')->middleware('customer');
+    Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Administrator Panel Routes
