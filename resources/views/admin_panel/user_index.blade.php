@@ -162,25 +162,28 @@
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <div class="row"><div class="col">
+                                        <div class="row">
+                                            <div class="col">
                                                 <a href="{{url('admin/customers/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                             </div>
-
-                                    </td>  <td>
-                                        <form method="POST" {{--action="{{route('user.destroy',$user->id)}}--}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form method="POST" {{--action="{{route('user.destroy',$user->id)}}"--}}>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="delbtn">DELETE</button>
+                                            <button type="submit" class="delbtn">ACTIVE</button>
                                         </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
-                </td>
-                </tr>
-                @endforeach
-                </tbody>
-                </table>
             </div>
-    </div>
+        </div>
     </div>
 </section>
 
