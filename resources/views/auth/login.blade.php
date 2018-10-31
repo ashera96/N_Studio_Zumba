@@ -8,7 +8,7 @@
 
                     <div class="card-body">
                         <nav class="navbar navbar-expand-lg navbar-dark">
-                            <div class="container-fluid">
+                            <div class="container-fluid justify-content-center">
                                 <div>
                                     <a class="navbar-brand" href="/index"><img src={{ URL::asset('images/logo_nav.png') }}  alt="N_Studio_Zumba_Logo" style="width: 100px; height: 100px;"></a>
                                 </div>
@@ -82,7 +82,6 @@
 
                             <hr style="border-color: #FFFFFF">
                             <div class="form-group row text-center">
-                                {{--<label for="register" class="col-md-4 col-form-label">{{ __('Don\'t have an account?') }}</label>--}}
                                 <div class="col-md-12 offset-md-0">
                                     <a class="btn btn-link text-white" href="{{ route('register') }}">
                                         <label for="register" class="col-form-label">{{ __('Don\'t have an account?') }}</label>
