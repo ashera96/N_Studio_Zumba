@@ -131,7 +131,7 @@
                     <a href="/admin/customers" class="list-group-item"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
                     <a href="users.html" class="list-group-item"><i class="material-icons prefix">notifications</i> Notifications<span class="badge">5</span></a>
                     <a href="posts.html" class="list-group-item"><i class="material-icons prefix">attach_money</i> Payments<span class="badge">56</span></a>
-                    <a href="admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
+                    <a href="/admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
 
                 </div>
                 <div class="well">
