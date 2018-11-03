@@ -96,20 +96,20 @@
 
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="/dashboard">
+                                        <a class="nav-link" href="/admin/dashboard">
                                             <span data-feather="home"></span>
                                             DASHBOARD <span class="sr-only">(current)</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link " href="/receptionist">
+                                        <a class="nav-link " href="/admin/receptionist">
                                             <span data-feather="user"></span>
                                             RECEPTIONIST
                                         </a>
                                     </li>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="customers">
+                                        <a class="nav-link" href="/admin/customers">
                                             <span data-feather="users"></span>
                                             CUSTOMERS
                                         </a>

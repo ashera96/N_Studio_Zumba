@@ -33,8 +33,8 @@
                 <li class="active"><a href="/index">Home</a></li>
                 <li><a href="/index/about">About</a></li>
                 <li><a href="/index/gallery">Gallery</a></li>
-                <li><a href="/class_packages">Classes</a></li>
-                <li><a href="posts.html">Schedules</a></li>
+                <li><a href="/admin/dashboard/class_packages">Classes</a></li>
+                <li><a href="/admin/dashboard/schedule">Schedules</a></li>
                 <li><a href="/index/testimonials">Testimonials</a></li>
                 <li><a href="/index/contact">Contact</a></li>
             </ul>
@@ -93,7 +93,7 @@
 <section id="breadcrumb">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="active">Employees</li>
+            <li class="active">Customers</li>
         </ol>
     </div>
 </section>
@@ -108,8 +108,8 @@
                         <i class="material-icons prefix ">settings</i> Dashboard
                     </a>
 
-                    <a href="/admin/receptionist" class="list-group-item active main-color-bg"><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
-                    <a href="/admin/customer" class="list-group-item"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
+                    <a href="/admin/receptionist" class="list-group-item  "><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
+                    <a href="/admin/customers" class="list-group-item active main-color-bg"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
                     <a href="users.html" class="list-group-item"><i class="material-icons prefix">notifications</i> Notifications<span class="badge">5</span></a>
                     <a href="posts.html" class="list-group-item"><i class="material-icons prefix">attach_money</i> Payments<span class="badge">56</span></a>
                     <a href="admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
@@ -162,25 +162,28 @@
                                     <td>{{ $user->username }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        <div class="row"><div class="col">
+                                        <div class="row">
+                                            <div class="col">
                                                 <a href="{{url('admin/customers/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                             </div>
-
-                                    </td>  <td>
-                                        <form method="POST" {{--action="{{route('user.destroy',$user->id)}}--}}">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <form method="POST" {{--action="{{route('user.destroy',$user->id)}}"--}}>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="delbtn">DELETE</button>
+                                            <button type="submit" class="delbtn">ACTIVE</button>
                                         </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
-                </td>
-                </tr>
-                @endforeach
-                </tbody>
-                </table>
             </div>
-    </div>
+        </div>
     </div>
 </section>
 
