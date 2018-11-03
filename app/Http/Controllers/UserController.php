@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Rules\ageValidation;
+use App\Rules\nicValidation;
 use DB;
 
 class UserController extends Controller
@@ -80,22 +82,50 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
+        /*$this->validate($request,[
             'id' => 'required',
-            'name'=>'required',
-            'username'=>'required',
+            'name'=>'required|string|min:2',
+            'dob' => ['required',new ageValidation],
+            'nic' => ['required','unique:users',new nicValidation],
 
         ]);
 
         $cusfind =User::find($id);
         $cusfind ->id =$request ->get('id');
         $cusfind ->name =$request ->get('name');
-        $cusfind ->username =$request ->get('username');
         $cusfind ->nic =$request ->get('nic');
-        $cusfind ->email =$request ->get('email');
-        $cusfind ->status =$request ->get('status');
+        $cusfind ->dob =$request ->get('dob');
         $cusfind ->save();
-        return redirect('/admin/customers')->with('success','Customer Updated');
+        return redirect('/admin/customers')->with('success','Customer Updated');*/
+
+        $this->validate($request,[
+            //'id' => 'required',
+            //'email'=>'required|email',
+            'name'=>'required|string',//|min:2',
+            'nic' => ['required',new nicValidation],
+            'dob' => ['required',new ageValidation],
+            //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+            'address' => 'required',
+            //'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+        ]);
+
+        $cusfind =User::findOrFail($id);
+        //$system_users = SystemUser::findOrFail($id);
+        //$cusfind ->id = $request ->id;
+        $cusfind ->name =$request ->name;
+        //$recepnew ->email =$request ->email;
+        //$system_users ->email =$request ->email;
+        $cusfind ->nic =$request ->nic;
+        $cusfind ->dob =$request ->dob;
+        $cusfind ->address =$request ->address;
+        //$cusfind ->tpno =$request ->tpno;
+        //$system_users ->status=true;
+        $cusfind ->save();
+        //$system_users ->save();
+
+        return redirect('admin/customers')->with('success','Customer Updated');
+
+
     }
 
     /**
