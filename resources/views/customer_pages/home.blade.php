@@ -4,6 +4,12 @@
 @section('content')
 
     <!-- /.header start -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        setInterval(function(){
+            $('#x').load('/home #x')
+        },15000);
+    </script>
 
     <header class="header fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -14,7 +20,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item {{Request::is('home') ? "active" : ""}}">
                             <a class="nav-link " href="/home">
@@ -74,27 +80,39 @@
 
                         <!-- new notification dropdown for testing-->
                         @if(Auth::check())
-                            <li class="nav-item dropdown">
+                            <li id="x" class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-bell"></i><span class="badge badge-danger" id="count-notification">
                                     {{auth()->user()->unreadNotifications->count()}}
                                 </span><span class="caret"></span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="max-width:1200px;max-height:400px;overflow-x:auto;overflow-y: auto;" >
-                                    @if(auth()->user()->notifications->count())
-                                    @foreach(auth()->user()->notifications as $notification)
-                                                <a class="dropdown-item" href="#" style="background-color:#000000">
-                                                    {{$notification->data['data']}}<br>
-                                                    <small style="color: #4c5054">{{$notification->created_at->diffForHumans()}}</small>
-                                                    <?php $notification->markAsRead()?>
-                                                </a>
-                                            @endforeach
+                                <ul id="notifications" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="max-width:1200px;max-height:400px;overflow-x:auto;overflow-y: auto;" >
+
+                            @if(auth()->user()->notifications->count())
+                                <li style="background-color: #000000"><a style="color: #51ce45;" href="{{route('markAsRead')}}">Mark All As Read</a></li>
+                                @foreach(auth()->user()->unreadNotifications as $notification)
+                                    <li style="background-color: #000000">
+                                        <a style="display: inline-block" href="#">
+                                            {{$notification->data['data']}}<br>
+                                            <small>{{$notification->created_at->diffForHumans()}}</small>
+                                        </a>
+                                    </li>
+                                @endforeach
+                                @foreach(auth()->user()->readNotifications as $notification)
+                                    <li style="background-color: #000000;">
+                                        <a style="display: inline-block;color: #ae003e" href="#">
+                                            <b>{{$notification->data['data']}}</b><br>
+                                            <small style="color: #ae003e">{{$notification->created_at->diffForHumans()}}</small>
+                                        </a>
+                                    </li>
+                                @endforeach
                                     @else
-                                            <a class="dropdown-item" href="#">
-                                               No Notifications
-                                            </a>
+                                        <a class="dropdown-item" href="#">
+                                            No Notifications
+                                        </a>
                                     @endif
-                                </div>
+
+                                </ul>
                             </li>
                         @endif
                     <!--end of testing -->
