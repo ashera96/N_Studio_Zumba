@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Notification;
 use App\Mail\generalNewsNotification;
+use Illuminate\Notifications\Notifiable;
 
 class NotificationController extends Controller
 {

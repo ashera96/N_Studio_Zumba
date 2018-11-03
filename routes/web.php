@@ -54,6 +54,10 @@ Route::prefix('home')->group(function() {
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
     Route::get('/payment', 'CustomerPageController@show_payment')->middleware('customer');
     Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer');
+    Route::get('markAsRead',function(){
+       auth()->user()->unreadNotifications->markAsRead();
+       return redirect()->back();
+    })->name('markAsRead');
 });
 
 /*
