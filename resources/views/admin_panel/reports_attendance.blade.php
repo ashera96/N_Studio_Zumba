@@ -133,33 +133,21 @@
             <div class="col-md-9">
                 <!-- Website Overview -->
                 <div class="panel panel-default">
-                        <nav class="navbar navbar-default ">
-                            <div class="container">
-                                <div id="navbar" class="collapse navbar-collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li class="active"><a href="/admin/reports">Weight</a></li>
-                                        <li><a href="/admin/reports_attendance">Attendance</a></li>
+                    <nav class="navbar navbar-default ">
+                        <div class="container">
+                            <div id="navbar" class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="/admin/reports">Weight</a></li>
+                                    <li class="active"><a href="/admin/reports_attendance">Attendance</a></li>
 
-                                    </ul>
+                                </ul>
 
-                                </div><!--/.nav-collapse -->
-                            </div>
-                        </nav>
-                </div>
-                <div>
-                    <div class="col-md-4">
-                        <div style="float: right;" >
-                            <a href="{{url('/admin/reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
+                            </div><!--/.nav-collapse -->
                         </div>
-                    </div>
-                    <div class="col-md-8">
-                        <h2>Hoii</h2>
-                    </div>
-
+                    </nav>
                 </div>
 
             </div>
-
         </div>
     </div>
 </section>
@@ -229,4 +217,5 @@
 
 </body>
 </html>
+
 
