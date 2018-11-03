@@ -1,12 +1,11 @@
 @extends('layouts.login_app')
 
 @section('content')
-    <div class="container" style="margin-top: 70px">
+    <div class="container" style="margin-top: 70px;">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-10">
-                <div class="card shadow" style="background: rgba(0, 0, 0, 0.7); opacity: 0.8; position: absolute; top: 0; width: 100%;">
-
-                    <div class="card-body">
+                <div class="card shadow" style="">
+                    <div class="card-body" style="background-color: rgba(0,0,0,0.66); position: absolute; width: 100%;padding: 0;">
                         <nav class="navbar navbar-expand-lg navbar-dark">
                             <div class="container-fluid justify-content-center">
                                 <div>
@@ -14,11 +13,13 @@
                                 </div>
                             </div>
                         </nav>
+                    </div>
+                    <div class="card-body" style="background-color: #FFFFFF; margin-top: 130px;">
                         <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                             @csrf
 
                             <div class="form-group row">
-                                <label for="email" class="col-sm-4 col-form-label text-md-right text-white">{{ __('Username Or Email') }}</label>
+                                <label for="email" class="col-sm-4 col-form-label text-md-right text-dark">{{ __('Username Or Email') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="username" type="text" class="form-control{{ $errors->has('username') || $errors->has('email') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
@@ -39,7 +40,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right text-white">{{ __('Password') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right text-dark">{{ __('Password') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -57,7 +58,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                        <label class="form-check-label text-white" for="remember">
+                                        <label class="form-check-label text-dark" for="remember">
                                             {{ __('Remember Me') }}
                                         </label>
                                     </div>
@@ -72,18 +73,19 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0 text-center" style="padding: 1px;">
+                            <div class="form-group row mb-0 text-center" style="padding: 0;">
                                 <div class="col-md-4 offset-md-4">
-                                    <a class="btn btn-link text-white" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link text-dark" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 </div>
                             </div>
 
-                            <hr style="border-color: #FFFFFF">
+                            <hr style="border-color: #343a40;opacity: 0.4;">
+
                             <div class="form-group row text-center">
                                 <div class="col-md-12 offset-md-0">
-                                    <a class="btn btn-link text-white" href="{{ route('register') }}">
+                                    <a class="btn btn-link text-dark" style="margin-bottom: 0" href="{{ route('register') }}">
                                         <label for="register" class="col-form-label">{{ __('Don\'t have an account?') }}</label>
                                         {{ __('Register') }}
                                     </a>
@@ -95,7 +97,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
 
 @endsection
