@@ -10,6 +10,6 @@ class ReportsController extends Controller
     public function index()
     {
         $new  =User::all();//->where('role_id', '=', '1');
-        return view('admin_panel.reports',['users'=>$new]);
+        return view('admin_panel.reports_index',['users'=>$new]);
     }
 }
