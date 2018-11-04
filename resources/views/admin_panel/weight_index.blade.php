@@ -147,15 +147,45 @@
                         </nav>
                 </div>
                 <div>
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div style="float: right;" >
-                            <a href="{{url('/admin/reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
+
+                                <a href="{{url('/admin/reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <h2>Hoii</h2>
-                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table thread-dark" width="80%" height="50%" >
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Weight</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($weights as $weight)
+                                <tr>
+                                    <td>{{ $weight->id }}</td>
+                                    <td>{{ $weight->month }}</td>
+                                    <td>{{ $weight->year }}</td>
+                                    <td>{{ $weight->user_weight }}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{{url('admin/reports/'.$weight->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
 
+                    </div>
                 </div>
 
             </div>

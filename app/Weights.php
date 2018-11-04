@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Weights extends Model
 {
-    protected $fillable = ['id','name','month','year','weight'];
+    protected $fillable = ['id','month','year','user_weight'];
 }
