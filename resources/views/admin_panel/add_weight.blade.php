@@ -28,15 +28,17 @@
                     </div>
                 @endif
 
+
+
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                    <!--  <input id="name" type="text" class="validate" name="name" value="{{Request::old('name')}}"-->
-                        <input id="name" type="text"  placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                    <!--  <input id="name" type="text" class="validate" name="name" value="{{Request::old('id')}}"-->
+                        <input id="id" type="text"  placeholder="Enter id" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" name="id" value="{{ old('id') }}" required autofocus>
 
-                        <label for="name">Name</label>
-                        @if($errors->has('name'))
-                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('name')}}</span>
+                        <label for="id">Id</label>
+                        @if($errors->has('id'))
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('id')}}</span>
                         @endif
 
                     </div>
@@ -66,12 +68,12 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">cake</i>
-                    <!--<input id="dob" type="date" class="validate" name="dob" value="{{Request::old('weight')}}">-->
-                        <input id="weight" type="text"  placeholder="Enter weight" class="form-control{{ $errors->has('weight') ? ' is-invalid' : '' }}" name="weight" value="{{ old('weight') }}" required autofocus>
+                    <!--<input id="dob" type="date" class="validate" name="dob" value="{{Request::old('user_weight')}}">-->
+                        <input id="user_weight" type="text"  placeholder="Enter weight" class="form-control{{ $errors->has('user_weight') ? ' is-invalid' : '' }}" name="-user_weight" value="{{ old('user_weight') }}" required autofocus>
 
-                        <label for="weight">Weight</label>
-                        @if($errors->has('weight'))
-                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('weight')}}</span>
+                        <label for="user_weight">Weight</label>
+                        @if($errors->has('user_weight'))
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('user_weight')}}</span>
                         @endif
                     </div>
                 </div>

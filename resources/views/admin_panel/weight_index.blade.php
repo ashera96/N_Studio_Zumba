@@ -133,29 +133,53 @@
             <div class="col-md-9">
                 <!-- Website Overview -->
                 <div class="panel panel-default">
-                        <nav class="navbar navbar-default ">
-                            <div class="container">
-                                <div id="navbar" class="collapse navbar-collapse">
-                                    <ul class="nav navbar-nav">
-                                        <li class="active"><a href="/admin/reports">Weight</a></li>
-                                        <li><a href="/admin/reports_attendance">Attendance</a></li>
+                    <nav class="navbar navbar-default ">
+                        <div class="container">
+                            <div id="navbar" class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="/admin/reports">Weight</a></li>
+                                    <li><a href="/admin/reports_attendance">Attendance</a></li>
 
-                                    </ul>
+                                </ul>
 
-                                </div><!--/.nav-collapse -->
-                            </div>
-                        </nav>
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </nav>
                 </div>
                 <div>
-                    <div class="col-md-4">
+                    <div class="col-md-12">
                         <div style="float: right;" >
+
                             <a href="{{url('/admin/reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <h2>Hoii</h2>
-                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table thread-dark" width="80%" height="50%" >
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->id }}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{{url('admin/reports/weight_view')}}"><button class="view">VIEW DETAILS</button></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
 
+                    </div>
                 </div>
 
             </div>
