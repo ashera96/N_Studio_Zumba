@@ -95,3 +95,9 @@ Route::prefix('receptionist')->group(function() {
     //Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');
 });
+
+
+// Admin testing
+Route::get('/',function() {
+   return view('admin_panel.test');
+});
