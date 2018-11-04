@@ -28,15 +28,17 @@
                     </div>
                 @endif
 
+
+
                 <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">account_circle</i>
-                    <!--  <input id="name" type="text" class="validate" name="name" value="{{Request::old('name')}}"-->
-                        <input id="name" type="text"  placeholder="Enter name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
+                    <!--  <input id="name" type="text" class="validate" name="name" value="{{Request::old('id')}}"-->
+                        <input id="id" type="text"  placeholder="Enter id" class="form-control{{ $errors->has('id') ? ' is-invalid' : '' }}" name="id" value="{{ old('id') }}" required autofocus>
 
-                        <label for="name">Name</label>
-                        @if($errors->has('name'))
-                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('name')}}</span>
+                        <label for="id">Id</label>
+                        @if($errors->has('id'))
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('id')}}</span>
                         @endif
 
                     </div>

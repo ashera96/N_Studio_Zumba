@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Weights;
 
-class ReportsController extends Controller
+class WeightController extends Controller
 {
     public function index()
     {
-        $new  =User::all();//->where('role_id', '=', '1');
-        return view('admin_panel.reports_index',['users'=>$new]);
+        $new  =Weights::all();//->where('role_id', '=', '1');
+        return view('admin_panel.weight_index',['weights'=>$new]);
     }
 
     public function create()
@@ -28,23 +28,34 @@ class ReportsController extends Controller
     {
         $this->validate($request,[
             'id' => 'required',
-            'name'=>'required|string|min:2',
             'month' => 'required',
             'year' => 'required',
-            'year' => 'required',
-            'weight' => 'required',
+            'user_weight' => 'required',
         ]);
 
-        $weightnew = new User;
+        $weightnew = new Weights;
 
         $weightnew ->id =$request ->id;
-        $weightnew ->name =$request ->name;
         $weightnew ->month =$request ->month;
         $weightnew->year =$request ->year;
-        $weightnew ->weight =$request ->weight;
+        $weightnew ->user_weight =$request ->user_weight;
 
         $weightnew ->save();
 
         return redirect('/admin/reports')->with('success','Weight Added');
+    }
+
+    public function edit($id)
+    {
+        $weightfind = Weights::findOrFail($id);
+        return view('admin_panel.weight_edit',['weights'=>$weightfind]);
+
+        /*$cusfind = User::find($id);
+        return view('admin_panel.user_edit',compact('cusfind','id')); */
+    }
+
+    public function destroy($id)
+    {
+
     }
 }
