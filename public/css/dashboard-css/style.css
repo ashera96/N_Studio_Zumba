@@ -237,21 +237,14 @@
   /*margin-bottom: 30px;*/
 /*}*/
 
-.addbtnnew{
-    background-color: #00A8FF !important;
-    color: #ffffff !important;
-    border-width: 0px;
-    border-radius: 5px;
-    height: 30px;
-    width: 120px;
-}
-
-
-
-
-
-
-
+/*.addbtnnew{*/
+    /*background-color: #00A8FF !important;*/
+    /*color: #ffffff !important;*/
+    /*border-width: 0px;*/
+    /*border-radius: 5px;*/
+    /*height: 30px;*/
+    /*width: 120px;*/
+/*}*/
 
 /*@media (max-width: 575px) {*/
   /*.navbar-expand-sm .navbar-nav .show .dropdown-menu .dropdown-item {*/
@@ -354,7 +347,6 @@
 }
 
 .card {
-    background: #FFFFFF;
     padding: 5px;
     width: 100%;
     text-align: left;
@@ -363,7 +355,7 @@
     font-size: 20px;
     line-height: 2em;
     margin-left: 30px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: none;
 }
 
 .card-header{
@@ -374,3 +366,31 @@
     background: rgba(0,0,0,0.1);
     color: black;
 }
+
+.overview-block {
+    margin-right: 25px;
+}
+
+.footer-block {
+    margin-right: 10px;
+}
+
+.overview-block .card-deck .card{
+    background: rgba(0,0,0,0.1);
+    border: none;
+}
+
+.overview-block .fa {
+    color: rgba(0,0,0,0.77);
+    padding-bottom: 10px;
+}
+
+.card-deck .card {
+    height: 200px;
+    width: 600px;
+}
+
+.overview-block .table {
+    color: rgba(0,0,0,0.66);
+}
+

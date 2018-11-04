@@ -52,7 +52,7 @@
 
     <!--Footer start-->
     <footer>
-        <div class="copyright pad30">
+        <div class="copyright pad30 footer-block">
             <h4>Copyright © <span>N Studio Zumba.</span> All Rights Reserved</h4>
         </div>
     </footer>

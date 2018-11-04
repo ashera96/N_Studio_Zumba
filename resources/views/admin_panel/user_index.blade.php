@@ -141,11 +141,7 @@
                 </div>
                 <!-- Latest Users -->
                 <div class="panel panel-default">
-
                     <div class="panel-body">
-
-
-
                         <table class="table thread-dark" width="80%" height="50%" >
                             <thead>
                             <tr>
