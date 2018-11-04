@@ -93,7 +93,7 @@
 <section id="breadcrumb">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="active">Customers</li>
+            <li class="active">Reports</li>
         </ol>
     </div>
 </section>
@@ -109,10 +109,10 @@
                     </a>
 
                     <a href="/admin/receptionist" class="list-group-item  "><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
-                    <a href="/admin/customers" class="list-group-item active main-color-bg"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
+                    <a href="/admin/customers" class="list-group-item "><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
                     <a href="users.html" class="list-group-item"><i class="material-icons prefix">notifications</i> Notifications<span class="badge">5</span></a>
                     <a href="posts.html" class="list-group-item"><i class="material-icons prefix">attach_money</i> Payments<span class="badge">56</span></a>
-                    <a href="/admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
+                    <a href="/admin/reports" class="list-group-item active main-color-bg"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
 
                 </div>
                 <div class="well">
@@ -133,55 +133,20 @@
             <div class="col-md-9">
                 <!-- Website Overview -->
                 <div class="panel panel-default">
-                    <div class="panel-heading main-color-bg">
-                        <h3 class="panel-title">Customers Overview</h3>
+                    <nav class="navbar navbar-default ">
+                        <div class="container">
+                            <div id="navbar" class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="/admin/reports">Weight</a></li>
+                                    <li class="active"><a href="/admin/reports_attendance">Attendance</a></li>
 
-                    </div>
+                                </ul>
 
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </nav>
                 </div>
-                <!-- Latest Users -->
-                <div class="panel panel-default">
 
-                    <div class="panel-body">
-
-
-
-                        <table class="table thread-dark" width="80%" height="50%" >
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($users as $user)
-                                <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->username }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        <div class="row">
-                                            <div class="col">
-                                                <a href="{{url('admin/customers/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <form method="POST" {{--action="{{route('user.destroy',$user->id)}}"--}}>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="delbtn">DELETE</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -252,4 +217,5 @@
 
 </body>
 </html>
+
 

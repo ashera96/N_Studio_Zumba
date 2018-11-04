@@ -79,6 +79,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
     Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin');
     Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin');
+    Route::get('/reports','ReportsController@show_reports_index')->middleware('admin');
+    Route::resource('/reports','ReportsController')->middleware('admin');
+    Route::get('/reports_attendance','ReportsAttendanceController@show_reports_attendance')->middleware('admin');
+    Route::resource('/reports_attendance','ReportsAttendanceController')->middleware('admin');
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');
