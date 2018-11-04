@@ -10571,3 +10571,34 @@ a.text-dark:focus {
   filter: grayscale(0%);
   transform: scale(1.1);
 }
+label{
+  color: deeppink;
+  margin-right: 20px;
+  font-size: 18px;
+}
+h1{
+  color: deeppink;
+  text-align: center;
+}
+form{
+  background: #3F3F3F;
+  padding: 20px;
+  border-radius: 10px;
+
+}
+input[type="submit"]{
+  background: #0098cb;
+  border: 0px;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  margin: 20px;
+}
+input[type="file"]{
+  background: #4c5054;
+  border: 0px;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  margin: 20px;
+}

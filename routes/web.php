@@ -75,6 +75,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
     Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin');
     Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin');
+    Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');
@@ -91,3 +92,5 @@ Route::prefix('receptionist')->group(function() {
     //Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');
 });
+
+Route::post('uploadss','UploadController@upload');

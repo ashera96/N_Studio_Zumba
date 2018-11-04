@@ -109,57 +109,26 @@
                         </div>
                         <h3>Welcome to N Studio Zumba</h3>
                         <p>Let Zumba Fitness be your Stress Reliever </p>
+
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
 
-/////////////////////////////////
+            /////////////////////////////////
 
 
-         <div class="gallery">
-
-             <a href="{{ URL::asset('images/about/p6.png') }}"><img src="{{ URL::asset('images/about/p6.png') }}"  height="300px"></a>
-             <a href="{{ URL::asset('images/about/p7.png') }}"><img src="{{ URL::asset('images/about/p7.png') }}"  height="300px"></a>
-             <a href="{{ URL::asset('images/about/p8.png') }}"><img src="{{ URL::asset('images/about/p8.png') }}"  height="300px"></a>
-             <a href="{{ URL::asset('images/about/pic9.jpg') }}"><img src="{{ URL::asset('images/about/pic9.jpg') }}"  height="300px"></a>
-             <a href="{{ URL::asset('images/about/pic7.jpg') }}"><img src="{{ URL::asset('images/about/pic7.jpg') }}"  height="300px"></a>
-             <a href="{{ URL::asset('images/about/pic6.jpg') }}"><img src="{{ URL::asset('images/about/pic6.jpg') }}"  height="300px"></a>
-             <a href="{{ URL::asset('images/about/1.jpg') }}"><img src="{{ URL::asset('images/about/1.jpg') }}"  height="480px"></a>
-             <a href="{{ URL::asset('images/about/p2.png') }}"><img src="{{ URL::asset('images/about/p2.png') }}"  height="480px"></a>
-             <a href="{{ URL::asset('images/about/p3.png') }}"><img src="{{ URL::asset('images/about/p3.png') }}" height="480px"></a>
-
-
-
-
-
-
-
-
-         </div>
-
-<div>
-
-
-       <!-- echo uploads::url('{{URL::asset("uploads/pic1.jpg")}}'); -->
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
+            <div class="gallery">
+                <h1>File Upload</h1><br><br>
+                <!--uploadss -->
+                <form action="{{URL::to('uploadss')}}" method="post" enctype="multipart/form-data">
+                    <label>Select image to upload</label>
+                    <input type="file" name="file" id="file">
+                    <input type="submit" value="Upload" name="submit">
+                    <input type="hidden" value="{{ csrf_token() }}" name="_token">
+               </form>
+            </div>
 
             ////////////////////////
         </div>
