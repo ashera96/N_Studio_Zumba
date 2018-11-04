@@ -54,17 +54,15 @@
     <!-- form for health tips notification-->
      <form method="POST" action="{{ url('admin/create_health_tips') }}"  aria-label="{{ __('Create_Notifications') }}">
          {{csrf_field()}}
-
+         <h style="color: #ae003e">Create Health Tips Notifications</h>
+         <br>
         <div class="form-group row">
-
-            <h style="color: #ae003e">Create Health Tips Notifications</h>
-            <br>
             <div class="col-md-6">
-                <textarea id="healthtips" type="text"  class="form-control{{ $errors->has('healthtips') ? ' is-invalid' : '' }}" placeholder="Health Tips" name="healthtips" value="{{ old('healthtips') }}" required></textarea>
+                <textarea id="healthtips" type="text"  class="form-control{{ $errors->has('healthtips') ? ' is-invalid' : '' }}" placeholder="Health Tips" name="healthtips" required autofocus>{{ old('healthtips') }}</textarea>
                 <br>
                 @if ($errors->has('healthtips'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('healthtips') }}</strong>
+                        <strong>HealthTip Notification maximum length exceeded !</strong>
                     </span>
                 @endif
             </div>
@@ -83,16 +81,15 @@
 <div class="container">
     <form method="POST" action="{{ url('admin/create_general_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
         {{csrf_field()}}
+        <h style="color: #ae003e">Send General Notifications</h>
+        <br>
         <div class="form-group row">
-
-            <h style="color: #ae003e">Send General Notifications</h>
-            <br>
             <div class="col-md-6">
-                <textarea id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" placeholder="General Notifications" name="general" value="{{ old('general') }}" required></textarea>
+                <textarea id="general" type="text" class="form-control{{ $errors->has('general') ? ' is-invalid' : '' }}" placeholder="General Notifications" name="general" required>{{ old('general') }}</textarea>
                 <br>
                 @if ($errors->has('general'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('general') }}</strong>
+                        <strong>General Notification maximum length exceeded !</strong>
                     </span>
                 @endif
             </div>
@@ -107,26 +104,26 @@
         </div>
     </form>
 </div>
-    <!-- forrm for general notification e-mail -->
+    <!-- forrm for general notification post -->
 <div class="container">
-    <form method="POST" action="{{ route('register') }}"  aria-label="{{ __('Register') }}">
-        <div class="form-group row">
+    <form method="POST" action="{{ url('admin/create_general_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
+        <h style="color: #ae003e">Create General News Post</h>
+        <br>
 
-            <h style="color: #ae003e">Send General Notification E-mail</h>
-            <br>
+        <div class="form-group row">
             <div class="col-md-6">
-                <textarea id="mail" type="text" class="form-control{{ $errors->has('mail') ? ' is-invalid' : '' }}" placeholder="General Notification Email" name="mail" value="{{ old('mail') }}" required></textarea>
+                <textarea id="post" type="text" class="form-control{{ $errors->has('post') ? ' is-invalid' : '' }}" placeholder="General News" name="post" value="{{ old('post') }}" required></textarea>
                 <br>
-                @if ($errors->has('mail'))
+                @if ($errors->has('post'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('mail') }}</strong>
+                        <strong>{{ $errors->first('post') }}</strong>
                     </span>
                 @endif
             </div>
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary" id="create1">
-                        {{ __('Send E-mail') }}
+                        {{ __('Create') }}
                     </button>
                 </div>
             </div>

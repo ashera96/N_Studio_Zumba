@@ -93,7 +93,7 @@
                                     {{auth()->user()->unreadNotifications->count()}}
                                 </span><span class="caret"></span>
                                 </a>
-                                <ul id="notifications" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="max-width:1200px;max-height:400px;overflow-x:auto;overflow-y: auto;" >
+                                <ul id="notifications" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="max-width:1200px;max-height:400px;overflow-x:auto;overflow-y: auto;background-color: black" >
                                     <div class="y">
                                         @if(auth()->user()->notifications->count())
                                             <li style="background-color: #000000"><a style="display: inline-block;color: #51ce45" href="{{route('markAsRead')}}">Mark All As Read</a></li>
@@ -106,15 +106,15 @@
                                                 </li>
                                             @endforeach
                                             @foreach(auth()->user()->readNotifications as $notification)
-                                                <li style="background-color: #000000;">
-                                                    <a style="display: inline-block;color: deeppink" href="#">
+                                                <li style="background-color: #000000">
+                                                    <a style="display: inline-block;color: #b39d7e" href="#">
                                                         {{$notification->data['data']}}<br>
-                                                        <small style="color: deeppink">{{$notification->created_at->diffForHumans()}}</small>
+                                                        <small style="color: #b39d7e">{{$notification->created_at->diffForHumans()}}</small>
                                                     </a>
                                                 </li>
                                             @endforeach
                                         @else
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item" href="#" style="padding-left: 130px">
                                                 No Notifications
                                             </a>
                                         @endif
