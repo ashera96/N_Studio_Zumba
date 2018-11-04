@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\ageOfReceptionistValidation;
 use Illuminate\Http\Request;
 use App\Receptionist;
 use App\Rules\ageValidation;
@@ -52,7 +53,7 @@ class ReceptionistController extends Controller
             'email'=>'required|unique:system_users|email',
             'name'=>'required|string|min:2',
             'nic' => ['required','unique:receptionists',new nicValidation],
-            'dob' => ['required',new ageValidation],
+            'dob' => ['required',new ageOfReceptionistValidation],
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
             'address' => 'required',
             'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
@@ -130,7 +131,7 @@ class ReceptionistController extends Controller
             'email'=>'required|email',
             'name'=>'required|string|min:2',
             'nic' => ['required',new nicValidation],
-            'dob' => ['required',new ageValidation],
+            'dob' => ['required',new ageOfReceptionistValidation],
             //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
             'address' => 'required',
             'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
