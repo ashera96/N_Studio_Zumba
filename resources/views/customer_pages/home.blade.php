@@ -4,6 +4,14 @@
 @section('content')
 
     <!-- /.header start -->
+    <style>
+        .y{
+            width:400px;
+            display:inline-block;
+            padding:3px 5px;
+            text-align:left;
+        }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         setInterval(function(){
@@ -87,9 +95,9 @@
                                 </span><span class="caret"></span>
                                 </a>
                                 <ul id="notifications" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="max-width:1200px;max-height:400px;overflow-x:auto;overflow-y: auto;" >
-
+                                    <div class="y">
                             @if(auth()->user()->notifications->count())
-                                <li style="background-color: #000000"><a style="color: #51ce45;" href="{{route('markAsRead')}}">Mark All As Read</a></li>
+                                        <li style="background-color: #000000"><a style="display: inline-block;color: #51ce45" href="{{route('markAsRead')}}">Mark All As Read</a></li>
                                 @foreach(auth()->user()->unreadNotifications as $notification)
                                     <li style="background-color: #000000">
                                         <a style="display: inline-block" href="#">
@@ -100,9 +108,9 @@
                                 @endforeach
                                 @foreach(auth()->user()->readNotifications as $notification)
                                     <li style="background-color: #000000;">
-                                        <a style="display: inline-block;color: #ae003e" href="#">
-                                            <b>{{$notification->data['data']}}</b><br>
-                                            <small style="color: #ae003e">{{$notification->created_at->diffForHumans()}}</small>
+                                        <a style="display: inline-block;color: deeppink" href="#">
+                                            {{$notification->data['data']}}<br>
+                                            <small style="color: deeppink">{{$notification->created_at->diffForHumans()}}</small>
                                         </a>
                                     </li>
                                 @endforeach
@@ -111,12 +119,11 @@
                                             No Notifications
                                         </a>
                                     @endif
-
+                                    </div>
                                 </ul>
                             </li>
                         @endif
                     <!--end of testing -->
-
                         {{--User name and logout button start--}}
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
