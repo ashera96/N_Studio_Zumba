@@ -315,6 +315,15 @@
     width: 100%;
 }
 
+.view{
+    background-color: #2d995b !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 120px;
+}
+
 /*.list-group:before {*/
     /*color: transparent;*/
     /*content: "•";*/
@@ -337,7 +346,6 @@
     color: #fff !important;
     box-shadow: inherit;
     border: 1px solid transparent !important;
-
 }
 
 .side-bar:hover {

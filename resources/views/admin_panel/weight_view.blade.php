@@ -159,18 +159,22 @@
                         <table class="table thread-dark" width="80%" height="50%" >
                             <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Weight</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $user)
+                            @foreach($weights as $weight)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $weight->month }}</td>
+                                    <td>{{ $weight->year }}</td>
+                                    <td>{{ $weight->user_weight }}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col">
-                                                <a href="{{url('admin/reports/weight_view')}}"><button class="view">VIEW DETAILS</button></a>
+                                                <a href="{{url('admin/reports/'.$weight->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                             </div>
                                         </div>
                                     </td>

@@ -68,12 +68,12 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">cake</i>
-                    <!--<input id="dob" type="date" class="validate" name="dob" value="{{Request::old('weight')}}">-->
-                        <input id="weight" type="text"  placeholder="Enter weight" class="form-control{{ $errors->has('weight') ? ' is-invalid' : '' }}" name="weight" value="{{ old('weight') }}" required autofocus>
+                    <!--<input id="dob" type="date" class="validate" name="dob" value="{{Request::old('user_weight')}}">-->
+                        <input id="user_weight" type="text"  placeholder="Enter weight" class="form-control{{ $errors->has('user_weight') ? ' is-invalid' : '' }}" name="-user_weight" value="{{ old('user_weight') }}" required autofocus>
 
-                        <label for="weight">Weight</label>
-                        @if($errors->has('weight'))
-                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('weight')}}</span>
+                        <label for="user_weight">Weight</label>
+                        @if($errors->has('user_weight'))
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('user_weight')}}</span>
                         @endif
                     </div>
                 </div>
