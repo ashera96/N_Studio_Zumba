@@ -75,71 +75,6 @@
     </header>
     <!--header end-->
 
-    {{--<div class="container-fluid pad90">--}}
-        {{--<div class="nav-side-menu">--}}
-            {{--<i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>--}}
-
-            {{--<div class="menu-list">--}}
-
-                {{--<ul id="menu-content" class="menu-content collapse out">--}}
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<i class="fa fa-dashboard fa-lg"></i> Dashboard--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-
-                    {{--<li  data-toggle="collapse" data-target="#products" class="collapsed active">--}}
-                        {{--<a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>--}}
-                    {{--</li>--}}
-                    {{--<ul class="sub-menu collapse" id="products">--}}
-                        {{--<li class="active"><a href="#">CSS3 Animation</a></li>--}}
-                        {{--<li><a href="#">General</a></li>--}}
-                        {{--<li><a href="#">Buttons</a></li>--}}
-                        {{--<li><a href="#">Tabs & Accordions</a></li>--}}
-                        {{--<li><a href="#">Typography</a></li>--}}
-                        {{--<li><a href="#">FontAwesome</a></li>--}}
-                        {{--<li><a href="#">Slider</a></li>--}}
-                        {{--<li><a href="#">Panels</a></li>--}}
-                        {{--<li><a href="#">Widgets</a></li>--}}
-                        {{--<li><a href="#">Bootstrap Model</a></li>--}}
-                    {{--</ul>--}}
-
-
-                    {{--<li data-toggle="collapse" data-target="#service" class="collapsed">--}}
-                        {{--<a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>--}}
-                    {{--</li>--}}
-                    {{--<ul class="sub-menu collapse" id="service">--}}
-                        {{--<li>New Service 1</li>--}}
-                        {{--<li>New Service 2</li>--}}
-                        {{--<li>New Service 3</li>--}}
-                    {{--</ul>--}}
-
-
-                    {{--<li data-toggle="collapse" data-target="#new" class="collapsed">--}}
-                        {{--<a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>--}}
-                    {{--</li>--}}
-                    {{--<ul class="sub-menu collapse" id="new">--}}
-                        {{--<li>New New 1</li>--}}
-                        {{--<li>New New 2</li>--}}
-                        {{--<li>New New 3</li>--}}
-                    {{--</ul>--}}
-
-
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<i class="fa fa-user fa-lg"></i> Profile--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-
-                    {{--<li>--}}
-                        {{--<a href="#">--}}
-                            {{--<i class="fa fa-users fa-lg"></i> Users--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
@@ -148,7 +83,7 @@
                 <!--Sidebar-area start-->
                 <div class="col-lg-2 col-md-3">
                     <div class="list-group shadow-sm">
-                        <a href="/admin/dashboard" class="list-group-item main-color-bg side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                        <a href="/admin/dashboard" class="list-group-item active side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                         <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
                         <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
                         <a href="users.html" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
@@ -158,8 +93,8 @@
                 </div>
                 <!--Sidebar-area end-->
 
-
                 <div class="col-lg-10 col-md-9 pad30">
+
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
@@ -167,7 +102,58 @@
                         <h3>Dashboard</h3>
                         <p>Manage N Studio Zumba</p>
                     </div>
-                </div>
+
+                    <!-- Website overview start -->
+                    <div class="row">
+                        <div class="card pad30">
+                            <div class="card-header">Website Overview</div>
+                            <div class="card-body block">
+                                hello
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Website overview end -->
+
+
+                    {{--<div class="card row">--}}
+                        {{--<div class="card-header">Website Overview</div>--}}
+                    {{--</div>--}}
+                    {{--<!-- Website Overview -->--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="panel panel-default">--}}
+                            {{--<div class="panel-heading main-color-bg">--}}
+                                {{--<h3 class="panel-title">Website Overview</h3>--}}
+                            {{--</div>--}}
+                            {{--<div class="panel-body">--}}
+                                {{--<div class="col-md-3">--}}
+                                    {{--<div class="well dash-box">--}}
+                                        {{--<h2><i class="material-icons prefix">people</i> 54</h2>--}}
+                                        {{--<h4>Active Users</h4>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-3">--}}
+                                    {{--<div class="well dash-box">--}}
+                                        {{--<h2><i class="material-icons prefix">visibility_off</i> 12</h2>--}}
+                                        {{--<h4>Inactive Users</h4>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-3">--}}
+                                    {{--<div class="well dash-box">--}}
+                                        {{--<h2><i class="material-icons prefix">delete</i> 6</h2>--}}
+                                        {{--<h4>Deleted Users</h4>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-3">--}}
+                                    {{--<div class="well dash-box">--}}
+                                        {{--<h2><i class="material-icons prefix">visibility</i> 128</h2>--}}
+                                        {{--<h4>Visitors</h4>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<!-- Website Overview end -->--}}
+
             </div>
             <!-- /.row -->
         </div>
