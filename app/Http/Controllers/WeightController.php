@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Weights;
+use App\User;
 
 class WeightController extends Controller
 {
     public function index()
     {
-        $new  =Weights::all();//->where('role_id', '=', '1');
-        return view('admin_panel.weight_index',['weights'=>$new]);
+        $new  =User::all();//->where('role_id', '=', '1');
+        return view('admin_panel.weight_index',['users'=>$new]);
+
+        $new  =Weight::all();//->where('role_id', '=', '1');
+        return view('admin_panel.weight_view',['weights'=>$new]);
     }
 
     public function create()
@@ -49,6 +53,9 @@ class WeightController extends Controller
     {
         $weightfind = Weights::findOrFail($id);
         return view('admin_panel.weight_edit',['weights'=>$weightfind]);
+
+        $userfind = User::findOrFail($id);
+        return view('admin_panel.weight_view',['users'=>$userfind]);
 
         /*$cusfind = User::find($id);
         return view('admin_panel.user_edit',compact('cusfind','id')); */

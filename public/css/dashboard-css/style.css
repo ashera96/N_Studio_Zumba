@@ -246,6 +246,15 @@ body{
     width: 120px;
 }
 
+.view{
+    background-color: #2d995b !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 120px;
+}
+
 
 
 
