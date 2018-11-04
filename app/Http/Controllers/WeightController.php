@@ -11,10 +11,8 @@ class WeightController extends Controller
     public function index()
     {
         $new  =User::all();//->where('role_id', '=', '1');
-        return view('admin_panel.weight_index',['users'=>$new]);
+        return view('admin_panel.weight_view',['users'=>$new]);
 
-        $new  =Weight::all();//->where('role_id', '=', '1');
-        return view('admin_panel.weight_view',['weights'=>$new]);
     }
 
     public function create()
@@ -51,12 +49,9 @@ class WeightController extends Controller
 
     public function edit($id)
     {
+
         $weightfind = Weights::findOrFail($id);
         return view('admin_panel.weight_edit',['weights'=>$weightfind]);
-
-        $userfind = User::findOrFail($id);
-        return view('admin_panel.weight_view',['users'=>$userfind]);
-
         /*$cusfind = User::find($id);
         return view('admin_panel.user_edit',compact('cusfind','id')); */
     }

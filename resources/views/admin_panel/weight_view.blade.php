@@ -174,7 +174,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col">
-                                                <a href="{{url('admin/reports/'.$weight->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                <a href="{{url('admin/reports/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                             </div>
                                         </div>
                                     </td>
