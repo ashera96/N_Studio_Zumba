@@ -16,4 +16,8 @@ class AdminController extends Controller
     {
         return view('admin_panel.dashboard');
     }
+    public function show_gallery()
+    {
+        return view('admin_panel.admin_gallery');
+    }
 }

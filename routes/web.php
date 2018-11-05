@@ -79,6 +79,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
     Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin');
     Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin');
+    Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
     Route::get('/reports','UserWeightController@show_weight_index')->middleware('admin');
     Route::resource('/reports','UserWeightController')->middleware('admin');
     Route::get('/weight_view','WeightController@show_weight_view')->middleware('admin');
@@ -101,3 +102,5 @@ Route::prefix('receptionist')->group(function() {
     //Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');
 });
+
+Route::post('uploadss','UploadController@upload');
