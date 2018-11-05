@@ -123,16 +123,11 @@
                     </div>
                     <div>
                         <br>
-                        <div class="col-md-12">
-                            <div style="float: right;" >
+                        <div class="col-md-6" align="center">
 
-                                <a href="{{url('/admin/reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <table class="table thread-dark" width="80%">
+                            <table class="table thread-dark" width="50%" align="center">
                                 <thead>
                                 <tr>
                                     <th>Id</th>
@@ -146,7 +141,7 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{{url('admin/weight_view')}}"><button class="view">VIEW DETAILS</button></a>
+                                                    <a href="{{url('admin/reports/'.$user->id.'/edit')}}"><button class="view">VIEW DETAILS</button></a>
                                                 </div>
                                             </div>
                                         </td>
@@ -158,6 +153,8 @@
                         </div>
                     </div>
 
+                </div>
+                    </div>
                 </div>
                 <!-- /.col -->
             </div>

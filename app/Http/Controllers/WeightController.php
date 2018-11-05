@@ -10,14 +10,14 @@ class WeightController extends Controller
 {
     public function index()
     {
-        $new  =User::all();//->where('role_id', '=', '1');
-        return view('admin_panel.weight_view',['users'=>$new]);
+        $new  =Weights::all();
+        return view('admin_panel.weight_view',['weights'=>$new]);
 
     }
 
     public function create()
     {
-        return view('admin_panel.add_weight');
+        //return view('admin_panel.add_weight');
     }
 
     /**
@@ -28,7 +28,7 @@ class WeightController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
+        /*$this->validate($request,[
             'id' => 'required',
             'month' => 'required',
             'year' => 'required',
@@ -44,14 +44,14 @@ class WeightController extends Controller
 
         $weightnew ->save();
 
-        return redirect('/admin/reports')->with('success','Weight Added');
+        return redirect('/admin/reports')->with('success','Weight Added');*/
     }
 
     public function edit($id)
     {
 
-        $weightfind = Weights::findOrFail($id);
-        return view('admin_panel.weight_edit',['weights'=>$weightfind]);
+        /*$weightfind = Weights::findOrFail($id);
+        return view('admin_panel.weight_view',['weights'=>$weightfind]);*/
         /*$cusfind = User::find($id);
         return view('admin_panel.user_edit',compact('cusfind','id')); */
     }
