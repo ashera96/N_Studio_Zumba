@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Notification;
 use App\Mail\generalNewsNotification;
+use Illuminate\Notifications\Notifiable;
 
 class NotificationController extends Controller
 {
@@ -22,7 +23,7 @@ class NotificationController extends Controller
 
    public function store_health_tips(Request $request){ //function to store healthtips in th db
         $this->validate($request, [
-            'healthtips' => 'required',
+            'healthtips' => 'required|max:191',
         ]);
 
         $health_tip = new HealthTip();
@@ -40,7 +41,7 @@ class NotificationController extends Controller
 
    public function store_general_news(Request $request){   //function to store general_news in db
        $this->validate($request, [
-           'general' => 'required',
+           'general' => 'required|max:191',
        ]);
 
         $general_notification = new GeneralNews();

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +93,7 @@
 <section id="breadcrumb">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="active">Employees</li>
+            <li class="active">Reports</li>
         </ol>
     </div>
 </section>
@@ -109,11 +108,11 @@
                         <i class="material-icons prefix ">settings</i> Dashboard
                     </a>
 
-                    <a href="/admin/receptionist" class="list-group-item active main-color-bg"><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
-                    <a href="/admin/customers" class="list-group-item"><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
+                    <a href="/admin/receptionist" class="list-group-item  "><i class="material-icons prefix">perm_identity</i> Receptionist<span class="badge">1</span></a>
+                    <a href="/admin/customers" class="list-group-item "><i class="material-icons prefix">person</i> Customers<span class="badge">66</span></a>
                     <a href="users.html" class="list-group-item"><i class="material-icons prefix">notifications</i> Notifications<span class="badge">5</span></a>
                     <a href="posts.html" class="list-group-item"><i class="material-icons prefix">attach_money</i> Payments<span class="badge">56</span></a>
-                    <a href="/admin/reports" class="list-group-item"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
+                    <a href="/admin/reports" class="list-group-item active main-color-bg"><i class="material-icons prefix">file_copy</i> Reports<span class="badge">10</span></a>
 
                 </div>
                 <div class="well">
@@ -134,54 +133,48 @@
             <div class="col-md-9">
                 <!-- Website Overview -->
                 <div class="panel panel-default">
-                    <div class="panel-heading main-color-bg">
-                        <h3 class="panel-title">Employees Overview</h3>
+                    <nav class="navbar navbar-default ">
+                        <div class="container">
+                            <div id="navbar" class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="/admin/reports">Weight</a></li>
+                                    <li><a href="/admin/reports_attendance">Attendance</a></li>
 
-                    </div>
-                    <div style="float: right;" >
-                        <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn  ">ADD</button></a>
-                         </div>
+                                </ul>
 
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </nav>
                 </div>
-                <!-- Latest Users -->
+                <div>
+                    <div class="col-md-12">
+                        <div style="float: right;" >
+
+                            <a href="{{url('/admin/reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
+                        </div>
+                    </div>
+                </div>
                 <div class="panel panel-default">
-
                     <div class="panel-body">
-
-
-
                         <table class="table thread-dark" width="80%" height="50%" >
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>NIC</th>
-                                <th>DOB</th>
-                                <th>Address</th>
-                                <th>Phone</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Weight</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($receptionists as $receptionist)
+                            @foreach($weights as $weight)
                                 <tr>
-                                    <td>{{ $receptionist->name }}</td>
-                                    <td>{{ $receptionist->email }}</td>
-                                    <td>{{ $receptionist->nic }}</td>
-                                    <td>{{ $receptionist->dob }}</td>
-                                    <td>{{ $receptionist->address }}</td>
-                                    <td>{{ $receptionist->tpno }}</td>
+                                    <td>{{ $weight->month }}</td>
+                                    <td>{{ $weight->year }}</td>
+                                    <td>{{ $weight->user_weight }}</td>
                                     <td>
-                                        <div class="row"><div class="col">
-                                                <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                            </div>
-
-                                    </td>  <td>
-                                                <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="delbtn">DELETE</button>
-                                                </form>
+                                        <div class="row">
+                                            <div class="col">
+                                                <a href="{{url('admin/reports/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                             </div>
                                         </div>
                                     </td>
@@ -189,9 +182,12 @@
                             @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
 </section>
@@ -261,3 +257,4 @@
 
 </body>
 </html>
+

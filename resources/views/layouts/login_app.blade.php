@@ -48,6 +48,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/RealtimeValidation.js') }}" defer></script>
+
+    @yield('styling')
+
 </head>
 <body>
 <div id="app">

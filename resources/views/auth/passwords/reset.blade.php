@@ -1,15 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.login_app')
 
-@section('content')
+@section('styling')
     <script src="{{ asset('js/Pwresetvalidation.js') }}" defer></script>
     <link href="{{ asset('css/RealtimeValid.css') }}" rel="stylesheet">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+@endsection
 
-                <div class="card-body">
+@section('content')
+<div class="container" style="margin-top: 70px">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-10">
+            <div class="card shadow" style="">
+                <div class="card-body" style="background-color: rgba(0,0,0,0.66); position: absolute; width: 100%;padding: 0;">
+                    <nav class="navbar navbar-expand-lg navbar-dark">
+                        <div class="container-fluid justify-content-center">
+                            <div>
+                                <a class="navbar-brand" href="/index"><img src={{ URL::asset('images/logo_nav.png') }}  alt="N_Studio_Zumba_Logo" style="width: 100px; height: 100px;"></a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="card-body" style="background-color: #FFFFFF; margin-top: 130px;">
                     <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
                         @csrf
                         <div class="alert-danger">
@@ -24,8 +34,8 @@
 
                         <input type="hidden" name="token" value="{{ $token }}">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <div class="form-group row" style="margin-top: 30px;">
+                            <label for="email" class="col-md-4 col-form-label text-md-right text-dark">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $email ?? old('email') }}" required autofocus>
@@ -39,7 +49,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right text-dark">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -60,8 +70,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                        <div class="form-group row" style="margin-bottom: 50px;">
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right text-dark">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -71,9 +81,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group row text-center">
+                            <div class="col-md-6 offset-md-3">
+                                <button type="submit" class="btn active btn-primary">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>

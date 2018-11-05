@@ -83,81 +83,50 @@
                 <!--Sidebar-area start-->
                 <div class="col-lg-2 col-md-3">
                     <div class="list-group shadow-sm">
-                        <a href="/admin/dashboard" class="list-group-item active side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                         <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
                         <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
                         <a href="users.html" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
                         <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
-                        <a href="/admin/reports" class="list-group-item side-bar"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
+                        <a href="/admin/reports" class="list-group-item active side-bar"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
                     </div>
                 </div>
                 <!--Sidebar-area end-->
 
                 <div class="col-lg-10 col-md-9 pad30">
-
-                    <div class="section-title text-center">
-                        <div class="title-bar full-width mb20">
-                            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
-                        </div>
-                        <h3>Dashboard</h3>
-                        <p>Manage N Studio Zumba</p>
-                    </div>
-
-                    <!-- Website overview start -->
-                    <div class="row">
-                        <div class="card overview-block pad30 rounded">
-                            <div class="card-header rounded mr-1 ml-1">Website Overview</div>
-                            <div class="row card-body">
-                                <div class="card-deck">
-                                    <div class="card rounded">
-                                        <div class="card-body">
-                                            <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-users fa-lg pad30"></i> 54</h1>
-                                            <h4 class="card-text text-center text-dark">Active Users</h4>
+                    <!-- Website Overview -->
+                    <div class="new">
+                        <div class="panel panel-default">
+                            <nav class="navbar navbar-default ">
+                                <div class="container">
+                                    <nav class="navbar navbar-expand-lg navbar-dark">
+                                        <div class="container-fluid">
+                                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                                <ul class="navbar-nav ml-auto">
+                                                    <li class="nav-item ">
+                                                        <a class="nav-link " href="/admin/reports">
+                                                            Weight<span class="sr-only">(current)</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item active">
+                                                        <a class="nav-link " href="/admin/reports_attendance">
+                                                            Attendance<span class="sr-only">(current)</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="card rounded">
-                                        <div class="card-body">
-                                            <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-eye-slash fa-lg pad30"></i> 12</h1>
-                                            <h4 class="card-text text-center text-dark">Inactive Users</h4>
-                                        </div>
-                                    </div>
+                                    </nav>
                                 </div>
-                            </div>
+                            </nav>
                         </div>
                     </div>
-                    <!-- Website overview end -->
+                    <div>
+                        <div class="col-md-12">
 
-                    <!-- Latest users start -->
-                    <div class="row mb-0">
-                        <div class="card overview-block pad30 rounded">
-                            <div class="card-header rounded mr-1 ml-1">Latest Online Users</div>
-                            <div class="row card-body">
-                                <table class="table table-striped table-hover">
-                                    <tr class="text-dark">
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Joined</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Anushka</td>
-                                        <td>anu@gmail.com</td>
-                                        <td>Jan 18, 2018</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shreya</td>
-                                        <td>shreya@gmail.com</td>
-                                        <td>June 6, 2017</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jyothika</td>
-                                        <td>jo@gmail.com</td>
-                                        <td>Dec 28, 2015</td>
-                                    </tr>
-                                </table>
-                            </div>
                         </div>
                     </div>
-                    <!-- Latest users end -->
+
 
                 </div>
                 <!-- /.col -->

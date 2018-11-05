@@ -57,15 +57,15 @@ class RegisterController extends Controller
     {
         //validating fields
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:191',
             'username' => 'required|string|min:4|unique:system_users',
             'nic' => ['required','unique:users',new nicValidation],//custom
             'dob' => ['required',new ageValidation], //custom
             'address' => 'required',
             'contactno' => 'required|unique:users|regex:/^[0]{1}[0-9]{9}$/',
-            'email' => 'required|string|email|max:255|unique:system_users',
+            'email' => 'required|string|email|max:191|unique:system_users',
             'password' => 'required|string|min:6|confirmed',
-            'medicissue'=>'max:255',
+            'medicissue'=>'max:191',
         ]);
     }
 
