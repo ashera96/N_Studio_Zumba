@@ -104,3 +104,4 @@ Route::prefix('receptionist')->group(function() {
 });
 
 Route::post('uploadss','UploadController@upload');
+

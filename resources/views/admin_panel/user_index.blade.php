@@ -25,7 +25,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="/index/gallery">
+                            <a class="nav-link " href="/admin/dashboard/admin_gallery">
                                 gallery<span class="sr-only">(current)</span>
                             </a>
                         </li>

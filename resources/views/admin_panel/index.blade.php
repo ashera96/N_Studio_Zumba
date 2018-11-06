@@ -33,7 +33,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/index">Home</a></li>
                 <li><a href="/index/about">About</a></li>
-                <li><a href="/index/gallery">Gallery</a></li>
+                <li><a href="/admin/dashboard/admin_gallery">Gallery</a></li>
                 <li><a href="/admin/dashboard/class_packages">Classes</a></li>
                 <li><a href="/admin/dashboard/schedule">Schedules</a></li>
                 <li><a href="/index/testimonials">Testimonials</a></li>

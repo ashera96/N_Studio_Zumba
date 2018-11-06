@@ -10,7 +10,7 @@ class UploadController extends Controller{
 
         if(Input::hasFile('file')){
 
-            echo 'uploaded <br>';
+            echo 'successfully uploaded <br>';
             $file=Input::file('file');
             $file->move('uploads',$file->getClientOriginalName());
             echo '<img src="uploads/'.$file->getClientOriginalName().'"/>';
@@ -19,5 +19,6 @@ class UploadController extends Controller{
 
 
     }
+
 
 }
