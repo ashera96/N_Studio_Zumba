@@ -53,7 +53,7 @@ class UserWeightController extends Controller
 
         $weightnew ->save();
 
-        return redirect('/admin/reports')->with('success','Weight Added');
+        return redirect('/admin/weight_view/')->with('success','Weight Added');
     }
 
     /**

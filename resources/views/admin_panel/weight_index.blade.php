@@ -141,7 +141,7 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{{url('admin/reports/'.$user->id.'/edit')}}"><button class="view">VIEW DETAILS</button></a>
+                                                    <a href="{{url('admin/weight_view')}}"><button class="view">VIEW DETAILS</button></a>
                                                 </div>
                                             </div>
                                         </td>
