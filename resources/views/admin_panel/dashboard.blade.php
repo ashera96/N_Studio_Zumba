@@ -81,7 +81,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!--Sidebar-area start-->
-                <div class="col-lg-2 col-md-3">
+                <div class="col-lg-2 col-md-3 sideFix" >
                     <div class="list-group shadow-sm">
                         <a href="/admin/dashboard" class="list-group-item active side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                         <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
@@ -96,7 +96,7 @@
                 </div>
                 <!--Sidebar-area end-->
 
-                <div class="col-lg-10 col-md-9 pad30">
+                <div class="col-lg-10 col-md-9 pad30 mainFix ">
 
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
