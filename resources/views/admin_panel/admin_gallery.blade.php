@@ -120,12 +120,12 @@
 
 
             <div class="gallery">
-                <h1>File Upload</h1><br><br>
+                <h1 class="h1Style">File Upload</h1><br><br>
                 <!--uploadss -->
-                <form action="{{URL::to('uploadss')}}" method="post" enctype="multipart/form-data">
-                    <label>Select image to upload</label>
-                    <input type="file" name="file" id="file">
-                    <input type="submit" value="Upload" name="submit">
+                <form class="uploadFormStyle" action="{{URL::to('uploadss')}}" method="post" enctype="multipart/form-data">
+                    <label class="labelStyle">Select image to upload</label>
+                    <input class="fileTypeStyle" type="file" name="file" id="file">
+                    <input class="submitBtnStyle" type="submit" value="Upload" name="submit">
                     <input type="hidden" value="{{ csrf_token() }}" name="_token">
                </form>
             </div>

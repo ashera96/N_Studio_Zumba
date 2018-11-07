@@ -66,8 +66,6 @@ Route::prefix('home')->group(function() {
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->group(function() {
-    //Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    //Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::resource('/receptionist','ReceptionistController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin');
     Route::resource('/customers', 'UserController')->middleware('admin');
@@ -98,8 +96,6 @@ Route::prefix('admin')->group(function() {
 */
 
 Route::prefix('receptionist')->group(function() {
-    //Route::get('/login', 'Auth\ReceptionistLoginController@showLoginForm')->name('receptionist.login');
-    //Route::post('/login', 'Auth\ReceptionistLoginController@login')->name('receptionist.login.submit');
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');
 });
 
