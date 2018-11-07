@@ -14,14 +14,14 @@
                         </div>
                     </nav>
                 </div>
-                <div class="card-body" style="background-color: #FFFFFF; margin-top: 130px;">
+                <div class="card-body" style="margin-top: 130px;">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}">
+                    <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}" style="background-color: transparent;">
                         @csrf
 
                         <div class="form-group row pad30">

@@ -19,8 +19,8 @@
                         </div>
                     </nav>
                 </div>
-                <div class="card-body" style="background-color: #FFFFFF; margin-top: 130px;">
-                    <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}">
+                <div class="card-body" style="margin-top: 130px;">
+                    <form method="POST" action="{{ route('password.request') }}" aria-label="{{ __('Reset Password') }}" style="background-color: transparent;">
                         @csrf
                         <div class="alert-danger">
                             @if(count($errors)>0)

@@ -14,8 +14,8 @@
                             </div>
                         </nav>
                     </div>
-                    <div class="card-body" style="background-color: #FFFFFF; margin-top: 130px;">
-                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                    <div class="card-body" style="margin-top: 130px;">
+                        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}" style="background-color: transparent;">
                             @csrf
 
                             <div class="form-group row">
