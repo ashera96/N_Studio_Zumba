@@ -292,7 +292,13 @@
 
     <br>
     <h2 style="color: #e83e8c">Notifications</h2>
+    <div style="color: black">
+        @foreach($posts as $post)
+            {{$post->post_body}}
+            <br>
+        @endforeach
+    </div>
 
-    <br>
+
 
 @endsection

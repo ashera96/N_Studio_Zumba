@@ -54,7 +54,7 @@
     <!-- form for health tips notification-->
      <form method="POST" action="{{ url('admin/create_health_tips') }}"  aria-label="{{ __('Create_Notifications') }}">
          {{csrf_field()}}
-         <h style="color: #ae003e">Create Health Tips Notifications</h>
+         <h style="color: #e0c99f">Create Health Tips Notifications</h>
          <br>
         <div class="form-group row">
             <div class="col-md-6">
@@ -81,7 +81,7 @@
 <div class="container">
     <form method="POST" action="{{ url('admin/create_general_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
         {{csrf_field()}}
-        <h style="color: #ae003e">Send General Notifications</h>
+        <h style="color: #e0c99f">Send General Notifications</h>
         <br>
         <div class="form-group row">
             <div class="col-md-6">
@@ -106,17 +106,18 @@
 </div>
     <!-- forrm for general notification post -->
 <div class="container">
-    <form method="POST" action="{{ url('admin/create_general_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
-        <h style="color: #ae003e">Create General News Post</h>
+    <form method="POST" action="{{ url('admin/create_post') }}"  aria-label="{{ __('Create_Notifications') }}">
+        {{csrf_field()}}
+        <h style="color: #e0c99f">Create General News Post</h>
         <br>
 
         <div class="form-group row">
             <div class="col-md-6">
-                <textarea id="post" type="text" class="form-control{{ $errors->has('post') ? ' is-invalid' : '' }}" placeholder="General News" name="post" value="{{ old('post') }}" required></textarea>
+                <textarea id="post_body" type="text" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="General News" name="post_body" value="{{ old('post_body') }}" required></textarea>
                 <br>
-                @if ($errors->has('post'))
+                @if ($errors->has('post_body'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('post') }}</strong>
+                        <strong>{{ $errors->first('post_body') }}</strong>
                     </span>
                 @endif
             </div>
