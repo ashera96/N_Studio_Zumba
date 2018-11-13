@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -28,16 +29,15 @@ class HomeController extends Controller
         //return view('home');
         //return view(Auth::user()->role->name);
         $role_id = Auth::user()->role->id;
-        if($role_id == '2'){
-            return view('customer_pages.home');
+        if ($role_id == '2') {
+            $posts = Post::all();
+            return view('customer_pages.home')->with('posts', $posts);
         }
-        elseif($role_id == '1'){
+        elseif ($role_id == '1') {
             return view('admin_panel.dashboard');
-        }
-        elseif($role_id == '3'){
+        } elseif ($role_id == '3') {
             return view('receptionist_pages.dashboard');
-        }
-        else{
+        } else {
             return view('index');
         }
     }
