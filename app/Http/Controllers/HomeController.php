@@ -30,7 +30,8 @@ class HomeController extends Controller
         //return view(Auth::user()->role->name);
         $role_id = Auth::user()->role->id;
         if ($role_id == '2') {
-            $posts = Post::all();
+            $posts = Post::orderBy('created_at','DESC')->get(); //display posts in the customer's home page
+            //$posts = Post::all();
             return view('customer_pages.home')->with('posts', $posts);
         }
         elseif ($role_id == '1') {

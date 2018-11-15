@@ -17,6 +17,9 @@
         setInterval(function(){
             $('#x').load('/home #x')
         },15000);
+        setInterval(function(){
+            $('#posts').load('/home #posts')
+        },15000);
     </script>
 
     <header class="header fixed-top">
@@ -291,10 +294,19 @@
     <!--BMI calculating area end-->
 
     <br>
-    <h2 style="color: #e83e8c">Notifications</h2>
-    <div style="color: black">
+    <h2 style="color: #e83e8c;padding: 15px">Notifications</h2>
+
+    <div id="posts" style="color: gray ;
+    padding: 15px;
+    background-clip: padding-box;">
         @foreach($posts as $post)
-            {{$post->post_body}}
+            <div>
+                <b style="color: #d9534f">{{$post->title}}</b>
+                <br>
+                {{$post->post_body}}
+                <br>
+                <small style="color: #2c2c2c">Posted {{$post->created_at->diffForHumans()}}</small>
+            </div>
             <br>
         @endforeach
     </div>
