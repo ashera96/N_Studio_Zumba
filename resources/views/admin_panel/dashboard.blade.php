@@ -15,7 +15,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link " href="/index">
+                            <a class="nav-link " href="/home">
                                 home<span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -83,7 +83,7 @@
                 <!--Sidebar-area start-->
                 <div class="col-lg-2 col-md-3 sideFix" >
                     <div class="list-group shadow-sm">
-                        <a href="/admin/dashboard" class="list-group-item active side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                        <a href="/home" class="list-group-item active side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                         <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
                         <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
                         <a href="admin/create_notifications" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>

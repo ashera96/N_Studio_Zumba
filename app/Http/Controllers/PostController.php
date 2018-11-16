@@ -13,7 +13,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'=>'required|string',
+            'title'=>'required|string|max:191',
             'post_body'=>'required|string',
         ]);
 

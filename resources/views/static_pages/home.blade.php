@@ -146,7 +146,22 @@
     <!--BMI calculating area end-->
 
     <br>
-    <h2 style="color: #e83e8c">Notifications</h2>
+    <h2 style="color: #e83e8c;padding: 15px">Notifications</h2>
+
+    <div id="posts" style="color: gray ;
+    padding: 15px;
+    background-clip: padding-box;font-size: medium">
+        @foreach($posts as $post)
+            <div>
+                <b style="color: #d9534f">{{$post->title}}</b>
+                <br>
+                {{$post->post_body}}
+                <br>
+                <small style="color: #2c2c2c">Posted at : {{$post->created_at}}</small>
+            </div>
+            <br>
+        @endforeach
+    </div>
     <br>
 
 @endsection
@@ -185,6 +200,12 @@
         };
 
     </script>
+    <script>
+        setInterval(function(){
+            $('#posts').load('/index #posts')
+        },15000);
+    </script>
+
 @endsection
 
 
