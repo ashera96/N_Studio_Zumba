@@ -298,14 +298,14 @@
 
     <div id="posts" style="color: gray ;
     padding: 15px;
-    background-clip: padding-box;">
+    background-clip: padding-box;font-size: medium">
         @foreach($posts as $post)
             <div>
                 <b style="color: #d9534f">{{$post->title}}</b>
                 <br>
                 {{$post->post_body}}
                 <br>
-                <small style="color: #2c2c2c">Posted {{$post->created_at->diffForHumans()}}</small>
+                <small style="color: #2c2c2c">Posted at : {{$post->created_at}}</small>
             </div>
             <br>
         @endforeach

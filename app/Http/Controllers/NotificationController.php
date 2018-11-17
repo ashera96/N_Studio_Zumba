@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Mail;
 use App\GeneralNews;
 use App\HealthTip;
@@ -18,7 +19,8 @@ use Illuminate\Notifications\Notifiable;
 class NotificationController extends Controller
 {
     public function index(){
-        return view('admin_panel.create_notifications');
+        $posts = Post::orderBy('created_at','DESC')->get();
+        return view('admin_panel.create_notifications')->with('posts', $posts);
     }
 
    public function store_health_tips(Request $request){ //function to store healthtips in th db
