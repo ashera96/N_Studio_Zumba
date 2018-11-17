@@ -1,4 +1,4 @@
-@extends('layouts.admin_app');
+@extends('layouts.admin_app')
 
 @section('content')
 
@@ -76,8 +76,40 @@
 <!--header end-->
 
 <br><br><br><br>
+@if (session('message'))
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ session('message') }}
+    </div>
+@endif
 
+@if (session('msgupdt'))
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ session('msgupdt') }}
+    </div>
+@endif
 
+@if (session('msght'))
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ session('msght') }}
+    </div>
+@endif
+
+@if (session('msgn'))
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ session('msgn') }}
+    </div>
+@endif
+
+@if (session('msgpst'))
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ session('msgpst') }}
+    </div>
+@endif
 
 <div class="container">
     <!-- form for health tips notification-->
@@ -163,7 +195,7 @@
                         <strong>{{ $errors->first('title') }}</strong>
                     </span>
                 @endif
-                <textarea id="post_body" type="text" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="Post Body" name="post_body" required>{{ old('post_body') }}</textarea>
+                <textarea id="post_body" style="height: 220px" type="text" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="Post Body" name="post_body" required>{{ old('post_body') }}</textarea>
                 <br>
                 @if ($errors->has('post_body'))
                     <span class="invalid-feedback" role="alert">
@@ -183,12 +215,14 @@
     </form>
     <div class="panel panel-default">
         <div class="panel-body">
-            <table class="table thread-dark" width="80%" >
+            <table class="table thread-dark" width="100%" >
                 <thead>
                 <tr>
                     <th width="250">Title</th>
                     <th width="700">Post</th>
-                    <th>Created at</th>
+                    <th width="100">Created at</th>
+                    <th></th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -196,15 +230,56 @@
                     <tr>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->post_body }}</td>
-                        <td>{{ $post->created_at }}</td>
+                        <td>{{ $post->updated_at }}</td>
+                        <td>
+                            <div class="row">
+                                <div class="col">
+                                    <a href="{{url('admin/create_notifications/'.$post->id.'/update')}}"><button class="editbtn" >UPDATE</button></a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                                    <button type="button" class="delbtn" data-toggle="modal" data-target="#myModal-{{ $post->id }}">
+                                        DELETE
+                                    </button>
+                            <!--modal-->
+                            <div class="modal fade" id="myModal-{{ $post->id }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" style="color: black">Delete Post</h4>
+                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body" style="color: black">
+                                            <b>Are you sure you want to delete this post?</b>
+                                        </div>
+
+                                        <!-- Modal footer -->
+
+                                        <div class="modal-footer">
+                                            <form method="POST" action="{{action('PostController@destroy',$post->id)}}">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" class="delbtn">Yes</button>
+                                            </form>
+                                            <button type="button" class="delbtn" data-dismiss="modal">No</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
+
 
 <!-- forrm for medical issues notifications -->
 
@@ -239,6 +314,7 @@
         </div>
     </form>
 </div>
+
 
 
     @endsection
