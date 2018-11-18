@@ -162,7 +162,6 @@
             <br>
         @endforeach
     </div>
-    <br>
 
 @endsection
 

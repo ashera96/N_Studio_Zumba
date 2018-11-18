@@ -1,7 +1,6 @@
 @extends('layouts.admin_app')
 
 @section('content')
-
 <!-- /.header start -->
 <header class="header fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -83,12 +82,7 @@
     </div>
 @endif
 
-@if (session('msgupdt'))
-    <div class="alert alert-success" role="alert">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        {{ session('msgupdt') }}
-    </div>
-@endif
+
 
 @if (session('msght'))
     <div class="alert alert-success" role="alert">
@@ -196,7 +190,6 @@
                     </span>
                 @endif
                 <textarea id="post_body" style="height: 220px" type="text" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="Post Body" name="post_body" required>{{ old('post_body') }}</textarea>
-                <br>
                 @if ($errors->has('post_body'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('post_body') }}</strong>
@@ -210,76 +203,10 @@
                     </button>
                 </div>
             </div>
-
         </div>
     </form>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <table class="table thread-dark" width="100%" >
-                <thead>
-                <tr>
-                    <th width="250">Title</th>
-                    <th width="700">Post</th>
-                    <th width="100">Created at</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($posts as $post)
-                    <tr>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->post_body }}</td>
-                        <td>{{ $post->updated_at }}</td>
-                        <td>
-                            <div class="row">
-                                <div class="col">
-                                    <a href="{{url('admin/create_notifications/'.$post->id.'/update')}}"><button class="editbtn" >UPDATE</button></a>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                                    <button type="button" class="delbtn" data-toggle="modal" data-target="#myModal-{{ $post->id }}">
-                                        DELETE
-                                    </button>
-                            <!--modal-->
-                            <div class="modal fade" id="myModal-{{ $post->id }}">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" style="color: black">Delete Post</h4>
-                                            <button type="button" class="close" data-dismiss="modal">×</button>
-                                        </div>
-
-                                        <!-- Modal body -->
-                                        <div class="modal-body" style="color: black">
-                                            <b>Are you sure you want to delete this post?</b>
-                                        </div>
-
-                                        <!-- Modal footer -->
-
-                                        <div class="modal-footer">
-                                            <form method="POST" action="{{action('PostController@destroy',$post->id)}}">
-                                                @csrf
-                                                {{ method_field('DELETE') }}
-                                                <button type="submit" class="delbtn">Yes</button>
-                                            </form>
-                                            <button type="button" class="delbtn" data-dismiss="modal">No</button>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <a href="/admin/show_posts"><button class="btn btn-primary"style="background-color: rebeccapurple;border:none;margin-left: 510px" >View Posts</button></a>
 </div>
-
 
 <!-- forrm for medical issues notifications -->
 
@@ -314,7 +241,7 @@
         </div>
     </form>
 </div>
-
+<br><br>
 
 
     @endsection

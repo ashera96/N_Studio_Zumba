@@ -12,8 +12,8 @@ use App\SystemUser;
 class PostController extends Controller
 {
     public function index(){ //show posts on the page
-        $posts = Post::orderBy('updated_at','DESC')->get();
-        return view('admin_panel.create_notifications')->with('posts', $posts);
+        $posts = Post::orderBy('updated_at','DESC')->paginate(5);
+        return view('admin_panel.show_posts')->with('posts', $posts);
     }
 
     public function store(Request $request)  //store posts in the db
@@ -81,7 +81,7 @@ class PostController extends Controller
         });
 
         Session::flash('msgupdt', 'Post Updated Successfully!');
-        return redirect('admin/create_notifications');
+        return redirect('admin/show_posts');
 
     }
 
