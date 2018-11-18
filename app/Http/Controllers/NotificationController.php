@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Illuminate\Support\Facades\Session;
 use Mail;
 use App\GeneralNews;
 use App\HealthTip;
@@ -18,10 +19,8 @@ use Illuminate\Notifications\Notifiable;
 
 class NotificationController extends Controller
 {
-    public function index(){
-        $posts = Post::orderBy('created_at','DESC')->get();
-        return view('admin_panel.create_notifications')->with('posts', $posts);
-    }
+
+
 
    public function store_health_tips(Request $request){ //function to store healthtips in th db
         $this->validate($request, [
@@ -37,6 +36,7 @@ class NotificationController extends Controller
             $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
 
             Notification::send($system_user, new AddHealthTip($health_tip));
+            Session::flash('msght', 'Health Tip Sent Successfully!');
         }
        return redirect()->back();
    }
@@ -55,6 +55,7 @@ class NotificationController extends Controller
            //check 4 d sysUser's role_id==2 for send to customers
            $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
            Notification::send($system_user, new AddGeneralNews($general_notification));
+           Session::flash('msgn', 'General Notification Sent Successfully!');
        }
 
        return redirect()->back();

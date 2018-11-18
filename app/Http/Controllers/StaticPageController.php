@@ -10,7 +10,7 @@ class StaticPageController extends Controller
     //
     public function show_index()
     {
-        $posts = Post::orderBy('created_at','DESC')->get(); //display posts in the home page
+        $posts = Post::orderBy('updated_at','DESC')->get(); //display posts in the home page
         //$posts = Post::all();
         return view('static_pages.home')->with('posts', $posts);
     }

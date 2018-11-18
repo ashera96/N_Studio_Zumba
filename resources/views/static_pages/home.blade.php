@@ -157,7 +157,7 @@
                 <br>
                 {{$post->post_body}}
                 <br>
-                <small style="color: #2c2c2c">Posted at : {{$post->created_at}}</small>
+                <small style="color: #2c2c2c">Posted at : {{$post->updated_at}}</small>
             </div>
             <br>
         @endforeach
