@@ -19,8 +19,9 @@ use Illuminate\Notifications\Notifiable;
 
 class NotificationController extends Controller
 {
-
-
+    public function index(){
+        return view('admin_panel.create_notifications');
+    }
 
    public function store_health_tips(Request $request){ //function to store healthtips in th db
         $this->validate($request, [

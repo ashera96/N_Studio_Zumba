@@ -74,13 +74,14 @@ Route::prefix('admin')->group(function() {
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
     Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin');
     //routes for notification scenario
-    Route::get('/create_notifications','PostController@index')->name('admin_panel.create_notifications')->middleware('admin');
+    Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
+    Route::get('/show_posts','PostController@index')->name('admin_panel.show_posts')->middleware('admin');
     Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin');
     Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin');
     Route::post('/create_post','PostController@store')->middleware('admin');
     Route::get('/create_notifications/{id}/update','PostController@update')->middleware('admin');
     Route::put('/create_notifications/{id}/update','PostController@edit')->name('post.edit')->middleware('admin');
-    Route::resource('/create_notifications','PostController')->middleware('admin');
+    Route::resource('/show_posts','PostController')->middleware('admin');
     //end of routes for notifications
     Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
     Route::get('/reports','UserWeightController@show_weight_index')->middleware('admin');
