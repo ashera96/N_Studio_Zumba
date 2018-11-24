@@ -187,7 +187,14 @@ myInput5.onkeypress = function () {
         myInput5.onblur = function () {
             document.getElementById("message5").style.display = "none";
         }
+        /* var v = this.value;
+         if (v.match(/^\d{4}$/) !== null) {
+             this.value = v + '/';
+         } else if (v.match(/^\d{4}\/\d{2}$/) !== null) {
+             this.value = v + '/';
+         } */
         var birthday = $("#dob").val().toString();
+
         var yearThen = parseInt(birthday.substring(0, 4), 10);
         var monthThen = parseInt(birthday.substring(5, 7), 10);
         var dayThen = parseInt(birthday.substring(8, 10), 10);
@@ -198,17 +205,22 @@ myInput5.onkeypress = function () {
         var todayDay = today.getDate();
         var birthDate = new Date(yearThen, monthThen - 1, dayThen);
 
-        var differenceInMilisecond = today.valueOf() - birthDate.valueOf();
+        /*var differenceInMilisecond = today.valueOf() - birthDate.valueOf();
 
         var year_age = Math.floor(differenceInMilisecond / 31536000000);
         var day_age = Math.floor((differenceInMilisecond % 31536000000) / 86400000);
 
         var month_age = Math.floor(day_age / 30);
 
-        day_age = day_age % 30;
+        day_age = day_age % 30;*/
 
+        var age_in_year = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age_in_year = age_in_year - 1;
+        }
 
-        if ((yearThen.valueOf() > 1957) && ((year_age >= 18) && (year_age <= 60))) {
+        if ((birthday.length < 11) && ((age_in_year >= 18) && (age_in_year <= 60))) {
             //document.getElementById("signup").disabled = false;
             document.getElementById("dob").style.borderColor = "#1af010";
             age.classList.remove("invalid");
@@ -222,10 +234,56 @@ myInput5.onkeypress = function () {
             document.getElementById("message5").style.display = "block";
         }
 
+        }
+}
+
+//for onclick
+myInput5.onclick = function () {
+        myInput5.onblur = function () {
+            document.getElementById("message5").style.display = "none";
+        }
+    var birthday = $("#dob").val().toString();
+
+    var yearThen = parseInt(birthday.substring(0, 4), 10);
+    var monthThen = parseInt(birthday.substring(5, 7), 10);
+    var dayThen = parseInt(birthday.substring(8, 10), 10);
+    var today = new Date();
+
+    var todayYear = today.getFullYear();
+    var todayMonth = today.getMonth();
+    var todayDay = today.getDate();
+    var birthDate = new Date(yearThen, monthThen - 1, dayThen);
+
+    /*var differenceInMilisecond = today.valueOf() - birthDate.valueOf();
+
+    var year_age = Math.floor(differenceInMilisecond / 31536000000);
+    var day_age = Math.floor((differenceInMilisecond % 31536000000) / 86400000);
+
+    var month_age = Math.floor(day_age / 30);
+
+    day_age = day_age % 30;*/
+
+    var age_in_year = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age_in_year = age_in_year - 1;
+    }
+
+    if ((birthday.length < 11) && ((age_in_year >= 18) && (age_in_year <= 60))) {
+        //document.getElementById("signup").disabled = false;
+        document.getElementById("dob").style.borderColor = "#1af010";
+        age.classList.remove("invalid");
+        //age.classList.add("valid");
+        document.getElementById("message5").style.display = "none";
+    } else {
+        //document.getElementById("signup").disabled = true;
+        document.getElementById("dob").style.borderColor = "#f11531";
+        //age.classList.remove("valid");
+        age.classList.add("invalid");
+        document.getElementById("message5").style.display = "block";
     }
 }
 //when the user try to enter data on address field
-
 myInput6.onkeypress = function () {
     myInput6.onkeyup = function () {
 
