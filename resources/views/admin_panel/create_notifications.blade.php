@@ -208,7 +208,7 @@
     <a href="/admin/show_posts"><button class="btn btn-primary"style="background-color: rebeccapurple;border:none;margin-left: 510px" >View Posts</button></a>
 </div>
 
-<!-- forrm for medical issues notifications -->
+<!-- forrm for medical issues notifications
 
 <div class="container">
     <form method="POST" action="{{ url('admin/create_general_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
@@ -240,6 +240,16 @@
             </div>
         </div>
     </form>
+</div> -->
+<div class="container">
+    <div class="section-title text-center">
+        <div class="title-bar full-width mb20">
+            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
+        </div>
+        <h3 style="font-size: medium;color: #d9534f">Health Advices</h3>
+    </div>
+    <br>
+    <a href="/admin/send_health_advices"><button class="btn btn-primary"style="background-color: rebeccapurple;border:none;margin-left: 482px" >Send Health Advices</button></a>
 </div>
 <br><br>
 

@@ -82,6 +82,8 @@ Route::prefix('admin')->group(function() {
     Route::get('/create_notifications/{id}/update','PostController@update')->middleware('admin');
     Route::put('/create_notifications/{id}/update','PostController@edit')->name('post.edit')->middleware('admin');
     Route::resource('/show_posts','PostController')->middleware('admin');
+    Route::get('/send_health_advices','MedicalAdviceController@index')->middleware('admin');
+    Route::post('/create_medical_advice','MedicalAdviceController@store')->middleware('admin');
     //end of routes for notifications
     Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
     Route::get('/reports','UserWeightController@show_weight_index')->middleware('admin');
