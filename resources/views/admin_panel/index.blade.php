@@ -97,29 +97,33 @@
                 <!--Sidebar-area end-->
 
                 <div class="col-lg-10 col-md-9 pad30 mainFix ">
-
+                
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
+
                         <h3>Receptionist</h3>
                         <p>Manage Receptionist</p>
+                        
                     </div>
 
-
+                    <!-- Website Overview -->
                     <div class="panel panel-default">
+                        <div class="panel-heading main-color-bg">
+                            <h3 class="panel-title">Employees Overview</h3>
 
-                        <div style="float: right;" >
-                            <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn  ">ADD</button></a><br><br>
                         </div>
-
-
+                        <div class="panel panel-default">
+                          <div style="float: right; padding-right: 50px; padding-bottom: 20px;">
+                              <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn btn btn-primary">ADD</button></a>
+                          </div>
+                        </div
                     </div>
                     <!-- Receptionist table-->
                     <div class="panel panel-default">
 
                         <div class="panel-body">
-
 
 
                             <table class="table thread-dark" width="80%" height="50%" >
@@ -144,16 +148,25 @@
                                         <td>{{ $receptionist->address }}</td>
                                         <td>{{ $receptionist->tpno }}</td>
                                         <td>
-                                            <div class="row"><div class="col">
+                                            <div class="row">
+                                                <div class="col">
                                                     <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                                 </div>
-
-                                        </td>  <td>
+                                            </div>
+                                        </td>
+                                        <td>
+                                        
                                             <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="delbtn">DELETE</button>
                                             </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            
                         </div>
                     </div>
                     </td>
@@ -164,18 +177,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-    </section>
-
-
-                    ///////////////////////////
-
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </div>
+    <!--Admin dashboard-area end-->
     </div>
 
 @endsection
