@@ -1,4 +1,4 @@
-@extends('layouts.admin_app')
+@extends('layouts.admin_app');
 
 @section('content')
 
@@ -14,7 +14,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <a class="nav-link " href="/index">
                                 home<span class="sr-only">(current)</span>
                             </a>
@@ -81,31 +81,29 @@
         <div class="container-fluid">
             <div class="row">
                 <!--Sidebar-area start-->
-                <div class="col-lg-2 col-md-3 sideFix" >
+                <div class="col-lg-2 col-md-3">
                     <div class="list-group shadow-sm">
-                        <a href="/admin/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                         <a href="/admin/receptionist" class="list-group-item active side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
                         <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
-                        <a href="admin/create_notifications" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
-                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
+                        <a href="users.html" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
+                        <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
                         <a href="/admin/reports" class="list-group-item side-bar"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
-                        <a href="/admin/dashboard/admin_gallery" class="list-group-item side-bar"><i class="fa fa-image fa-lg mr-1"></i> Gallery</a>
-                        <a href="/admin/dashboard/class_packages" class="list-group-item side-bar"><i class="fa fa-clipboard fa-lg mr-1"></i> Classes</a>
+                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-image fa-lg mr-1"></i> Gallery</a>
+                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-clipboard fa-lg mr-1"></i> Classes</a>
                         <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
                     </div>
                 </div>
                 <!--Sidebar-area end-->
 
-                <div class="col-lg-10 col-md-9 pad30 mainFix ">
-                
+                <div class="col-lg-10 col-md-9 pad30">
+
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
-
-                        <h3>Receptionist</h3>
-                        <p>Manage Receptionist</p>
-                        
+                        <h3>Receptionists</h3>
+                        <p>Receptionist Management</p>
                     </div>
 
                     <!-- Website Overview -->
@@ -114,16 +112,15 @@
                             <h3 class="panel-title">Employees Overview</h3>
 
                         </div>
-                        <div class="panel panel-default">
-                          <div style="float: right; padding-right: 50px; padding-bottom: 20px;">
-                              <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn btn btn-primary">ADD</button></a>
-                          </div>
-                        </div
+                        <div style="float: right; padding-right: 50px; padding-bottom: 20px;">
+                            <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn btn btn-primary">ADD</button></a>
+                        </div>
                     </div>
-                    <!-- Receptionist table-->
+                    <!-- Latest Users -->
                     <div class="panel panel-default">
 
                         <div class="panel-body">
+
 
 
                             <table class="table thread-dark" width="80%" height="50%" >
@@ -155,7 +152,6 @@
                                             </div>
                                         </td>
                                         <td>
-                                        
                                             <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
                                                 @csrf
                                                 @method('DELETE')
@@ -166,14 +162,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            
                         </div>
                     </div>
-                    </td>
-                    </tr>
-                    @endforeach
-                    </tbody>
-                    </table>
                 </div>
             </div>
         </div>
@@ -186,3 +176,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
 @endsection
+
