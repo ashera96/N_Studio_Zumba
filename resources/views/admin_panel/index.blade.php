@@ -81,7 +81,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!--Sidebar-area start-->
-                <div class="col-lg-2 col-md-3">
+                <div class="col-lg-2 col-md-3 sideFix">
                     <div class="list-group shadow-sm">
                         <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                         <a href="/admin/receptionist" class="list-group-item active side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
@@ -108,10 +108,10 @@
 
                     <!-- Website Overview -->
                     <div class="panel panel-default">
-                        <div class="panel-heading main-color-bg">
-                            <h3 class="panel-title">Employees Overview</h3>
+                        {{--<div class="panel-heading main-color-bg">--}}
+                            {{--<h3 class="panel-title">Employees Overview</h3>--}}
 
-                        </div>
+                        {{--</div>--}}
                         <div style="float: right; padding-right: 50px; padding-bottom: 20px;">
                             <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn btn btn-primary">ADD</button></a>
                         </div>
