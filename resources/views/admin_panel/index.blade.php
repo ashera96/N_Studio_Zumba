@@ -83,8 +83,8 @@
                 <!--Sidebar-area start-->
                 <div class="col-lg-2 col-md-3">
                     <div class="list-group shadow-sm">
-                        <a href="/admin/dashboard" class="list-group-item active side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
-                        <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
+                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                        <a href="/admin/receptionist" class="list-group-item active side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
                         <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
                         <a href="users.html" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
                         <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
@@ -105,134 +105,75 @@
                         <h3>Receptionists</h3>
                         <p>Receptionist Management</p>
                     </div>
-            </div>
-            <div class="col-md-9">
-                <!-- Website Overview -->
-                <div class="panel panel-default">
-                    <div class="panel-heading main-color-bg">
-                        <h3 class="panel-title">Employees Overview</h3>
 
+                    <!-- Website Overview -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading main-color-bg">
+                            <h3 class="panel-title">Employees Overview</h3>
+
+                        </div>
+                        <div style="float: right; padding-right: 50px; padding-bottom: 20px;">
+                            <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn btn btn-primary">ADD</button></a>
+                        </div>
                     </div>
-                    <div style="float: right;" >
-                        <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn  ">ADD</button></a>
-                         </div>
+                    <!-- Latest Users -->
+                    <div class="panel panel-default">
 
-                </div>
-                <!-- Latest Users -->
-                <div class="panel panel-default">
-
-                    <div class="panel-body">
+                        <div class="panel-body">
 
 
 
-                        <table class="table thread-dark" width="80%" height="50%" >
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>NIC</th>
-                                <th>DOB</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($receptionists as $receptionist)
+                            <table class="table thread-dark" width="80%" height="50%" >
+                                <thead>
                                 <tr>
-                                    <td>{{ $receptionist->name }}</td>
-                                    <td>{{ $receptionist->email }}</td>
-                                    <td>{{ $receptionist->nic }}</td>
-                                    <td>{{ $receptionist->dob }}</td>
-                                    <td>{{ $receptionist->address }}</td>
-                                    <td>{{ $receptionist->tpno }}</td>
-                                    <td>
-                                        <div class="row"><div class="col">
-                                                <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                            </div>
-
-                                    </td>  <td>
-                                                <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="delbtn">DELETE</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>NIC</th>
+                                    <th>DOB</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th></th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($receptionists as $receptionist)
+                                    <tr>
+                                        <td>{{ $receptionist->name }}</td>
+                                        <td>{{ $receptionist->email }}</td>
+                                        <td>{{ $receptionist->nic }}</td>
+                                        <td>{{ $receptionist->dob }}</td>
+                                        <td>{{ $receptionist->address }}</td>
+                                        <td>{{ $receptionist->tpno }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="delbtn">DELETE</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    <!--Admin dashboard-area end-->
     </div>
-</section>
 
-<footer id="footer">
-    <p>Copyright © <span>N Studio Zumba.</span> All Rights Reserved</p>
-</footer>
+@endsection
 
-<!-- Modals -->
+@section('js_styling')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
+@endsection
 
-<!-- Add Page -->
-<div class="modal fade" id="addPage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Add Page</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Page Title</label>
-                        <input type="text" class="form-control" placeholder="Page Title">
-                    </div>
-                    <div class="form-group">
-                        <label>Page Body</label>
-                        <textarea name="editor1" class="form-control" placeholder="Page Body"></textarea>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Published
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <label>Meta Tags</label>
-                        <input type="text" class="form-control" placeholder="Add some Tags....">
-                    </div>
-                    <div class="form-group">
-                        <label>Meta Description</label>
-                        <input type="text" class="form-control" placeholder="Add some Description....">
-                    </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-<script>
-    CKEDITOR.replace( 'editor1' );
-</script>
-
-
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
-
-
-</body>
-</html>
