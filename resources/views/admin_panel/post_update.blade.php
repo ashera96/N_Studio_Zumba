@@ -1,4 +1,4 @@
-@extends('layouts.admin_app');
+@extends('layouts.admin_app')
 
 @section('content')
 
@@ -14,8 +14,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item ">
-                            <a class="nav-link " href="/index">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="/home">
                                 home<span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -74,59 +74,38 @@
         </nav>
     </header>
     <!--header end-->
+    <br><br><br><br><br>
 
-
-    <!--Admin dashboard-area start-->
-    <div class="about-area pad90">
-        <div class="container-fluid">
-            <div class="row">
-                <!--Sidebar-area start-->
-                <div class="col-lg-2 col-md-3 sideFix" >
-                    <div class="list-group shadow-sm">
-                        <a href="/admin/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
-                        <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
-                        <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
-                        <a href="admin/create_notifications" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
-                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
-                        <a href="/admin/reports" class="list-group-item side-bar"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
-                        <a href="/admin/dashboard/admin_gallery" class="list-group-item active side-bar"><i class="fa fa-image fa-lg mr-1"></i> Gallery</a>
-                        <a href="/admin/dashboard/class_packages" class="list-group-item side-bar"><i class="fa fa-clipboard fa-lg mr-1"></i> Classes</a>
-                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
+<div class = "container">
+        <form method="POST" action="{{ route('post.edit',$post->id)}}">
+            @csrf
+            @method('PUT')
+            <div class="form-group row" style="margin-left: 250px">
+                <div class="col-md-8" >
+                    <input  type="text" id="title" name="title" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"  placeholder="Post Title" value="{{ $post->title }}"  required><br>
+                    @if ($errors->has('title'))
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('title') }}</strong>
+                    </span>
+                    @endif
+                    <textarea id="post_body" type="text" style="height: 374px" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="Post Body" name="post_body" required>{{ $post->post_body }}</textarea>
+                    <br>
+                    @if ($errors->has('post_body'))
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('post_body') }}</strong>
+                    </span>
+                    @endif
+                </div>
+                <div class="form-group row mb-0">
+                    <div class="col-md-6 offset-md-4">
+                        <button type="submit" class="btn btn-primary" style="background-color: deeppink;border:none" id="edit">
+                            {{ __('Update') }}
+                        </button>
                     </div>
                 </div>
-                <!--Sidebar-area end-->
-
-                <div class="col-lg-10 col-md-9 pad30 mainFix ">
-
-                    <div class="section-title text-center">
-                        <div class="title-bar full-width mb20">
-                            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
-                        </div>
-                        <h3>Gallery</h3>
-                        <p>Manage Gallery Uploads</p>
-                    </div>
-
-                    <div class="gallery">
-                        <br><br>
-                        <!--uploadss -->
-                        <form class="uploadFormStyle" action="{{URL::to('uploadss')}}" method="post" enctype="multipart/form-data">
-                            <label class="labelStyle">Select image to upload</label>
-                            <input class="fileTypeStyle" type="file" name="file" id="file">
-                            <input class="submitBtnStyle" type="submit" value="Upload" name="submit">
-                            <input type="hidden" value="{{ csrf_token() }}" name="_token">
-                        </form>
-                    </div>
-
-                </div>
-                <!-- /.col -->
             </div>
-            <!-- /.row -->
-        </div>
-    </div>
+        </form>
 
-@endsection
+</div>
 
-@section('js_styling')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
-@endsection
+    @endsection

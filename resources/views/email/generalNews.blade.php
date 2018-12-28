@@ -1,5 +1,5 @@
 
-<b>{{$general_news}}</b>
+<b>{{$post_body}}</b>
 
 
 

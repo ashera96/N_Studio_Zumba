@@ -10559,7 +10559,9 @@ a.text-dark:focus {
 }
 
 .gallery{
-  margin: 10px 10px;
+    margin: 10px 10px;
+  margin-left: 60px;
+  padding-left: 40px;
 }
 .gallery img{
   width: 350px;
@@ -10593,6 +10595,7 @@ a.text-dark:focus {
   color: #fff;
   padding: 10px;
   margin: 20px;
+  font-size: 18px;
 }
 .fileTypeStyle{
   background: #4c5054;
@@ -10601,4 +10604,21 @@ a.text-dark:focus {
   color: #fff;
   padding: 10px;
   margin: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.sideFix{
+  margin-top: 70px;
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+}
+.mainFix{
+  margin-left: 180px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
 }

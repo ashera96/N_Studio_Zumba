@@ -242,13 +242,14 @@
   /*margin-bottom: 30px;*/
 /*}*/
 
-.addbtnnew{
+.addbtn{
     background-color: #00A8FF !important;
     color: #ffffff !important;
     border-width: 0px;
     border-radius: 5px;
     height: 30px;
-    width: 120px;
+    width: 60px;
+    font-size: 14px;
 }
 
 /*@media (max-width: 575px) {*/

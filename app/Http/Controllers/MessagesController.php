@@ -44,7 +44,7 @@ class MessagesController extends Controller
         });
 
         //Redirect
-        return redirect('/index/contact')->with('success', 'Your Message has been sent Successfully. Thank You for your Message');
+        return redirect()->back()->with('success', 'Your Message has been sent Successfully. Thank You for your Message');
     }
 
 
