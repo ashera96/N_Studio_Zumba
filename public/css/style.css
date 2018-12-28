@@ -2557,3 +2557,18 @@ shop end-------------*/
     background: #4dc0b5;
     color: white;
 }
+
+/*Admin dashboard, class package management styling */
+/*.pricing-area .price-box .price-quantity .qnty-box .box-element {*/
+  /*display: inline-block; }*/
+.pricing-area .price-box .price-quantity .qnty-box .box-element .admin-package h5 {
+  font-size: 35px;
+  margin-top: 60px;
+  margin-bottom: 10px;
+  color: #fc328a; }
+.pricing-area .price-box .price-quantity .qnty-box .box-element .admin-package p {
+  color: #000;
+  font-size: 15px;
+  line-height: 15px; }
+.pricing-area .price-box.active .price-quantity .qnty-box .box-element .admin-package h5, .pricing-area .price-box:hover .price-quantity .qnty-box .box-element .admin-package h5 {
+  color: #fff; }

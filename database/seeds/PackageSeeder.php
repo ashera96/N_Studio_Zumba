@@ -36,7 +36,7 @@ class PackageSeeder extends Seeder
 
         $pack4->name= 'Weekend';
         $pack4->price = 2000;
-        $pack4->services = 'Workout session every Saturday and Sunday';
+        $pack4->services = 'Workout Session every Saturday and Sunday';
         $pack4->classes_to_cover = 8;
         $pack4->save();
 

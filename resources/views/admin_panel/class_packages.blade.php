@@ -96,7 +96,7 @@
                 </div>
                 <!--Sidebar-area end-->
 
-                <div class="col-lg-10 col-md-9 pad30 mainFix ">
+                <div class="col-lg-10 col-md-9 mainFix ">
 
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
@@ -106,37 +106,29 @@
                         <p>Manage Packages and Pricing Plans</p>
                     </div>
 
-                    <!--pricing area start-->
+                    <!--packages area start-->
                     <div class="row float-right pad30">
                         <a href="/index/class_packages/create" class="btn active btn-primary " style="font-size: large; height: 40px; width: 150px">Add</a>
                     </div>
                     <div class="pricing-area text-center pad30 col-md-10 px-4">
                         <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="section-title text-center">
-                                        <div class="title-bar full-width mb20">
-                                            <img src="{{ URL::asset('images/logo/ttl-bar2.png') }}"  alt="title-img">
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="row">
 
 
                                 @if(count($packages)>0)
                                     @foreach($packages as $package)
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
                                             <div class="price-box">
                                                 <div class="price-empty">
                                                 </div>
                                                 <div class="price-quantity">
                                                     <div class="qnty-box">
                                                         <div class="box-element">
-                                                            <h5>Rs. {{$package->price}}</h5>
-                                                            <p>Monthly</p>
+                                                            <div class="admin-package">
+                                                                <h5>Rs. {{$package->price}}</h5>
+                                                                <p>Monthly</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="price-dtl">
@@ -170,13 +162,14 @@
                         </div>
                         <!-- /.container -->
                     </div>
-                    <!--pricing area end-->
+                    <!--packages area end-->
 
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
         </div>
+    <!--Admin dashboard-area end-->
     </div>
 
 @endsection
