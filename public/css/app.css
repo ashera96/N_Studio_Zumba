@@ -10628,6 +10628,12 @@ a.text-dark:focus {
   margin-left: 220px;
 
 }
+
+.mar40{
+  align-content: right;
+
+}
+
 .mainFix{
   margin-left: 180px; /* Same as the width of the sidenav */
   font-size: 20px; /* Increased text to enable scrolling */

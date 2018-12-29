@@ -1,17 +1,14 @@
 @extends('layouts.admin_app');
 
-@section('content')
+@section('content');
 
 
     @extends('layouts.hori_sidebar');
 
-
-
-
-
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
         <div class="container-fluid">
+
             <div class="row">
                 @extends('layouts.vertical_sidebar');
 
@@ -32,9 +29,12 @@
                             {{--<h3 class="panel-title">Employees Overview</h3>--}}
 
                         {{--</div>--}}
-                        <div style="float: right; padding-right: 50px; padding-bottom: 20px;">
-                            <a href="{{url('/admin/receptionist/create')}}"><button class="addbtn btn btn-primary">ADD</button></a>
+
+
+                        <div class="bttn ">
+                            <a href="{{url('/admin/receptionist/create')}}"><button name="submit" type="submit" class="btn active  btn-primary float-right">Add</button></a>
                         </div>
+                        <br><br><br>
                     </div>
                     <!-- Latest Users -->
                     <div class="panel panel-default">
