@@ -34,56 +34,87 @@
                         <div class="bttn ">
                             <a href="{{url('/admin/receptionist/create')}}"><button name="submit" type="submit" class="btn active  btn-primary float-right">Add</button></a>
                         </div>
-                        <br><br><br>
+
                     </div>
-                    <!-- Latest Users -->
-                    <div class="panel panel-default">
-
-                        <div class="panel-body">
 
 
+                    <!-- Cart Main Area Start Here -->
+                    <div class="cart-main-area  pad90">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
 
-                            <table class="table thread-dark" width="80%" height="50%" >
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>NIC</th>
-                                    <th>DOB</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($receptionists as $receptionist)
-                                    <tr>
-                                        <td>{{ $receptionist->name }}</td>
-                                        <td>{{ $receptionist->email }}</td>
-                                        <td>{{ $receptionist->nic }}</td>
-                                        <td>{{ $receptionist->dob }}</td>
-                                        <td>{{ $receptionist->address }}</td>
-                                        <td>{{ $receptionist->tpno }}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="delbtn">DELETE</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                                        <div class="table-content table-responsive">
+                                            <table>
+                                                <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">Name</th>
+                                                    <th class="product-name">Email</th>
+                                                    <th class="product-price">NIC</th>
+                                                    <th class="product-quantity">DOB</th>
+                                                    <th class="product-subtotal">Address</th>
+                                                    <th class="product-remove">Phone</th>
+                                                    <th class="product-remove">Edit</th>
+                                                    <th class="product-remove">Delete</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($receptionists as $receptionist)
+                                                <tr>
+
+                                                    <td class="product-subtotal">{{ $receptionist->name }}</td>
+                                                    <td class="product-subtotal">{{ $receptionist->email }}</td>
+                                                    <td class="product-subtotal">{{ $receptionist->nic }}</td>
+                                                    <td class="product-subtotal">{{ $receptionist->dob }}</td>
+                                                    <td class="product-subtotal">{{ $receptionist->address }}</td>
+                                                    <td class="product-subtotal">{{ $receptionist->tpno }}</td>
+
+                                                   <!-- <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td> -->
+
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+
+                                                        <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <br>
+                                                            <button type="submit" class="delbtn">DELETE</button>
+                                                        </form>
+
+
+                                                    </td>
+
+
+                                                </tr>
+
+                                                @endforeach
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+                    <!-- Cart Main Area End Here -->
+
+
+
+                    ////////////////////////////////////////
+                    <!-- Latest Users -->
+
+                    ///////////////////////////////////////
                 </div>
             </div>
         </div>
