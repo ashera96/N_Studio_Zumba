@@ -10645,3 +10645,11 @@ a.text-dark:focus {
   height: 100px;
   font-size: small;
 }
+
+.addbtns{
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  align-content: center;
+
+}

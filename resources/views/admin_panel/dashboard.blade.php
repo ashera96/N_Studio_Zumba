@@ -3,7 +3,6 @@
 @section('content')
 
 
-    <!-- /.header start -->
     @extends('layouts.hori_sidebar');
     <!--header end-->
 
