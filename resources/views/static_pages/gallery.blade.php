@@ -49,27 +49,27 @@
             </div>
             <!-- /.row -->
 
-/////////////////////////////////
+            /////////////////////////////////
 
 
-       <div class="gallery">
+            <div class="gallery">
 
-          <?php
-          $c=count(scandir('uploads/')) - 2;
-         // echo "<h1>value is $c</h1>";
-
-
-          for ($x = 1; $x <= $c; $x++) {
-              echo '<img src="/uploads/'.$x.'.png"/>';
-
-          }
-
-          ?>
+            <?php
+            $c=count(scandir('uploads/')) - 2;
+            // echo "<h1>value is $c</h1>";
 
 
+            for ($x = 1; $x <= $c; $x++) {
+                echo '<img src="/uploads/'.$x.'.png"/>';
+
+            }
+
+            ?>
 
 
-           <!--  <a href="{{ URL::asset('images/about/p6.png') }}"><img src="{{ URL::asset('images/about/pic6.jpg') }}"  height="300px"></a>
+
+
+            <!--  <a href="{{ URL::asset('images/about/p6.png') }}"><img src="{{ URL::asset('images/about/pic6.jpg') }}"  height="300px"></a>
              <a href="{{ URL::asset('images/about/p7.png') }}"><img src="{{ URL::asset('images/about/p7.png') }}"  height="300px"></a>
              <a href="{{ URL::asset('images/about/p8.png') }}"><img src="{{ URL::asset('images/about/p8.png') }}"  height="300px"></a>
              <a href="{{ URL::asset('images/about/pic9.jpg') }}"><img src="{{ URL::asset('images/about/pic9.jpg') }}"  height="300px"></a>
@@ -79,7 +79,7 @@
              <a href="{{ URL::asset('images/about/p2.png') }}"><img src="{{ URL::asset('images/about/p2.png') }}"  height="480px"></a>
              <a href="{{ URL::asset('images/about/p3.png') }}"><img src="{{ URL::asset('images/about/p3.png') }}" height="480px"></a>
             -->
-  </div>
+            </div>
 
 
 
@@ -96,13 +96,13 @@
             <div>
 
 
-       <!-- echo uploads::url('{{URL::asset("uploads/pic1.jpg")}}'); -->
+            <!-- echo uploads::url('{{URL::asset("uploads/pic1.jpg")}}'); -->
 
 
 
 
 
-</div>
+            </div>
 
 
 

@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     @extends('layouts.hori_sidebar');
 
 
