@@ -2,16 +2,23 @@
 
 @section('content')
 
+
+
+    <!-- /.header start -->
+
     @extends('layouts.hori_sidebar');
+    <!--header end-->
 
 
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
         <div class="container-fluid">
             <div class="row">
+                <!--Sidebar-area start-->
                 @extends('layouts.vertical_sidebar');
+                <!--Sidebar-area end-->
 
-                <div class="col-lg-10 col-md-9 mar30  ">
+                <div class="col-lg-10 col-md-9 mar30">
 
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
