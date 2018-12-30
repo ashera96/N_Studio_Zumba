@@ -10559,8 +10559,8 @@ a.text-dark:focus {
 }
 
 .gallery{
-    margin: 10px 10px;
-  margin-left: 60px;
+  margin: 10px 10px;
+  margin-left: 0px;
   padding-left: 40px;
 }
 .gallery img{
@@ -10628,8 +10628,20 @@ a.text-dark:focus {
   margin-left: 220px;
 
 }
+
+.mar40{
+  align-content: right;
+
+}
+
 .mainFix{
   margin-left: 180px; /* Same as the width of the sidenav */
   font-size: 20px; /* Increased text to enable scrolling */
   padding: 0px 10px;
+}
+
+.minsize{
+  width: 100px;
+  height: 100px;
+  font-size: small;
 }
