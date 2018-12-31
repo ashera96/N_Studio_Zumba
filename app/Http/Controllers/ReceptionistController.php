@@ -83,9 +83,9 @@ class ReceptionistController extends Controller
         $thisUser = SystemUser::findOrFail($system_users->id);
         $this->sendMail($thisUser);
 
-        Session::flash('msgr1', 'Receptionist created successfully!'); //print flash msg after successfully created
+        Session::flash('msgr1', 'Receptionist successfully created!'); //print flash msg after successfully created
 
-        return redirect()->back()->with('success','Staff Created');
+        return redirect('admin/receptionist');
     }
 
     //function to send email
@@ -153,7 +153,9 @@ class ReceptionistController extends Controller
         $recepnew ->save();
         $system_users ->save();
 
-        return redirect('admin/receptionist')->with('success','Staff Updated');
+        Session::flash('msgr2', 'Receptionist successfully updated!'); //print flash msg after successfully updated
+
+        return redirect('admin/receptionist');
 
     }
 
@@ -172,6 +174,9 @@ class ReceptionistController extends Controller
         //but need to discuss further about this destroy method !!!!!!!!!!!!!!
         $systemuser = SystemUser::findOrFail($id);
         $systemuser->delete();
+
+        Session::flash('msgr3', 'Receptionist successfully deleted!'); //print flash msg after successfully updated
+
         return redirect('admin/receptionist');
     }
 }

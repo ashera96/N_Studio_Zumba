@@ -23,7 +23,26 @@
                         <p>Receptionist Management</p>
                     </div>
 
-                    <!-- Website Overview -->
+
+
+                    @if (session('msgr2'))
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msgr2') }}
+                        </div>
+                    @endif
+
+
+                    @if (session('msgr3'))
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msgr3') }}
+                        </div>
+                    @endif
+
+
+
+                <!-- Website Overview -->
                     <div class="panel panel-default">
                         {{--<div class="panel-heading main-color-bg">--}}
                             {{--<h3 class="panel-title">Employees Overview</h3>--}}
@@ -32,7 +51,7 @@
 
 
                         <div class="bttn ">
-                            <a href="{{url('/admin/receptionist/create')}}"><button name="submit" type="submit" class="btn active btn-primary float-right addbtns" >Add</button></a>
+                            <a href="{{url('/admin/receptionist/create')}}"><button name="submit" type="submit" class="btn active btn-primary float-right " >Add</button></a>
                         </div>
 
                     </div>

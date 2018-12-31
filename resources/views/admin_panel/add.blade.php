@@ -33,7 +33,9 @@
                             </div>
                         @endif
 
-                <div class="row">
+
+
+                        <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <div class="contact-form mt20">
                             <div class="appointment-schedule">
