@@ -16,9 +16,7 @@
                 <!--Sidebar-area end-->
 
                 <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 mainFix">
-
-
-
+                    <!-- Website Overview -->
 
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
@@ -29,57 +27,84 @@
                     </div>
 
 
-                    <!-- Customers table -->
-                    <div class="panel panel-default">
+                    <!-- Latest Users -->
+                    <div class="row mb-0">
+                        <div class="card overview-block pad30 rounded">
+                            {{--<div class="panel panel-default">--}}
+                                {{--<div class="panel-heading main-color-bg">--}}
+                                    {{--<h3 class="panel-title">Customers Overview</h3><br>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
+                            {{--<form method="get"  class ="form-inline" {{--action="{{route('customers.search')}}">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder ="Enter User id" name="search" id = "search">
+                                    <div class ="input-group-btn">
+                                        <a href="{{url('admin/customers')}}"><button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button></a>
+                                    </div>
+                                    {{--<a href="{{url('admin/weight_view')}}"><button class ="btn btn-success" type="submit">Search</button></a>
+                            </div>
 
-                    </div>
+                            </form>--}}
 
-                    <div class="panel panel-default" style="margin-left: 70px;">
-                        <div class="panel-body">
-                            <table class="table thread-dark" width="80%"  >
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($users as $user)
-                                    <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->username }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <a href="{{url('admin/customers/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <form method="POST" {{--action="{{route('user.destroy',$user->id)}}"--}}>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="delbtn">DELETE</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
+                            <div class="panel panel-default ml90">
+                                <div class="panel-body">
+                                    <table class="table table-striped table-hover" width="80%"  >
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->username }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <a href="{{url('admin/customers/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    {{--<td><button class="btn btn-success">Active Customer</button></td>
+                                                    <td><a  class="btn btn-warning">Mark as not active</a></td>--}}
+                                                    <td>
+                                                        @if($user->status)
+                                                            <button class="activebtn">Active Customer</button>
+                                                        @else
+                                                            <button class="inactivebtn">Inactive Customer</button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if(!$user->status)
+                                                             <a href="markasactive/{{$user->id}}"><button class="markactive">Mark as Active</button></a>
+                                                        @else
+                                                            <a href="markasnotactive/{{$user->id}}" ><button class="markinactive">Mark as Inactive</button></a>
+                                                        @endif
+
+                                                    </td>
+                                                </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
 
                         </div>
-                    </div>
-                </div>
                 <!-- /.col -->
-            </div>
+                    </div>
             <!-- /.row -->
+                </div>
+            </div>
         </div>
     </div>
-
 @endsection
 
 @section('js_styling')

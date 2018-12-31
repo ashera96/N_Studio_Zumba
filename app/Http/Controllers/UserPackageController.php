@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\Weights;
 
-class UserWeightController extends Controller
+class UserPackageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class UserWeightController extends Controller
      */
     public function index()
     {
-        $new  =User::all();//->where('role_id', '=', '1');
-        return view('admin_panel.weight_index',['users'=>$new]);
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class UserWeightController extends Controller
      */
     public function create()
     {
-        return view('admin_panel.add_weight');
+        //
     }
 
     /**
@@ -37,23 +34,7 @@ class UserWeightController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'id' => 'required',
-            'month' => 'required',
-            'year' => 'required',
-            'user_weight' => 'required',
-        ]);
-
-        $weightnew = new Weights;
-
-        $weightnew ->id =$request ->id;
-        $weightnew ->month =$request ->month;
-        $weightnew->year =$request ->year;
-        $weightnew ->user_weight =$request ->user_weight;
-
-        $weightnew ->save();
-
-        return redirect('/admin/weight_view/')->with('success','Weight Added');
+        //
     }
 
     /**
@@ -64,7 +45,7 @@ class UserWeightController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -75,8 +56,7 @@ class UserWeightController extends Controller
      */
     public function edit($id)
     {
-        $userfind = Weights::findOrFail($id);
-        return view('admin_panel.weight_view',['weights'=>$userfind]);
+        //
     }
 
     /**

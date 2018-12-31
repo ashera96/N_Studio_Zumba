@@ -1,13 +1,10 @@
-
 @extends('layouts.admin_app');
-
 
 @section('content');
 
 
-
     @extends('layouts.hori_sidebar');
-
+    <!--header end-->
 
 
     <!--Admin dashboard-area start-->
@@ -31,7 +28,7 @@
                     <!-- Website overview start -->
                     <div class="row">
                         <div class="card overview-block pad30 rounded">
-                            <div class="card-header rounded mr-1 ml-1 " style="background-color: deeppink">Website Overview</div>
+                            <div class="card-header rounded mr-1 ml-1">Website Overview</div>
                             <div class="row card-body">
                                 <div class="card-deck">
                                     <div class="card rounded">
@@ -55,7 +52,7 @@
                     <!-- Latest users start -->
                     <div class="row mb-0">
                         <div class="card overview-block pad30 rounded">
-                            <div class="card-header rounded mr-1 ml-1" style="background-color: deeppink">Latest Online Users</div>
+                            <div class="card-header rounded mr-1 ml-1">Latest Online Users</div>
                             <div class="row card-body">
                                 <table class="table table-striped table-hover">
                                     <tr class="text-dark">

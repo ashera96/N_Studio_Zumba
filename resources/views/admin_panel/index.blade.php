@@ -32,7 +32,7 @@
 
 
                         <div class="bttn ">
-                            <a href="{{url('/admin/receptionist/create')}}"><button name="submit" type="submit" class="btn active  btn-primary float-right addbtns" >Add</button></a>
+                            <a href="{{url('/admin/receptionist/create')}}"><button name="submit" type="submit" class="btn active btn-primary float-right addbtns" >Add</button></a>
                         </div>
 
                     </div>

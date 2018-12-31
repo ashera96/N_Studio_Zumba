@@ -8,6 +8,7 @@ use App\Receptionist;
 use App\Rules\ageValidation;
 use App\Rules\nicValidation;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Mail;
 use App\Mail\welcome;
 use App\SystemUser;
@@ -81,6 +82,8 @@ class ReceptionistController extends Controller
         $recepnew ->save();
         $thisUser = SystemUser::findOrFail($system_users->id);
         $this->sendMail($thisUser);
+
+        Session::flash('msgr1', 'Receptionist created successfully!'); //print flash msg after successfully created
 
         return redirect()->back()->with('success','Staff Created');
     }

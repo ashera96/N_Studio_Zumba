@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Mail;
 use Illuminate\Support\Facades\Auth;
 use App\SystemUser;
+use Image;
 
 class PostController extends Controller
 {
@@ -21,11 +22,23 @@ class PostController extends Controller
         $this->validate($request,[
             'title'=>'required|string|max:191',
             'post_body'=>'required|string',
+            'upload_images'=>'image|mimes:jpeg,jpg,png,gif|max:4096',
         ]);
 
         $post = new Post;
         $post ->title = $request ->title;
         $post ->post_body =$request ->post_body;
+
+        //upload images with the post
+        if($request->hasFile('upload_images')){
+            $image = $request->file('upload_images');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/posts/'.$filename);
+            //Image::make($image)->resize(400,500)->save($location);
+            Image::make($image)->fit(400)->save($location); //fit for 400*400
+            $post->image = $filename;
+        }
+
 
     //send a email about the general post
         if($post ->save()) {
@@ -58,14 +71,32 @@ class PostController extends Controller
 
     public function edit(Request $request, $id) //update posts
     {
+        $this->validate($request,[
+            'title'=>'required|string|max:191',
+            'post_body'=>'required|string',
+            'upload_images'=>'image|mimes:jpeg,jpg,png,gif|max:4096',
+        ]);
+
         $post_find =Post::findOrFail($id);
         $post_find ->title =$request ->title;
         $post_find ->post_body =$request ->post_body;
+
+        //upload images with the post
+        if($request->hasFile('upload_images')){
+            $image = $request->file('upload_images');
+            $filename = time().'.'.$image->getClientOriginalExtension();
+            $location = public_path('images/posts/'.$filename);
+            //Image::make($image)->resize(400,500)->save($location);
+            Image::make($image)->fit(400)->save($location); //fit for 400*400
+            $post_find->image = $filename;
+        }
+
         $post_find ->save();
         $data = [
             'post_body'=>$request->post_body,
             'title'=>$request->title,
         ];
+
         //send mail after updating
         Mail::send('email.generalNews', $data, function ($post_body) use ($request, $data) {
             $current_user = Auth::user();

@@ -8,9 +8,9 @@
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
 
-                <div class="container-fluid">
-                    <div class="row">
-                        @extends('layouts.vertical_sidebar');
+        <div class="container-fluid">
+            <div class="row">
+                @extends('layouts.vertical_sidebar');
                 <div class="col-lg-10 col-md-9 pad30 mainFix ">
 
                     <div class="section-title text-center">
@@ -21,7 +21,7 @@
                         <p>Manage Gallery Uploads</p>
                     </div>
 
-                    <div class="gallery">
+                    <div class="gallery ml90">
                         <br><br>
                         <!--uploadss -->
                         <form class="uploadFormStyle" action="{{URL::to('uploadss')}}" method="post" enctype="multipart/form-data">
@@ -37,6 +37,7 @@
             </div>
             <!-- /.row -->
         </div>
+
     </div>
 
 @endsection
