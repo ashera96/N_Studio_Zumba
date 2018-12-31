@@ -10559,8 +10559,8 @@ a.text-dark:focus {
 }
 
 .gallery{
-    margin: 10px 10px;
-  margin-left: 60px;
+  margin: 10px 10px;
+  margin-left: 0px;
   padding-left: 40px;
 }
 .gallery img{
@@ -10607,7 +10607,7 @@ a.text-dark:focus {
   font-size: 18px;
   border-radius: 5px;
 }
-.sideFix{
+.sideFix2{
   margin-top: 70px;
   height: 100%;
   width: 180px;
@@ -10617,8 +10617,43 @@ a.text-dark:focus {
   left: 0;
   padding-top: 20px;
 }
+.sideFix{
+  z-index: 1;
+  position: fixed;
+  margin-top: 75px;
+
+
+}
+.mar30{
+  margin-left: 220px;
+
+}
+
+.mar40{
+  align-content: right;
+
+}
+
+.ml90{
+  margin-left: 90px;
+}
+
 .mainFix{
   margin-left: 180px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
+  font-size: 20px; /* Increased text to enable scrolling */
   padding: 0px 10px;
+}
+
+.minsize{
+  width: 100px;
+  height: 100px;
+  font-size: small;
+}
+
+.addbtns{
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  align-content: center;
+
 }

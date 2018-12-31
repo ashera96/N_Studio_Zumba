@@ -14,12 +14,13 @@ class CreateWeightsTable extends Migration
     public function up()
     {
         Schema::create('weights', function (Blueprint $table) {
-            $table->increments('id'); //changed from integer to increments(should be corrected by pirakavi)
-            $table->integer('month');
+            $table->integer('id');
+            $table->string('month');
             $table->integer('year');
             $table->double('weight');
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('system_users');
+            //$table->foreign('id')->references('id')->on('users');
         });
     }
 

@@ -64,7 +64,7 @@ class ReceptionistController extends Controller
 
         $recepnew ->name =$request ->name;
         $system_users ->email =$request ->email;
-        //$recepnew ->email =$request ->email;
+       // $recepnew ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;

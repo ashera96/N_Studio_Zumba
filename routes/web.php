@@ -42,7 +42,6 @@ Route::post('/index/contact','MessagesController@submit');
 | Customer Routes
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('home')->group(function() {
     Route::get('/about', 'CustomerPageController@show_about')->middleware('customer');
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
@@ -86,12 +85,24 @@ Route::prefix('admin')->group(function() {
     Route::post('/create_medical_advice','MedicalAdviceController@store')->middleware('admin');
     //end of routes for notifications
     Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
-    Route::get('/reports','UserWeightController@show_weight_index')->middleware('admin');
-    Route::resource('/reports','UserWeightController')->middleware('admin');
-    Route::get('/weight_view','WeightController@show_weight_view')->middleware('admin');
-    Route::resource('/weight_view','WeightController')->middleware('admin');
-    Route::get('/reports_attendance','ReportsAttendanceController@show_reports_attendance')->middleware('admin');
-    Route::resource('/reports_attendance','ReportsAttendanceController')->middleware('admin');
+
+    Route::get('/reports','WeightController@show_weight_index')->middleware('admin');
+    Route::resource('/reports','WeightController')->middleware('admin');
+    Route::get('dashboard/reports','WeightController@create')->name('admin_panel.add_weight')->middleware('admin');
+    Route::post('dashboard/reports','WeightController@store')->middleware('admin');
+    //Route::post('/searchcontent','WeightController@searchcontent')->middleware('admin');
+    //Route::resource('/reports','UserWeightController')->middleware('admin');
+    //Route::get('/reports','WeightController@show_weight_view')->middleware('admin');
+
+    //Route::get('/reports_attendance','ReportsAttendanceController@show_reports_attendance')->middleware('admin');
+    //Route::resource('/reports_attendance','ReportsAttendanceController')->middleware('admin');
+    //Route::get('/reports','WeightController@search')->middleware('admin');
+    //Route::get('/reports','WeightController@show_weight_index')->middleware('admin');
+
+    Route::get('/markasactive/{id}','UserController@UpdateCustomerActive');
+    Route::get('/markasnotactive/{id}','UserController@UpdateCustomerNotActive');
+
+
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');
