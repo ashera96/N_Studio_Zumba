@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('post_body');
+            $table->string('image')->nullable(); //store the image name with extension
             $table->timestamps();
         });
     }

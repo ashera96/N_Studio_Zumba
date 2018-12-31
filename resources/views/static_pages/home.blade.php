@@ -155,6 +155,10 @@
             <div>
                 <b style="color: #d9534f">{{$post->title}}</b>
                 <br>
+                @if($post->image)
+                <img src="{{asset('images/posts/' . $post->image)}}" />
+                <br><br>
+                @endif
                 {{$post->post_body}}
                 <br>
                 <small style="color: #2c2c2c">Posted at : {{$post->updated_at}}</small>

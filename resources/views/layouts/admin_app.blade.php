@@ -117,7 +117,6 @@
 <script src="{{ URL::asset('js/revolution.extension.video.min.js') }}"></script>
 <!-- revolution slider js files end -->
 
-
 @yield('js_styling')
 
 

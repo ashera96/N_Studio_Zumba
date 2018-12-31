@@ -14,7 +14,7 @@ class CreateWeightsTable extends Migration
     public function up()
     {
         Schema::create('weights', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id'); //changed from integer to increments(should be corrected by pirakavi)
             $table->integer('month');
             $table->integer('year');
             $table->double('weight');
