@@ -26,7 +26,7 @@
                                     @endforeach
                                 @endif
                             </div>
-
+                            <br>
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right text-dark">{{ __('Full Name') }}</label>
@@ -95,7 +95,7 @@
                                 <label for="dob" class="col-md-4 col-form-label text-md-right text-dark">{{ __('Date Of Birth') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="dob" type="date"  class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required autofocus>
+                                    <input id="dob" type="date" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required autofocus>
                                     <div id="message5">
                                         <p id="age" class="invalid"><b>Age not suitable</b></p>
                                     </div>

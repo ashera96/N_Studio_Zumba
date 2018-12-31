@@ -10560,6 +10560,8 @@ a.text-dark:focus {
 
 .gallery{
   margin: 10px 10px;
+  margin-left: 0px;
+  padding-left: 40px;
 }
 .gallery img{
   width: 350px;
@@ -10593,6 +10595,7 @@ a.text-dark:focus {
   color: #fff;
   padding: 10px;
   margin: 20px;
+  font-size: 18px;
 }
 .fileTypeStyle{
   background: #4c5054;
@@ -10601,4 +10604,56 @@ a.text-dark:focus {
   color: #fff;
   padding: 10px;
   margin: 20px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.sideFix2{
+  margin-top: 70px;
+  height: 100%;
+  width: 180px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+}
+.sideFix{
+  z-index: 1;
+  position: fixed;
+  margin-top: 75px;
+
+
+}
+.mar30{
+  margin-left: 220px;
+
+}
+
+.mar40{
+  align-content: right;
+
+}
+
+.ml90{
+  margin-left: 90px;
+}
+
+.mainFix{
+  margin-left: 180px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.minsize{
+  width: 100px;
+  height: 100px;
+  font-size: small;
+}
+
+.addbtns{
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  align-content: center;
+
 }
