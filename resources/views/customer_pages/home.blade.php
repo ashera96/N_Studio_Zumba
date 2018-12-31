@@ -127,6 +127,7 @@
                             </li>
                         @endif
                     <!--end of testing -->
+
                         {{--User name and logout button start--}}
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -148,6 +149,7 @@
                         {{--User name and logout button end--}}
 
                     </ul>
+                </ul>
                 </div>
             </div>
         </nav>
@@ -303,6 +305,10 @@
             <div>
                 <b style="color: #d9534f">{{$post->title}}</b>
                 <br>
+                @if($post->image)
+                    <img src="{{asset('images/posts/' . $post->image)}}" />
+                    <br><br>
+                @endif
                 {{$post->post_body}}
                 <br>
                 <small style="color: #2c2c2c">Posted at : {{$post->updated_at}}</small>
