@@ -15,11 +15,12 @@ class CreateWeightsTable extends Migration
     {
         Schema::create('weights', function (Blueprint $table) {
             $table->integer('id');
-            $table->integer('month');
+            $table->string('month');
             $table->integer('year');
             $table->double('weight');
             $table->timestamps();
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('system_users');
+            //$table->foreign('id')->references('id')->on('users');
         });
     }
 

@@ -196,6 +196,47 @@
     background: #343a40;
 }
 
+.activebtn{
+    background-color: #2d995b !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 120px;
+    font-size: 11px;
+}
+
+.inactivebtn{
+    background-color: #b91d19 !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 120px;
+    font-size: 11px;
+}
+
+.markactive{
+    background-color: deeppink !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 120px;
+    font-size: 11px;
+}
+.markinactive{
+    background-color: gray !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 120px;
+    font-size: 11px;
+}
+
+
+
 /*!* Header *!*/
 /*#header{*/
   /*background: #333333;*/
@@ -242,13 +283,15 @@
   /*margin-bottom: 30px;*/
 /*}*/
 
+
 .addbtnnew{
     background-color: #00A8FF !important;
     color: #ffffff !important;
     border-width: 0px;
     border-radius: 5px;
     height: 30px;
-    width: 120px;
+    width: 100px;
+    font-size: 15px;
 }
 
 /*@media (max-width: 575px) {*/

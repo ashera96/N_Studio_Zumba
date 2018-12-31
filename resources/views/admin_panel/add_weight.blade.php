@@ -54,6 +54,22 @@
                         @endif
 
                     </div>
+                    {{--<div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <select name="month" id="month" type="text"  placeholder="Enter month" class="form-control">
+                            <option value="0">Select a Category</option>
+                            <option value="1">Laravel</option>
+                            <option value="2">Zend Framework</option>
+                            <option value="3">CakePHP</option>
+                            <option value="4">PHP</option>
+                        </select>
+                        <label for="month">Month</label>
+                        @if($errors->has('month'))
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('month')}}</span>
+                        @endif
+
+                    </div>--}}
+
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
@@ -68,12 +84,12 @@
                     </div>
                     <div class="input-field col s6">
                         <i class="material-icons prefix">cake</i>
-                    <!--<input id="dob" type="date" class="validate" name="dob" value="{{Request::old('user_weight')}}">-->
-                        <input id="user_weight" type="text"  placeholder="Enter weight" class="form-control{{ $errors->has('user_weight') ? ' is-invalid' : '' }}" name="user_weight" value="{{ old('user_weight') }}" required autofocus>
+                    <!--<input id="dob" type="date" class="validate" name="dob" value="{{Request::old('weight')}}">-->
+                        <input id="weight" type="text"  placeholder="Enter weight" class="form-control{{ $errors->has('weight') ? ' is-invalid' : '' }}" name="weight" value="{{ old('weight') }}" required autofocus>
 
-                        <label for="user_weight">Weight</label>
-                        @if($errors->has('user_weight'))
-                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('user_weight')}}</span>
+                        <label for="weight">Weight</label>
+                        @if($errors->has('weight'))
+                            <span class="form-text invalid-feedback" style="color: red">{{$errors->first('weight')}}</span>
                         @endif
                     </div>
                 </div>
