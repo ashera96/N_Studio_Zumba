@@ -82,8 +82,6 @@
     </div>
 @endif
 
-
-
 @if (session('msght'))
     <div class="alert alert-success" role="alert">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -137,6 +135,8 @@
         </div>
     </form>
 </div>
+
+
 <!-- forrm for general notifications -->
 <div class="container">
     <form method="POST" action="{{ url('admin/create_general_notifications') }}"  aria-label="{{ __('Create_Notifications') }}">
@@ -169,9 +169,12 @@
         </div>
     </form>
 </div>
-<!-- forrm for general notification post -->
+
+
+<!-- forrm for general post -->
 <div class="container">
-    <form method="POST" action="{{ url('admin/create_post') }}"  aria-label="{{ __('Create_Notifications') }}">
+
+    <form method="POST" action="{{ url('admin/create_post') }}"  aria-label="{{ __('Create_Notifications') }}" enctype="multipart/form-data">
         {{csrf_field()}}
         <div class="section-title text-center">
             <div class="title-bar full-width mb20">
@@ -182,13 +185,25 @@
         <br>
 
         <div class="form-group row" style="margin-left: 250px">
+
             <div class="col-md-8">
+                <label style="color: deeppink"> Upload Images: </label> <input style="color: red" type="file" name="upload_images"/>
+
+                @if ($errors->has('upload_images'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('upload_images') }}</strong>
+                    </span>
+                @endif
+
+                <br><br>
+
                 <input  type="text" id="title" name="title" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"  placeholder="Post Title"  value="{{ old('title') }}" required><br>
                 @if ($errors->has('title'))
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $errors->first('title') }}</strong>
                     </span>
                 @endif
+
                 <textarea id="post_body" style="height: 220px" type="text" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="Post Body" name="post_body" required>{{ old('post_body') }}</textarea>
                 @if ($errors->has('post_body'))
                     <span class="invalid-feedback" role="alert">
@@ -196,6 +211,7 @@
                     </span>
                 @endif
             </div>
+
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary" style="background-color: deeppink;border:none" id="create1">
@@ -203,7 +219,9 @@
                     </button>
                 </div>
             </div>
+
         </div>
+
     </form>
     <a href="/admin/show_posts"><button class="btn btn-primary"style="background-color: rebeccapurple;border:none;margin-left: 510px" >View Posts</button></a>
 </div>
@@ -241,6 +259,7 @@
         </div>
     </form>
 </div> -->
+
 <div class="container">
     <div class="section-title text-center">
         <div class="title-bar full-width mb20">
@@ -254,4 +273,4 @@
 <br><br>
 
 
-    @endsection
+@endsection

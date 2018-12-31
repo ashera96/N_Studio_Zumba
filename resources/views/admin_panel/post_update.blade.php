@@ -77,7 +77,7 @@
     <br><br><br><br><br>
 
 <div class = "container">
-        <form method="POST" action="{{ route('post.edit',$post->id)}}">
+        <form method="POST" action="{{ route('post.edit',$post->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group row" style="margin-left: 250px">
@@ -88,7 +88,17 @@
                         <strong>{{ $errors->first('title') }}</strong>
                     </span>
                     @endif
-                    <textarea id="post_body" type="text" style="height: 374px" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="Post Body" name="post_body" required>{{ $post->post_body }}</textarea>
+                    @if($post->image)
+                        <img src="{{asset('images/posts/' . $post->image)}}" />
+                        <br><br>
+                    @endif
+                    <label style="color: deeppink"> Upload Images: </label> <input style="color: red" type="file" name="upload_images"/>
+                    @if ($errors->has('upload_images'))
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('upload_images') }}</strong>
+                    </span>
+                    @endif
+                    <textarea id="post_body" type="text" style="height: 300px" class="form-control{{ $errors->has('post_body') ? ' is-invalid' : '' }}" placeholder="Post Body" name="post_body" required>{{ $post->post_body }}</textarea>
                     <br>
                     @if ($errors->has('post_body'))
                         <span class="invalid-feedback" role="alert">
