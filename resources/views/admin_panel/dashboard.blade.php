@@ -1,6 +1,6 @@
-@extends('layouts.admin_app')
+@extends('layouts.admin_app');
 
-@section('content')
+@section('content');
 
 
     @extends('layouts.hori_sidebar');
