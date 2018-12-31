@@ -10,4 +10,5 @@ class SystemUserController extends Controller
     {
         $this->middleware('guest');
     }
+
 }

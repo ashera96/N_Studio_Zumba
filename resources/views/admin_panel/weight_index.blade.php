@@ -126,25 +126,60 @@
                     </div>
                     <div>
                         <br>
-                        <div class="col-md-6" align="center">
+                        <div class="col-md-12" align="center">
+                        <div class="row mb-0">
+                        <div class="card overview-block pad30 rounded">
 
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <table class="table thread-dark" width="50%" align="center">
+                            <div class = "col-md-8 text-right">
+
+                                <form method="get" class ="form-inline" action="/searchcontent">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder ="Enter User id" name="title">
+                                        <div class ="input-group-btn">
+                                            {{--<a href="{{url('admin/reports')}}">--}}<button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>{{--</a>--}}
+                                        </div>
+                                        {{--<a href="{{url('admin/weight_view')}}"><button class ="btn btn-success" type="submit">Search</button></a>
+                                --}}</div>
+
+                                </form>
+                                <div style="float: right;" >
+
+                                    <a href="{{url('/admin/reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
+                                </div>
+                            </div>
+                            <table class="table table-striped table-hover" width="80%"  >
                                 <thead>
                                 <tr>
                                     <th>Id</th>
+                                    <th>Month</th>
+                                    <th>Year</th>
+                                    <th>Weight</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+
+                                @foreach($weights as $weight)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
+                                        <td>{{$weight->id}}</td>
+                                        <td>{{$weight->month}}</td>
+                                        <td>{{$weight->year}}</td>
+                                        <td>{{$weight->weight}}</td>
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{{url('admin/weight_view')}}"><button class="view">VIEW DETAILS</button></a>
+                                                    <a href="{{url('admin/reports/'.$weight->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <a {{--href="{{url('admin/customers/'.$user->id.'/edit')}}"--}}><button class="editbtn" >VIEW</button></a>
                                                 </div>
                                             </div>
                                         </td>
@@ -153,8 +188,12 @@
                                 </tbody>
                             </table>
 
+                            {{$weights->links()}}
+
                         </div>
                     </div>
+                        </div>
+                        </div>
 
                 </div>
                     </div>
