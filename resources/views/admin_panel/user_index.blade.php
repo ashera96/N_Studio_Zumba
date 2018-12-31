@@ -15,17 +15,26 @@
                 @extends('layouts.vertical_sidebar');
                 <!--Sidebar-area end-->
 
-                <div class="col-lg-10 col-md-10 pad30">
+                <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 mainFix">
                     <!-- Website Overview -->
+
+                    <div class="section-title text-center">
+                        <div class="title-bar full-width mb20">
+                            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
+                        </div>
+                        <h3>Customers</h3>
+                        <p>Manage Customers</p>
+                    </div>
+
 
                     <!-- Latest Users -->
                     <div class="row mb-0">
                         <div class="card overview-block pad30 rounded">
-                            <div class="panel panel-default">
-                                <div class="panel-heading main-color-bg">
-                                    <h3 class="panel-title">Customers Overview</h3><br>
-                                </div>
-                            </div>
+                            {{--<div class="panel panel-default">--}}
+                                {{--<div class="panel-heading main-color-bg">--}}
+                                    {{--<h3 class="panel-title">Customers Overview</h3><br>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             {{--<form method="get"  class ="form-inline" {{--action="{{route('customers.search')}}">
                                 @csrf
@@ -40,7 +49,7 @@
 
                             </form>--}}
 
-                            <div class="panel panel-default">
+                            <div class="panel panel-default ml90">
                                 <div class="panel-body">
                                     <table class="table table-striped table-hover" width="80%"  >
                                         <thead>
@@ -96,14 +105,9 @@
             </div>
         </div>
     </div>
-
-
-
 @endsection
 
 @section('js_styling')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
-
-
 @endsection
