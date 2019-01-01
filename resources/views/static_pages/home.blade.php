@@ -145,28 +145,47 @@
     </div>
     <!--BMI calculating area end-->
 
-    <br>
-    <h2 style="color: #e83e8c;padding: 15px">Notifications</h2>
-
-    <div id="posts" style="color: gray ;
-    padding: 15px;
-    background-clip: padding-box;font-size: medium">
-        @foreach($posts as $post)
-            <div>
-                <b style="color: #d9534f">{{$post->title}}</b>
-                <br>
-                @if($post->image)
-                <img src="{{asset('images/posts/' . $post->image)}}" />
-                <br><br>
-                @endif
-                {{$post->post_body}}
-                <br>
-                <small style="color: #2c2c2c">Posted at : {{$post->updated_at}}</small>
+    {{--Notifications area start--}}
+    <div class="about-area pad90">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <div class="title-bar full-width mb20">
+                            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
+                        </div>
+                        <h3>Notifications</h3>
+                        <div id="posts" style="color: gray ;padding: 15px;background-clip: padding-box;font-size: medium">
+                            @foreach($posts as $post)
+                                <div>
+                                    <div class="card mt15 shadow-lg">
+                                        <h4 class="card-header mt20" style="color: #fc328a">{{$post->title}}</h4>
+                                        <div class="card-body">
+                                            <div class="card-text ml-4 mr-4" style="color: #343a40">
+                                                <div class="row mb-4">
+                                                    {{$post->post_body}}
+                                                </div>
+                                                @if($post->image)
+                                                    <img src="{{asset('images/posts/' . $post->image)}}" />
+                                                    <br><br>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-muted">
+                                            Posted at : {{$post->updated_at}}
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                <br>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br>
-        @endforeach
+        </div>
     </div>
-
+    {{--Notifications area end--}}
 @endsection
 
 
