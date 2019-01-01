@@ -65,6 +65,7 @@ Route::prefix('home')->group(function() {
 */
 Route::prefix('admin')->group(function() {
     Route::resource('/receptionist','ReceptionistController')->middleware('admin');
+   // Route::resource('/uploada','UploadController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin');
     Route::resource('/customers', 'UserController')->middleware('admin');
     Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
@@ -113,6 +114,19 @@ Route::prefix('admin')->group(function() {
 | Receptionist Routes
 |--------------------------------------------------------------------------
 */
+
+Route::prefix('admin')->group(function() {
+    Route::resource('/receptionist','ReceptionistController')->middleware('admin');
+
+    Route::get('/customers','UserController@show_user_index')->middleware('admin');
+    Route::resource('/customers', 'UserController')->middleware('admin');
+    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
+    Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
+    Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
+
+
+});
+
 
 Route::prefix('receptionist')->group(function() {
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');

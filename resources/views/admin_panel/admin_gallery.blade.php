@@ -4,7 +4,6 @@
 
     @extends('layouts.hori_sidebar');
 
-
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
 
@@ -20,6 +19,8 @@
                         <h3>Gallery</h3>
                         <p>Manage Gallery Uploads</p>
                     </div>
+
+
 
                     <div class="gallery ml90">
                         <br><br>
