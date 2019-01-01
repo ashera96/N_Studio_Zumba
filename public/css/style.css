@@ -2559,8 +2559,6 @@ shop end-------------*/
 }
 
 /*Admin dashboard, class package management styling */
-/*.pricing-area .price-box .price-quantity .qnty-box .box-element {*/
-  /*display: inline-block; }*/
 .pricing-area .price-box .price-quantity .qnty-box .box-element .admin-package h5 {
   font-size: 35px;
   margin-top: 60px;
@@ -2572,3 +2570,27 @@ shop end-------------*/
   line-height: 15px; }
 .pricing-area .price-box.active .price-quantity .qnty-box .box-element .admin-package h5, .pricing-area .price-box:hover .price-quantity .qnty-box .box-element .admin-package h5 {
   color: #fff; }
+
+/*Registered Customer package selection styling*/
+.pricing-area .price-box.active, .pricing-area .selected-package {
+  background-color: #fc328a !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform: translateY(-10px); }
+.pricing-area .price-box.active .qnty-box, .pricing-area .selected-package .qnty-box {
+  background-color: #fc328a !important; }
+.pricing-area .price-box.active .price-quantity .qnty-box .box-element h5, .pricing-area .selected-package .price-quantity .qnty-box .box-element h5 {
+  color: #fff; }
+.pricing-area .price-box.active .price-quantity .price-dtl ul li, .pricing-area .selected-package .price-quantity .price-dtl ul li {
+  color: #fff; }
+.pricing-area .price-box.active .price-quantity .price-dtl .bttn .btn, .pricing-area .selected-package .price-quantity .price-dtl .bttn .btn {
+  background-color: #000;
+  border: 1px solid transparent;
+  color: #fff; }
+
+.fs-15{
+  font-size: 15px;
+}
+
+.ml200{
+  margin-left: 200px;
+}
