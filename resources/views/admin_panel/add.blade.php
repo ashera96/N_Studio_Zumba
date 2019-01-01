@@ -25,7 +25,17 @@
                             <h3>Add Receptionist</h3>
                         </div>
 
-                <div class="row">
+
+                        @if (session('msgr1'))
+                            <div class="alert alert-success" role="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                {{ session('msgr1') }}
+                            </div>
+                        @endif
+
+
+
+                        <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <div class="contact-form mt20">
                             <div class="appointment-schedule">
