@@ -56,6 +56,8 @@ Route::prefix('home')->group(function() {
     Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer');
     Route::get('/schedule', 'UserScheduleController@index')->middleware('customer');
     Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer');
+    Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer');
+    Route::put('/update_schedule','UserScheduleController@update')->middleware('customer');
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
