@@ -170,35 +170,13 @@ function f12(){
 if(myInput.checked){
     document.getElementById("b1").style.color = "#5de05b";
     document.getElementById("b1").innerText = "Booked";
-    myInput.disabled = true;
     myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 
 if(myInput2.checked){
     document.getElementById("b2").style.color = "#5de05b";
     document.getElementById("b2").innerText = "Booked";
     myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 //end of monday
 
@@ -206,35 +184,13 @@ if(myInput2.checked){
 if(myInput3.checked){
     document.getElementById("b3").style.color = "#5de05b";
     document.getElementById("b3").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
     myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 
 if(myInput4.checked){
     document.getElementById("b4").style.color = "#5de05b";
     document.getElementById("b4").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
     myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 //end of tuesday
 
@@ -242,35 +198,13 @@ if(myInput4.checked){
 if(myInput5.checked){
     document.getElementById("b5").style.color = "#5de05b";
     document.getElementById("b5").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
     myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 
 if(myInput6.checked){
     document.getElementById("b6").style.color = "#5de05b";
     document.getElementById("b6").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
     myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 //end of wednesday
 
@@ -278,35 +212,13 @@ if(myInput6.checked){
 if(myInput7.checked){
     document.getElementById("b7").style.color = "#5de05b";
     document.getElementById("b7").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
     myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 
 if(myInput8.checked){
     document.getElementById("b8").style.color = "#5de05b";
     document.getElementById("b8").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
     myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 //end of thursday
 
@@ -314,35 +226,13 @@ if(myInput8.checked){
 if(myInput9.checked){
     document.getElementById("b9").style.color = "#5de05b";
     document.getElementById("b9").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
     myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 
 if(myInput10.checked){
     document.getElementById("b10").style.color = "#5de05b";
     document.getElementById("b10").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
     myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 //end of friday
 
@@ -350,18 +240,6 @@ if(myInput10.checked){
 if(myInput11.checked){
     document.getElementById("b11").style.color = "#5de05b";
     document.getElementById("b11").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 //end of saturday
 
@@ -369,18 +247,6 @@ if(myInput11.checked){
 if(myInput12.checked){
     document.getElementById("b12").style.color = "#5de05b";
     document.getElementById("b12").innerText = "Booked";
-    myInput.disabled = true;
-    myInput2.disabled = true;
-    myInput3.disabled = true;
-    myInput4.disabled = true;
-    myInput5.disabled = true;
-    myInput6.disabled = true;
-    myInput7.disabled = true;
-    myInput8.disabled = true;
-    myInput9.disabled = true;
-    myInput10.disabled = true;
-    myInput11.disabled = true;
-    myInput12.disabled = true;
 }
 //end of sunday
 
