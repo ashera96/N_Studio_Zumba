@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Package;
+use App\UserPackage;
 
 class PackageController extends Controller
 {
@@ -26,8 +27,11 @@ class PackageController extends Controller
 
     public function customer()
     {
+//        $id = Auth::user()->id;
         $packages = Package::all();
-        return view('customer_pages.class_packages')->with('packages', $packages);
+//        $user_package = UserPackage::find($id);
+//        return view('customer_pages.class_packages')->with('packages', $packages);
+        return view('customer_pages.class_packages',compact('packages'));
     }
 
     /**

@@ -19,6 +19,31 @@
         },15000);
     </script>
 
+    {{--JS function to select the package start--}}
+    <script>
+        function addSelectedPackage(packageId){
+            var data = $("#hidden-form").serialize();
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // catch JSON response
+                    // var temp=JSON.parse(this.response);
+                    // Use Json response example
+                    document.getElementById(packageId).innerHTML = "Cancel";
+                    // document.getElementById(packageId).setAttribute('class','price-box selected-package')
+
+                    // alert(this.response);
+                }
+            };
+
+            alert(data);
+            xhttp.open("POST", "/home/add_package", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(data);
+        }
+    </script>
+    {{--JS function to select the package end--}}
+
     <header class="header fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
@@ -195,7 +220,8 @@
                 @if(count($packages)>0)
                     @foreach($packages as $package)
                         <div class="col-md-6">
-                            <div class="price-box">
+                            <div class="price-box" id="package">
+                            {{--<div class="price-box" id={{$package->id}}>--}}
                                 <div class="price-empty">
                                 </div>
                                 <div class="price-quantity">
@@ -212,7 +238,13 @@
                                             <li><h3>Rs. {{$package->price}}</h3></li>
                                         </ul>
                                         <div class="price-btn bttn">
-                                            <a href="{{ route('login') }}" class="btn btn-primary">Buy now</a>
+                                            {{--name -> cancel--}}
+                                            <form action="" id="hidden-form">
+                                                @csrf
+                                                <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
+                                                <input type="hidden" id="package_id" name="package_id" value="{{$package->id}}">
+                                            </form>
+                                            <a href="#" class="btn btn-primary" name="buy" id={{$package->id}} onclick="addSelectedPackage({{$package->id}})">Buy now</a>
                                         </div>
                                     </div>
                                 </div>

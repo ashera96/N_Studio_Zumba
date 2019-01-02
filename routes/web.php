@@ -46,7 +46,7 @@ Route::prefix('home')->group(function() {
     Route::get('/about', 'CustomerPageController@show_about')->middleware('customer');
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
     Route::get('/class_packages', 'PackageController@customer')->middleware('customer');
-
+    Route::post('/add_package', 'UserPackageController@create')->middleware('customer');
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
