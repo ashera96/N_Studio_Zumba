@@ -125,8 +125,105 @@
                         </div>
                     </div>
                     <div>
-                        <div class="col-md-12">
+                        <div>
+                            <br>
+                            <div class="col-md-12" align="center">
+                                <div class="row mb-0">
+                                    <div class="card overview-block pad30 rounded">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class = "col-md-8 text-right">
 
+                                                    <form method="get" class ="form-inline" {{--action="/searchcontent"--}}>
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder ="Enter User id" name="title">
+                                                            <div class ="input-group-btn">
+                                                                {{--<a href="{{url('admin/reports')}}">--}}<button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>{{--</a>--}}
+                                                            </div>
+                                                            {{--<a href="{{url('admin/weight_view')}}"><button class ="btn btn-success" type="submit">Search</button></a>
+                                                    --}}</div>
+
+                                                    </form>
+                                                    <div style="float: right;" >
+
+                                                        <a href="{{url('/admin/reports_attendance/create')}}"><button class="addbtnattend">ADD ATTENDANCE</button></a>
+                                                    </div>
+                                                </div>
+                                                <table class="table table-striped table-hover" width="80%"  >
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Id</th>
+                                                        <th>Month</th>
+                                                        <th>Year</th>
+                                                        <th>Total Classes</th>
+                                                        <th>No of Attendance</th>
+                                                        <th>Percentage(%)</th>
+                                                        <th></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    @foreach($attendances as $attendance)
+                                                        <tr>
+                                                            <td>{{$attendance->id}}</td>
+                                                            <td>{{$attendance->month}}</td>
+                                                            <td>{{$attendance->year}}</td>
+                                                            <td>{{$attendance->totalclasses}}
+                                                                @if($attendance->totalclasses)
+                                                                    <a {{--href="markasactive/{{$user->id}}"--}}><button class="add1">>1</button></a>
+                                                                @else
+                                                                    <a {{--href="markasnotactive/{{$user->id}}" --}}><button class="markinactive">>1</button></a>
+                                                                @endif
+
+                                                            </td>
+                                                            <td>{{$attendance->attendanceclasses}}
+                                                                @if($attendance->attendanceclasses)
+                                                                    <a {{--href="markasactive/{{$user->id}}"--}}><button class="add1">>1</button></a>
+                                                                @else
+                                                                    <a {{--href="markasnotactive/{{$user->id}}"--}} ><button class="markinactive">>1</button></a>
+                                                                @endif
+
+                                                            </td>
+                                                            <td>{{$attendance->percentage}}</td>
+                                                            <td>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <a {{--href="{{url('admin/reports/'.$weight->id.'/edit')}}"--}}><button class="editbtn" >EDIT</button></a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+
+                                                            <td>
+                                                                <div class="row">
+                                                                    <div class={{--href="{{url('admin/reports/'.$weight->id.'/view')}}"--}}><button class="editbtn" >VIEW</button></a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+
+                                                            {{--<td>
+
+                                                                <form method="POST" action="{{route('reports.destroy',$weight->id,$weight->month)}}">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <br>
+                                                                    <button type="submit" class="delbtn">DELETE</button>
+                                                                </form>
+
+
+                                                            </td>--}}
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+
+                                                {{$attendances->links()}}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

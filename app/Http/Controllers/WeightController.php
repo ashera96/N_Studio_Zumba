@@ -22,6 +22,13 @@ class WeightController extends Controller
         return view('admin_panel.add_weight');
     }
 
+    public function search(Request $request)
+    {
+        $search = $request -> get('search');
+        $weights = DB::table('weights')->where('id', 'like', '%',$search,'%')->paginate(6);
+        return view('admin_panel.weight_index',['weights'=>$weights]);
+    }
+
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -42,4 +49,23 @@ class WeightController extends Controller
 
         return redirect('/admin/reports/')->with('success','Weight Added');
     }
+
+    public function view($id)
+    {
+        $wegfind = Weight::findOrFail($id);
+        return view('admin_panel.weight_view',['weight'=>$wegfind]);
+
+        /*$cusfind = User::find($id);
+        return view('admin_panel.user_edit',compact('cusfind','id')); */
+    }
+
+   /* public function destroy($id,$month)
+    {
+
+        DB::table('weights')->where('id', '=', $id ,'month', '=' , $month)->delete();
+                            //->and('month', '=' , $month) ->delete();
+        return redirect('admin/reports');
+    }*/
+
+
 }

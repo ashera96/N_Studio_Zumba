@@ -102,22 +102,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*$this->validate($request,[
-            'id' => 'required',
-            'name'=>'required|string|min:2',
-            'dob' => ['required',new ageValidation],
-            'nic' => ['required','unique:users',new nicValidation],
-
-        ]);
-
-        $cusfind =User::find($id);
-        $cusfind ->id =$request ->get('id');
-        $cusfind ->name =$request ->get('name');
-        $cusfind ->nic =$request ->get('nic');
-        $cusfind ->dob =$request ->get('dob');
-        $cusfind ->save();
-        return redirect('/admin/customers')->with('success','Customer Updated');*/
-
         $this->validate($request,[
             //'id' => 'required',
             //'email'=>'required|email',
@@ -130,8 +114,6 @@ class UserController extends Controller
         ]);
 
         $cusfind =User::findOrFail($id);
-        //$system_users = SystemUser::findOrFail($id);
-        //$cusfind ->id = $request ->id;
         $cusfind ->name =$request ->name;
         //$recepnew ->email =$request ->email;
         //$system_users ->email =$request ->email;
