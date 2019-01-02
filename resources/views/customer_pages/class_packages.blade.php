@@ -19,30 +19,103 @@
         },15000);
     </script>
 
-    {{--JS function to select the package start--}}
+    {{--JS functions related to packages start--}}
     <script>
+        // Function called when the button is clicked
+        function buttonClicked(packageId) {
+            var buttonType = document.getElementById(packageId+'b').innerHTML;
+            if(buttonType=="Cancel"){
+                removeSelectedPackage();
+            }
+            else{
+                addSelectedPackage(packageId);
+            }
+        }
+
+        // Function to add the selection start
         function addSelectedPackage(packageId){
-            var data = $("#hidden-form").serialize();
+            var confirm_add = confirm("Confirm Selection?");
+            if ( confirm_add == true ){
+                var data = $('#'+packageId+'f').serialize();
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // catch JSON response
+                        // var temp=JSON.parse(this.response);
+                        // Use Json response
+                        document.getElementById(packageId+'b').innerHTML = "Cancel";
+                        document.getElementById(packageId).setAttribute('class','price-box selected-package')
+
+                        // alert(this.response);
+                    }
+                };
+
+                xhttp.open("POST", "/home/add_package", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send(data);
+            }
+        }
+        // Function to add the selection end
+
+        // Function to delete the selection start
+        function removeSelectedPackage(){
+            var confirm_deletion = confirm("Confirm Deletion?");
+            if( confirm_deletion == true){
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // catch JSON response
+                        var temp=JSON.parse(this.response);
+                        // Use Json response
+                        alert(temp.success);
+                        for (var i=1;i<=4;i++){
+                            document.getElementById(i+'b').innerHTML = "Buy Now";
+                            document.getElementById(i+'b').setAttribute('class','btn btn-primary');
+                            document.getElementById(i).setAttribute('class','price-box');
+                        }
+
+                        // alert(this.response);
+                    }
+                };
+
+                var userId = document.getElementById("user_id").value;
+                xhttp.open("GET", "/home/delete_package/"+userId, true);
+                xhttp.send();
+            }
+
+        }
+        // Function to delete the selection end
+
+        // Function to load the current state of selections start
+        function onLoad(){
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     // catch JSON response
-                    // var temp=JSON.parse(this.response);
-                    // Use Json response example
-                    document.getElementById(packageId).innerHTML = "Cancel";
-                    // document.getElementById(packageId).setAttribute('class','price-box selected-package')
+                    var temp=JSON.parse(this.response);
+                    // Use Json response
+                    for(var i=1;i<=4;i++){
+                        if(i!=temp.selected_package){
+                            document.getElementById(i+'b').setAttribute('class','btn btn-primary disabled');
+                        }
+                        else{
+                            document.getElementById(i).setAttribute('class','price-box selected-package');
+                            document.getElementById(i+'b').innerHTML = "Cancel";
+                        }
+                    }
 
-                    // alert(this.response);
+                    // alert(temp.selected_package);
                 }
             };
 
-            alert(data);
-            xhttp.open("POST", "/home/add_package", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send(data);
+            var userId = document.getElementById("user_id").value;
+            xhttp.open("GET", "/home/add_package/"+userId, true);
+            xhttp.send();
         }
+        // Function to load the current state of selections end
+
     </script>
-    {{--JS function to select the package end--}}
+    {{--JS functions related to packages end--}}
 
     <header class="header fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -211,6 +284,7 @@
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}"  alt="title-img">
                         </div>
                         <h3>packages and pricing plans</h3>
+                        <p>You can only select one package at a time, but can always change the selected package</p>
                     </div>
                 </div>
             </div>
@@ -220,7 +294,7 @@
                 @if(count($packages)>0)
                     @foreach($packages as $package)
                         <div class="col-md-6">
-                            <div class="price-box" id="package">
+                            <div class="price-box" id={{$package->id}}>
                             {{--<div class="price-box" id={{$package->id}}>--}}
                                 <div class="price-empty">
                                 </div>
@@ -239,12 +313,12 @@
                                         </ul>
                                         <div class="price-btn bttn">
                                             {{--name -> cancel--}}
-                                            <form action="" id="hidden-form">
+                                            <form action="" id={{$package->id.'f'}}>
                                                 @csrf
                                                 <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
                                                 <input type="hidden" id="package_id" name="package_id" value="{{$package->id}}">
                                             </form>
-                                            <a href="#" class="btn btn-primary" name="buy" id={{$package->id}} onclick="addSelectedPackage({{$package->id}})">Buy now</a>
+                                            <a href="#" class="btn btn-primary" name="buy" id={{$package->id.'b'}} onclick="buttonClicked({{$package->id}})">Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -254,7 +328,6 @@
                     @endforeach
                 @endif
 
-
             </div>
             <!-- /.row -->
         </div>
@@ -262,6 +335,9 @@
     </div>
     <!--pricing area end-->
 
+    <script>
+        onLoad();
+    </script>
 
 @endsection
 
