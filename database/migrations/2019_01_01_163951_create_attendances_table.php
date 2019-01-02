@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWeightsTable extends Migration
+class CreateAttendancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateWeightsTable extends Migration
      */
     public function up()
     {
-        Schema::create('weights', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->integer('id');
             $table->string('month');
             $table->integer('year');
-            $table->double('weight');
-            $table->timestamps();
+            $table->integer('totalclasses');
+            $table->integer('attendanceclasses');
+            $table->double('percentage');
             //$table->primary(['id', 'month']);
             //$table->foreign('id')->references('id')->on('system_users');
-            //$table->foreign('id')->references('id')->on('users');
+
+            $table->timestamps();
         });
     }
 
@@ -32,6 +34,6 @@ class CreateWeightsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('weights');
+        Schema::dropIfExists('attendances');
     }
 }
