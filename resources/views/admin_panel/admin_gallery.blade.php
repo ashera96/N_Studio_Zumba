@@ -4,7 +4,6 @@
 
     @extends('layouts.hori_sidebar');
 
-
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
 
@@ -20,6 +19,22 @@
                         <h3>Gallery</h3>
                         <p>Manage Gallery Uploads</p>
                     </div>
+
+
+
+                    @if (session('msg10'))
+                        <div class="alert alert-success" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msg10') }}
+                        </div>
+
+                    @endif
+
+                <!--    <div>
+                        <img src="{{ URL::asset('uploads/1.png') }}">
+                    </div>   -->
+
+
 
                     <div class="gallery ml90">
                         <br><br>

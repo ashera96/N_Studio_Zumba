@@ -24,7 +24,13 @@ class UserController extends Controller
             ->join('system_users','users.id','=','system_users.id')
             ->select('system_users.*','users.*')
             ->get();
-        return view('admin_panel.user_index',['users'=>$new]);
+
+        if('system_users.id'==1) {
+            return view('admin_panel.user_index', ['users' => $new]);
+        }
+        else{
+            return view('recep_panel.user_index', ['users' => $new]);
+        }
     }
 
     /*public function search(Request $request){

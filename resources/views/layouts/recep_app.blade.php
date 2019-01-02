@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>N Studio Zumba</title>
+    <title>Admin | Dashboard</title>
     <meta name="author" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -37,27 +37,25 @@
     <link rel="stylesheet" href="{{ URL::asset('css/jquery-ui.min.css') }}">
     <!--Style Css-->
     <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/dashboard-css/style.css') }}">
     <!--Responsive Css-->
     <link rel="stylesheet" href="{{ URL::asset('css/responsive.css') }}">
     <!--Modernizr Css-->
     <script src="{{ URL::asset('js/modernizr-2.8.3.min.js') }}"></script>
-
-
-    {{--<!--[if lt IE 9]>--}}
-    {{--<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>--}}
-    {{--<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
-    {{--<![endif]-->--}}
 
 </head>
 <body>
 
 <!--main-container-->
 <div class="main-container">
+@yield('content')
 
-    @yield('content')
-
-    <!--Footer start-->
-    @include('static_pages.footer');
+<!--Footer start-->
+    <footer>
+        <div class="copyright pad30 footer-block" style="left: 0;bottom: 0;width: 100%;text-align: center">
+            <h4>Copyright © <span>N Studio Zumba.</span> All Rights Reserved</h4>
+        </div>
+    </footer>
     <!--Footer end-->
 
 </div>
@@ -86,6 +84,7 @@
 </div>
 <!--End Search Popup-->
 
+
 <!--All Js Here-->
 <!-- jquery latest version -->
 <script data-cfasync="false" src="{{ URL::asset('js/email-decode.min.js') }}"></script><script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}"></script>
@@ -103,8 +102,6 @@
 <!--Isotop Js-->
 <script src="{{ URL::asset('js/isotope.pkgd.min.js') }}"></script>
 
-<script src="{{ asset('js/schedule_controlling.js') }}" defer></script>
-
 <!-- revolution slider js files start -->
 <script src="{{ URL::asset('js/jquery.themepunch.tools.min.js') }}"></script>
 <script src="{{ URL::asset('js/revolution.min.js') }}"></script>
@@ -119,7 +116,6 @@
 <script src="{{ URL::asset('js/revolution.extension.slideanims.min.js') }}"></script>
 <script src="{{ URL::asset('js/revolution.extension.video.min.js') }}"></script>
 <!-- revolution slider js files end -->
-
 
 @yield('js_styling')
 

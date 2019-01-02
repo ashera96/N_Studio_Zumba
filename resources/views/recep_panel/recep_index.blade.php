@@ -12,7 +12,6 @@
 
         <div class="col-lg-10 col-md-9 mar30">
 
-
             <div class="section-title text-center">
                 <div class="title-bar full-width mb20">
                     <br><br><br>
@@ -21,8 +20,6 @@
 
                 <h3>Edit Receptionist</h3>
             </div>
-
-
 
 
             <div class="row">
@@ -110,10 +107,6 @@
                                             @endif
                                         </div>
                                     </div>
-
-
-
-
 
 
                                 </div>

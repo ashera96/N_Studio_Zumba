@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserPackage;
 
 class UserPackageController extends Controller
 {
@@ -11,19 +12,24 @@ class UserPackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
+//    public function index()
+//    {
+//        //
+//    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        UserPackage::create(array(
+            'user_id'=>$request->user_id,
+            'package_id'=>$request->package_id,
+        ));
+//         make json response
+        return response()->json(['message'=>"Success"]);
     }
 
     /**
