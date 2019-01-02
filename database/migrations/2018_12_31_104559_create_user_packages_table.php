@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserPackageTable extends Migration
+class CreateUserPackagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserPackageTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_package', function (Blueprint $table) {
+        Schema::create('user_packages', function (Blueprint $table) {
             $table->increments('user_id');
             $table->integer('package_id');
             $table->timestamps();
