@@ -2,8 +2,10 @@
 
 namespace App;
 
+//use Illuminate\Filesystem\Cache;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -25,5 +27,9 @@ class User extends Authenticatable
     //Make the relationship with the Model-Role
    public function role(){
         return $this->belongsTo('App\Role');
+    }
+
+    public function isOnline(){
+        return Cache::has('user-is-online-'.$this->role->id);
     }
 }

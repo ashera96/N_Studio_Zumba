@@ -143,6 +143,6 @@ Route::post('uploadss','UploadController@upload');
 
 
 Route::get('recep/dashboard','RecepMainController@show_recep_dash');
-Route::resource('recep/profile','RecepMainController');
+Route::get('recep/profile','ReceptionistController@index');
 Route::resource('recep/customers', 'UserController');
 

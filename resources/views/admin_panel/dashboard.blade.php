@@ -54,7 +54,7 @@
                         <div class="card overview-block pad30 rounded">
                             <div class="card-header rounded mr-1 ml-1">Latest Online Users</div>
                             <div class="row card-body">
-                                <table class="table table-striped table-hover">
+                               <!-- <table class="table table-striped table-hover">
                                     <tr class="text-dark">
                                         <th>Name</th>
                                         <th>Email</th>
@@ -75,11 +75,17 @@
                                         <td>jo@gmail.com</td>
                                         <td>Dec 28, 2015</td>
                                     </tr>
-                                </table>
+                                </table>  -->
+
+
                             </div>
                         </div>
                     </div>
                     <!-- Latest users end -->
+
+
+
+
 
                 </div>
                 <!-- /.col -->
