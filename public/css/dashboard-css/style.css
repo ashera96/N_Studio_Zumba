@@ -235,6 +235,16 @@
     font-size: 11px;
 }
 
+.add1{
+    background-color: deeppink !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 40px;
+    font-size: 11px;
+}
+
 
 
 /*!* Header *!*/
@@ -301,6 +311,17 @@
     height: 30px;
     width: 100px;
     font-size: 15px;
+}
+
+.addbtnattend{
+    background-color: #00A8FF !important;
+    color: #ffffff !important;
+    border-width: 0px;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    font-size: 15px;
+
 }
   
   

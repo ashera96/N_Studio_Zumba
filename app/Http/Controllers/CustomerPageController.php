@@ -28,10 +28,10 @@ class CustomerPageController extends Controller
         return view('customer_pages.gallery');
     }
 
-    public function show_schedule()
+    /*public function show_schedule()
     {
-        return view('customer_pages.schedule');
-    }
+        return view('customer_pages.class_schedule');
+    }*/
 
     public function show_testimonials()
     {

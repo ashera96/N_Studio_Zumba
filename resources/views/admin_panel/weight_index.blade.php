@@ -179,10 +179,22 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <a {{--href="{{url('admin/customers/'.$user->id.'/edit')}}"--}}><button class="editbtn" >VIEW</button></a>
+                                                    <a href="{{url('admin/reports/'.$weight->id.'/view')}}"><button class="editbtn" >VIEW</button></a>
                                                 </div>
                                             </div>
                                         </td>
+
+                                        {{--<td>
+
+                                            <form method="POST" action="{{route('reports.destroy',$weight->id,$weight->month)}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <br>
+                                                <button type="submit" class="delbtn">DELETE</button>
+                                            </form>
+
+
+                                        </td>--}}
                                     </tr>
                                 @endforeach
                                 </tbody>

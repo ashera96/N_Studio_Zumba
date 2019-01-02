@@ -50,7 +50,9 @@ Route::prefix('home')->group(function() {
     Route::get('/about', 'CustomerPageController@show_about')->middleware('customer');
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
     Route::get('/class_packages', 'PackageController@customer')->middleware('customer');
-
+    Route::post('/add_package', 'UserPackageController@create')->middleware('customer');
+    Route::get('/schedule', 'UserScheduleController@index')->middleware('customer');
+    Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer');
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
@@ -95,14 +97,10 @@ Route::prefix('admin')->group(function() {
     Route::resource('/reports','WeightController')->middleware('admin');
     Route::get('dashboard/reports','WeightController@create')->name('admin_panel.add_weight')->middleware('admin');
     Route::post('dashboard/reports','WeightController@store')->middleware('admin');
-    //Route::post('/searchcontent','WeightController@searchcontent')->middleware('admin');
-    //Route::resource('/reports','UserWeightController')->middleware('admin');
-    //Route::get('/reports','WeightController@show_weight_view')->middleware('admin');
+    //Route::get('/weight_view','WeightController@view')->middleware('admin');
 
-    //Route::get('/reports_attendance','ReportsAttendanceController@show_reports_attendance')->middleware('admin');
-    //Route::resource('/reports_attendance','ReportsAttendanceController')->middleware('admin');
-    //Route::get('/reports','WeightController@search')->middleware('admin');
-    //Route::get('/reports','WeightController@show_weight_index')->middleware('admin');
+    Route::get('/reports_attendance','AttendanceController@show_attendance_index')->middleware('admin');
+    Route::resource('/reports_attendance','AttendanceController')->middleware('admin');
 
     Route::get('/markasactive/{id}','UserController@UpdateCustomerActive');
     Route::get('/markasnotactive/{id}','UserController@UpdateCustomerNotActive');
