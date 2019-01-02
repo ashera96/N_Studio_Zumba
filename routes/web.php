@@ -19,6 +19,10 @@ Auth::routes();
 
 //provides security for after login re-directions by auth middleware
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Static Pages Routes
@@ -115,11 +119,11 @@ Route::prefix('admin')->group(function() {
 | Receptionist Routes
 |--------------------------------------------------------------------------
 */
+/*
+Route::prefix('recep')->group(function() {
+    Route::resource('/recep_dash','ReceptionistController')->middleware('recep');
 
-Route::prefix('admin')->group(function() {
-    Route::resource('/receptionist','ReceptionistController')->middleware('admin');
-
-    Route::get('/customers','UserController@show_user_index')->middleware('admin');
+   Route::get('/customers','UserController@show_user_index')->middleware('admin');
     Route::resource('/customers', 'UserController')->middleware('admin');
     Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
@@ -127,6 +131,7 @@ Route::prefix('admin')->group(function() {
 
 
 });
+*/
 
 
 Route::prefix('receptionist')->group(function() {
@@ -134,4 +139,10 @@ Route::prefix('receptionist')->group(function() {
 });
 
 Route::post('uploadss','UploadController@upload');
+
+
+
+Route::get('recep/dashboard','RecepMainController@show_recep_dash');
+Route::resource('recep/profile','RecepMainController');
+Route::resource('recep/customers', 'UserController');
 
