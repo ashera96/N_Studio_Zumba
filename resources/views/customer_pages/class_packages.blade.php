@@ -76,7 +76,7 @@
                             </a>
                         </li>
                         <li class="nav-item {{Request::is('home/schedule') ? "active" : ""}}">
-                            <a class="nav-link " href="/index/schedule">
+                            <a class="nav-link " href="/home/schedule">
                                 schedule<span class="sr-only">(current)</span>
                             </a>
                         </li>

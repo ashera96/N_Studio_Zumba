@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 
 class UploadController extends Controller{
@@ -11,15 +12,15 @@ class UploadController extends Controller{
 
         if(Input::hasFile('file')){
 
-
-            echo 'successfully uploaded';
-
             $file=Input::file('file');
             $file->move('uploads',$file->getClientOriginalName());
 
-            echo '<img src="uploads/'.$file->getClientOriginalName().'"/>';
 
+          //  echo '<img src=" {{ URL::asset(uploads/'.$file->getClientOriginalName().') }}  "/> ';
 
+            Session::flash('msg10', 'Image successfully uploaded!'); //print flash msg after successfully created
+
+            return redirect('admin/dashboard/admin_gallery');
 
         }
 

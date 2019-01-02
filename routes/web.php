@@ -19,6 +19,10 @@ Auth::routes();
 
 //provides security for after login re-directions by auth middleware
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Static Pages Routes
@@ -47,6 +51,8 @@ Route::prefix('home')->group(function() {
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
     Route::get('/class_packages', 'PackageController@customer')->middleware('customer');
     Route::post('/add_package', 'UserPackageController@create')->middleware('customer');
+    Route::get('/schedule', 'UserScheduleController@index')->middleware('customer');
+    Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer');
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
@@ -114,11 +120,11 @@ Route::prefix('admin')->group(function() {
 | Receptionist Routes
 |--------------------------------------------------------------------------
 */
+/*
+Route::prefix('recep')->group(function() {
+    Route::resource('/recep_dash','ReceptionistController')->middleware('recep');
 
-Route::prefix('admin')->group(function() {
-    Route::resource('/receptionist','ReceptionistController')->middleware('admin');
-
-    Route::get('/customers','UserController@show_user_index')->middleware('admin');
+   Route::get('/customers','UserController@show_user_index')->middleware('admin');
     Route::resource('/customers', 'UserController')->middleware('admin');
     Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
@@ -126,6 +132,7 @@ Route::prefix('admin')->group(function() {
 
 
 });
+*/
 
 
 Route::prefix('receptionist')->group(function() {
@@ -133,4 +140,10 @@ Route::prefix('receptionist')->group(function() {
 });
 
 Route::post('uploadss','UploadController@upload');
+
+
+
+Route::get('recep/dashboard','RecepMainController@show_recep_dash');
+Route::resource('recep/profile','RecepMainController');
+Route::resource('recep/customers', 'UserController');
 
