@@ -32,6 +32,17 @@ class UserPackageController extends Controller
         return response()->json(['message'=>"Success"]);
     }
 
+    public function on_load(UserPackage $id)
+    {
+        return response()->json(['selected_package'=>$id->package_id]);
+    }
+
+    public function delete(UserPackage $id)
+    {
+        $id->delete();
+        return response()->json(['success'=>'Deleted Successfully']);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
