@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        @extends('layouts.vertical_sidebar');
+        @extends('layouts.recep_vertical_sidebar');
 
         <div class="col-lg-10 col-md-9 mar30">
 
@@ -51,7 +51,17 @@
 
 
 
-
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h5 style="color: #343a40">Email</h5>
+                                            <input type="email" name="email" value="{{ $receptionist->email }}" class="form-control" value="{{Request::old('email')}}">
+                                            @if ($errors->has('email'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
