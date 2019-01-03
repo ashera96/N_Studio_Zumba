@@ -26,10 +26,13 @@ class HomeController extends Controller
      */
     public function index()   //controlling user roles
     {
-        //return view('home');
+      //  $users=User::all();
+       // return view('home',compact('users'));
         //return view(Auth::user()->role->name);
-        $users=User::all();
-        $role_id = Auth::user()->role->id;
+
+
+      $role_id = Auth::user()->role->id;
+
         if ($role_id == '2') {
             $posts = Post::orderBy('updated_at','DESC')->get(); //display posts in the customer's home page
             //$posts = Post::all();
