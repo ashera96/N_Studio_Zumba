@@ -44,7 +44,8 @@
                         // var temp=JSON.parse(this.response);
                         // Use Json response
                         document.getElementById(packageId+'b').innerHTML = "Cancel";
-                        document.getElementById(packageId).setAttribute('class','price-box selected-package')
+                        document.getElementById(packageId).setAttribute('class','price-box selected-package');
+                        onLoad();
 
                         // alert(this.response);
                     }
