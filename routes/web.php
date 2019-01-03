@@ -29,6 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 |--------------------------------------------------------------------------
 */
 
+Route::get('/', 'StaticPageController@show_index');
 Route::get('/index', 'StaticPageController@show_index');
 Route::get('/index/about', 'StaticPageController@show_about');
 Route::get('/index/gallery', 'StaticPageController@show_gallery');
@@ -51,8 +52,12 @@ Route::prefix('home')->group(function() {
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
     Route::get('/class_packages', 'PackageController@customer')->middleware('customer');
     Route::post('/add_package', 'UserPackageController@create')->middleware('customer');
+    Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer');
+    Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer');
     Route::get('/schedule', 'UserScheduleController@index')->middleware('customer');
     Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer');
+    Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer');
+    Route::put('/update_schedule','UserScheduleController@update')->middleware('customer');
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');

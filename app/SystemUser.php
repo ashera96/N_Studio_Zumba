@@ -60,7 +60,9 @@ class SystemUser extends Authenticatable
     }
 
     public function isOnline(){
+
         return Cache::has('user-online-'.$this->id);
+
     }
 
 }

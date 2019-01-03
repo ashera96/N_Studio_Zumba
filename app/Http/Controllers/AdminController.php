@@ -25,6 +25,7 @@ class AdminController extends Controller
         return view('admin_panel.dashboard',compact('users'));
        // return view('admin_panel.dashboard',compact('users'));
 
+
     }
     public function show_gallery()
     {

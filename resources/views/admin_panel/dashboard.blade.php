@@ -58,12 +58,17 @@
 
 
 
-                                <table class="table table-striped table-hover">
+
+                          <!--      <table class="table table-striped table-hover">
+
+                               
+
                                     <tr class="text-dark">
                                         <th>Name</th>
                                         <th>Email</th>
 
                                     </tr>
+
 
 
                                     @if($users)
@@ -80,13 +85,16 @@
                                     @endif
 
 
-                                </table>
+                                </table>    -->
 
 
 
 
 
                                 You are logged in as a kc  Customer!
+
+
+                                
 
 
 

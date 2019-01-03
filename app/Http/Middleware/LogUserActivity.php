@@ -22,8 +22,10 @@ class LogUserActivity
     public function handle($request, Closure $next)
     {
         if(Auth::check()){
+
             $expiresAt = Carbon::now()->addMinutes(5);
             Cache::put('user-online-'.Auth::user()->id,true,$expiresAt);
+
 
 
         }
@@ -31,5 +33,3 @@ class LogUserActivity
     }
 }
 
-
-//$role_id = Auth::user()->role->id;
