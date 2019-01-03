@@ -35,36 +35,36 @@ class ReceptionistController extends Controller
             return view('admin_panel.index', ['receptionists' => $receps]);
         }
         else if($role_id==3){
-         $rec=Auth::user()->id;   //have to check through login as receptionist
+            $rec=Auth::user()->id;   //have to check through login as receptionist
             //$rec=6;
-            $receps2 =DB::table('receptionists')
+            $receps =DB::table('receptionists')
                 ->join('system_users','receptionists.id','=','system_users.id')
                 ->select('system_users.*','receptionists.*')
                 ->where('system_users.id', '=',$rec)
                 ->get();
 
-            return view('recep_panel.recep_index', ['receptionists' => $receps2]);
+            return view('recep_panel.recep_index', ['receptionists' => $receps]);
         }
 
         //$receps=Receptionist::all();
         //return view('admin_panel.index',['receptionists'=>$receps]);
-      // if('system_users.id'==1) {
+        // if('system_users.id'==1) {
 
-      //  }
+        //  }
 
-       /* else{
-            $rec=28;
+        /* else{
+             $rec=28;
 
 
-            $receps =DB::table('receptionists')
+             $receps =DB::table('receptionists')
 
-                ->join('system_users','receptionists.id','=','system_users.id')
-                ->select('system_users.*','receptionists.*')
-                ->where('receptionists.id', 'like', '%'.$rec.'%')
-                ->get();
+                 ->join('system_users','receptionists.id','=','system_users.id')
+                 ->select('system_users.*','receptionists.*')
+                 ->where('receptionists.id', 'like', '%'.$rec.'%')
+                 ->get();
 
-            return view('recep_panel.recep_index', ['receptionists' => $receps]);
-        }*/
+             return view('recep_panel.recep_index', ['receptionists' => $receps]);
+         }*/
     }
 
     /**
@@ -115,7 +115,7 @@ class ReceptionistController extends Controller
 
         $recepnew ->name =$request ->name;
         $system_users ->email =$request ->email;
-       // $recepnew ->email =$request ->email;
+        // $recepnew ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;
@@ -133,9 +133,9 @@ class ReceptionistController extends Controller
         $thisUser = SystemUser::findOrFail($system_users->id);
         $this->sendMail($thisUser);
 
-            Session::flash('msgr1', 'Receptionist successfully created!'); //print flash msg after successfully created
+        Session::flash('msgr1', 'Receptionist successfully created!'); //print flash msg after successfully created
 
-            return redirect('admin/receptionist');
+        return redirect('admin/receptionist');
 
 
     }
@@ -190,43 +190,46 @@ class ReceptionistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
+        $role_id = Auth::user()->role->id;
 
-       $role_id = Auth::user()->role->id;
+        if($role_id==1) {
 
-          if($role_id==1) {
+            $this->validate($request,[
 
-             $this->validate($request,[
-
-                 'name'=>'required|string|min:2',
-                 'nic' => ['required',new nicValidation],
-                 'dob' => ['required',new ageOfReceptionistValidation],
-                 //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-                 'address' => 'required',
-                 'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
-             ]);
+                'name'=>'required|string|min:2',
+                'nic' => ['required',new nicValidation],
+                'dob' => ['required',new ageOfReceptionistValidation],
+                //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+                'address' => 'required',
+                'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+            ]);
 
 
-             $recepnew =Receptionist::findOrFail($id);
-             $system_users = SystemUser::findOrFail($id);
-             $recepnew ->name =$request ->name;
-             //$recepnew ->email =$request ->email;
-             //$system_users ->email =$request ->email;
-             $recepnew ->nic =$request ->nic;
-             $recepnew ->dob =$request ->dob;
-             $recepnew ->address =$request ->address;
-             $recepnew ->tpno =$request ->tpno;
-             $system_users ->status=true;
-             $recepnew ->save();
-             $system_users ->save();
+            $recepnew =Receptionist::findOrFail($id);
+            $system_users = SystemUser::findOrFail($id);
+            $recepnew ->name =$request ->name;
+            //$recepnew ->email =$request ->email;
+            //$system_users ->email =$request ->email;
+            $recepnew ->nic =$request ->nic;
+            $recepnew ->dob =$request ->dob;
+            $recepnew ->address =$request ->address;
+            $recepnew ->tpno =$request ->tpno;
+            $system_users ->status=true;
+            $recepnew ->save();
+            $system_users ->save();
 
-             Session::flash('msgr2', 'Successfully updated!'); //print flash msg after successfully updated
+            Session::flash('msgr2', 'Successfully updated!'); //print flash msg after successfully updated
 
-             return redirect('admin/receptionist');
-         }
+            return redirect('admin/receptionist');
+        }
 
         else if($role_id==3) {
+
+
+
 
             $this->validate($request,[
 
@@ -254,6 +257,7 @@ class ReceptionistController extends Controller
             Session::flash('msgr2', 'Successfully updated!'); //print flash msg after successfully updated
 
             return redirect('recep/profile');
+
         }
 
 

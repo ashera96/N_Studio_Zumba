@@ -61,11 +61,11 @@ Route::prefix('home')->group(function() {
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
-//    Route::get('/profile', 'CustomerPageController@show_profile')->middleware('customer');
+    Route::get('/payment', 'CustomerPageController@show_payment')->middleware('customer');
     Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer');
     Route::get('markAsRead',function(){
-       auth()->user()->unreadNotifications->markAsRead();
-       return redirect()->back();
+        auth()->user()->unreadNotifications->markAsRead();
+        return redirect()->back();
     })->name('markAsRead');
 });
 
@@ -76,7 +76,7 @@ Route::prefix('home')->group(function() {
 */
 Route::prefix('admin')->group(function() {
     Route::resource('/receptionist','ReceptionistController')->middleware('admin');
-   // Route::resource('/uploada','UploadController')->middleware('admin');
+    // Route::resource('/uploada','UploadController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin');
     Route::resource('/customers', 'UserController')->middleware('admin');
     Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
@@ -120,9 +120,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
-//    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
-//
-    Route::get('/payments','PaymentController@load_receptionists')->middleware('admin');
+
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');
@@ -138,8 +136,8 @@ Route::prefix('recep')->group(function() {
     Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist');
     Route::resource('/profile','ReceptionistController')->middleware('receptionist');
     Route::resource('/customers', 'UserController')->middleware('receptionist');
-    Route::get('/fees','RecepMainController@show_fees')->middleware('receptionist');
-    Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist');
+    // Route::get('/fees','RecepMainController@show_fees')->middleware('receptionist');
+    Route::get('/fees','UserController@index2')->middleware('receptionist');
 
 
 //    Route::resource('/recep_dash','ReceptionistController')->middleware('recep');
