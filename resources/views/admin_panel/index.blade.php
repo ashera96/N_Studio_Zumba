@@ -73,8 +73,7 @@
                                                     <th class="product-quantity">DOB</th>
                                                     <th class="product-subtotal">Address</th>
                                                     <th class="product-remove">Phone</th>
-                                                    <th class="product-remove">Edit</th>
-                                                    <th class="product-remove">Delete</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -99,16 +98,32 @@
                                                     </td>
 
                                                     <td>
+                                                        @if($receptionist->status)
+                                                            <button class="markactive">Active Receptionist</button>
+                                                        @else
+                                                            <button class="markinactive">Inactive Receptionist</button>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if(!$receptionist->status)
+                                                            <a href="markasactive/{{$receptionist->id}}"><button class="activebtn">Activate</button></a>
+                                                        @else
+                                                            <a href="markasnotactive/{{$receptionist->id}}" ><button class="inactivebtn">Deactivate</button></a>
+                                                        @endif
 
-                                                        <form method="POST" action="{{route('receptionist.destroy',$receptionist->id)}}">
-                                                            @csrf
-                                                            @method('DELETE')
+                                                    </td>
+
+                                                  <!--  <td>
+
+                                                        <form method="POST" action=" {{--  {{route('receptionist.destroy',$receptionist->id)}}  --}}">
+                                                          {{--  @csrf
+                                                            @method('DELETE') --}}
                                                             <br>
                                                             <button type="submit" class="delbtn">DELETE</button>
                                                         </form>
 
 
-                                                    </td>
+                                                    </td>   -->
 
 
                                                 </tr>

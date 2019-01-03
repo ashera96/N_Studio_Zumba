@@ -117,6 +117,9 @@ Route::prefix('admin')->group(function() {
     Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
 
 
+    Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
+    Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
+
 
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
@@ -131,7 +134,7 @@ Route::prefix('admin')->group(function() {
 
 Route::prefix('recep')->group(function() {
     Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist');
-    Route::get('/profile','ReceptionistController@index')->middleware('receptionist');
+    Route::resource('/profile','ReceptionistController')->middleware('receptionist');
     Route::resource('/customers', 'UserController')->middleware('receptionist');
     Route::get('/fees','RecepMainController@show_fees')->middleware('receptionist');
     Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist');

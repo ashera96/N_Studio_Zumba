@@ -77,16 +77,16 @@
                                                     <td><a  class="btn btn-warning">Mark as not active</a></td>--}}
                                                     <td>
                                                         @if($user->status)
-                                                            <button class="activebtn">Active Customer</button>
+                                                            <button class="markactive">Active Customer</button>
                                                         @else
-                                                            <button class="inactivebtn">Inactive Customer</button>
+                                                            <button class="markinactive">Inactive Customer</button>
                                                         @endif
                                                     </td>
                                                     <td>
                                                         @if(!$user->status)
-                                                             <a href="markasactive/{{$user->id}}"><button class="markactive">Mark as Active</button></a>
+                                                             <a href="markasactive/{{$user->id}}"><button class="activebtn">Activate</button></a>
                                                         @else
-                                                            <a href="markasnotactive/{{$user->id}}" ><button class="markinactive">Mark as Inactive</button></a>
+                                                            <a href="markasnotactive/{{$user->id}}" ><button class="inactivebtn">Deactivate</button></a>
                                                         @endif
 
                                                     </td>
