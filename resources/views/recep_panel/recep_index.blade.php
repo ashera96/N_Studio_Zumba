@@ -84,7 +84,7 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                            <a href="{{url('recep/profile/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                                         </div>
                                                     </div>
                                                 </td>
