@@ -6,6 +6,7 @@
         <a href="/recep/customers" class="list-group-item side-bar {{Request::is('recep/customers') ? "active" : ""}}"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
         <a href="/admin/schedules" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
         <a href="/recep/fees" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
+        <a href="/recep/payments" class="list-group-item side-bar {{Request::is('recep/payments') ? "active" : ""}}"><i class="fa fa-money fa-lg mr-1"></i> Monthly Payments</a>
         <a href="/recep/reports" class="list-group-item side-bar {{Request::is('recep/reports') ? "active" : ""}}"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
     </div>
 </div>
