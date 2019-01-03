@@ -28,7 +28,7 @@
                     <!-- Website overview start -->
                     <div class="row">
                         <div class="card overview-block pad30 rounded">
-                            <div class="card-header rounded mr-1 ml-1">Website Overview</div>
+                            <div class="card-header rounded mr-1 ml-1" style="background-color: deeppink">Website Overview</div>
                             <div class="row card-body">
                                 <div class="card-deck">
                                     <div class="card rounded">
@@ -52,14 +52,14 @@
                     <!-- Latest users start -->
                     <div class="row mb-0">
                         <div class="card overview-block pad30 rounded">
-                            <div class="card-header rounded mr-1 ml-1">Latest Online Users</div>
+                            <div class="card-header rounded mr-1 ml-1"  style="background-color: deeppink">Latest Online Users</div>
                             <div class="row card-body">
 
 
 
 
 
-                          <!--     <table class="table table-striped table-hover">
+                                <table class="table table-striped table-hover">
 
 
 
@@ -71,7 +71,7 @@
 
 
 
-                                {{--    @if($users)
+                                    @if($users)
                                         @foreach($users as $user)
 
                                             @if($user->isOnline())
@@ -85,7 +85,7 @@
                                     @endif
 
 
-                                </table>  --}}
+                                </table>
 
 
                                 {{--You are logged in as a kc  Customer!--}}
@@ -97,7 +97,7 @@
 
                             </div>
                         </div>
-                    </div>   -->
+                    </div>
                     <!-- Latest users end -->
 
 

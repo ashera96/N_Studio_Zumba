@@ -32,6 +32,22 @@ class UserController extends Controller
             return view('recep_panel.user_index', ['users' => $new]);
         }  */
     }
+    public function index2()
+    {
+        // $new  =User::all(); //->where('status', '=', '1');
+        // return view('admin_panel.user_index',['users'=>$new]);
+        $new=DB::table('users')
+            ->join('system_users','users.id','=','system_users.id')
+            ->select('system_users.*','users.*')
+            ->get();
+
+        //if('system_users.id'==1) {
+        return view('recep_panel.fees', ['users' => $new]);
+        //}
+        /*  else{
+            return view('recep_panel.user_index', ['users' => $new]);
+        }  */
+    }
 
     /*public function search(Request $request){
         $searchkey = $request -> get('search');

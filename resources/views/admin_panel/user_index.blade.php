@@ -79,7 +79,7 @@
                                                         @if($user->status)
                                                             <button class="markactive">Active Customer</button>
                                                         @else
-                                                            <button class="markinactive">Inactive Customer</button>
+                                                            <button class="">Inactive Customer</button>
                                                         @endif
                                                     </td>
                                                     <td>

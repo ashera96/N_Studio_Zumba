@@ -136,7 +136,8 @@ Route::prefix('recep')->group(function() {
     Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist');
     Route::resource('/profile','ReceptionistController')->middleware('receptionist');
     Route::resource('/customers', 'UserController')->middleware('receptionist');
-    Route::get('/fees','RecepMainController@show_fees')->middleware('receptionist');
+   // Route::get('/fees','RecepMainController@show_fees')->middleware('receptionist');
+    Route::get('/fees','UserController@index2')->middleware('receptionist');
 
 
 //    Route::resource('/recep_dash','ReceptionistController')->middleware('recep');

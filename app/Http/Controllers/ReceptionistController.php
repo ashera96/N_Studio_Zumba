@@ -37,13 +37,13 @@ class ReceptionistController extends Controller
         else if($role_id==3){
          $rec=Auth::user()->id;   //have to check through login as receptionist
             //$rec=6;
-            $receps2 =DB::table('receptionists')
+            $receps =DB::table('receptionists')
                 ->join('system_users','receptionists.id','=','system_users.id')
                 ->select('system_users.*','receptionists.*')
                 ->where('system_users.id', '=',$rec)
                 ->get();
 
-            return view('recep_panel.recep_index', ['receptionists' => $receps2]);
+            return view('recep_panel.recep_index', ['receptionists' => $receps]);
         }
 
         //$receps=Receptionist::all();
@@ -190,10 +190,10 @@ class ReceptionistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
-
-       $role_id = Auth::user()->role->id;
+      $role_id = Auth::user()->role->id;
 
           if($role_id==1) {
 
@@ -226,7 +226,10 @@ class ReceptionistController extends Controller
              return redirect('admin/receptionist');
          }
 
-        else if($role_id==3) {
+       else if($role_id==3) {
+
+
+
 
             $this->validate($request,[
 
@@ -254,6 +257,7 @@ class ReceptionistController extends Controller
             Session::flash('msgr2', 'Successfully updated!'); //print flash msg after successfully updated
 
             return redirect('recep/profile');
+
         }
 
 
