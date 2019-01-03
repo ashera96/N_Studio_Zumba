@@ -59,13 +59,53 @@ class WeightController extends Controller
         return view('admin_panel.user_edit',compact('cusfind','id')); */
     }
 
-   /* public function destroy($id,$month)
+    public function edit($id,$month,$year)
     {
+        $wegfind =  DB::table('weights')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->get()->first();
+        return view('admin_panel.weight_edit',['weight'=>$wegfind]);
 
-        DB::table('weights')->where('id', '=', $id ,'month', '=' , $month)->delete();
-                            //->and('month', '=' , $month) ->delete();
+        /*$cusfind = User::find($id);
+        return view('admin_panel.user_edit',compact('cusfind','id')); */
+    }
+
+    public function update(Request $request, $id,$month,$year)
+    {
+        $this->validate($request,[
+            'id' => 'required',
+            'month'=>'required',
+            'year'=>'required',
+            'weight' =>'required',
+
+        ]);
+
+        $weightfind =$wegfind =  DB::table('weights')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year);
+
+        $weightfind ->id =$request ->id;
+        $weightfind ->month =$request ->month;
+        $weightfind ->year =$request ->year;
+        $weightfind ->weight =$request ->weight;
+        $weightfind ->save();
+
+        return redirect('admin/reports')->with('success','Weight Updated');
+
+
+    }
+
+    public function destroy($id,$month,$year)
+    {
+        DB::table('weights')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->delete();
+
         return redirect('admin/reports');
-    }*/
+
+    }
 
 
 }

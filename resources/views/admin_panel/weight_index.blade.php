@@ -171,7 +171,7 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{{url('admin/reports/'.$weight->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                    <a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                                 </div>
                                             </div>
                                         </td>
@@ -184,17 +184,11 @@
                                             </div>
                                         </td>
 
-                                        {{--<td>
-
-                                            <form method="POST" action="{{route('reports.destroy',$weight->id,$weight->month)}}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <br>
-                                                <button type="submit" class="delbtn">DELETE</button>
-                                            </form>
-
-
-                                        </td>--}}
+                                        <td>
+                                            {{ Form::open(['route' => ['reports.destroy',$weight->id,$weight->month,$weight->year], 'method' => 'delete']) }}
+                                            <button type="submit" class="delbtn">Delete</button>
+                                            {{ Form::close() }}
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

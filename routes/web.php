@@ -104,6 +104,13 @@ Route::prefix('admin')->group(function() {
 
     Route::get('/markasactive/{id}','UserController@UpdateCustomerActive');
     Route::get('/markasnotactive/{id}','UserController@UpdateCustomerNotActive');
+    Route::delete('reports/{id}/{month}/{year}', 'WeightController@destroy')->name('reports.destroy');
+    Route::delete('reports_attendance/{id}/{month}/{year}', 'AttendanceController@destroy')->name('reports_attendance.destroy');
+    Route::get('/increTot/{id}/{month}/{year}','AttendanceController@UpdateTotal');
+    Route::get('/increAtt/{id}/{month}/{year}','AttendanceController@UpdateAttend');
+    Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
+    Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
+
 
 
 });

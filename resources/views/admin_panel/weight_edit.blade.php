@@ -1,65 +1,118 @@
-<html>
-<head>
-    <title>Reports</title>
+@extends('layouts.admin_app');
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-<a href="/admin/reports" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
-<div class="container">
-    <div class = "card-panel grey lighten-2"><h3 style="text-align: center ;font-family:century gothic">Weights EDIT</h3></div>
+@section('content');
+
+@extends('layouts.hori_sidebar');
+
+<!--<a href="/admin/receptionist" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a> -->
+
+<div class="container-fluid">
+    <div class="row">
+        @extends('layouts.vertical_sidebar');
+
+        <div class="col-lg-10 col-md-9 mar30">
 
 
-    <div class = "card-panel center">
-        <div class="row">
-            <form class="col s12" method="POST" {{--action="{{ route('reports.update',$user->id) }}"--}}>
-                @csrf
-                @method('PUT')
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="id" type="text" class="validate" name="id" {{--value="{{ $weight->id }}"--}}>
-                        <label for="id">ID</label>
-                        @if($errors->has('id'))
-                            <span class="form-text invalid-feedback"  style="color: red">{{$errors->first('id')}}</span>
-                        @endif
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="month" type="text" class="validate" name="month" {{--value="{{ $weight->month }}"--}}>
-                        <label for="month">MONTH</label>
-                        @if($errors->has('month'))
-                            <span class="form-text invalid-feedback"  style="color: red">{{$errors->first('month')}}</span>
-                        @endif
-                    </div>
+            <div class="section-title text-center">
+                <div class="title-bar full-width mb20">
+                    <br><br><br>
+                    <img src="{{ URL::asset('images/logo/ttl-bar.png') }}"  alt="title-img">
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">account_circle</i>
-                        <input id="year" type="text" class="validate" name="year" {{--value="{{ $weight->year }}"--}}>
-                        <label for="year">YEAR</label>
-                        @if($errors->has('year'))
-                            <span class="form-text invalid-feedback"  style="color: red">{{$errors->first('year')}}</span>
-                        @endif
-                    </div>
-                    <div class="input-field col s6">
-                        <i class="material-icons prefix">cake</i>
-                        <input id="user_weight" type="date" class="validate" name="user_weight" {{--value="{{ $weight-> user_weight }}"--}}>
-                        <label for="user_weight">WEIGHT</label>
-                        @if($errors->has('user_weight'))
-                            <span class="form-text invalid-feedback"  style="color: red">{{$errors->first('user_weight')}}</span>
-                        @endif
+                <h3>Edit Weight</h3>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="contact-form mt20">
+                        <div class="appointment-schedule">
+                            {{--<form class="appointment-form" method="POST" {{--action="{{ route('reports.update',$weight->id,$weight->month,$weight->year) }}">
+
+                                @csrf
+                                @method('PUT')--}}
+                            {{ Form::open(['route' => ['reports.update',$weight->id,$weight->month,$weight->year], 'method' => 'put']) }}
+
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h5 style="color: #343a40">Id</h5>
+                                            <input type="text" name="id" value="{{ $weight->id }}" class="form-control" value="{{Request::old('id')}}">
+                                            @if ($errors->has('id'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('id') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h5 style="color: #343a40">Month</h5>
+                                            <select id="month" type="text" value="{{ $weight->month }}"  class="form-control" name="month" value="{{Request::old('month') }}" >
+                                                <option value="Jan">Jan</option>
+                                                <option value="Feb">Feb</option>
+                                                <option value="Mar">Mar</option>
+                                                <option value="Apr">Apr</option>
+                                                <option value="May">May</option>
+                                                <option value="Jun">Jun</option>
+                                                <option value="Jul">Jul</option>
+                                                <option value="Aug">Aug</option>
+                                                <option value="Sep">Sep</option>
+                                                <option value="Oct">Oct</option>
+                                                <option value="Nov">Nov</option>
+                                                <option value="Dec">Dec</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h5 style="color: #343a40">Year</h5>
+                                            <input type="text" name="year" value="{{ $weight->year }}" class="form-control " value="{{Request::old('year')}}">
+                                            @if ($errors->has('year'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('year') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h5 style="color: #343a40">Weight</h5>
+                                            <input type="weight" name="text" value="{{ $weight->weight }}" class ="form-control " value="{{Request::old('weight')}}">
+                                            @if ($errors->has('weight'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('weight') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="bttn full-width">
+
+                                            <button name="submit" type="submit" class="btn active full-width btn-primary">Update</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            {{ Form::close() }}
+                        </div>
                     </div>
                 </div>
-
-
-                <input type="submit" name="submit" class="btn blue right" value="Update">
-            </form>
+            </div>
         </div>
+        <!-- /.col -->
     </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-</body>
-</html>
+@endsection
