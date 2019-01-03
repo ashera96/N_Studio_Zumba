@@ -29,7 +29,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role');
     }
 
-    public function isOnline(){
-        return Cache::has('user-is-online-'.$this->role->id);
-    }
+   // public function isOnline(){
+     //   return Cache::has('user-is-online-'.$this->id);
+    //}
 }

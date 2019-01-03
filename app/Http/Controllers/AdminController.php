@@ -22,7 +22,8 @@ class AdminController extends Controller
     public function show_dashboard()
     {
         $users=SystemUser::all();
-        return view('admin_panel.dashboard');
+        return view('admin_panel.dashboard',compact('users'));
+       // return view('admin_panel.dashboard',compact('users'));
 
     }
     public function show_gallery()

@@ -54,28 +54,40 @@
                         <div class="card overview-block pad30 rounded">
                             <div class="card-header rounded mr-1 ml-1">Latest Online Users</div>
                             <div class="row card-body">
-                               <!-- <table class="table table-striped table-hover">
+
+
+
+
+                                <table class="table table-striped table-hover">
                                     <tr class="text-dark">
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Joined</th>
+
                                     </tr>
-                                    <tr>
-                                        <td>Anushka</td>
-                                        <td>anu@gmail.com</td>
-                                        <td>Jan 18, 2018</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Shreya</td>
-                                        <td>shreya@gmail.com</td>
-                                        <td>June 6, 2017</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jyothika</td>
-                                        <td>jo@gmail.com</td>
-                                        <td>Dec 28, 2015</td>
-                                    </tr>
-                                </table>  -->
+
+
+                                    @if($users)
+                                        @foreach($users as $user)
+
+                                            @if($user->isOnline())
+
+                                                <tr class="text-dark">
+                                                    <th>{{$user->username}}</th>
+                                                    <th>{{$user->email}}</th>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+
+
+                                </table>
+
+
+
+
+
+                                You are logged in as a kc  Customer!
+
 
 
                             </div>

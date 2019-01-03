@@ -13,6 +13,7 @@ use Mail;
 use App\Mail\welcome;
 use App\SystemUser;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReceptionistController extends Controller
 {
@@ -23,16 +24,32 @@ class ReceptionistController extends Controller
      */
     public function index()
     {
-        //$receps=Receptionist::all();
-        //return view('admin_panel.index',['receptionists'=>$receps]);
-      // if('system_users.id'==1) {
-        $receps =DB::table('receptionists')
-            ->join('system_users','receptionists.id','=','system_users.id')
-            ->select('system_users.*','receptionists.*')
-            ->get();
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $receps =DB::table('receptionists')
+                ->join('system_users','receptionists.id','=','system_users.id')
+                ->select('system_users.*','receptionists.*')
+                ->get();
 
 
             return view('admin_panel.index', ['receptionists' => $receps]);
+        }
+        else if($role_id==3){
+         // $rec=Auth::user()->id;   //have to check through login as receptionist
+            $rec=6;
+            $receps2 =DB::table('receptionists')
+                ->join('system_users','receptionists.id','=','system_users.id')
+                ->select('system_users.*','receptionists.*')
+                ->where('system_users.id', '=',$rec)
+                ->get();
+
+            return view('recep_panel.recep_index', ['receptionists' => $receps2]);
+        }
+
+        //$receps=Receptionist::all();
+        //return view('admin_panel.index',['receptionists'=>$receps]);
+      // if('system_users.id'==1) {
+
       //  }
 
        /* else{
@@ -131,11 +148,21 @@ class ReceptionistController extends Controller
      */
     public function edit($id)
     {
-        $recepfind = Receptionist::findOrFail($id);
-        return view('admin_panel.edit',['receptionist'=>$recepfind]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $recepfind = Receptionist::findOrFail($id);
+            return view('admin_panel.edit', ['receptionist' => $recepfind]);
 
-        $recepfind = SystemUser::findOrFail($id);
-        return view('admin_panel.edit',['system_users'=>$recepfind]);
+            $recepfind = SystemUser::findOrFail($id);
+            return view('admin_panel.edit', ['system_users' => $recepfind]);
+        }
+        else if($role_id==3){
+            $recepfind = Receptionist::findOrFail($id);
+            return view('recep_panel.recep_edit', ['receptionist' => $recepfind]);
+
+            $recepfind = SystemUser::findOrFail($id);
+            return view('recep_panel.recep_edit', ['system_users' => $recepfind]);
+        }
 
     }
 
