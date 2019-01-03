@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Package;
 use App\UserPackage;
+use Illuminate\Support\Facades\Session;
 
 class PackageController extends Controller
 {
@@ -66,7 +67,8 @@ class PackageController extends Controller
         $new_package ->services =$request ->services;
         $new_package ->classes_to_cover =$request ->classes_to_cover;
         $new_package ->save();
-        return redirect('/admin/dashboard/class_packages')->with('success','Package Created Successfully');
+        Session::flash('msg_created', 'Class Package Created Successfully!');
+        return redirect('/admin/dashboard/class_packages');
     }
 
     /**
@@ -115,7 +117,8 @@ class PackageController extends Controller
         $new_package ->services =$request ->services;
         $new_package ->classes_to_cover =$request ->classes_to_cover;
         $new_package ->save();
-        return redirect('/admin/dashboard/class_packages')->with('success','Package Updated Successfully');
+        Session::flash('msg_updated', 'Class Package Updated Successfully!');
+        return redirect('/admin/dashboard/class_packages');
     }
 
     /**
@@ -128,6 +131,7 @@ class PackageController extends Controller
     {
         $package = Package::findOrFail($id);
         $package->delete();
+        Session::flash('msg_deleted', 'Class Package Deleted Successfully!');
         return redirect('/admin/dashboard/class_packages');
     }
 }

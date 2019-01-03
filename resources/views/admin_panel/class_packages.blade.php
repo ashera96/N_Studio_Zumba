@@ -17,6 +17,27 @@
 
                 <div class="col-lg-10 col-md-9 mainFix col-lg-offset-2 col-md-offset-3">
 
+                    @if (session('msg_created'))
+                        <div class="alert alert-success ml90 fs-15" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msg_created') }}
+                        </div>
+                    @endif
+
+                    @if (session('msg_updated'))
+                        <div class="alert alert-success ml90 fs-15" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msg_updated') }}
+                        </div>
+                    @endif
+
+                    @if (session('msg_deleted'))
+                        <div class="alert alert-success ml90 fs-15" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msg_deleted') }}
+                        </div>
+                    @endif
+
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">

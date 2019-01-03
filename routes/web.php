@@ -120,8 +120,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
-//    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
-//
+
     Route::get('/payments','PaymentController@load_receptionists')->middleware('admin');
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
