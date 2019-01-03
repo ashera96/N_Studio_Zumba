@@ -24,31 +24,44 @@
                 </div>
 
 
+                <div class="row mb-0">
+                    <div class="card overview-block pad30 rounded">
 
-                @if (session('msgr2'))
-                    <div class="alert alert-success" role="alert">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ session('msgr2') }}
+
+                        <div class="panel panel-default ml90">
+                            <div class="panel-body">
+                                <table class="table table-striped table-hover" width="80%"  >
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($users as $user)
+                                        <tr>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->username }}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <a href="{{url('admin/customers/'.$user->id.'/edit')}}"><button class="editbtn" >PAY</button></a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
-            @endif
-
-
-
-
-
-            <!-- Website Overview -->
-                <div class="panel panel-default">
-                    {{--<div class="panel-heading main-color-bg">--}}
-                    {{--<h3 class="panel-title">Employees Overview</h3>--}}
-
-                    {{--</div>--}}
-
-
-
+                    <!-- /.col -->
                 </div>
-
-
-
 
 
             </div>

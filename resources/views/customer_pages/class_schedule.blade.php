@@ -65,9 +65,9 @@
                         <li class="nav-item {{Request::is('home/contact') ? "active" : ""}}">
                             <a class="nav-link" href="/home/contact">contact</a>
                         </li>
-                        <li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">
-                            <a class="nav-link" href="/home/payment">payment</a>
-                        </li>
+                        {{--<li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">--}}
+                            {{--<a class="nav-link" href="/home/payment">payment</a>--}}
+                        {{--</li>--}}
                         <li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">
                             <a class="nav-link" href="/home/reports">reports</a>
                         </li>

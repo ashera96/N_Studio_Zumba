@@ -43,7 +43,12 @@ class RecepMainController extends Controller
 
     public function show_payments()
     {
-        return view('recep_panel.monthly_payments');
+        $new=DB::table('users')
+            ->join('system_users','users.id','=','system_users.id')
+            ->select('system_users.*','users.*')
+            ->where('system_users.status','=',1)
+            ->get();
+        return view('recep_panel.monthly_payments', ['users' => $new]);
     }
 
     /**
