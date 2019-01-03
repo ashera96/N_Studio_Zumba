@@ -41,6 +41,11 @@ class RecepMainController extends Controller
         return view('recep_panel.fees');
     }
 
+    public function show_payments()
+    {
+        return view('recep_panel.monthly_payments');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
