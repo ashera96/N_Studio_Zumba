@@ -50,19 +50,6 @@
 
 
 
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <h5 style="color: #343a40">Email</h5>
-                                            <input type="email" name="email" value="{{ $receptionist->email }}" class="form-control" value="{{Request::old('email')}}">
-                                            @if ($errors->has('email'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <h5 style="color: #343a40">NIC</h5>

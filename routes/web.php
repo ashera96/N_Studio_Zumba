@@ -147,4 +147,6 @@ Route::post('uploadss','UploadController@upload');
 Route::get('recep/dashboard','RecepMainController@show_recep_dash');
 Route::get('recep/profile','ReceptionistController@index');
 Route::resource('recep/customers', 'UserController');
+Route::get('recep/fees','RecepMainController@show_fees');
+
 

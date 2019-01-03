@@ -14,17 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in as a Customer!
 
-                        @if($users)
-                            @foreach($users as $user)
-
-                                @if($user->isOnline())
-                                    <li>{{$user->name}}</li>
-                                @endif
-
-                            @endforeach
-                        @endif
 
                 </div>
             </div>

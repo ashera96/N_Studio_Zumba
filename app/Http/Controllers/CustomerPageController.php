@@ -25,7 +25,7 @@ class CustomerPageController extends Controller
 
     public function show_gallery()
     {
-        return view('customer_pages.gallery');
+        return view('static_pages.gallery');
     }
 
     /*public function show_schedule()
