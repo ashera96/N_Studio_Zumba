@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+
 
 class SystemUser extends Authenticatable
 {
@@ -55,6 +57,12 @@ class SystemUser extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function isOnline(){
+
+        return Cache::has('user-online-'.$this->id);
+
     }
 
 }

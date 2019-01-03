@@ -103,7 +103,7 @@
 <!--Isotop Js-->
 <script src="{{ URL::asset('js/isotope.pkgd.min.js') }}"></script>
 
-<script src="{{ asset('js/schedule_controlling.js') }}" defer></script>
+
 
 <!-- revolution slider js files start -->
 <script src="{{ URL::asset('js/jquery.themepunch.tools.min.js') }}"></script>

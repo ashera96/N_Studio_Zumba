@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "382d0499c815ead1779283e8d10c86d5",
+    "content-hash": "ec36fda923f2d7e95bb7c125d856c718",
     "packages": [
         {
             "name": "balping/json-raw-encoder",
@@ -560,7 +560,7 @@
         },
         {
             "name": "intervention/image",
-            "version": "dev-master",
+            "version": "2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
@@ -4493,9 +4493,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "intervention/image": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

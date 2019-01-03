@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        @extends('layouts.vertical_sidebar');
+        @extends('layouts.recep_vertical_sidebar');
 
         <div class="col-lg-10 col-md-9 mar30">
 
@@ -47,9 +47,6 @@
                                             @endif
                                         </div>
                                     </div>
-
-
-
 
 
 

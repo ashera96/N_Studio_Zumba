@@ -25,12 +25,12 @@ class UserController extends Controller
             ->select('system_users.*','users.*')
             ->get();
 
-        if('system_users.id'==1) {
+        //if('system_users.id'==1) {
             return view('admin_panel.user_index', ['users' => $new]);
-        }
-        else{
+        //}
+        /*  else{
             return view('recep_panel.user_index', ['users' => $new]);
-        }
+        }  */
     }
 
     /*public function search(Request $request){

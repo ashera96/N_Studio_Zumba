@@ -2,132 +2,126 @@
 
 @section('content');
 
+
 @extends('layouts.hori_sidebar');
 
-<!--<a href="/admin/receptionist" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a> -->
+<!--Admin dashboard-area start-->
+<div class="about-area pad90">
+    <div class="container-fluid">
 
-<div class="container-fluid">
-    <div class="row">
-        @extends('layouts.vertical_sidebar');
+        <div class="row">
+            @extends('layouts.recep_vertical_sidebar');
 
-        <div class="col-lg-10 col-md-9 mar30">
 
-            <div class="section-title text-center">
-                <div class="title-bar full-width mb20">
-                    <br><br><br>
-                    <img src="{{ URL::asset('images/logo/ttl-bar.png') }}"  alt="title-img">
+            <div class="col-lg-10 col-md-9 mar30">
+
+                <div class="section-title text-center">
+                    <div class="title-bar full-width mb20">
+                        <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
+                    </div>
+                    <h3>Receptionists</h3>
+                    <p>Receptionist Management</p>
                 </div>
 
-                <h3>Edit Receptionist</h3>
-            </div>
 
 
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    <div class="contact-form mt20">
-                        <div class="appointment-schedule">
-                            <form class="appointment-form" method="POST" action="{{ route('receptionist.update',$receptionist->id) }}">
-
-                                @csrf
-                                @method('PUT')
-
-                                <div class="row">
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <h5 style="color: #343a40">Name</h5>
-                                            <input type="text" name="name" value="{{ $receptionist->name }}" class="form-control" value="{{Request::old('name')}}">
-                                            @if ($errors->has('name'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('name') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
+                @if (session('msgr2'))
+                    <div class="alert alert-success" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ session('msgr2') }}
+                    </div>
+                @endif
 
 
 
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <h5 style="color: #343a40">Email</h5>
-                                            <input type="email" name="email" value="{{ $receptionist->email }}" class="form-control" value="{{Request::old('email')}}">
-                                            @if ($errors->has('email'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('email') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <h5 style="color: #343a40">NIC</h5>
-                                            <input type="text" name="nic" value="{{ $receptionist->nic }}" class="form-control " value="{{Request::old('nic')}}">
-                                            @if ($errors->has('nic'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('nic') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
+            <!-- Website Overview -->
+                <div class="panel panel-default">
+                    {{--<div class="panel-heading main-color-bg">--}}
+                    {{--<h3 class="panel-title">Employees Overview</h3>--}}
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <h5 style="color: #343a40">DOB</h5>
-                                            <input type="date" name="dob" value="{{ $receptionist->dob }}" class="form-control " value="{{Request::old('dob')}}">
-                                            @if ($errors->has('dob'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('dob') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <h5 style="color: #343a40">Address</h5>
-                                            <input type="text" name="address" value="{{ $receptionist->address }}" class="form-control " value="{{Request::old('address')}}">
-                                            @if ($errors->has('address'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('address') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <h5 style="color: #343a40">Phone</h5>
-                                            <input type="tel" name="tpno" value="{{ $receptionist->tpno }}" class="form-control " value="{{Request::old('tpno')}}">
-                                            @if ($errors->has('tpno'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('tpno') }}</strong>
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </div>
+                    {{--</div>--}}
 
 
+
+                </div>
+
+
+                <!-- Cart Main Area Start Here -->
+                <div class="cart-main-area  pad90">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="table-content table-responsive">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th class="product-thumbnail">Name</th>
+                                            <th class="product-name">Email</th>
+                                            <th class="product-price">NIC</th>
+                                            <th class="product-quantity">DOB</th>
+                                            <th class="product-subtotal">Address</th>
+                                            <th class="product-remove">Phone</th>
+                                            <th class="product-remove">Edit</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($receptionists as $receptionist)
+                                            <tr>
+
+                                                <td class="product-subtotal">{{ $receptionist->name }}</td>
+                                                <td class="product-subtotal">{{ $receptionist->email }}</td>
+                                                <td class="product-subtotal">{{ $receptionist->nic }}</td>
+                                                <td class="product-subtotal">{{ $receptionist->dob }}</td>
+                                                <td class="product-subtotal">{{ $receptionist->address }}</td>
+                                                <td class="product-subtotal">{{ $receptionist->tpno }}</td>
+
+                                                <!-- <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td> -->
+
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <a href="{{url('admin/receptionist/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+
+
+
+                                            </tr>
+
+                                        @endforeach
+
+
+                                        </tbody>
+                                    </table>
                                 </div>
 
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="bttn full-width">
-
-                                            <button name="submit" type="submit" class="btn active full-width btn-primary">Update</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
-                            </form>
+                            </div>
                         </div>
+
                     </div>
                 </div>
+                <!-- Cart Main Area End Here -->
+
+
+
+
             </div>
         </div>
-        <!-- /.col -->
     </div>
+    <!--Admin dashboard-area end-->
+</div>
+
 @endsection
+
+@section('js_styling')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
+@endsection
+

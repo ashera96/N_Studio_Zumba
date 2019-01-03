@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\SystemUser;
 use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
@@ -12,9 +14,18 @@ class AdminController extends Controller
         $this->middleware('admin');
     }
 */
+  /*  public function index(){
+        $users=SystemUser::all();
+        return view('admin_panel.dashboard',compact('users'));
+   }*/
+
     public function show_dashboard()
     {
-        return view('admin_panel.dashboard');
+        $users=SystemUser::all();
+        return view('admin_panel.dashboard',compact('users'));
+       // return view('admin_panel.dashboard',compact('users'));
+
+
     }
     public function show_gallery()
     {

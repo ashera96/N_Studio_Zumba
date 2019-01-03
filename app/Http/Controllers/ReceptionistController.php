@@ -13,6 +13,7 @@ use Mail;
 use App\Mail\welcome;
 use App\SystemUser;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReceptionistController extends Controller
 {
@@ -23,13 +24,47 @@ class ReceptionistController extends Controller
      */
     public function index()
     {
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $receps =DB::table('receptionists')
+                ->join('system_users','receptionists.id','=','system_users.id')
+                ->select('system_users.*','receptionists.*')
+                ->get();
+
+
+            return view('admin_panel.index', ['receptionists' => $receps]);
+        }
+        else if($role_id==3){
+         // $rec=Auth::user()->id;   //have to check through login as receptionist
+            $rec=6;
+            $receps2 =DB::table('receptionists')
+                ->join('system_users','receptionists.id','=','system_users.id')
+                ->select('system_users.*','receptionists.*')
+                ->where('system_users.id', '=',$rec)
+                ->get();
+
+            return view('recep_panel.recep_index', ['receptionists' => $receps2]);
+        }
+
         //$receps=Receptionist::all();
         //return view('admin_panel.index',['receptionists'=>$receps]);
-        $receps =DB::table('receptionists')
-            ->join('system_users','receptionists.id','=','system_users.id')
-            ->select('system_users.*','receptionists.*')
-            ->get();
-        return view('admin_panel.index',['receptionists'=>$receps]);
+      // if('system_users.id'==1) {
+
+      //  }
+
+       /* else{
+            $rec=28;
+
+
+            $receps =DB::table('receptionists')
+
+                ->join('system_users','receptionists.id','=','system_users.id')
+                ->select('system_users.*','receptionists.*')
+                ->where('receptionists.id', 'like', '%'.$rec.'%')
+                ->get();
+
+            return view('recep_panel.recep_index', ['receptionists' => $receps]);
+        }*/
     }
 
     /**
@@ -113,11 +148,21 @@ class ReceptionistController extends Controller
      */
     public function edit($id)
     {
-        $recepfind = Receptionist::findOrFail($id);
-        return view('admin_panel.edit',['receptionist'=>$recepfind]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $recepfind = Receptionist::findOrFail($id);
+            return view('admin_panel.edit', ['receptionist' => $recepfind]);
 
-        $recepfind = SystemUser::findOrFail($id);
-        return view('admin_panel.edit',['system_users'=>$recepfind]);
+            $recepfind = SystemUser::findOrFail($id);
+            return view('admin_panel.edit', ['system_users' => $recepfind]);
+        }
+        else if($role_id==3){
+            $recepfind = Receptionist::findOrFail($id);
+            return view('recep_panel.recep_edit', ['receptionist' => $recepfind]);
+
+            $recepfind = SystemUser::findOrFail($id);
+            return view('recep_panel.recep_edit', ['system_users' => $recepfind]);
+        }
 
     }
 
@@ -131,7 +176,7 @@ class ReceptionistController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'email'=>'required|email',
+
             'name'=>'required|string|min:2',
             'nic' => ['required',new nicValidation],
             'dob' => ['required',new ageOfReceptionistValidation],
@@ -144,7 +189,7 @@ class ReceptionistController extends Controller
         $system_users = SystemUser::findOrFail($id);
         $recepnew ->name =$request ->name;
         //$recepnew ->email =$request ->email;
-        $system_users ->email =$request ->email;
+        //$system_users ->email =$request ->email;
         $recepnew ->nic =$request ->nic;
         $recepnew ->dob =$request ->dob;
         $recepnew ->address =$request ->address;
@@ -153,7 +198,7 @@ class ReceptionistController extends Controller
         $recepnew ->save();
         $system_users ->save();
 
-        Session::flash('msgr2', 'Receptionist successfully updated!'); //print flash msg after successfully updated
+        Session::flash('msgr2', 'Successfully updated!'); //print flash msg after successfully updated
 
         return redirect('admin/receptionist');
 
