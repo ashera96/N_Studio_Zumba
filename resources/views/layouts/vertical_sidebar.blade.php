@@ -9,7 +9,9 @@
         <a href="/admin/schedules" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
         <a href="/admin/create_notifications" class="list-group-item side-bar {{Request::is('admin/create_notifications') ? "active" : ""}}"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
         <a href="/admin/payments" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
-        <a href="/admin/reports" class="list-group-item side-bar {{Request::is('admin/reports') ? "active" : ""}}"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
+
+
+        <a href="/admin/reports" class="list-group-item side-bar {{Request::is('admin/reports') ? "active" : ""}}     "><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
     </div>
 </div>
 <!--Sidebar-area end-->

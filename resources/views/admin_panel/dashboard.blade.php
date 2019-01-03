@@ -59,7 +59,7 @@
 
 
 
-                          <!--      <table class="table table-striped table-hover">
+                          <!--     <table class="table table-striped table-hover">
 
 
 
@@ -71,24 +71,21 @@
 
 
 
-                                    {{--@if($users)--}}
-                                        {{--@foreach($users as $user)--}}
+                                {{--    @if($users)
+                                        @foreach($users as $user)
 
-                                            {{--@if($user->isOnline())--}}
+                                            @if($user->isOnline())
 
-                                                {{--<tr class="text-dark">--}}
-                                                    {{--<th>{{$user->username}}</th>--}}
-                                                    {{--<th>{{$user->email}}</th>--}}
-                                                {{--</tr>--}}
-                                            {{--@endif--}}
-                                        {{--@endforeach--}}
-                                    {{--@endif--}}
-
-
-                                {{--</table>    -->--}}
+                                                <tr class="text-dark">
+                                                    <th>{{$user->username}}</th>
+                                                    <th>{{$user->email}}</th>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
 
 
-
+                                </table>  --}}
 
 
                                 {{--You are logged in as a kc  Customer!--}}
@@ -100,7 +97,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>   -->
                     <!-- Latest users end -->
 
 
