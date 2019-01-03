@@ -43,7 +43,7 @@ class HomeController extends Controller
 
             return view('admin_panel.dashboard');
         } elseif ($role_id == '3') {
-            return view('receptionist_pages.dashboard');
+            return view('recep_panel.recep_dashboard');
         } else {
            return view('index');
 
