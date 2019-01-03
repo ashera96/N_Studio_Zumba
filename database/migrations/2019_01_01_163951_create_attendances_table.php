@@ -20,9 +20,8 @@ class CreateAttendancesTable extends Migration
             $table->integer('totalclasses');
             $table->integer('attendanceclasses');
             $table->double('percentage');
-            //$table->primary(['id', 'month']);
+            $table->primary(['id', 'month','year']);
             //$table->foreign('id')->references('id')->on('system_users');
-
             $table->timestamps();
         });
     }

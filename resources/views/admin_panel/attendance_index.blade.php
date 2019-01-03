@@ -171,17 +171,13 @@
                                                             <td>{{$attendance->year}}</td>
                                                             <td>{{$attendance->totalclasses}}
                                                                 @if($attendance->totalclasses)
-                                                                    <a {{--href="markasactive/{{$user->id}}"--}}><button class="add1">>1</button></a>
-                                                                @else
-                                                                    <a {{--href="markasnotactive/{{$user->id}}" --}}><button class="markinactive">>1</button></a>
+                                                                    <a href="increTot/{{$attendance->id}}/{{$attendance->month}}/{{$attendance->year}}"--}}><button class="add1">>1</button></a>
                                                                 @endif
 
                                                             </td>
                                                             <td>{{$attendance->attendanceclasses}}
                                                                 @if($attendance->attendanceclasses)
-                                                                    <a {{--href="markasactive/{{$user->id}}"--}}><button class="add1">>1</button></a>
-                                                                @else
-                                                                    <a {{--href="markasnotactive/{{$user->id}}"--}} ><button class="markinactive">>1</button></a>
+                                                                    <a href="increAtt/{{$attendance->id}}/{{$attendance->month}}/{{$attendance->year}}"--}}><button class="add1">>1</button></a>
                                                                 @endif
 
                                                             </td>
@@ -199,6 +195,11 @@
                                                                     <div class={{--href="{{url('admin/reports/'.$weight->id.'/view')}}"--}}><button class="editbtn" >VIEW</button></a>
                                                                     </div>
                                                                 </div>
+                                                            </td>
+                                                            <td>
+                                                                {{ Form::open(['route' => ['reports_attendance.destroy',$attendance->id,$attendance->month,$attendance->year], 'method' => 'delete']) }}
+                                                                <button type="submit" class="delbtn">Delete</button>
+                                                                {{ Form::close() }}
                                                             </td>
 
                                                             {{--<td>

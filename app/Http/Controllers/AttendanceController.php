@@ -61,15 +61,22 @@ class AttendanceController extends Controller
         return redirect('/admin/reports_attendance/')->with('success','Attendance Added');
     }
 
-    public function UpdateTotal($id,$month){
-        $attendance=Attendance::find($id,$month);
+    public function UpdateTotal($id,$month,$year){
+        $attendance=DB::table('attendances')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)->first();
+        //->update(['totalclasses' => totalclasses+1]);
+
         $attendance->totalclasses+=1;
         $attendance->save();
         return redirect()->back();
     }
 
-    public function UpdateAttend($id,$month){
-        $attendance=Attendance::find($id,$month);
+    public function UpdateAttend($id,$month,$year){
+        $attendance=DB::table('attendances')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)->first();
+
         $attendance->attendanceclasses+=1;
         $attendance->save();
         return redirect()->back();
@@ -114,8 +121,14 @@ class AttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id,$month,$year)
     {
-        //
+        DB::table('attendances')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->delete();
+
+        return redirect('admin/reports_attendance');
+
     }
 }
