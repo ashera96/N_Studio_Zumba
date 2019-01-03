@@ -63,9 +63,12 @@
                         <li class="nav-item {{Request::is('home/contact') ? "active" : ""}}">
                             <a class="nav-link" href="/home/contact">contact</a>
                         </li>
-                        <li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">
-                            <a class="nav-link" href="/home/payment">payment</a>
+                        <li class="nav-item {{Request::is('home/profile') ? "active" : ""}}">
+                            <a class="nav-link" href="/home/profile">profile</a>
                         </li>
+                        {{--<li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">--}}
+                            {{--<a class="nav-link" href="/home/payment">payment</a>--}}
+                        {{--</li>--}}
                         <li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">
                             <a class="nav-link" href="/home/reports">reports</a>
                         </li>
@@ -157,7 +160,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center">
-                        <h3>Payment</h3>
+                        <h3>Profile</h3>
                     </div>
                 </div>
                 <!-- /.colour-service-1-->
@@ -165,7 +168,7 @@
                     <ol class="breadcrumb">
                         <li><a href="/home">home</a></li>
                         <li>।</li>
-                        <li>Payment</li>
+                        <li>Profile</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -186,8 +189,8 @@
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
-                        <h3>Online Monthly Payment</h3>
-                        <p>Payment through online | Make due payment in cash</p>
+                        <h3>Manage Profile</h3>
+                        <p>Keep your details up to date</p>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -231,7 +234,6 @@
                     {{--</div>--}}
                 {{--</div>--}}
                 {{--<!--Side Image End-->--}}
-
             </div>
         </div>
     </div>

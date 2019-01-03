@@ -10,7 +10,7 @@
         <div class="container-fluid">
             <div class="row">
                 @extends('layouts.vertical_sidebar');
-                <div class="col-lg-10 col-md-9 pad30 mainFix ">
+                <div class="col-lg-10 col-md-9 mainFix col-lg-offset-2 col-md-offset-3 overview-block pad30 rounded" style="margin-left: 250px;">
 
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
@@ -23,7 +23,7 @@
 
 
                     @if (session('msg10'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success fs-15" role="alert">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             {{ session('msg10') }}
                         </div>
@@ -36,7 +36,7 @@
 
 
 
-                    <div class="gallery ml90">
+                    <div class="gallery">
                         <br><br>
                         <!--uploadss -->
                         <form class="uploadFormStyle" action="{{URL::to('uploadss')}}" method="post" enctype="multipart/form-data">

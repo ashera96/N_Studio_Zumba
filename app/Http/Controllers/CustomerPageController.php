@@ -25,7 +25,7 @@ class CustomerPageController extends Controller
 
     public function show_gallery()
     {
-        return view('static_pages.gallery');
+        return view('customer_pages.gallery');
     }
 
     /*public function show_schedule()
@@ -43,10 +43,10 @@ class CustomerPageController extends Controller
         return view('customer_pages.contact');
     }
 
-    public function show_payment()
-    {
-        return view('customer_pages.payment');
-    }
+//    public function show_profile()
+//    {
+//        return view('customer_pages.profile');
+//    }
 
     public function show_reports()
     {
