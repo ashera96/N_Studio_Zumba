@@ -99,7 +99,7 @@
 
 
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 mb-5">
                                         <div class="bttn full-width">
 
                                             <button name="submit" type="submit" class="btn active full-width btn-primary">Update</button>
@@ -116,4 +116,5 @@
         </div>
         <!-- /.col -->
     </div>
+</div>
 @endsection
