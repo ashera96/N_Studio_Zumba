@@ -26,6 +26,42 @@
                 </div>
 
                 <!-- Website overview start -->
+
+                <!--  Counting the no.of active customers   -->
+                <?php  $countActive=0;  ?>
+
+                @if($custs)
+                    @foreach($custs as $c)
+                        <?php    $countActive=$countActive+1;   ?>
+
+
+
+                    @endforeach
+                    <tr class="text-dark">
+                        <?php echo '<th>'.$countActive.'</th>';    ?>
+
+                    </tr>
+
+                @endif
+
+            <!--  Counting the no.of inactive customers   -->
+                <?php  $totUsers=0;  ?>
+
+                @if($users)
+                    @foreach($users as $u)
+                        <?php    $totUsers=$totUsers+1;   ?>
+
+
+
+
+                    @endforeach
+                    <tr class="text-dark">
+                        <?php echo '<th>'.$totUsers.'</th>';    ?>
+
+                    </tr>
+                @endif
+                <?php  $countInactive=$totUsers-$countActive;  ?>
+
                 <div class="row">
                     <div class="card overview-block pad30 rounded">
                         <div class="card-header rounded mr-1 ml-1" style="background-color: deeppink">Website Overview</div>
@@ -33,13 +69,13 @@
                             <div class="card-deck">
                                 <div class="card rounded">
                                     <div class="card-body">
-                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-users fa-lg pad30"></i> 54</h1>
+                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-users fa-lg pad30"></i> <?php echo' '.$countActive.' ';?></h1>
                                         <h4 class="card-text text-center text-dark">Active Users</h4>
                                     </div>
                                 </div>
                                 <div class="card rounded">
                                     <div class="card-body">
-                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-eye-slash fa-lg pad30"></i> 12</h1>
+                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-eye-slash fa-lg pad30"></i><?php echo' '.$countInactive.' ';?></h1>
                                         <h4 class="card-text text-center text-dark">Inactive Users</h4>
                                     </div>
                                 </div>
@@ -89,8 +125,6 @@
 
 
                             {{--You are logged in as a kc  Customer!--}}
-
-
 
 
 

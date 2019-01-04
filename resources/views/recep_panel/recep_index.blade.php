@@ -48,64 +48,77 @@
                 </div>
 
 
-                <!-- Cart Main Area Start Here -->
-                <div class="cart-main-area  pad90">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-
-                                <div class="table-content table-responsive">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th class="product-thumbnail">Name</th>
-                                            <th class="product-name">Email</th>
-                                            <th class="product-price">NIC</th>
-                                            <th class="product-quantity">DOB</th>
-                                            <th class="product-subtotal">Address</th>
-                                            <th class="product-remove">Phone</th>
 
 
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($receptionists as $receptionist)
+
+
+                <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="about-opening">
+                                <div class="opening-hours text-center">
+                                    <div class="table-content table-responsive">
+                                        <table>
+                                            <thead>
                                             <tr>
-
-                                                <td class="product-subtotal">{{ $receptionist->name }}</td>
-                                                <td class="product-subtotal">{{ $receptionist->email }}</td>
-                                                <td class="product-subtotal">{{ $receptionist->nic }}</td>
-                                                <td class="product-subtotal">{{ $receptionist->dob }}</td>
-                                                <td class="product-subtotal">{{ $receptionist->address }}</td>
-                                                <td class="product-subtotal">{{ $receptionist->tpno }}</td>
-
-                                                <!-- <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td> -->
-
-                                                <td class="product-subtotal">
-
-                                                    <a href="{{url('recep/profile/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-
-                                                </td>
-
-
-
-
+                                                <th class="product-thumbnail">Category</th>
+                                                <th class="product-name">Details</th>
                                             </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($receptionists as $receptionist)
+                                            <tr>
+                                                <td class="product-subtotal">Name</td>
+                                                <td class="product-subtotal">{{ $receptionist->name }}</td>
+                                            </tr>
+                                            <tr><td></td></tr>
+                                            <tr>
+                                                <td class="product-subtotal">Email</td>
+                                                <td class="product-subtotal">{{ $receptionist->email }}</td>
+                                            </tr>
+                                            <tr><td></td></tr>
+                                            <tr>
+                                                <td class="product-subtotal">NIC</td>
+                                                <td class="product-subtotal">{{ $receptionist->nic }}</td>
+                                            </tr>
+                                            <tr><td></td></tr>
+                                            <tr>
+                                                <td class="product-subtotal">DOB</td>
+                                                <td class="product-subtotal">{{ $receptionist->dob }}</td>
+                                            </tr>
+                                            <tr><td></td></tr>
+                                            <tr>
+                                                <td class="product-subtotal">Address</td>
+                                                <td class="product-subtotal">{{ $receptionist->address }}</td>
+                                            </tr>
+                                            <tr><td></td></tr>
+                                            <tr>
+                                                <td class="product-subtotal">Phone</td>
+                                                <td class="product-subtotal">{{ $receptionist->tpno }}</td>
+                                            </tr>
+                                            <tr><td></td></tr>
+                                            <tr>
+                                            <td class="product-subtotal" colspan="2">
 
-                                        @endforeach
+                                                <a href="{{url('recep/profile/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+
+                                            </td>
+                                            </tr>
+                                            @endforeach
+                                            </tbody>
+
+                                        </table>
 
 
-                                        </tbody>
-                                    </table>
+                                    </div>
                                 </div>
-
 
                             </div>
                         </div>
 
                     </div>
                 </div>
-                <!-- Cart Main Area End Here -->
+
 
 
 
