@@ -34,7 +34,8 @@ class NotificationController extends Controller
         if($health_tip ->save()){
             $current_user = Auth::user();
             //check 4 d sysUser's role_id==2 for send to customers
-            $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
+            //$system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
+            $system_user = SystemUser::where('role_id','=',2)->get();
 
             Notification::send($system_user, new AddHealthTip($health_tip));
             Session::flash('msght', 'Health Tip Sent Successfully!');
@@ -54,7 +55,8 @@ class NotificationController extends Controller
        if($general_notification ->save()){
            $current_user = Auth::user();
            //check 4 d sysUser's role_id==2 for send to customers
-           $system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
+           //$system_user = SystemUser::where("role_id","==",$current_user->role_id)->orWhere("role_id",2)->get();
+           $system_user = SystemUser::where('role_id','=',2)->get();
            Notification::send($system_user, new AddGeneralNews($general_notification));
            Session::flash('msgn', 'General Notification Sent Successfully!');
        }

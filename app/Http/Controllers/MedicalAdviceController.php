@@ -50,8 +50,8 @@ class MedicalAdviceController extends Controller
                 Session::flash('msg1', 'Sent Successfully!'); //print flas msg after successfully send
             });
 
-        $user = SystemUser::where("id","==",Auth::user()->id)->orWhere("id",$data['id_data'])->first();//select the specific user by checking the id
-
+        //$user = SystemUser::where("id","==",Auth::user()->id)->orWhere("id",$data['id_data'])->first();//select the specific user by checking the id
+        $user = SystemUser::where("id",$data['id_data'])->first();//select the specific user by checking the id
         Notification::send($user, new AddMediAdvice($medical_advice)); //send as a push notification
 
        return redirect()->back();
