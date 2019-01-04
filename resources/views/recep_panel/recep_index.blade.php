@@ -19,8 +19,8 @@
                     <div class="title-bar full-width mb20">
                         <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                     </div>
-                    <h3>Receptionists</h3>
-                    <p>Receptionist Management</p>
+                    <h3>Update Profile</h3>
+                    <p>Profile Settings</p>
                 </div>
 
 
@@ -30,7 +30,7 @@
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         {{ session('msgr2') }}
                     </div>
-                @endif
+            @endif
 
 
 
@@ -64,7 +64,7 @@
                                             <th class="product-quantity">DOB</th>
                                             <th class="product-subtotal">Address</th>
                                             <th class="product-remove">Phone</th>
-                                            <th class="product-remove">Edit</th>
+
 
                                         </tr>
                                         </thead>
@@ -81,12 +81,10 @@
 
                                                 <!-- <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td> -->
 
-                                                <td>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <a href="{{url('recep/profile/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                                        </div>
-                                                    </div>
+                                                <td class="product-subtotal">
+
+                                                    <a href="{{url('recep/profile/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+
                                                 </td>
 
 

@@ -65,7 +65,7 @@
                             <a class="nav-link" href="/home/contact">contact</a>
                         </li>
                         {{--<li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">--}}
-                            {{--<a class="nav-link" href="/home/payment">payment</a>--}}
+                        {{--<a class="nav-link" href="/home/payment">payment</a>--}}
                         {{--</li>--}}
                         <li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">
                             <a class="nav-link" href="/home/reports">reports</a>
@@ -199,7 +199,7 @@
         </div>
         <!-- /.container -->
 
-        <div class="container-fluid pad30">
+    <!--<div class="container-fluid pad30">
             <div class="port-carousel port-zoom">
                 <div class="port-bcx primary-overlay">
                     <div class="port-img">
@@ -233,6 +233,28 @@
                 </div>
             </div>
         </div>
+        -->
+
+
+        <div class="gallery">
+
+            <?php
+            $c=count(scandir('uploads/')) - 2;
+            // echo "<h1>value is $c</h1>";
+
+            for ($x = 1; $x <= $c; $x++) {
+                echo ' <a href="/uploads/'.$x.'.png">';
+                echo '<img src="/uploads/'.$x.'.png"/>';
+
+            }
+
+            ?>
+
+
+        </div>we
+
+
+
         <!-- /.port carousel -->
     </div>
     <!--portfolio area end-->
