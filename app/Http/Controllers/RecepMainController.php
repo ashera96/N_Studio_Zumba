@@ -54,6 +54,7 @@ class RecepMainController extends Controller
 
 //        Checking if the start of month
 //        If start of month, drop all entries from the user_payments table and add the current selections from users with their relevant package
+//        This loop is executed once per month, and view is refreshed every day threough a javaacript method
         if( $day == 1 && $flag->value == 0 ){
 //            Delete entries in user_payments table if any exists
             DB::table('user_payments') -> truncate(); //truncate - Auto-increment id is reassigned to 1
@@ -65,6 +66,7 @@ class RecepMainController extends Controller
 
 //            dd($user_package_details);
 
+//            Creating a new set of entries with the latest selections from the user_packages table
             foreach ($user_package_details as $user_package_detail){
                 $user_payments = new UserPayment;
                 $user_payments -> user_id = $user_package_detail->user_id;
@@ -73,6 +75,7 @@ class RecepMainController extends Controller
                 $user_payments -> payment_status = 0;
                 $user_payments -> save();
             }
+
 //            DB::table('flags')->where('id',1)->increment('value');
             $flags = Flag::findOrFail(1);
             $flags->value = 1;
