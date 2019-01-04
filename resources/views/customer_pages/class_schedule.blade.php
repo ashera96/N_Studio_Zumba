@@ -189,6 +189,12 @@
             {{ session('msgfail') }}
         </div>
     @endif
+    @if (session('msgfail2'))
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ session('msgfail2') }}
+        </div>
+    @endif
 
     <!--schedule-area start-->
     <div class="schedule-area parallax pad90">
@@ -225,11 +231,13 @@
                             <div class="tab-pane1 fade active show">
                                 @if(count($schedule_monday)>0)
                                         <div class="schdl-box1">
+                                            <h5 style="color: black">1</h5>
                                             <h5>{{$schedule_monday[0]->type}}</h5>
                                             <p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>
                                             <label style="color: black" id="b1">Book Now</label> <input type="checkbox" id="Checkbox1" name="Checkbox[]" value="1" onclick="f1()" {{in_array("1",$Checkbox)?"checked":""}}>
                                         </div>
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">2</h5>
                                         <h5>{{$schedule_monday[1]->type}}</h5>
                                         <p class="mb-0">{{$schedule_monday[1]->time_slot}}</p>
                                         <label style="color: black" id="b2">Book Now</label> <input type="checkbox" id="Checkbox2" name="Checkbox[]" value="2" onclick="f2()"  {{in_array("2",$Checkbox)?"checked":""}}>
@@ -244,11 +252,13 @@
                             <div class="tab-pane1 fade active show">
                                 @if(count($schedule_tuesday)>0)
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">3</h5>
                                         <h5>{{$schedule_tuesday[2]->type}}</h5>
                                         <p class="mb-0">{{$schedule_tuesday[2]->time_slot}}</p>
                                         <label style="color: black" id="b3">Book Now</label> <input type="checkbox" id="Checkbox3" name="Checkbox[]" value="3" onclick="f3()"  {{in_array("3",$Checkbox)?"checked":""}}>
                                     </div>
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">4</h5>
                                         <h5>{{$schedule_tuesday[3]->type}}</h5>
                                         <p class="mb-0">{{$schedule_tuesday[3]->time_slot}}</p>
                                         <label style="color: black" id="b4">Book Now</label> <input type="checkbox" id="Checkbox4" name="Checkbox[]" value="4" onclick="f4()"  {{in_array("4",$Checkbox)?"checked":""}}>
@@ -263,11 +273,13 @@
                             <div class="tab-pane1 fade active show">
                                 @if(count($schedule_wednesday)>0)
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">5</h5>
                                         <h5>{{$schedule_wednesday[4]->type}}</h5>
                                         <p class="mb-0">{{$schedule_wednesday[4]->time_slot}}</p>
                                         <label style="color: black" id="b5">Book Now</label> <input type="checkbox" id="Checkbox5" name="Checkbox[]" value="5" onclick="f5()"  {{in_array("5",$Checkbox)?"checked":""}}>
                                     </div>
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">6</h5>
                                         <h5>{{$schedule_wednesday[5]->type}}</h5>
                                         <p class="mb-0">{{$schedule_wednesday[5]->time_slot}}</p>
                                         <label style="color: black" id="b6">Book Now</label> <input type="checkbox" id="Checkbox6" name="Checkbox[]" value="6" onclick="f6()"  {{in_array("6",$Checkbox)?"checked":""}}>
@@ -282,11 +294,13 @@
                             <div class="tab-pane1 fade active show">
                                 @if(count($schedule_thursday)>0)
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">7</h5>
                                         <h5>{{$schedule_thursday[6]->type}}</h5>
                                         <p class="mb-0">{{$schedule_thursday[6]->time_slot}}</p>
                                         <label style="color: black" id="b7">Book Now</label> <input type="checkbox" id="Checkbox7" name="Checkbox[]" value="7" onclick="f7()"  {{in_array("7",$Checkbox)?"checked":""}}>
                                     </div>
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">8</h5>
                                         <h5>{{$schedule_thursday[7]->type}}</h5>
                                         <p class="mb-0">{{$schedule_thursday[7]->time_slot}}</p>
                                         <label style="color: black" id="b8">Book Now</label> <input type="checkbox" id="Checkbox8" name="Checkbox[]" value="8" onclick="f8()"  {{in_array("8",$Checkbox)?"checked":""}}>
@@ -301,11 +315,13 @@
                             <div class="tab-pane1 fade active show">
                                 @if(count($schedule_friday)>0)
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">9</h5>
                                         <h5>{{$schedule_friday[8]->type}}</h5>
                                         <p class="mb-0">{{$schedule_friday[8]->time_slot}}</p>
                                         <label style="color: black" id="b9">Book Now</label> <input type="checkbox" id="Checkbox9" name="Checkbox[]" value="9" onclick="f9()"  {{in_array("9",$Checkbox)?"checked":""}}>
                                     </div>
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">10</h5>
                                         <h5>{{$schedule_friday[9]->type}}</h5>
                                         <p class="mb-0">{{$schedule_friday[9]->time_slot}}</p>
                                         <label style="color: black" id="b10">Book Now</label> <input type="checkbox" id="Checkbox10" name="Checkbox[]" value="10"  onclick="f10()"  {{in_array("10",$Checkbox)?"checked":""}}>
@@ -326,6 +342,7 @@
                             <div class="tab-pane1 fade active show">
                                 @if(count($schedule_saturday)>0)
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">11</h5>
                                         <h5>{{$schedule_saturday[10]->type}}</h5>
                                         <p class="mb-0">{{$schedule_saturday[10]->time_slot}}</p>
                                         <label style="color: black" id="b11">Book Now</label> <input type="checkbox" id="Checkbox11" name="Checkbox[]" value="11" onclick="f11()"  {{in_array("11",$Checkbox)?"checked":""}}>
@@ -340,6 +357,7 @@
                             <div class="tab-pane1 fade active show">
                                 @if(count($schedule_sunday)>0)
                                     <div class="schdl-box1">
+                                        <h5 style="color: black">12</h5>
                                         <h5>{{$schedule_sunday[11]->type}}</h5>
                                         <p class="mb-0">{{$schedule_sunday[11]->time_slot}}</p>
                                         <label style="color: black" id="b12">Book Now</label> <input type="checkbox" id="Checkbox12" name="Checkbox[]" value="12" onclick="f12()"  {{in_array("12",$Checkbox)?"checked":""}}>
