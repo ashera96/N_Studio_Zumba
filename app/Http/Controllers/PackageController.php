@@ -28,10 +28,7 @@ class PackageController extends Controller
 
     public function customer()
     {
-//        $id = Auth::user()->id;
         $packages = Package::all();
-//        $user_package = UserPackage::find($id);
-//        return view('customer_pages.class_packages')->with('packages', $packages);
         return view('customer_pages.class_packages',compact('packages'));
     }
 

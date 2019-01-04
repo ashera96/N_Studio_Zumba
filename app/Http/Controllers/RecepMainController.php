@@ -13,6 +13,8 @@ use Mail;
 use App\Mail\welcome;
 use App\SystemUser;
 use DB;
+use App\UserPayment;
+use App\Flag;
 
 class RecepMainController extends Controller
 {
@@ -43,12 +45,82 @@ class RecepMainController extends Controller
 
     public function show_payments()
     {
-        $new=DB::table('users')
-            ->join('system_users','users.id','=','system_users.id')
-            ->select('system_users.*','users.*')
+//        Retrieving the current date
+        $date_array = getdate();
+        $day = $date_array['mday'];
+
+        $flag = DB::table('flags')->select('value')->first();
+//        dd($flag->value);
+
+//        Checking if the start of month
+//        If start of month, drop all entries from the user_payments table and add the current selections from users with their relevant package
+        if( $day == 1 && $flag->value == 0 ){
+//            Delete entries in user_payments table if any exists
+            DB::table('user_payments') -> truncate(); //truncate - Auto-increment id is reassigned to 1
+
+            $user_package_details = DB::table('user_packages')
+                ->join('packages','user_packages.package_id','=','packages.id')
+                ->select('user_packages.*','packages.*')
+                ->get();
+
+//            dd($user_package_details);
+
+            foreach ($user_package_details as $user_package_detail){
+                $user_payments = new UserPayment;
+                $user_payments -> user_id = $user_package_detail->user_id;
+                $user_payments -> package_id = $user_package_detail->package_id;
+                $user_payments -> amount = $user_package_detail->price;
+                $user_payments -> payment_status = 0;
+                $user_payments -> save();
+            }
+//            DB::table('flags')->where('id',1)->increment('value');
+            $flags = Flag::findOrFail(1);
+            $flags->value = 1;
+            $flags->save();
+        }
+        elseif ( $day != 1 ){
+            //DB::table('flags')->where('id',1)->decrement('value');
+
+            $flags = Flag::findOrFail(1);
+            $flags->value = 0;
+            $flags->save();
+        }
+
+//        Retrieving user list for the current month
+        $users=DB::table('user_payments')
+            ->join('system_users','user_payments.user_id','=','system_users.id')
+            ->select('system_users.*','user_payments.*')
             ->where('system_users.status','=',1)
             ->get();
-        return view('recep_panel.monthly_payments', ['users' => $new]);
+
+        //retrieving user ids of those who had not paid
+        $not_paid = DB::table('user_payments')
+            ->select('user_id')
+            ->where('payment_status','=',0)
+            ->get();
+
+        $not_paid_stack = [];
+
+        foreach($not_paid as $np){
+            array_push($not_paid_stack,$np->user_id);
+        }
+//        dd($not_paid_stack);
+
+
+
+        return view('recep_panel.monthly_payments', compact('users','not_paid_stack'));
+    }
+
+    public function update_payment_status($id){
+
+//        Updating the given user's payment_status in the user_payments table from 0 to 1 for the current month
+        $user_payment = UserPayment::where('user_id','=',$id)->first();
+        $user_payment -> payment_status = 1;
+        $user_payment -> save();
+
+//        Passing the flash message for success in the updating  process
+        Session::flash('msg_paid', 'Payment Successfully Stored!');
+        return redirect('/recep/payments');
     }
 
     /**
