@@ -61,7 +61,7 @@ Route::prefix('home')->group(function() {
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
-    Route::get('/payment', 'CustomerPageController@show_payment')->middleware('customer');
+//     Route::get('/payment', 'CustomerPageController@show_payment')->middleware('customer');
     Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer');
     Route::get('markAsRead',function(){
         auth()->user()->unreadNotifications->markAsRead();
