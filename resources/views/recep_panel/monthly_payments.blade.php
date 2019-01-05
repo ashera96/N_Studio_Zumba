@@ -6,11 +6,13 @@
 @extends('layouts.hori_sidebar');
 
 <script>
-    // Javascript function to refresh the div daily
-    setInterval(function(){
-        $('#x').load('/recep/payments #daily_refresh');
-        // console.log("Loaded");
-    },86400000);//Days in milliseconds
+    // Javascript function to refresh the page daily
+    function timeRefresh(timeoutPeriod){
+        setTimeout("location.reload(true);",timeoutPeriod);
+    }
+
+    // Calling the function
+    window.onload = timeRefresh(86400000);//Days in milliseconds
 </script>
 
 <!--Receptionist monthly payment-area start-->

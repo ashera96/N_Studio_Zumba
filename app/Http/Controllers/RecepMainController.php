@@ -15,6 +15,7 @@ use App\SystemUser;
 use DB;
 use App\UserPayment;
 use App\Flag;
+use App\Mail\paymentDelayAlert;
 
 class RecepMainController extends Controller
 {
@@ -47,49 +48,20 @@ class RecepMainController extends Controller
     {
 //        Retrieving the current date
         $date_array = getdate();
-        $day = $date_array['mday'];
+        $day = $date_array['mday'];//Current day
 
-        $flag = DB::table('flags')->select('value')->first();
+//        Flag to check day 1
+        $flag = DB::table('flags')->select('value')->where('id',1)->first();
 //        dd($flag->value);
 
-//        Checking if the start of month
-//        If start of month, drop all entries from the user_payments table and add the current selections from users with their relevant package
-//        This loop is executed once per month, and view is refreshed every day threough a javaacript method
-        if( $day == 1 && $flag->value == 0 ){
-//            Delete entries in user_payments table if any exists
-            DB::table('user_payments') -> truncate(); //truncate - Auto-increment id is reassigned to 1
+        // get() -> collection is retrieved
+        // first() -> associative array is retrieved
 
-            $user_package_details = DB::table('user_packages')
-                ->join('packages','user_packages.package_id','=','packages.id')
-                ->select('user_packages.*','packages.*')
-                ->get();
+//        Flag to check day 10
+        $flag_alerts = DB::table('flags')->select('value')->where('id',2)->first();
 
-//            dd($user_package_details);
 
-//            Creating a new set of entries with the latest selections from the user_packages table
-            foreach ($user_package_details as $user_package_detail){
-                $user_payments = new UserPayment;
-                $user_payments -> user_id = $user_package_detail->user_id;
-                $user_payments -> package_id = $user_package_detail->package_id;
-                $user_payments -> amount = $user_package_detail->price;
-                $user_payments -> payment_status = 0;
-                $user_payments -> save();
-            }
-
-//            DB::table('flags')->where('id',1)->increment('value');
-            $flags = Flag::findOrFail(1);
-            $flags->value = 1;
-            $flags->save();
-        }
-        elseif ( $day != 1 ){
-            //DB::table('flags')->where('id',1)->decrement('value');
-
-            $flags = Flag::findOrFail(1);
-            $flags->value = 0;
-            $flags->save();
-        }
-
-//        Retrieving user list for the current month
+        //        Retrieving user list for the current month
         $users=DB::table('user_payments')
             ->join('system_users','user_payments.user_id','=','system_users.id')
             ->select('system_users.*','user_payments.*')
@@ -102,6 +74,7 @@ class RecepMainController extends Controller
             ->where('payment_status','=',0)
             ->get();
 
+        // Converting the collection to an associative array
         $not_paid_stack = [];
 
         foreach($not_paid as $np){
@@ -110,8 +83,118 @@ class RecepMainController extends Controller
 //        dd($not_paid_stack);
 
 
+//        Checking if the start of month
+//        If start of month send email to admin with the list of unpaid customers
+//        Drop all entries from the user_payments table and add the current selections from users with their relevant package
+//        This loop is executed once per month, and view is refreshed every day through a javascript method
+        if( $day == 1 && $flag->value == 0 ){
+
+//            Sending an email to the admin for the previous month's non settled payments of customers
+
+//            Retrieving the users who haven't paid (before dropping the tables entries)
+            $not_paid_list = DB::table('users')
+                ->join('user_payments','users.id','=','user_payments.user_id')
+                ->select('user_payments.*','users.*')
+                ->where('user_payments.payment_status','=',0)
+                ->get();
+//            dd($not_paid_list);
+
+//            Variable to pass to the email function - $data
+            $data_name = [];
+            $data_amount = [];
+            $count_list = count($not_paid_list);
+            if($count_list>0){
+                for( $i=0 ; $i<$count_list ; $i++ ){
+                    array_push($data_name,$not_paid_list[$i]->name);
+                    array_push($data_amount,$not_paid_list[$i]->amount);
+                }
+            }
+
+            // Forming the associative array
+            $data = [
+                'name' => $data_name,
+                'amount' => $data_amount
+            ];
+//            dd($data);
+
+            //Sending mail to admin
+            Mail::send('email.payment_delay_report',$data,function($report)use($data){
+                $admin = DB::table('system_users')
+                    ->where('role_id',1)
+                    ->first();
+                $report->to($admin->email);
+                $report->subject('Payment delay list for the month of '.date('F'));
+            });
+
+
+
+//            Delete entries in user_payments table if any exists
+            DB::table('user_payments') -> truncate(); // truncate - Auto-increment id is reassigned to 1
+
+            $user_package_details = DB::table('user_packages')
+                ->join('packages','user_packages.package_id','=','packages.id')
+                ->select('user_packages.*','packages.*')
+                ->get();
+
+//            dd($user_package_details);
+
+//            Creating a new set of entries with the latest selections from the user_packages table for each user
+            foreach ($user_package_details as $user_package_detail){
+                $user_payments = new UserPayment;
+                $user_payments -> user_id = $user_package_detail->user_id;
+                $user_payments -> package_id = $user_package_detail->package_id;
+                $user_payments -> amount = $user_package_detail->price;
+                $user_payments -> payment_status = 0;
+                $user_payments -> save();
+            }
+
+            // Assigning flag to be 1 so that cannot be executed again within the same month same day twice
+//            DB::table('flags')->where('id',1)->increment('value');
+            $flags = Flag::findOrFail(1);
+            $flags->value = 1;
+            $flags->save();
+        }
+        elseif ( $day != 1 ){
+            // If any day which is not 1 make the flag variable 0
+            //DB::table('flags')->where('id',1)->decrement('value');
+
+            $flags = Flag::findOrFail(1);
+            $flags->value = 0;
+            $flags->save();
+        }
+
+
+
+//      Sending payment delay alerts on 10th to customers who have not made the due payment
+        if ($day == 10 && $flag_alerts->value == 0 ){
+
+            $not_paid_email_stack = [];
+
+            foreach ($not_paid_stack as $not_paid_id){
+                $payment_delayed_user = SystemUser::findOrFail($not_paid_id);
+                $this->payment_delay_email($payment_delayed_user);
+            }
+
+            // Assigning flag_alert to be 1 so that cannot be executed again within the same month same day twice
+            $flag_alert = Flag::findOrFail(2);
+            $flag_alert->value = 1;
+            $flag_alert->save();
+        }
+
+        elseif( $day != 10){
+            // If any day which is not 10 make the flag_alert variable 0
+            $flag_alert = Flag::findOrFail(2);
+            $flag_alert->value = 0;
+            $flag_alert->save();
+        }
+
 
         return view('recep_panel.monthly_payments', compact('users','not_paid_stack'));
+    }
+
+//    Function to send Email - Payment Delay alert to all customers who have not paid the monthly payment
+    public function  payment_delay_email($payment_delayed_user){
+        Mail::to($payment_delayed_user['email'])->send(new paymentDelayAlert($payment_delayed_user));
     }
 
     public function update_payment_status($id){
