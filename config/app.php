@@ -215,6 +215,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
 
     ],
 

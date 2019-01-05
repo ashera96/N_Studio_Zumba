@@ -61,15 +61,12 @@
                         <div class="panel-body">
                             <div class = "col-md-8 text-right">
 
-                                <form method="get" class ="form-inline" action="/searchcontent">
+                                <form method="post" class ="form-inline" action="{{url('admin/reports/search')}}">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder ="Enter User id" name="title">
-                                        <div class ="input-group-btn">
-                                            {{--<a href="{{url('admin/reports')}}">--}}<button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>{{--</a>--}}
-                                        </div>
-                                        {{--<a href="{{url('admin/weight_view')}}"><button class ="btn btn-success" type="submit">Search</button></a>
-                                --}}</div>
+                                        <input type="text" class="form-control" placeholder ="Enter data" name="search" id="search">
+                                        <button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>
+                                    </div>
 
                                 </form>
                                 <div style="float: right;" >
