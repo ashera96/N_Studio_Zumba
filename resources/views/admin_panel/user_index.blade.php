@@ -97,6 +97,9 @@
                                 </div>
                             </div>
 
+                            <br><br>
+                            {{$users->links()}}
+
                         </div>
                 <!-- /.col -->
                     </div>

@@ -51,17 +51,17 @@
 
 
                                                 <td>
-                                                    @if($user->status)
+                                                    @if($user->regstatus)
                                                         <button class="markactive">Paid</button>
                                                     @else
                                                         <button class="markinactive">Not Paid</button>
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if(!$user->status)
-                                                        <a href="markasactive/{{$user->id}}"><button class="activebtn">Pay</button></a>
+                                                    @if(!$user->regstatus)
+                                                        <a href="markpay/{{$user->id}}"><button class="activebtn">Pay</button></a>
                                                     @else
-                                                        <a href="markasnotactive/{{$user->id}}" ><button class="inactivebtn">Refund</button></a>
+                                                        <a href="markrefund/{{$user->id}}" ><button class="inactivebtn">Refund</button></a>
                                                     @endif
 
                                                 </td>
@@ -69,6 +69,8 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                <br><br>
+                                   {{$users->links()}}
                                 </div>
                             </div>
 

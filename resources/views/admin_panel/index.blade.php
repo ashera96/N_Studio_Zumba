@@ -136,7 +136,12 @@
                                         </div>
 
 
+
+
                                 </div>
+
+                                <br><br>
+                                {{$receptionists->links()}}
                             </div>
 
                         </div>
