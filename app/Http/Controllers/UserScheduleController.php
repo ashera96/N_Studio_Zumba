@@ -32,6 +32,12 @@ class UserScheduleController extends Controller
         $Checkbox = []; //initialized empty stack
         $current_user = Auth::user(); //current user
         $finds = UserSchedule::where("user_id", $current_user->id)->get(); //data corresponding to current user
+        $selected_package = DB::table('user_packages')->select('package_id')->where("user_id", $current_user->id)->first();
+        $selected_package_id = $selected_package->package_id;
+        $pkg_name =  DB::table('packages')->select('name')->where("id", $selected_package_id)->first();
+        $selected_package_name = $pkg_name->name;
+
+
         foreach ($finds as $find) {
             array_push($Checkbox, $find->schedule_id); //push schedule ids to the empty stack
         }
@@ -42,7 +48,7 @@ class UserScheduleController extends Controller
         $schedule_friday = Schedule::all()->where('day', '=', 'Friday');
         $schedule_saturday = Schedule::all()->where('day', '=', 'Saturday');
         $schedule_sunday = Schedule::all()->where('day', '=', 'Sunday');
-        return view('customer_pages.class_schedule', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox'));
+        return view('customer_pages.class_schedule', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name'));
     }//index
 
     //---------------start of store function---------------------------------
@@ -66,14 +72,14 @@ class UserScheduleController extends Controller
         $j = 0;
 
         $current_user = Auth::user();
-        $selected_package = DB::table('user_packages')->select('package_id')->where("user_id", $current_user->id)->first();
+        $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
         $classes_to_cover = DB::table('packages')->select('classes_to_cover')->where("id", $selected_package->package_id)->first();
 
         if ((($classes_to_cover->classes_to_cover) / 4) == count($request->Checkbox)) {
 
         foreach ($request->Checkbox as $check) {
             $current_user = Auth::user();
-            $selected_package = DB::table('user_packages')->select('package_id')->where("user_id", $current_user->id)->first();
+            $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
 
             $user_schedule = new UserSchedule;
 
@@ -129,6 +135,11 @@ class UserScheduleController extends Controller
         foreach ($finds as $find) {
             array_push($Checkbox, $find->schedule_id); //push schedule ids to the empty stack
         }
+        $selected_package = DB::table('user_packages')->select('package_id')->where("user_id", $current_user->id)->first();
+        $selected_package_id = $selected_package->package_id;
+        $pkg_name =  DB::table('packages')->select('name')->where("id", $selected_package_id)->first();
+        $selected_package_name = $pkg_name->name;
+
         $schedule_monday = Schedule::all()->where('day', '=', 'Monday');
         $schedule_tuesday = Schedule::all()->where('day', '=', 'Tuesday');
         $schedule_wednesday = Schedule::all()->where('day', '=', 'Wednesday');
@@ -136,7 +147,7 @@ class UserScheduleController extends Controller
         $schedule_friday = Schedule::all()->where('day', '=', 'Friday');
         $schedule_saturday = Schedule::all()->where('day', '=', 'Saturday');
         $schedule_sunday = Schedule::all()->where('day', '=', 'Sunday');
-        return view('customer_pages.schedule_update', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox'));
+        return view('customer_pages.schedule_update', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name'));
     }//edit
 
 
@@ -179,7 +190,7 @@ class UserScheduleController extends Controller
                         if ($selected_schedules[$i] != $new_selections[$i] && !in_array($new_selections[$i],$selected_schedules) ) {
 
                             $x = UserSchedule::select('id')->where([['schedule_id','=', $selected_schedules[$i]],["user_id",'=',$current_user->id]])->first();
-                            $selected_package = DB::table('user_packages')->select('package_id')->where("user_id", $current_user->id)->first();
+                            $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
                             //$classes_to_cover = DB::table('packages')->select('classes_to_cover')->where("id", $selected_package->package_id)->first();
                             $user_schedule = UserSchedule::find($x->id);
 
@@ -442,7 +453,7 @@ class UserScheduleController extends Controller
 
                             if($counterx10->counter < 2 && $k10 > 0){
                                 $system_user = SystemUser::where([['role_id','=',2],['id','=',$friday2_queue[$k10-1]->user_id]])->get();
-                                Notification::send($system_user, new WaitListNotice9());
+                                Notification::send($system_user, new WaitListNotice10());
 
                                 DB::table('waiting_queues')
                                     ->where([['schedule_id','=','10'],['user_id','=',$friday2_queue[$k10-1]->user_id]])

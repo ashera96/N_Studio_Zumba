@@ -99,7 +99,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/create_medical_advice','MedicalAdviceController@store')->middleware('admin');
     //end of routes for notifications
     Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
-
+    Route::get('/schedules','AdminController@show_schedules')->middleware('admin');
     Route::get('/reports','WeightController@show_weight_index')->middleware('admin');
     Route::resource('/reports','WeightController')->middleware('admin');
     Route::get('dashboard/reports','WeightController@create')->name('admin_panel.add_weight')->middleware('admin');
@@ -167,9 +167,11 @@ Route::prefix('recep')->group(function() {
     Route::resource('/customers', 'UserController')->middleware('receptionist');
     Route::get('/fees','UserController@index2')->middleware('receptionist');
     Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist');
+    Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist');
 
     Route::get('/markpay/{id}','UserController@PayRegFees');
     Route::get('/markrefund/{id}','UserController@RefundRegFees');
+
 
     Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist');
 
