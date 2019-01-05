@@ -72,13 +72,13 @@
                         <li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">
                             <a class="nav-link" href="/home/reports">reports</a>
                         </li>
-                        <li class="nav-item d-none d-lg-inline">
-                            <div class="icon-menu">
-                                <ul>
-                                    <li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>
-                                </ul>
-                            </div>
-                        </li>
+                        {{--<li class="nav-item d-none d-lg-inline">--}}
+                            {{--<div class="icon-menu">--}}
+                                {{--<ul>--}}
+                                    {{--<li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</li>--}}
                        <!-- notification bell commented out
                         <li class="nav-item d-none d-lg-inline">
                             <div class="icon-menu">
