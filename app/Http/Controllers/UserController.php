@@ -9,6 +9,10 @@ use App\Rules\ageValidation;
 use App\Rules\nicValidation;
 use DB;
 
+
+
+
+
 class UserController extends Controller
 {
     /**
@@ -18,35 +22,29 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $new  =User::all(); //->where('status', '=', '1');
-        // return view('admin_panel.user_index',['users'=>$new]);
+
         $new=DB::table('users')
             ->join('system_users','users.id','=','system_users.id')
             ->select('system_users.*','users.*')
-            ->get();
+            //->get();
+            ->paginate(2);
 
-        //if('system_users.id'==1) {
         return view('admin_panel.user_index', ['users' => $new]);
-        //}
-        /*  else{
-            return view('recep_panel.user_index', ['users' => $new]);
-        }  */
+
     }
     public function index2()
     {
-        // $new  =User::all(); //->where('status', '=', '1');
-        // return view('admin_panel.user_index',['users'=>$new]);
+
+
         $new=DB::table('users')
             ->join('system_users','users.id','=','system_users.id')
             ->select('system_users.*','users.*')
-            ->get();
+           //->get();
+            ->paginate(2);
 
-        //if('system_users.id'==1) {
         return view('recep_panel.fees', ['users' => $new]);
-        //}
-        /*  else{
-            return view('recep_panel.user_index', ['users' => $new]);
-        }  */
+
+
     }
 
     /*public function search(Request $request){
@@ -59,14 +57,30 @@ class UserController extends Controller
         $user=SystemUser::find($id);
         $user->status=1;
         $user->save();
+
         return redirect()->back();
     }
     public function UpdateCustomerNotActive($id){
         $user=SystemUser::find($id);
         $user->status=0;
         $user->save();
+
         return redirect()->back();
     }
+
+    public function PayRegFees($id){
+        $user=User::find($id);
+        $user->regstatus=1;
+        $user->save();
+        return redirect()->back();
+    }
+    public function RefundRegFees($id){
+        $user=User::find($id);
+        $user->regstatus=0;
+        $user->save();
+        return redirect()->back();
+    }
+
 
     /**
      * Show the form for creating a new resource.

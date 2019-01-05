@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->date('dob');
             $table->string('address');
             $table->string('contactno')->unique();
+            $table->boolean('regstatus')->nullable();
             $table->timestamps();
             $table->foreign('id')->references('id')->on('system_users');
         });
