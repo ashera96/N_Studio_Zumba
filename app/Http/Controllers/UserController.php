@@ -47,12 +47,6 @@ class UserController extends Controller
 
     }
 
-    /*public function search(Request $request){
-        $searchkey = $request -> get('search');
-        $new = User::where('id', 'like', '%',$searchkey,'%');
-        return view('admin_panel.user_index',['users'=>$new]);
-    }*/
-
     public function UpdateCustomerActive($id){
         $user=SystemUser::find($id);
         $user->status=1;
