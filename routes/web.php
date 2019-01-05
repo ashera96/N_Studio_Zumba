@@ -14,6 +14,8 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+use App\Weight;
+use App\Attendance;
 
 Auth::routes();
 
@@ -102,7 +104,6 @@ Route::prefix('admin')->group(function() {
     Route::resource('/reports','WeightController')->middleware('admin');
     Route::get('dashboard/reports','WeightController@create')->name('admin_panel.add_weight')->middleware('admin');
     Route::post('dashboard/reports','WeightController@store')->middleware('admin');
-    //Route::get('/weight_view','WeightController@view')->middleware('admin');
 
     Route::get('/reports_attendance','AttendanceController@show_attendance_index')->middleware('admin');
     Route::resource('/reports_attendance','AttendanceController')->middleware('admin');
@@ -113,8 +114,35 @@ Route::prefix('admin')->group(function() {
     Route::delete('reports_attendance/{id}/{month}/{year}', 'AttendanceController@destroy')->name('reports_attendance.destroy');
     Route::get('/increTot/{id}/{month}/{year}','AttendanceController@UpdateTotal');
     Route::get('/increAtt/{id}/{month}/{year}','AttendanceController@UpdateAttend');
+    Route::get('/updatePer/{id}/{month}/{year}','AttendanceController@UpdatePercent');
     Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
     Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
+    Route::get('/reports/{id}/{year}/view','WeightController@view')->name('reports.view');
+    Route::get('/reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('reports_attendance.edit');
+    Route::post('/reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('reports_attendance.update');
+    Route::get('/reports/statistics','WeightController@statistics');
+
+    Route::any('/reports/search',function(){
+        $search = Input::get ('search');
+        $weight = Weight::where('id','LIKE','%'.$search.'%')
+            ->orWhere('month','LIKE','%'.$search.'%')
+            ->orWhere('year','LIKE','%'.$search.'%')
+            ->get();
+        if(count($weight) > 0)
+            return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);
+        else return view ('admin_panel.weight_show')->withMessage('No Details found. Try to search again !');
+    });
+
+    Route::any('/reports_attendance/search',function(){
+        $title = Input::get ('title');
+        $attendance = Attendance::where('id','LIKE','%'.$title.'%')
+            ->orWhere('month','LIKE','%'.$title.'%')
+            ->orWhere('year','LIKE','%'.$title.'%')
+            ->get();
+        if(count($attendance) > 0)
+            return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
+        else return view ('admin_panel.attendance_show')->withMessage('No Details found. Try to search again !');
+    });
 
 
 

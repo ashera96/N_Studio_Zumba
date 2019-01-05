@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Weight;
 use DB;
@@ -12,8 +13,10 @@ class WeightController extends Controller
     {
         /*$new = Weight::all();
         return view('admin_panel.weight_index', ['weights' => $new]);*/
-        $weights = DB::table('weights')->orderBy('id', 'asc')->paginate(6);
-        return view('admin_panel.weight_index', ['weights' => $weights]);
+       $weights = DB::table('weights')->orderBy('id', 'asc')->paginate(6);
+       return view('admin_panel.weight_index', ['weights' => $weights]);
+
+
 
     }
 
@@ -22,11 +25,11 @@ class WeightController extends Controller
         return view('admin_panel.add_weight');
     }
 
-    public function search(Request $request)
+
+
+    public function show($id)
     {
-        $search = $request -> get('search');
-        $weights = DB::table('weights')->where('id', 'like', '%',$search,'%')->paginate(6);
-        return view('admin_panel.weight_index',['weights'=>$weights]);
+        //
     }
 
     public function store(Request $request)
@@ -50,10 +53,13 @@ class WeightController extends Controller
         return redirect('/admin/reports/')->with('success','Weight Added');
     }
 
-    public function view($id)
+    public function view($id,$year)
     {
-        $wegfind = Weight::findOrFail($id);
-        return view('admin_panel.weight_view',['weight'=>$wegfind]);
+        $wegfind =  Weight::all()->where('id','=',2);
+          //  ->where('id', '=', $id)
+            //->where('year', '=', $year)
+            //->get()->first();
+        return view('admin_panel.weight_view',['w'=>$wegfind]);
 
         /*$cusfind = User::find($id);
         return view('admin_panel.user_edit',compact('cusfind','id')); */
@@ -71,30 +77,7 @@ class WeightController extends Controller
         return view('admin_panel.user_edit',compact('cusfind','id')); */
     }
 
-    public function update(Request $request, $id,$month,$year)
-    {
-        $this->validate($request,[
-            'id' => 'required',
-            'month'=>'required',
-            'year'=>'required',
-            'weight' =>'required',
 
-        ]);
-
-        $weightfind =$wegfind =  DB::table('weights')->where('id', '=', $id)
-            ->where('month', '=', $month)
-            ->where('year', '=', $year);
-
-        $weightfind ->id =$request ->id;
-        $weightfind ->month =$request ->month;
-        $weightfind ->year =$request ->year;
-        $weightfind ->weight =$request ->weight;
-        $weightfind ->save();
-
-        return redirect('admin/reports')->with('success','Weight Updated');
-
-
-    }
 
     public function destroy($id,$month,$year)
     {
@@ -107,5 +90,11 @@ class WeightController extends Controller
 
     }
 
+    public function statistics()
+    {
+        $data = DB::table('weights')->get(['month','weight']);
+        return view('admin_panel.weight_view',['weight'=>$data]);
+
+    }
 
 }

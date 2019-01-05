@@ -62,24 +62,33 @@ class AttendanceController extends Controller
     }
 
     public function UpdateTotal($id,$month,$year){
-        $attendance=DB::table('attendances')->where('id', '=', $id)
+        Attendance::where('id', '=', $id)
             ->where('month', '=', $month)
-            ->where('year', '=', $year)->first();
-        //->update(['totalclasses' => totalclasses+1]);
+            ->where('year', '=', $year)
+            ->update(['totalclasses' => DB::raw('totalclasses + 1')]);
 
-        $attendance->totalclasses+=1;
-        $attendance->save();
         return redirect()->back();
+
     }
 
     public function UpdateAttend($id,$month,$year){
-        $attendance=DB::table('attendances')->where('id', '=', $id)
+        Attendance::where('id', '=', $id)
             ->where('month', '=', $month)
-            ->where('year', '=', $year)->first();
+            ->where('year', '=', $year)
+            ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
 
-        $attendance->attendanceclasses+=1;
-        $attendance->save();
         return redirect()->back();
+
+    }
+
+    public function UpdatePercent($id,$month,$year){
+        Attendance::where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
+
+        return redirect()->back();
+
     }
     /**
      * Display the specified resource.
@@ -98,9 +107,13 @@ class AttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,$month,$year)
     {
-        //
+        $attfind =  DB::table('attendances')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->get()->first();
+        return view('admin_panel.attendance_edit',['attendance'=>$attfind]);
     }
 
     /**
@@ -110,9 +123,33 @@ class AttendanceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id,$month,$year)
     {
-        //
+        $this->validate($request,[
+            'id' => 'required',
+            'month'=>'required',
+            'year'=>'required',
+            'totalclasses'=>'required',
+            'attendanceclasses' =>'required',
+            'percentage' =>'required',
+
+        ]);
+
+        $attfind =  DB::table('attendances')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year);
+
+        $attfind->id =$request ->id;
+        $attfind ->month =$request ->month;
+        $attfind ->year =$request ->year;
+        $attfind ->totalclasses =$request ->totalclasses;
+        $attfind ->attendanceclasses =$request ->attendanceclasses;
+        $attfind ->percentage =$request ->percentage;
+        $attfind ->save();
+
+        return redirect('admin/reports_attendance')->with('success','Attendance Updated');
+
+
     }
 
     /**

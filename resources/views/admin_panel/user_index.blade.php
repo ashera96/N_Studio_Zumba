@@ -30,24 +30,6 @@
                     <!-- Latest Users -->
                     <div class="row mb-0">
                         <div class="card overview-block pad30 rounded">
-                            {{--<div class="panel panel-default">--}}
-                                {{--<div class="panel-heading main-color-bg">--}}
-                                    {{--<h3 class="panel-title">Customers Overview</h3><br>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<form method="get"  class ="form-inline" {{--action="{{route('customers.search')}}">
-                                @csrf
-                                @method('PUT')
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder ="Enter User id" name="search" id = "search">
-                                    <div class ="input-group-btn">
-                                        <a href="{{url('admin/customers')}}"><button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button></a>
-                                    </div>
-                                    {{--<a href="{{url('admin/weight_view')}}"><button class ="btn btn-success" type="submit">Search</button></a>
-                            </div>
-
-                            </form>--}}
 
                             <div class="panel panel-default ml90">
                                 <div class="panel-body">
@@ -73,8 +55,6 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    {{--<td><button class="btn btn-success">Active Customer</button></td>
-                                                    <td><a  class="btn btn-warning">Mark as not active</a></td>--}}
                                                     <td>
                                                         @if($user->status)
                                                             <button class="activebtn">Active Customer</button>

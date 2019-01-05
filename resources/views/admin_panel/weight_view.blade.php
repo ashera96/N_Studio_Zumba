@@ -1,22 +1,70 @@
-<html>
-<head>
-    <title>Customers</title>
+@extends('layouts.admin_app');
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-<a href="/admin/reports" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
-<div class="container">
-    <div class = "card-panel grey lighten-2"><h3 style="text-align: center ;font-family:century gothic">Customers EDIT</h3></div>
+@section('content');
+
+@extends('layouts.hori_sidebar');
+
+<script src ="js/canvasjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+    window.onload =function(){
+        var chart = new CanvasJS.Chart("chartContainer",{
+            title:{
+                text: "Graph of Weight for Customers"
+            },
+            /*data:[
+                {
+                    type: "column",
+                    dataPoints:[
+                        <?php
+                        foreach($w as $rows)
+                        {
+                            echo "{label: '{$rows->month}-y:'{$rows->weight}',\r\n";
+                        }
+                        ?>
+                    ]
+                }
+            ]*/
+        });
+        chart.render();
+    }
+
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        @extends('layouts.vertical_sidebar');
+
+        <div class="col-lg-10 col-md-9 mar30">
 
 
-    <div class = "card-panel center">
-        <div class="row">
+            <div class="section-title text-center">
+                <div class="title-bar full-width mb20">
+                    <br><br><br>
+                    <img src="{{ URL::asset('images/logo/ttl-bar.png') }}"  alt="title-img">
+                </div>
+
+                <h3>View Weight</h3>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="contact-form mt20">
+                        <div class="appointment-schedule">
+
+                            <div id ="chartContainer" style="height: 270px; width: 40px; "></div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
+        <!-- /.col -->
     </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
-</body>
-</html>
+@endsection
