@@ -29,7 +29,7 @@
                 <!-- Latest users start -->
                 <div class="row mb-0">
                     <div class="card overview-block pad30 rounded">
-                        <div class="card-header rounded mr-1 ml-1" >Welcome Receptionist!</div>
+                        <div class="card-header rounded mr-1 ml-1" style="background-color: deeppink" >Welcome Receptionist!</div>
                         <br><br>
                         <p style="height: 250px;width: 400px">  Let's manage the zumba centre</p>
                     </div>

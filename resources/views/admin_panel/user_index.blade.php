@@ -28,8 +28,7 @@
 
 
                     <!-- Latest Users -->
-                    <div class="row mb-0">
-                        <div class="card overview-block pad30 rounded">
+
                             {{--<div class="panel panel-default">--}}
                                 {{--<div class="panel-heading main-color-bg">--}}
                                     {{--<h3 class="panel-title">Customers Overview</h3><br>--}}
@@ -49,9 +48,16 @@
 
                             </form>--}}
 
-                            <div class="panel panel-default ml90">
-                                <div class="panel-body">
-                                    <table class="table table-striped table-hover" width="80%"  >
+                            <div class="row mb-0" style="padding-left: 50px">
+                                <div class="card overview-block pad30 rounded" >
+                                    <div class="card-header rounded mr-1 ml-1"  style="background-color: deeppink">Customers Details</div>
+                                    <div class="row card-body">
+
+
+
+
+
+                                        <table class="table table-striped table-hover">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -77,9 +83,9 @@
                                                     <td><a  class="btn btn-warning">Mark as not active</a></td>--}}
                                                     <td>
                                                         @if($user->status)
-                                                            <button class="markactive">Active Customer</button>
+                                                            <button class="markactive">Active</button>
                                                         @else
-                                                            <button class="markinactive">Inactive Customer</button>
+                                                            <button class="markinactive">Inactive</button>
                                                         @endif
                                                     </td>
                                                     <td>
