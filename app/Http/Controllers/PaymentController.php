@@ -14,8 +14,10 @@ class PaymentController extends Controller
         $receptionists =DB::table('receptionists')
             ->join('system_users','receptionists.id','=','system_users.id')
             ->select('system_users.*','receptionists.*')
-            ->where('system_users.status','=',1)
+//            ->where('system_users.status','=',1)
             ->get();
+
+//        dd($receptionists);
 
         return view('admin_panel.payment', ['receptionists' => $receptionists]);
     }
