@@ -39,7 +39,7 @@
                                             <th class="product-thumbnail">Name</th>
                                             <th class="product-name">Email</th>
                                             <th class="product-remove">Phone</th>
-
+                                            <th class="product-name">Status</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -49,6 +49,12 @@
                                                 <td class="product-subtotal">{{ $receptionist->name }}</td>
                                                 <td class="product-subtotal">{{ $receptionist->email }}</td>
                                                 <td class="product-subtotal">{{ $receptionist->tpno }}</td>
+
+                                                @if($receptionist->status==1)
+                                                    <td><button class="markactive">Active</button></td>
+                                                @else
+                                                    <td><button class="markinactive">Inactive</button></td>
+                                                @endif
 
                                                 <td>
                                                     <div class="row">
