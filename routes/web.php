@@ -14,6 +14,8 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+use App\Weight;
+use App\Attendance;
 
 Auth::routes();
 
@@ -113,6 +115,7 @@ Route::prefix('admin')->group(function() {
     Route::delete('reports_attendance/{id}/{month}/{year}', 'AttendanceController@destroy')->name('reports_attendance.destroy');
     Route::get('/increTot/{id}/{month}/{year}','AttendanceController@UpdateTotal');
     Route::get('/increAtt/{id}/{month}/{year}','AttendanceController@UpdateAttend');
+    Route::get('/updatePer/{id}/{month}/{year}','AttendanceController@UpdatePercent');
     Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
     Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
 
@@ -121,7 +124,32 @@ Route::prefix('admin')->group(function() {
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
 
+
+
+
     Route::get('/payments','PaymentController@load_receptionists')->middleware('admin');
+
+    Route::any('/reports/search',function(){
+        $search = Input::get ('search');
+        $weight = Weight::where('id','LIKE','%'.$search.'%')
+            ->orWhere('month','LIKE','%'.$search.'%')
+            ->orWhere('year','LIKE','%'.$search.'%')
+            ->get();
+        if(count($weight) > 0)
+            return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);
+        else return view ('admin_panel.weight_show')->withMessage('No Details found. Try to search again !');
+    });
+
+    Route::any('/reports_attendance/search',function(){
+        $title = Input::get ('title');
+        $attendance = Attendance::where('id','LIKE','%'.$title.'%')
+            ->orWhere('month','LIKE','%'.$title.'%')
+            ->orWhere('year','LIKE','%'.$title.'%')
+            ->get();
+        if(count($attendance) > 0)
+            return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
+        else return view ('admin_panel.attendance_show')->withMessage('No Details found. Try to search again !');
+    });
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
 //Route::get('/customers','CustomerController@show_customers');
@@ -136,11 +164,20 @@ Route::prefix('admin')->group(function() {
 Route::prefix('recep')->group(function() {
     Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist');
     Route::resource('/profile','ReceptionistController')->middleware('receptionist');
-   // Route::resource('/customers', 'UserController')->middleware('receptionist');
+    Route::resource('/customers', 'UserController')->middleware('receptionist');
     Route::get('/fees','UserController@index2')->middleware('receptionist');
     Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist');
     Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist');
+
+    Route::get('/markpay/{id}','UserController@PayRegFees');
+    Route::get('/markrefund/{id}','UserController@RefundRegFees');
+
+
     Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist');
+
+    Route::get('/markasactive/{id}','UserController@UpdateCustomerActive');
+    Route::get('/markasnotactive/{id}','UserController@UpdateCustomerNotActive');
+
 
 
 //    Route::resource('/recep_dash','ReceptionistController')->middleware('recep');

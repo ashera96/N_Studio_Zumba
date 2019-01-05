@@ -8,6 +8,11 @@ use App\User;
 use App\Rules\ageValidation;
 use App\Rules\nicValidation;
 use DB;
+use Illuminate\Support\Facades\Auth;
+
+
+
+
 
 class UserController extends Controller
 {
@@ -18,55 +23,74 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $new  =User::all(); //->where('status', '=', '1');
-        // return view('admin_panel.user_index',['users'=>$new]);
-        $new=DB::table('users')
-            ->join('system_users','users.id','=','system_users.id')
-            ->select('system_users.*','users.*')
-            ->get();
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $new = DB::table('users')
+                ->join('system_users', 'users.id', '=', 'system_users.id')
+                ->select('system_users.*', 'users.*')
+                //->get();
+                ->paginate(2);
 
-        //if('system_users.id'==1) {
-        return view('admin_panel.user_index', ['users' => $new]);
-        //}
-        /*  else{
+
+            return view('admin_panel.user_index', ['users' => $new]);
+        }
+        else if($role_id==3) {
+            $new = DB::table('users')
+                ->join('system_users', 'users.id', '=', 'system_users.id')
+                ->select('system_users.*', 'users.*')
+                //->get();
+                ->paginate(2);
+
+
             return view('recep_panel.user_index', ['users' => $new]);
-        }  */
+        }
+
     }
+
+
     public function index2()
     {
-        // $new  =User::all(); //->where('status', '=', '1');
-        // return view('admin_panel.user_index',['users'=>$new]);
+
+
         $new=DB::table('users')
             ->join('system_users','users.id','=','system_users.id')
             ->select('system_users.*','users.*')
-            ->get();
+           //->get();
+            ->paginate(2);
 
-        //if('system_users.id'==1) {
         return view('recep_panel.fees', ['users' => $new]);
-        //}
-        /*  else{
-            return view('recep_panel.user_index', ['users' => $new]);
-        }  */
-    }
 
-    /*public function search(Request $request){
-        $searchkey = $request -> get('search');
-        $new = User::where('id', 'like', '%',$searchkey,'%');
-        return view('admin_panel.user_index',['users'=>$new]);
-    }*/
+
+    }
 
     public function UpdateCustomerActive($id){
         $user=SystemUser::find($id);
         $user->status=1;
         $user->save();
+
         return redirect()->back();
     }
     public function UpdateCustomerNotActive($id){
         $user=SystemUser::find($id);
         $user->status=0;
         $user->save();
+
         return redirect()->back();
     }
+
+    public function PayRegFees($id){
+        $user=User::find($id);
+        $user->regstatus=1;
+        $user->save();
+        return redirect()->back();
+    }
+    public function RefundRegFees($id){
+        $user=User::find($id);
+        $user->regstatus=0;
+        $user->save();
+        return redirect()->back();
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -108,8 +132,16 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $cusfind = User::findOrFail($id);
-        return view('admin_panel.user_edit',['user'=>$cusfind]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $cusfind = User::findOrFail($id);
+            return view('admin_panel.user_edit', ['user' => $cusfind]);
+        }
+        else if($role_id==3) {
+            $cusfind = User::findOrFail($id);
+            return view('recep_panel.user_edit', ['user' => $cusfind]);
+        }
+
 
         /*$cusfind = User::find($id);
         return view('admin_panel.user_edit',compact('cusfind','id')); */
@@ -124,30 +156,60 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            //'id' => 'required',
-            //'email'=>'required|email',
-            'name'=>'required|string',//|min:2',
-            'nic' => ['required',new nicValidation],
-            'dob' => ['required',new ageValidation],
-            //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
-            'address' => 'required',
-            //'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
-        ]);
+        $role_id = Auth::user()->role->id;
 
-        $cusfind =User::findOrFail($id);
-        $cusfind ->name =$request ->name;
-        //$recepnew ->email =$request ->email;
-        //$system_users ->email =$request ->email;
-        $cusfind ->nic =$request ->nic;
-        $cusfind ->dob =$request ->dob;
-        $cusfind ->address =$request ->address;
-        //$cusfind ->tpno =$request ->tpno;
-        //$system_users ->status=true;
-        $cusfind ->save();
-        //$system_users ->save();
+        if($role_id==1) {
+            $this->validate($request, [
+                //'id' => 'required',
+                //'email'=>'required|email',
+                'name' => 'required|string',//|min:2',
+                'nic' => ['required', new nicValidation],
+                'dob' => ['required', new ageValidation],
+                //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+                'address' => 'required',
+                //'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+            ]);
 
-        return redirect('admin/customers')->with('success','Customer Updated');
+            $cusfind = User::findOrFail($id);
+            $cusfind->name = $request->name;
+            //$recepnew ->email =$request ->email;
+            //$system_users ->email =$request ->email;
+            $cusfind->nic = $request->nic;
+            $cusfind->dob = $request->dob;
+            $cusfind->address = $request->address;
+            //$cusfind ->tpno =$request ->tpno;
+            //$system_users ->status=true;
+            $cusfind->save();
+            //$system_users ->save();
+
+            return redirect('admin/customers')->with('success', 'Customer Updated');
+        }
+        else if($role_id==3) {
+            $this->validate($request, [
+                //'id' => 'required',
+                //'email'=>'required|email',
+                'name' => 'required|string',//|min:2',
+                'nic' => ['required', new nicValidation],
+                'dob' => ['required', new ageValidation],
+                //'nic' => 'required|string|min:10|regex:/^[0-9]{2}[5-8]{1}[0-9]{6}[vVxX]$/',
+                'address' => 'required',
+                //'tpno' => 'required|regex:/^[0]{1}[0-9]{9}$/',
+            ]);
+
+            $cusfind = User::findOrFail($id);
+            $cusfind->name = $request->name;
+            //$recepnew ->email =$request ->email;
+            //$system_users ->email =$request ->email;
+            $cusfind->nic = $request->nic;
+            $cusfind->dob = $request->dob;
+            $cusfind->address = $request->address;
+            //$cusfind ->tpno =$request ->tpno;
+            //$system_users ->status=true;
+            $cusfind->save();
+            //$system_users ->save();
+
+            return redirect('recep/customers')->with('success', 'Customer Updated');
+        }
 
 
     }

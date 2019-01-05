@@ -29,7 +29,8 @@ class ReceptionistController extends Controller
             $receps =DB::table('receptionists')
                 ->join('system_users','receptionists.id','=','system_users.id')
                 ->select('system_users.*','receptionists.*')
-                ->get();
+                //->get();
+                ->paginate(2);
 
 
             return view('admin_panel.index', ['receptionists' => $receps]);
@@ -42,6 +43,7 @@ class ReceptionistController extends Controller
                 ->select('system_users.*','receptionists.*')
                 ->where('system_users.id', '=',$rec)
                 ->get();
+
 
             return view('recep_panel.recep_index', ['receptionists' => $receps]);
         }

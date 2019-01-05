@@ -43,7 +43,7 @@
 
 
                 <!-- Website Overview -->
-                    <div class="panel panel-default">
+
                         {{--<div class="panel-heading main-color-bg">--}}
                             {{--<h3 class="panel-title">Employees Overview</h3>--}}
 
@@ -54,17 +54,26 @@
                             <a href="{{url('/admin/receptionist/create')}}"><button name="submit" type="submit" class="btn active btn-primary float-right " >Add</button></a>
                         </div>
 
-                    </div>
 
+                    <br><br><br><br>
 
-                    <!-- Cart Main Area Start Here -->
+                    <!-- Cart Main Area Start Here
                     <div class="cart-main-area  pad90">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
 
-                                        <div class="table-content table-responsive">
-                                            <table>
+                                        <div class="table-content table-responsive">  -->
+                    <div class="row mb-0">
+                        <div class="card overview-block pad30 rounded" >
+                            <div class="card-header rounded mr-1 ml-1"  style="background-color: deeppink">Receptionists Details</div>
+                            <div class="row card-body">
+
+
+
+
+
+                                <table class="table table-striped table-hover">
                                                 <thead>
                                                 <tr>
                                                     <th class="product-thumbnail">Name</th>
@@ -99,16 +108,16 @@
 
                                                     <td>
                                                         @if($receptionist->status)
-                                                            <button class="markactive">Active Receptionist</button>
+                                                            <button class="markactive" style="width: 50px">Active </button>
                                                         @else
-                                                            <button class="markinactive">Inactive Receptionist</button>
+                                                            <button class="markinactive" style="width: 50px">Inactive </button>
                                                         @endif
                                                     </td>
                                                     <td>
                                                         @if(!$receptionist->status)
-                                                            <a href="markasactive/{{$receptionist->id}}"><button class="activebtn">Activate</button></a>
+                                                            <a href="markasactive/{{$receptionist->id}}"><button class="activebtn" style="width: 60px">Activate</button></a>
                                                         @else
-                                                            <a href="markasnotactive/{{$receptionist->id}}" ><button class="inactivebtn">Deactivate</button></a>
+                                                            <a href="markasnotactive/{{$receptionist->id}}" ><button class="inactivebtn" style="width: 60px">Deactivate</button></a>
                                                         @endif
 
                                                     </td>
@@ -136,7 +145,12 @@
                                         </div>
 
 
+
+
                                 </div>
+
+                                <br><br>
+                                {{$receptionists->links()}}
                             </div>
 
                         </div>

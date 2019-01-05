@@ -36,8 +36,8 @@
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
-                        <h3>Weight Reports</h3>
-                        <p>Manage Weights Reports</p>
+                        <h3>Attendance Reports</h3>
+                        <p>Manage Attendance Reports</p>
                     </div>
                     <!-- Website Overview -->
                     <div class="new" >
@@ -76,15 +76,12 @@
                                             <div class="panel-body">
                                                 <div class = "col-md-8 text-right">
 
-                                                    <form method="get" class ="form-inline" {{--action="/searchcontent"--}}>
+                                                    <form method="post" class ="form-inline" action="{{url('admin/reports_attendance/search')}}">
                                                         @csrf
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder ="Enter User id" name="title">
-                                                            <div class ="input-group-btn">
-                                                                {{--<a href="{{url('admin/reports')}}">--}}<button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>{{--</a>--}}
-                                                            </div>
-                                                            {{--<a href="{{url('admin/weight_view')}}"><button class ="btn btn-success" type="submit">Search</button></a>
-                                                    --}}</div>
+                                                            <input type="text" class="form-control" placeholder ="Enter data" name="title" id="title">
+                                                            <button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>
+                                                        </div>
 
                                                     </form>
                                                     <div style="float: right;" >
@@ -113,28 +110,25 @@
                                                             <td>{{$attendance->year}}</td>
                                                             <td>{{$attendance->totalclasses}}
                                                                 @if($attendance->totalclasses)
-                                                                    <a href="increTot/{{$attendance->id}}/{{$attendance->month}}/{{$attendance->year}}"--}}><button class="add1">>1</button></a>
+                                                                    <a href="increTot/{{$attendance->id}}/{{$attendance->month}}/{{$attendance->year}}"><button class="add1">+</button></a>
                                                                 @endif
 
                                                             </td>
                                                             <td>{{$attendance->attendanceclasses}}
                                                                 @if($attendance->attendanceclasses)
-                                                                    <a href="increAtt/{{$attendance->id}}/{{$attendance->month}}/{{$attendance->year}}"--}}><button class="add1">>1</button></a>
+                                                                    <a href="increAtt/{{$attendance->id}}/{{$attendance->month}}/{{$attendance->year}}"><button class="add1">+</button></a>
                                                                 @endif
 
                                                             </td>
-                                                            <td>{{$attendance->percentage}}</td>
+                                                            <td>{{$attendance->percentage}}
+                                                                @if($attendance->percentage)
+                                                                    <a href="updatePer/{{$attendance->id}}/{{$attendance->month}}/{{$attendance->year}}"><button class="add1">%</button></a>
+                                                                @endif
+                                                            </td>
                                                             <td>
                                                                 <div class="row">
                                                                     <div class="col">
-                                                                        <a {{--href="{{url('admin/reports/'.$weight->id.'/edit')}}"--}}><button class="editbtn" >EDIT</button></a>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <div class="row">
-                                                                    <div class={{--href="{{url('admin/reports/'.$weight->id.'/view')}}"--}}><button class="editbtn" >VIEW</button></a>
+                                                                        <a href="{{url('admin/reports_attendance/'.$attendance ->id .'/'.$attendance ->month.'/'. $attendance ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                                                     </div>
                                                                 </div>
                                                             </td>
@@ -144,17 +138,6 @@
                                                                 {{ Form::close() }}
                                                             </td>
 
-                                                            {{--<td>
-
-                                                                <form method="POST" action="{{route('reports.destroy',$weight->id,$weight->month)}}">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <br>
-                                                                    <button type="submit" class="delbtn">DELETE</button>
-                                                                </form>
-
-
-                                                            </td>--}}
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
