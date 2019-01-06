@@ -132,6 +132,7 @@ Route::prefix('admin')->group(function() {
 
 
     Route::get('/payments','PaymentController@load_receptionists')->middleware('admin');
+    Route::post('/charge', 'CheckoutController@charge')->middleware('admin');
 
     Route::any('/reports/search',function(){
         $search = Input::get ('search');
