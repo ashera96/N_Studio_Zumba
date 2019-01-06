@@ -22,8 +22,88 @@
                         <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                     </div>
                     <h3>Receptionist Dashboard</h3>
-                    <p>Manage N Studio Zumba</p>
+                    <p>Users Overview</p>
                 </div>
+
+
+                <!--  Counting the no.of active customers   -->
+                <?php  $countActive=0;  ?>
+
+                @if($custs)
+                    @foreach($custs as $c)
+                        <?php    $countActive=$countActive+1;   ?>
+
+
+
+                    @endforeach
+                    <tr class="text-dark">
+                        <?php echo '<th>'.$countActive.'</th>';    ?>
+
+                    </tr>
+
+                @endif
+
+            <!--  Counting the no.of inactive customers   -->
+                <?php  $totUsers=0;  ?>
+
+                @if($users)
+                    @foreach($users as $u)
+                        <?php    $totUsers=$totUsers+1;   ?>
+
+
+
+
+                    @endforeach
+                    <tr class="text-dark">
+                        <?php echo '<th>'.$totUsers.'</th>';    ?>
+
+                    </tr>
+            @endif
+            <?php  $countInactive=$totUsers-$countActive;
+
+            $activeUsers=$countActive;
+            $inactiveUsers=$countInactive;
+            ?>
+
+
+
+                <html>
+                <head>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+
+                            var data = google.visualization.arrayToDataTable([
+                                ['User Types', 'Count of Users'],
+
+                                ['Active Users',<?php echo $activeUsers ?> ],
+                                ['Inactive Users', <?php echo $inactiveUsers ?>],
+
+                            ]);
+
+                            var options = {
+                                title: '',
+                                slices:{
+                                    0:{color:'deeppink'},
+                                    1:{color: 'grey'}
+                                }
+                            };
+
+                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+                </head>
+                <body>
+                <div id="piechart" style="width: 1100px; height: 400px;"></div>
+                </body>
+                </html>
+
+
 
 
                 <!-- Latest users start -->

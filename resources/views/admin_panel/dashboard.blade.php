@@ -63,8 +63,8 @@
                 <?php  $countInactive=$totUsers-$countActive;  ?>
 
                 <?php
-                    $activeUsers=$countActive-1;
-                    $inactiveUsers=$countInactive-1;
+                    $activeUsers=$countActive;
+                    $inactiveUsers=$countInactive;
                 ?>
 
                 <div class="row">
