@@ -2,7 +2,7 @@
 
 
 
-@section('content')
+@section('content');
 
 
     <header class="header fixed-top">
