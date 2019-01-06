@@ -29,12 +29,57 @@
                 <!-- Latest users start -->
                 <div class="row mb-0">
                     <div class="card overview-block pad30 rounded">
-                        <div class="card-header rounded mr-1 ml-1" style="background-color: deeppink" >Welcome Receptionist!</div>
-                        <br><br>
-                        <p style="height: 250px;width: 400px">  Let's manage the zumba centre</p>
+                        <div class="card-header rounded mr-1 ml-1"  style="background-color: deeppink">Latest Online Users</div>
+                        <div class="row card-body">
+
+
+
+
+
+                            <table class="table table-striped table-hover">
+
+
+
+                                <tr class="text-dark">
+                                    <th>Name</th>
+                                    <th>Email</th>
+
+                                </tr>
+
+
+
+                                @if($users)
+                                    @foreach($users as $user)
+
+                                        @if($user->isOnline())
+
+                                            <tr class="text-dark">
+                                                <th>{{$user->username}}</th>
+                                                <th>{{$user->email}}</th>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                @endif
+
+
+                            </table>
+
+
+                            {{--You are logged in as a kc  Customer!--}}
+
+
+
+
+                        </div>
                     </div>
                 </div>
                 <!-- Latest users end -->
+
+
+
+
+
+
 
             </div>
             <!-- /.col -->

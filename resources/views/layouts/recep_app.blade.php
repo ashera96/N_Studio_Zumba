@@ -43,6 +43,7 @@
     <!--Modernizr Css-->
     <script src="{{ URL::asset('js/modernizr-2.8.3.min.js') }}"></script>
 
+
 </head>
 <body>
 
@@ -131,5 +132,8 @@
 
 <!-- template main js file -->
 <script src="{{ URL::asset('js/main.js') }}"></script>
+
+{{--{!! $chart->script() !!} --}}
+
 </body>
 </html>
