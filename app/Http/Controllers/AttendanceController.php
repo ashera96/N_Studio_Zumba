@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Attendance;
 use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AttendanceController extends Controller
 {
@@ -16,8 +18,16 @@ class AttendanceController extends Controller
     public function index()
     {
         //$new  =Attendance::all();
-        $new = DB::table('attendances')->orderBy('id', 'asc')->paginate(6);
-        return view('admin_panel.attendance_index',['attendances'=>$new]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $new = DB::table('attendances')->orderBy('id', 'asc')->paginate(6);
+            return view('admin_panel.attendance_index',['attendances'=>$new]);
+        }
+        else if($role_id==3){
+            $new1 = DB::table('attendances')->orderBy('id', 'asc')->paginate(6);
+            return view('recep_panel.attendance_index',['attendances'=>$new1]);
+        }
+
     }
 
     /**
@@ -27,7 +37,14 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        return view('admin_panel.add_attendance');
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            return view('admin_panel.add_attendance');
+        }
+        else if($role_id==3){
+            return view('recep_panel.add_attendance');
+        }
+
     }
 
     /**
@@ -38,56 +55,119 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'id' => 'required',
-            'month' => 'required',
-            'year' => 'required',
-            'totalclasses' => 'required',
-            'attendanceclasses' => 'required',
-            'percentage' => 'required',
-        ]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            $this->validate($request,[
+                'id' => 'required',
+                'month' => 'required',
+                'year' => 'required',
+                'totalclasses' => 'required',
+                'attendanceclasses' => 'required',
+                'percentage' => 'required',
+            ]);
 
-        $attend = new Attendance;
+            $attend = new Attendance;
 
-        $attend ->id =$request ->id;
-        $attend ->month =$request ->month;
-        $attend->year =$request ->year;
-        $attend ->totalclasses =$request ->totalclasses;
-        $attend ->attendanceclasses =$request ->attendanceclasses;
-        $attend ->percentage =$request ->percentage;
+            $attend ->id =$request ->id;
+            $attend ->month =$request ->month;
+            $attend->year =$request ->year;
+            $attend ->totalclasses =$request ->totalclasses;
+            $attend ->attendanceclasses =$request ->attendanceclasses;
+            $attend ->percentage =$request ->percentage;
 
-        $attend ->save();
+            $attend ->save();
 
-        return redirect('/admin/reports_attendance/')->with('success','Attendance Added');
+            return redirect('/admin/reports_attendance/')->with('success','Attendance Added');
+        }
+        else if($role_id==3){
+            $this->validate($request,[
+                'id' => 'required',
+                'month' => 'required',
+                'year' => 'required',
+                'totalclasses' => 'required',
+                'attendanceclasses' => 'required',
+                'percentage' => 'required',
+            ]);
+
+            $attend = new Attendance;
+
+            $attend ->id =$request ->id;
+            $attend ->month =$request ->month;
+            $attend->year =$request ->year;
+            $attend ->totalclasses =$request ->totalclasses;
+            $attend ->attendanceclasses =$request ->attendanceclasses;
+            $attend ->percentage =$request ->percentage;
+
+            $attend ->save();
+
+            return redirect('/recep/recep_reports_attendance/')->with('success','Attendance Added');
+        }
+
     }
 
     public function UpdateTotal($id,$month,$year){
-        Attendance::where('id', '=', $id)
-            ->where('month', '=', $month)
-            ->where('year', '=', $year)
-            ->update(['totalclasses' => DB::raw('totalclasses + 1')]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            Attendance::where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->update(['totalclasses' => DB::raw('totalclasses + 1')]);
 
-        return redirect()->back();
+            return redirect()->back();
+        }
+        else if($role_id==3)
+        {
+            Attendance::where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->update(['totalclasses' => DB::raw('totalclasses + 1')]);
+
+            return redirect()->back();
+        }
+
 
     }
 
     public function UpdateAttend($id,$month,$year){
-        Attendance::where('id', '=', $id)
-            ->where('month', '=', $month)
-            ->where('year', '=', $year)
-            ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            Attendance::where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
 
-        return redirect()->back();
+            return redirect()->back();
+        }
+        else if($role_id==3) {
+            Attendance::where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
+
+            return redirect()->back();
+        }
 
     }
 
     public function UpdatePercent($id,$month,$year){
-        Attendance::where('id', '=', $id)
-            ->where('month', '=', $month)
-            ->where('year', '=', $year)
-            ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
+            $role_id = Auth::user()->role->id;
+            if($role_id==1) {
+                Attendance::where('id', '=', $id)
+                    ->where('month', '=', $month)
+                    ->where('year', '=', $year)
+                    ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
 
-        return redirect()->back();
+                return redirect()->back();
+            }
+            else if($role_id==3) {
+                Attendance::where('id', '=', $id)
+                    ->where('month', '=', $month)
+                    ->where('year', '=', $year)
+                    ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
+
+                return redirect()->back();
+            }
+
 
     }
     /**
@@ -132,12 +212,24 @@ class AttendanceController extends Controller
      */
     public function destroy($id,$month,$year)
     {
-        DB::table('attendances')->where('id', '=', $id)
-            ->where('month', '=', $month)
-            ->where('year', '=', $year)
-            ->delete();
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            DB::table('attendances')->where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->delete();
 
-        return redirect('admin/reports_attendance');
+            return redirect('admin/reports_attendance');
+        }
+        else if($role_id==3){
+            DB::table('attendances')->where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->delete();
+
+            return redirect('recep/recep_reports_attendance');
+        }
+
 
     }
 }

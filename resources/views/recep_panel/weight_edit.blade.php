@@ -8,9 +8,23 @@
 
 <div class="container-fluid">
     <div class="row">
-        @extends('layouts.vertical_sidebar');
+        <!--Sidebar-area start-->
+        <div class="col-lg-2 col-md-3 ">
+            <div class="list-group shadow-sm">
+                <a href="/recep/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                <a href="/recep/profile" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Profile</a>
+                <a href="/recep/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
+                <a href="/admin/schedules" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
+                <a href="/recep/fees" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Registration Fees</a>
+                <a href="/recep/payments" class="list-group-item side-bar"><i class="fa fa-money fa-lg mr-1"></i> Monthly Payments</a>
+                <a href="/recep/recep_reports" class="list-group-item active side-bar active"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
 
-        <div class="col-lg-10 col-md-9 mar30">
+            </div>
+        </div>
+        <!--Sidebar-area end-->
+
+        <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 ">
+            <div class="col-lg-10 col-md-9 mar30" style="margin-left: 140px">
 
 
             <div class="section-title text-center">
@@ -113,6 +127,8 @@
                 </div>
             </div>
         </div>
+        </div>
+    </div>
         <!-- /.col -->
     </div>
 @endsection

@@ -38,7 +38,7 @@
                                                             </a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link " href="/recep/recep_reports/recep_reports_attendance">
+                                                            <a class="nav-link " href="/recep/recep_reports_attendance">
                                                                 Attendance<span class="sr-only">(current)</span>
                                                             </a>
                                                         </li>
@@ -97,14 +97,6 @@
                                                                 <div class="row">
                                                                     <div class="col">
                                                                         <a href="{{url('recep/recep_reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-
-                                                            <td>
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <a href="{{url('recep/recep_reports/'.$weight->id.'/view')}}"><button class="editbtn" >VIEW</button></a>
                                                                     </div>
                                                                 </div>
                                                             </td>
