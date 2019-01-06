@@ -47,9 +47,9 @@ class PostController extends Controller
                 'title'=>$request->title,
             ];
             Mail::send('email.generalNews', $data, function ($post_body) use ($request, $data) {
-                $current_user = Auth::user();
+                //$current_user = Auth::user();
 
-                $system_user = SystemUser::where("role_id", "==", $current_user->role_id)->orWhere("role_id", 2)->get();
+                $system_user = SystemUser::where('role_id','=',2)->get();
 
                 foreach ($system_user as $su) {
                     $post = new Post;
@@ -99,9 +99,9 @@ class PostController extends Controller
 
         //send mail after updating
         Mail::send('email.generalNews', $data, function ($post_body) use ($request, $data) {
-            $current_user = Auth::user();
+            //$current_user = Auth::user();
 
-            $system_user = SystemUser::where("role_id", "==", $current_user->role_id)->orWhere("role_id", 2)->get();
+            $system_user = SystemUser::where('role_id','=',2)->get();
 
             foreach ($system_user as $su) {
                 $post = new Post;

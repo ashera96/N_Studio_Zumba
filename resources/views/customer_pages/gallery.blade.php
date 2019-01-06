@@ -67,9 +67,9 @@
                         {{--<li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">--}}
                         {{--<a class="nav-link" href="/home/payment">payment</a>--}}
                         {{--</li>--}}
-                        <li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">
-                            <a class="nav-link" href="/home/reports">reports</a>
-                        </li>
+                        {{--<li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">--}}
+                            {{--<a class="nav-link" href="/home/reports">reports</a>--}}
+                        {{--</li>--}}
                         {{--<li class="nav-item d-none d-lg-inline">--}}
                             {{--<div class="icon-menu">--}}
                                 {{--<ul>--}}

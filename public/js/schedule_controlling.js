@@ -15,11 +15,11 @@ var myInput12 = document.getElementById("Checkbox12");
 function f1() {
     if (myInput.checked) {
         myInput2.disabled = true;
-        document.getElementById("b1").style.color = "#5de05b";
+        //document.getElementById("b1").style.color = "#5de05b";
         document.getElementById("b1").innerText = "Booked";
     }else{
         myInput2.disabled = false;
-        document.getElementById("b1").style.color = "#000000";
+        //document.getElementById("b1").style.color = "#000000";
         document.getElementById("b1").innerText = "Book Now";
     }
 }
@@ -27,11 +27,11 @@ function f1() {
 function f2() {
     if (myInput2.checked) {
         myInput.disabled = true;
-        document.getElementById("b2").style.color = "#5de05b";
+        //document.getElementById("b2").style.color = "#5de05b";
         document.getElementById("b2").innerText = "Booked";
     }else{
         myInput.disabled = false;
-        document.getElementById("b2").style.color = "#000000";
+        //document.getElementById("b2").style.color = "#000000";
         document.getElementById("b2").innerText = "Book Now";
     }
 }
@@ -41,11 +41,11 @@ function f2() {
 function f3() {
     if (myInput3.checked) {
         myInput4.disabled = true;
-        document.getElementById("b3").style.color = "#5de05b";
+        //document.getElementById("b3").style.color = "#5de05b";
         document.getElementById("b3").innerText = "Booked";
     }else{
         myInput4.disabled = false;
-        document.getElementById("b3").style.color = "#000000";
+        //document.getElementById("b3").style.color = "#000000";
         document.getElementById("b3").innerText = "Book Now";
     }
 }
@@ -53,11 +53,11 @@ function f3() {
 function f4() {
     if (myInput4.checked) {
         myInput3.disabled = true;
-        document.getElementById("b4").style.color = "#5de05b";
+        //document.getElementById("b4").style.color = "#5de05b";
         document.getElementById("b4").innerText = "Booked";
     }else{
         myInput3.disabled = false;
-        document.getElementById("b4").style.color = "#000000";
+        //document.getElementById("b4").style.color = "#000000";
         document.getElementById("b4").innerText = "Book Now";
     }
 }
@@ -67,11 +67,11 @@ function f4() {
 function f5() {
     if (myInput5.checked) {
         myInput6.disabled = true;
-        document.getElementById("b5").style.color = "#5de05b";
+        //document.getElementById("b5").style.color = "#5de05b";
         document.getElementById("b5").innerText = "Booked";
     }else{
         myInput6.disabled = false;
-        document.getElementById("b5").style.color = "#000000";
+        //document.getElementById("b5").style.color = "#000000";
         document.getElementById("b5").innerText = "Book Now";
     }
 }
@@ -79,11 +79,11 @@ function f5() {
 function f6() {
     if (myInput6.checked) {
         myInput5.disabled = true;
-        document.getElementById("b6").style.color = "#5de05b";
+        //document.getElementById("b6").style.color = "#5de05b";
         document.getElementById("b6").innerText = "Booked";
     }else{
         myInput5.disabled = false;
-        document.getElementById("b6").style.color = "#000000";
+        //document.getElementById("b6").style.color = "#000000";
         document.getElementById("b6").innerText = "Book Now";
     }
 }
@@ -93,11 +93,11 @@ function f6() {
 function f7(){
     if (myInput7.checked) {
         myInput8.disabled = true;
-        document.getElementById("b7").style.color = "#5de05b";
+        //document.getElementById("b7").style.color = "#5de05b";
         document.getElementById("b7").innerText = "Booked";
     }else{
         myInput8.disabled = false;
-        document.getElementById("b7").style.color = "#000000";
+        //document.getElementById("b7").style.color = "#000000";
         document.getElementById("b7").innerText = "Book Now";
     }
 }
@@ -105,11 +105,11 @@ function f7(){
 function f8(){
     if (myInput8.checked) {
         myInput7.disabled = true;
-        document.getElementById("b8").style.color = "#5de05b";
+        //document.getElementById("b8").style.color = "#5de05b";
         document.getElementById("b8").innerText = "Booked";
     }else{
         myInput7.disabled = false;
-        document.getElementById("b8").style.color = "#000000";
+        //document.getElementById("b8").style.color = "#000000";
         document.getElementById("b8").innerText = "Book Now";
     }
 }
@@ -119,11 +119,11 @@ function f8(){
 function f9(){
     if (myInput9.checked) {
         myInput10.disabled = true;
-        document.getElementById("b9").style.color = "#5de05b";
+        //document.getElementById("b9").style.color = "#5de05b";
         document.getElementById("b9").innerText = "Booked";
     }else{
         myInput10.disabled = false;
-        document.getElementById("b9").style.color = "#000000";
+        //document.getElementById("b9").style.color = "#000000";
         document.getElementById("b9").innerText = "Book Now";
     }
 }
@@ -131,11 +131,11 @@ function f9(){
 function f10(){
     if (myInput10.checked) {
         myInput9.disabled = true;
-        document.getElementById("b10").style.color = "#5de05b";
+        //document.getElementById("b10").style.color = "#5de05b";
         document.getElementById("b10").innerText = "Booked";
     }else{
         myInput9.disabled = false;
-        document.getElementById("b10").style.color = "#000000";
+        //document.getElementById("b10").style.color = "#000000";
         document.getElementById("b10").innerText = "Book Now";
     }
 }
@@ -144,10 +144,10 @@ function f10(){
 //saturday
 function f11(){
     if (myInput11.checked) {
-        document.getElementById("b11").style.color = "#5de05b";
+        //document.getElementById("b11").style.color = "#5de05b";
         document.getElementById("b11").innerText = "Booked";
     }else{
-        document.getElementById("b11").style.color = "#000000";
+        //document.getElementById("b11").style.color = "#000000";
         document.getElementById("b11").innerText = "Book Now";
     }
 }
@@ -156,10 +156,10 @@ function f11(){
 //sunday
 function f12(){
     if (myInput12.checked) {
-        document.getElementById("b12").style.color = "#5de05b";
+        //document.getElementById("b12").style.color = "#5de05b";
         document.getElementById("b12").innerText = "Booked";
     }else{
-        document.getElementById("b12").style.color = "#000000";
+        //document.getElementById("b12").style.color = "#000000";
         document.getElementById("b12").innerText = "Book Now";
     }
 }
@@ -168,7 +168,7 @@ function f12(){
 //display only
 //monday
 if(myInput.checked){
-    document.getElementById("b1").style.color = "#5de05b";
+    document.getElementById("sb1").style.background = "#FF1493";
     document.getElementById("b1").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -185,7 +185,7 @@ if(myInput.checked){
 }
 
 if(myInput2.checked){
-    document.getElementById("b2").style.color = "#5de05b";
+    document.getElementById("sb2").style.background = "#FF1493";
     document.getElementById("b2").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -204,7 +204,7 @@ if(myInput2.checked){
 
 //tuesday
 if(myInput3.checked){
-    document.getElementById("b3").style.color = "#5de05b";
+    document.getElementById("sb3").style.background = "#FF1493";
     document.getElementById("b3").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -221,7 +221,7 @@ if(myInput3.checked){
 }
 
 if(myInput4.checked){
-    document.getElementById("b4").style.color = "#5de05b";
+    document.getElementById("sb4").style.background = "#FF1493";
     document.getElementById("b4").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -240,7 +240,7 @@ if(myInput4.checked){
 
 //wednesday
 if(myInput5.checked){
-    document.getElementById("b5").style.color = "#5de05b";
+    document.getElementById("sb5").style.background = "#FF1493";
     document.getElementById("b5").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -257,7 +257,7 @@ if(myInput5.checked){
 }
 
 if(myInput6.checked){
-    document.getElementById("b6").style.color = "#5de05b";
+    document.getElementById("sb6").style.background = "#FF1493";
     document.getElementById("b6").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -276,7 +276,7 @@ if(myInput6.checked){
 
 //thursday
 if(myInput7.checked){
-    document.getElementById("b7").style.color = "#5de05b";
+    document.getElementById("sb7").style.background = "#FF1493";
     document.getElementById("b7").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -293,7 +293,7 @@ if(myInput7.checked){
 }
 
 if(myInput8.checked){
-    document.getElementById("b8").style.color = "#5de05b";
+    document.getElementById("sb8").style.background = "#FF1493";
     document.getElementById("b8").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -312,7 +312,7 @@ if(myInput8.checked){
 
 //friday
 if(myInput9.checked){
-    document.getElementById("b9").style.color = "#5de05b";
+    document.getElementById("sb9").style.background = "#FF1493";
     document.getElementById("b9").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -329,7 +329,7 @@ if(myInput9.checked){
 }
 
 if(myInput10.checked){
-    document.getElementById("b10").style.color = "#5de05b";
+    document.getElementById("sb10").style.background = "#FF1493";
     document.getElementById("b10").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -348,7 +348,7 @@ if(myInput10.checked){
 
 //saturday
 if(myInput11.checked){
-    document.getElementById("b11").style.color = "#5de05b";
+    document.getElementById("sb11").style.background = "#FF1493";
     document.getElementById("b11").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
@@ -367,7 +367,7 @@ if(myInput11.checked){
 
 //sunday
 if(myInput12.checked){
-    document.getElementById("b12").style.color = "#5de05b";
+    document.getElementById("sb12").style.background = "#FF1493";
     document.getElementById("b12").innerText = "Booked";
     myInput.disabled = true;
     myInput2.disabled = true;
