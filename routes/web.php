@@ -20,7 +20,7 @@ use App\Attendance;
 Auth::routes();
 
 //provides security for after login re-directions by auth middleware
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth','prevent_back_history');
 
 
 
@@ -50,21 +50,21 @@ Route::post('/index/contact','MessagesController@submit');
 |--------------------------------------------------------------------------
 */
 Route::prefix('home')->group(function() {
-    Route::get('/about', 'CustomerPageController@show_about')->middleware('customer');
-    Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
-    Route::get('/class_packages', 'PackageController@customer')->middleware('customer');
-    Route::post('/add_package', 'UserPackageController@create')->middleware('customer');
-    Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer');
-    Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer');
-    Route::get('/schedule', 'UserScheduleController@index')->middleware('customer');
-    Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer');
-    Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer');
-    Route::put('/update_schedule','UserScheduleController@update')->middleware('customer');
+    Route::get('/about', 'CustomerPageController@show_about')->middleware('customer','prevent_back_history');
+    Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer','prevent_back_history');
+    Route::get('/class_packages', 'PackageController@customer')->middleware('customer','prevent_back_history');
+    Route::post('/add_package', 'UserPackageController@create')->middleware('customer','prevent_back_history');
+    Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer','prevent_back_history');
+    Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer','prevent_back_history');
+    Route::get('/schedule', 'UserScheduleController@index')->middleware('customer','prevent_back_history');
+    Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer','prevent_back_history');
+    Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer','prevent_back_history');
+    Route::put('/update_schedule','UserScheduleController@update')->middleware('customer','prevent_back_history');
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
-    Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
-    Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
+    Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer','prevent_back_history');
+    Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer','prevent_back_history');
 //    Route::get('/profile', 'CustomerPageController@show_profile')->middleware('customer');
-    Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer');
+    Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer','prevent_back_history');
     Route::get('markAsRead',function(){
        auth()->user()->unreadNotifications->markAsRead();
        return redirect()->back();
