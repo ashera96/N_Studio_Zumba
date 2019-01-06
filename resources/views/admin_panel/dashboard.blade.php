@@ -62,6 +62,11 @@
                 @endif
                 <?php  $countInactive=$totUsers-$countActive;  ?>
 
+                <?php
+                    $activeUsers=$countActive-1;
+                    $inactiveUsers=$countInactive-1;
+                ?>
+
                 <div class="row">
                     <div class="card overview-block pad30 rounded">
                         <div class="card-header rounded mr-1 ml-1" style="background-color: deeppink">Website Overview</div>
@@ -69,13 +74,13 @@
                             <div class="card-deck">
                                 <div class="card rounded">
                                     <div class="card-body">
-                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-users fa-lg pad30"></i> <?php echo' '.$countActive.' ';?></h1>
+                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-users fa-lg pad30"></i> <?php echo' '.$activeUsers.' ';?></h1>
                                         <h4 class="card-text text-center text-dark">Active Users</h4>
                                     </div>
                                 </div>
                                 <div class="card rounded">
                                     <div class="card-body">
-                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-eye-slash fa-lg pad30"></i><?php echo' '.$countInactive.' ';?></h1>
+                                        <h1 class="card-title mr-2 mb-0 text-dark text-center"><i class="fa fa-eye-slash fa-lg pad30"></i><?php echo' '.$inactiveUsers.' ';?></h1>
                                         <h4 class="card-text text-center text-dark">Inactive Users</h4>
                                     </div>
                                 </div>
