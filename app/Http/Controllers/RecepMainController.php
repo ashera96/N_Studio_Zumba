@@ -36,8 +36,12 @@ class RecepMainController extends Controller
     public function show_recep_dash()
     {
         $users=SystemUser::all();
-        //$custs=SystemUser::all()->where('status','=',1);
-        return view('recep_panel.recep_dashboard',compact('users'));
+        $custs=SystemUser::all()->where('status','=',1);
+        $new=DB::table('users')
+            ->join('system_users','users.id','=','system_users.id')
+            ->select('system_users.*','users.*')
+            ->get();
+        return view('recep_panel.recep_dashboard',compact('users'),compact('custs'));
     }
 
     public function show_fees()
