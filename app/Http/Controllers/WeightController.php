@@ -91,17 +91,13 @@ class WeightController extends Controller
 
     }
 
-    public function view($id)
-    {
-        $role_id = Auth::user()->role->id;
-        if($role_id==1) {
-            $wegfind = Weight::findOrFail($id);
-            return view('admin_panel.weight_view',['weight'=>$wegfind]);
-        }
-        else if($role_id==3){
-            $wegfind = Weight::findOrFail($id);
-            return view('recep_panel.weight_view',['weight'=>$wegfind]);
-        }
+    public function see($id,$month,$year){
+        $wegfind = DB::table('weights')->where('id', '=', $id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->get()->first();
+        return view('admin_panel.weight_view',['weights'=>$wegfind]);
+
 
         /*$cusfind = User::find($id);
         return view('admin_panel.user_edit',compact('cusfind','id')); */
@@ -143,7 +139,7 @@ class WeightController extends Controller
 
             ]);
 
-            $weightfind =$wegfind =  DB::table('weights')->where('id', '=', $id)
+            $weightfind = DB::table('weights')->where('id', '=', $id)
                 ->where('month', '=', $month)
                 ->where('year', '=', $year);
 
@@ -164,7 +160,7 @@ class WeightController extends Controller
 
             ]);
 
-            $weightfind2 =$wegfind =  DB::table('weights')->where('id', '=', $id)
+            $weightfind2 =DB::table('weights')->where('id', '=', $id)
                 ->where('month', '=', $month)
                 ->where('year', '=', $year);
 

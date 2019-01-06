@@ -118,6 +118,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/updatePer/{id}/{month}/{year}','AttendanceController@UpdatePercent');
     Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
     Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
+    Route::get('/reports/{id}/{month}/{year}/see','WeightController@see')->name('reports.see');
 
 
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
@@ -132,8 +133,9 @@ Route::prefix('admin')->group(function() {
     Route::any('/reports/search',function(){
         $search = Input::get ('search');
         $weight = Weight::where('id','LIKE','%'.$search.'%')
-            ->orWhere('month','LIKE','%'.$search.'%')
-            ->orWhere('year','LIKE','%'.$search.'%')
+            //->orWhere('month','LIKE','%'.$search.'%')
+            //->orWhere('year','LIKE','%'.$search.'%')
+            ->orderBy('created_at', 'ASC')
             ->get();
         if(count($weight) > 0)
             return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);
@@ -143,8 +145,8 @@ Route::prefix('admin')->group(function() {
     Route::any('/reports_attendance/search',function(){
         $title = Input::get ('title');
         $attendance = Attendance::where('id','LIKE','%'.$title.'%')
-            ->orWhere('month','LIKE','%'.$title.'%')
-            ->orWhere('year','LIKE','%'.$title.'%')
+            //->orWhere('month','LIKE','%'.$title.'%')
+            //->orWhere('year','LIKE','%'.$title.'%')
             ->get();
         if(count($attendance) > 0)
             return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);

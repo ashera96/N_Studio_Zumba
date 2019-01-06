@@ -4,9 +4,41 @@
 
 @extends('layouts.hori_sidebar');
 
-<script src ="js/canvasjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['month', 'percentage'],
+                    @foreach($details as $attendance)
+                ['{{$attendance->month}}',{{$attendance->percentage}}],
+                @endforeach
+
+
+            ]);
+
+            var options = {
+                title: 'Customers Attendance Graph',
+                curveType: 'function',
+                hAxis: {
+                    title: 'Month'
+                },
+                vAxis: {
+                    title: 'Percentage'
+                },
+
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
 
 <div class="container-fluid">
     <div class="row">
@@ -77,8 +109,12 @@
                         </div>
                     </div>
                 </div>
+                <body>
+                    <div id="curve_chart" style="width: 1000px; height: 500px"></div>
+                </body>
             </div>
         </div>
     </div>
 </div>
+</html>
 @endsection

@@ -103,7 +103,7 @@
                                         <td>
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="{{url('admin/reports/'.$weight->id.'/view')}}"><button class="editbtn" >VIEW</button></a>
+                                                    <a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/see')}}"><button class="editbtn" >VIEW</button></a>
                                                 </div>
                                             </div>
                                         </td>
