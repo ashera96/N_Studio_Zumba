@@ -195,7 +195,7 @@ class AttendanceController extends Controller
                 ->where('month', '=', $month)
                 ->where('year', '=', $year)
                 ->get()->first();
-            return view('admin_panel.attendance_edit', ['attendances' => $attfind]);
+            return view('admin_panel.attendance_edit', ['attendance' => $attfind]);
         }
 
         else if($role_id==3) {
@@ -203,7 +203,7 @@ class AttendanceController extends Controller
                 ->where('month', '=', $month)
                 ->where('year', '=', $year)
                 ->get()->first();
-            return view('recep_panel.attendance_edit', ['attendances' => $attfind]);
+            return view('recep_panel.attendance_edit', ['attendance' => $attfind]);
         }
     }
 
@@ -228,7 +228,7 @@ class AttendanceController extends Controller
 
             ]);
 
-            $attfind =DB::table('weights')->where('id', '=', $id)
+            $attfind =DB::table('attendances')->where('id', '=', $id)
                 ->where('month', '=', $month)
                 ->where('year', '=', $year);
 
@@ -241,6 +241,31 @@ class AttendanceController extends Controller
             $attfind ->save();
 
             return redirect('admin/reports_attendance')->with('success','Weight Updated');
+        }
+        else if($role_id==3) {
+            $this->validate($request,[
+                'id' => 'required',
+                'month'=>'required',
+                'year'=>'required',
+                'totalclasses' =>'required',
+                'attendanceclasses' =>'required',
+                'percentage' =>'required',
+
+            ]);
+
+            $attfind =DB::table('attendances')->where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year);
+
+            $attfind->id =$request ->id;
+            $attfind ->month =$request ->month;
+            $attfind ->year =$request ->year;
+            $attfind ->totalclasses =$request ->totalclasses;
+            $attfind ->attendanceclasses =$request ->attendanceclasses;
+            $attfind ->percentage =$request ->percentage;
+            $attfind ->save();
+
+            return redirect('recep/recep_reports_attendance')->with('success','Weight Updated');
         }
     }
 

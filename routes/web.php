@@ -119,6 +119,9 @@ Route::prefix('admin')->group(function() {
     Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
     Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
     Route::get('/reports/{id}/{month}/{year}/see','WeightController@see')->name('reports.see');
+    Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
+    Route::get('/reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('reports_attendance.edit');
+    Route::get('/reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('reports_attendance.update');
 
 
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
@@ -166,7 +169,7 @@ Route::prefix('admin')->group(function() {
 Route::prefix('recep')->group(function() {
     Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist');
     Route::resource('/profile','ReceptionistController')->middleware('receptionist');
-    Route::resource('/customers', 'UserController')->middleware('receptionist');
+    //Route::resource('/customers', 'UserController')->middleware('receptionist');
     Route::get('/fees','UserController@index2')->middleware('receptionist');
     Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist');
     Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist');
