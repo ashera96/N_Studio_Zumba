@@ -166,7 +166,7 @@
                                                     {{$post->post_body}}
                                                 </div>
                                                 @if($post->image)
-                                                    <img src="{{asset('images/posts/' . $post->image)}}" />
+                                                    <img src="{{asset('images/posts/' . $post->image)}}" style="max-height: 100%;max-width: 100%;" />
                                                     <br><br>
                                                 @endif
                                             </div>
