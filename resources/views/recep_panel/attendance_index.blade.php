@@ -5,30 +5,28 @@
 @extends('layouts.hori_sidebar');
 
 
-    <!--Admin dashboard-area start-->
-    <div class="about-area pad90">
-        <div class="container-fluid">
-            <div class="row">
-                <!--Sidebar-area start-->
-                <div class="col-lg-2 col-md-3 ">
-                    <div class="list-group shadow-sm">
-                        <a href="/admin/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
-                        <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
-                        <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
-                        <a href="/admin/dashboard/admin_gallery" class="list-group-item side-bar"><i class="fa fa-image fa-lg mr-1"></i> Gallery</a>
-                        <a href="/admin/dashboard/class_packages" class="list-group-item side-bar"><i class="fa fa-clipboard fa-lg mr-1"></i> Classes</a>
-                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
-                        <a href="admin/create_notifications" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
-                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
-                        <a href="/admin/reports" class="list-group-item active side-bar active"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
+<!--Admin dashboard-area start-->
+<div class="about-area pad90">
+    <div class="container-fluid">
+        <div class="row">
+            <!--Sidebar-area start-->
+            <div class="col-lg-2 col-md-3 ">
+                <div class="list-group shadow-sm">
+                    <a href="/recep/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                    <a href="/recep/profile" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Profile</a>
+                    <a href="/recep/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
+                    <a href="/admin/schedules" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
+                    <a href="/recep/fees" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Registration Fees</a>
+                    <a href="/recep/payments" class="list-group-item side-bar"><i class="fa fa-money fa-lg mr-1"></i> Monthly Payments</a>
+                    <a href="/recep/reports" class="list-group-item active side-bar active"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
 
-                    </div>
                 </div>
-                <!--Sidebar-area end-->
+            </div>
+            <!--Sidebar-area end-->
 
-                    <!-- Website Overview -->
+                <!-- Website Overview -->
 
-                <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 ">
+            <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 ">
 
                 <div class="col-lg-10 col-md-9 pad30" style="margin-left: 140px" >
 
@@ -49,12 +47,12 @@
                                             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                                                 <ul class="navbar-nav ml-auto">
                                                     <li class="nav-item ">
-                                                        <a class="nav-link " href="/admin/reports">
+                                                        <a class="nav-link " href="/recep/recep_reports">
                                                             Weight<span class="sr-only">(current)</span>
                                                         </a>
                                                     </li>
                                                     <li class="nav-item active">
-                                                        <a class="nav-link " href="/admin/reports_attendance">
+                                                        <a class="nav-link " href="/recep/recep_reports_attendance">
                                                             Attendance<span class="sr-only">(current)</span>
                                                         </a>
                                                     </li>
@@ -76,7 +74,7 @@
                                             <div class="panel-body">
                                                 <div class = "col-md-8 text-right">
 
-                                                    <form method="post" class ="form-inline" action="{{url('admin/reports_attendance/search')}}">
+                                                    <form method="post" class ="form-inline" action="{{url('recep/recep_reports_attendance/search1')}}">
                                                         @csrf
                                                         <div class="form-group">
                                                             <input type="text" class="form-control" placeholder ="Enter data" name="title" id="title">
@@ -86,7 +84,7 @@
                                                     </form>
                                                     <div style="float: right;" >
 
-                                                        <a href="{{url('/admin/reports_attendance/create')}}"><button class="addbtnattend">ADD ATTENDANCE</button></a>
+                                                        <a href="{{url('/recep/recep_reports_attendance/create')}}"><button class="addbtnattend">ADD ATTENDANCE</button></a>
                                                     </div>
                                                 </div>
                                                 <table class="table table-striped table-hover" width="80%"  >
@@ -128,12 +126,12 @@
                                                             <td>
                                                                 <div class="row">
                                                                     <div class="col">
-                                                                        <a href="{{url('admin/reports_attendance/'.$attendance ->id .'/'.$attendance ->month.'/'. $attendance ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                                        <a href="{{url('recep/recep_reports_attendance/'.$attendance ->id .'/'.$attendance ->month.'/'. $attendance ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                {{ Form::open(['route' => ['reports_attendance.destroy',$attendance->id,$attendance->month,$attendance->year], 'method' => 'delete']) }}
+                                                                {{ Form::open(['route' => ['recep_reports_attendance.destroy',$attendance->id,$attendance->month,$attendance->year], 'method' => 'delete']) }}
                                                                 <button type="submit" class="delbtn">Delete</button>
                                                                 {{ Form::close() }}
                                                             </td>
@@ -161,9 +159,9 @@
         </div>
     </div>
 
-@endsection
+    @endsection
 
-@section('js_styling')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
+    @section('js_styling')
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{{ URL::asset('js/dashboard-js/bootstrap.min.js') }}"></script>
 @endsection

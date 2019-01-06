@@ -176,20 +176,20 @@ Route::prefix('recep')->group(function() {
     Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist');
 
     Route::resource('/recep_reports','WeightController')->middleware('receptionist');
-    //Route::get('/recep_reports','WeightController@show_weight_index')->middleware('receptionist');
     Route::get('dashboard/recep_reports','WeightController@create')->name('recep_panel.add_weight')->middleware('receptionist');
     Route::post('dashboard/recep_reports','WeightController@store')->middleware('receptionist');
     //Route::get('/weight_view','WeightController@view')->middleware('receptionist');
 
-   // Route::get('/reports_attendance','AttendanceController@show_attendance_index')->middleware('receptionist');
-   // Route::resource('/reports_attendance','AttendanceController')->middleware('receptionist');
-     Route::delete('recep_reports/{id}/{month}/{year}', 'WeightController@destroy')->name('recep_reports.destroy');
-    //Route::delete('recep_reports_attendance/{id}/{month}/{year}', 'AttendanceController@destroy')->name('reports_attendance.destroy');
-    //Route::get('/increTot/{id}/{month}/{year}','AttendanceController@UpdateTotal');
-   // Route::get('/increAtt/{id}/{month}/{year}','AttendanceController@UpdateAttend');
-   // Route::get('/updatePer/{id}/{month}/{year}','AttendanceController@UpdatePercent');
+    Route::resource('/recep_reports_attendance','AttendanceController')->middleware('receptionist');
+    Route::delete('recep_reports/{id}/{month}/{year}', 'WeightController@destroy')->name('recep_reports.destroy');
+    Route::delete('recep_reports_attendance/{id}/{month}/{year}', 'AttendanceController@destroy')->name('recep_reports_attendance.destroy');
+    Route::get('/increTot/{id}/{month}/{year}','AttendanceController@UpdateTotal');
+    Route::get('/increAtt/{id}/{month}/{year}','AttendanceController@UpdateAttend');
+    Route::get('/updatePer/{id}/{month}/{year}','AttendanceController@UpdatePercent');
     Route::get('/recep_reports/{id}/{month}/{year}/edit','WeightController@edit')->name('recep_reports.edit');
     Route::post('/recep_reports/{id}/{month}/{year}','WeightController@update')->name('recep_reports.update');
+    Route::get('/recep_reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('recep_reports_attendance.edit');
+    Route::post('/recep_reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('recep_reports_attendance.update');
 
 
    // Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
@@ -218,6 +218,17 @@ Route::prefix('recep')->group(function() {
         if(count($weight) > 0)
             return view('recep_panel.weight_show')->withDetails($weight)->withQuery ($search);
         else return view ('recep_panel.weight_show')->withMessage('No Details found. Try to search again !');
+    });
+
+    Route::any('/recep_reports_attendance/search1',function(){
+        $title = Input::get ('title');
+        $attendance = Attendance::where('id','LIKE','%'.$title.'%')
+            ->orWhere('month','LIKE','%'.$title.'%')
+            ->orWhere('year','LIKE','%'.$title.'%')
+            ->get();
+        if(count($attendance) > 0)
+            return view('recep_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
+        else return view ('recep_panel.attendance_show')->withMessage('No Details found. Try to search again !');
     });
 
 });
