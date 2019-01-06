@@ -207,14 +207,16 @@
                         </div>
                         <h3>class schedule</h3>
                         <p>make yourself stronger than your excuses</p>
+                        @isset($selected_package_name)
                         <h4 style="color: deeppink">Selected Package: {{$selected_package_name}} </h4>
+                        @endisset
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
             <br><br>
-            @if(count($Checkbox)>0)
+            @if(count($Checkbox)>0 && $selected_package_id!=4)
                 <div class="row"style="margin-left: 490px">
                     <a href="/home/change_schedule"><button class="btn active btn-primary" >Change Schedules</button></a>
                 </div>
