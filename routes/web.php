@@ -173,6 +173,26 @@ Route::prefix('recep')->group(function() {
 
     Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist');
 
+    Route::resource('/recep_reports','WeightController')->middleware('receptionist');
+    //Route::get('/recep_reports','WeightController@show_weight_index')->middleware('receptionist');
+    Route::get('dashboard/recep_reports','WeightController@create')->name('recep_panel.add_weight')->middleware('receptionist');
+    Route::post('dashboard/recep_reports','WeightController@store')->middleware('receptionist');
+    //Route::get('/weight_view','WeightController@view')->middleware('receptionist');
+
+   // Route::get('/reports_attendance','AttendanceController@show_attendance_index')->middleware('receptionist');
+   // Route::resource('/reports_attendance','AttendanceController')->middleware('receptionist');
+     Route::delete('recep_reports/{id}/{month}/{year}', 'WeightController@destroy')->name('recep_reports.destroy');
+    //Route::delete('recep_reports_attendance/{id}/{month}/{year}', 'AttendanceController@destroy')->name('reports_attendance.destroy');
+    //Route::get('/increTot/{id}/{month}/{year}','AttendanceController@UpdateTotal');
+   // Route::get('/increAtt/{id}/{month}/{year}','AttendanceController@UpdateAttend');
+   // Route::get('/updatePer/{id}/{month}/{year}','AttendanceController@UpdatePercent');
+    Route::get('/recep_reports/{id}/{month}/{year}/edit','WeightController@edit')->name('recep_reports.edit');
+    Route::post('/recep_reports/{id}/{month}/{year}','WeightController@update')->name('recep_reports.update');
+
+
+   // Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
+   // Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
+
 
 
 //    Route::resource('/recep_dash','ReceptionistController')->middleware('recep');
@@ -182,6 +202,17 @@ Route::prefix('recep')->group(function() {
 //    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
 //    Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
 //    Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
+
+    Route::any('/recep_reports/search1',function(){
+        $search = Input::get ('search1');
+        $weight = Weight::where('id','LIKE','%'.$search.'%')
+            ->orWhere('month','LIKE','%'.$search.'%')
+            ->orWhere('year','LIKE','%'.$search.'%')
+            ->get();
+        if(count($weight) > 0)
+            return view('recep_panel.weight_show')->withDetails($weight)->withQuery ($search);
+        else return view ('recep_panel.weight_show')->withMessage('No Details found. Try to search again !');
+    });
 
 });
 
