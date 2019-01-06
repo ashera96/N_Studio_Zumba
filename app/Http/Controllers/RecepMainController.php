@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Schedule;
-use App\ScheduleCount;
 use Illuminate\Http\Request;
 use App\Rules\ageOfReceptionistValidation;
 use App\Receptionist;
@@ -30,62 +28,30 @@ class RecepMainController extends Controller
     public function index()
     {
 
+
+
+
     }
 
 
     public function show_recep_dash()
     {
         $users=SystemUser::all();
-        //$custs=SystemUser::all()->where('status','=',1);
-        return view('recep_panel.recep_dashboard',compact('users'));
+        $custs=SystemUser::all()->where('status','=',1);
+        $new=DB::table('users')
+            ->join('system_users','users.id','=','system_users.id')
+            ->select('system_users.*','users.*')
+            ->get();
+
+
+        return view('recep_panel.recep_dashboard',compact('users'),compact('custs'));
+
     }
 
     public function show_fees()
     {
         return view('recep_panel.fees');
     }
-
-    public function show_schedules()
-    {
-        $schedule_monday = Schedule::all()->where('day','=','Monday');
-        $schedule_tuesday = Schedule::all()->where('day','=','Tuesday');
-        $schedule_wednesday = Schedule::all()->where('day','=','Wednesday');
-        $schedule_thursday = Schedule::all()->where('day','=','Thursday');
-        $schedule_friday = Schedule::all()->where('day','=','Friday');
-        $schedule_saturday = Schedule::all()->where('day','=','Saturday');
-        $schedule_sunday = Schedule::all()->where('day','=','Sunday');
-
-        $schedule_limit = Schedule::select('client_limit')->where('id',1)->first();
-        $schedule_monday1_count = ScheduleCount::select('counter')->where('schedule_id',1)->first();
-        $schedule_monday2_count = ScheduleCount::select('counter')->where('schedule_id',2)->first();
-        $schedule_tuesday1_count = ScheduleCount::select('counter')->where('schedule_id',3)->first();
-        $schedule_tuesday2_count = ScheduleCount::select('counter')->where('schedule_id',4)->first();
-        $schedule_wednesday1_count = ScheduleCount::select('counter')->where('schedule_id',5)->first();
-        $schedule_wednesday2_count = ScheduleCount::select('counter')->where('schedule_id',6)->first();
-        $schedule_thursday1_count = ScheduleCount::select('counter')->where('schedule_id',7)->first();
-        $schedule_thursday2_count = ScheduleCount::select('counter')->where('schedule_id',8)->first();
-        $schedule_friday1_count = ScheduleCount::select('counter')->where('schedule_id',9)->first();
-        $schedule_friday2_count = ScheduleCount::select('counter')->where('schedule_id',10)->first();
-        $schedule_saturday_count = ScheduleCount::select('counter')->where('schedule_id',11)->first();
-        $schedule_sunday_count = ScheduleCount::select('counter')->where('schedule_id',12)->first();
-
-        return view('recep_panel.schedule_counts', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday',
-            'schedule_monday1_count','schedule_limit',
-            'schedule_monday2_count','schedule_tuesday1_count',
-            'schedule_tuesday2_count','schedule_wednesday1_count',
-            'schedule_wednesday2_count','schedule_thursday1_count',
-            'schedule_thursday2_count','schedule_friday1_count',
-            'schedule_friday2_count','schedule_saturday_count',
-            'schedule_sunday_count'
-        ));
-    }
-
-
-
-
-
-
-
 
     public function show_payments()
     {
