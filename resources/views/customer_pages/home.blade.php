@@ -69,9 +69,9 @@
                         {{--<li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">--}}
                             {{--<a class="nav-link" href="/home/payment">payment</a>--}}
                         {{--</li>--}}
-                        <li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">
-                            <a class="nav-link" href="/home/reports">reports</a>
-                        </li>
+                        {{--<li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">--}}
+                            {{--<a class="nav-link" href="/home/reports">reports</a>--}}
+                        {{--</li>--}}
                         {{--<li class="nav-item d-none d-lg-inline">--}}
                             {{--<div class="icon-menu">--}}
                                 {{--<ul>--}}
@@ -316,7 +316,7 @@
                                                     {{$post->post_body}}
                                                 </div>
                                                 @if($post->image)
-                                                    <img src="{{asset('images/posts/' . $post->image)}}" />
+                                                    <img src="{{asset('images/posts/' . $post->image)}}" style="max-height: 100%;max-width: 100%;" />
                                                     <br><br>
                                                 @endif
                                             </div>
