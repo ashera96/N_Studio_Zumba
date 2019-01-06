@@ -15,13 +15,13 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->integer('id');
-            $table->string('month');
-            $table->integer('year');
+            $table->string('month')->unsigned();
+            $table->integer('year')->unsigned();
             $table->integer('totalclasses');
             $table->integer('attendanceclasses');
             $table->double('percentage');
             $table->primary(['id', 'month','year']);
-            //$table->foreign('id')->references('id')->on('system_users');
+            //$table->foreign('id')->references('id')->on('system_users')->onDelete('cascade');
             $table->timestamps();
         });
     }

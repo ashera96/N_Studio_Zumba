@@ -63,5 +63,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\IsAdmin::class, //created for security of admin routes
         'customer' => \App\Http\Middleware\IsCustomer::class, //created for security of customer routes
         'receptionist' => \App\Http\Middleware\IsReceptionist::class, //created for security of receptionist routes
+        'prevent_back_history' => \App\Http\Middleware\PreventBackHistory::class, //prevent from back history
     ];
 }

@@ -47,7 +47,9 @@ class HomeController extends Controller
             return view('admin_panel.dashboard',compact('users'),compact('custs'));
         }
         elseif ($role_id == '3') {
-            return view('recep_panel.recep_dashboard');
+            $users=SystemUser::all();
+            $custs=SystemUser::all()->where('status','=',1);
+            return view('recep_panel.recep_dashboard',compact('users'),compact('custs'));
         }
         else {
             return view('index');

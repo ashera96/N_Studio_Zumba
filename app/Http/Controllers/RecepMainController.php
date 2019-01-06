@@ -35,7 +35,13 @@ class RecepMainController extends Controller
 
     public function show_recep_dash()
     {
-        return view('recep_panel.recep_dashboard');
+        $users=SystemUser::all();
+        $custs=SystemUser::all()->where('status','=',1);
+        $new=DB::table('users')
+            ->join('system_users','users.id','=','system_users.id')
+            ->select('system_users.*','users.*')
+            ->get();
+        return view('recep_panel.recep_dashboard',compact('users'),compact('custs'));
     }
 
     public function show_fees()
@@ -167,10 +173,14 @@ class RecepMainController extends Controller
                 $report->subject('Payment delay list for the month of '.date('F'));
             });
 
+            Session::flash('msg_to_admin', 'Payment delay list sent to admin successfully!');
+
 
 
 //            Delete entries in user_payments table if any exists
             DB::table('user_payments') -> truncate(); // truncate - Auto-increment id is reassigned to 1
+
+            Session::flash('msg_abt_refresh', 'Payment details have been refreshed!');
 
             $user_package_details = DB::table('user_packages')
                 ->join('packages','user_packages.package_id','=','packages.id')
@@ -215,6 +225,7 @@ class RecepMainController extends Controller
                 $payment_delayed_user = SystemUser::findOrFail($not_paid_id);
                 $this->payment_delay_email($payment_delayed_user);
             }
+            Session::flash('alert_to_delay', 'Alerts are sent to users who delayed the payments');
 
             // Assigning flag_alert to be 1 so that cannot be executed again within the same month same day twice
             $flag_alert = Flag::findOrFail(2);
