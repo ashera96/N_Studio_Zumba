@@ -19,7 +19,7 @@
                         <a href="/admin/dashboard/class_packages" class="list-group-item side-bar"><i class="fa fa-clipboard fa-lg mr-1"></i> Classes</a>
                         <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
                         <a href="admin/create_notifications" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
-                        <a href="/admin/dashboard" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
+                        <a href="/admin/payments" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
                         <a href="/admin/reports" class="list-group-item active side-bar active"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
 
                     </div>
@@ -84,9 +84,8 @@
                                                         </div>
 
                                                     </form>
-                                                    <div style="float: right;" >
-
-                                                        <a href="{{url('/admin/reports_attendance/create')}}"><button class="addbtnattend">ADD ATTENDANCE</button></a>
+                                                    <div class="row float-right pad30">
+                                                        <a href="{{url('/admin/reports_attendance/create')}}" class="btn active btn-primary " style="font-size: large; height: 40px; width: 150px">ADD ATTENDANCE</a>
                                                     </div>
                                                 </div>
                                                 <table class="table table-striped table-hover" width="80%"  >
