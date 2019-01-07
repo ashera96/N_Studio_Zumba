@@ -68,9 +68,9 @@
 
                                                     </form>
 
-                                                    <div style="float: right;" >
 
-                                                        <a href="{{url('/recep/recep_reports/create')}}"><button class="addbtnnew">ADD WEIGHT</button></a>
+                                                    <div class="row float-right pad30">
+                                                        <a href="{{url('/recep/recep_reports/create')}}" class="btn active btn-primary " style="font-size: large; height: 40px; width: 150px">ADD WEIGHT</a>
                                                     </div>
 
                                                 </div>
