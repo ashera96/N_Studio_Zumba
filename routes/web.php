@@ -63,6 +63,8 @@ Route::prefix('home')->group(function() {
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
     Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer','prevent_back_history');
     Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer','prevent_back_history');
+    Route::get('/payment', 'PaymentController@show_payment')->middleware('customer','prevent_back_history');
+    Route::post('/charge', 'CheckoutController@charge')->middleware('customer','prevent_back_history');
 //    Route::get('/profile', 'CustomerPageController@show_profile')->middleware('customer');
     Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer','prevent_back_history');
     Route::get('markAsRead',function(){
@@ -128,11 +130,9 @@ Route::prefix('admin')->group(function() {
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
 
-
-
-
     Route::get('/payments','PaymentController@load_receptionists')->middleware('admin');
-    Route::post('/charge', 'CheckoutController@charge')->middleware('admin');
+    Route::get('/salary_payment/{id}','PaymentController@update_payment_status')->middleware('admin');
+
 
     Route::any('/reports/search',function(){
         $search = Input::get ('search');

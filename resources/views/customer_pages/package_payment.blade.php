@@ -11,6 +11,10 @@
             padding:3px 5px;
             text-align:left;
         }
+
+        .stripe-button-el{
+            display: none;
+        }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -63,20 +67,20 @@
                         <li class="nav-item {{Request::is('home/contact') ? "active" : ""}}">
                             <a class="nav-link" href="/home/contact">contact</a>
                         </li>
-                        <li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">
-                            <a class="nav-link" href="/home/payment">payment</a>
-                        </li>
-                        {{--<li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">--}}
-                            {{--<a class="nav-link" href="/home/reports">reports</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="nav-item d-none d-lg-inline">--}}
-                            {{--<div class="icon-menu">--}}
-                                {{--<ul>--}}
-                                    {{--<li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--</li>--}}
-                        <!--
+                    <li class="nav-item {{Request::is('home/payment') ? "active" : ""}}">
+                    <a class="nav-link" href="/home/payment">payment</a>
+                    </li>
+                    {{--<li class="nav-item {{Request::is('home/reports') ? "active" : ""}}">--}}
+                    {{--<a class="nav-link" href="/home/reports">reports</a>--}}
+                    {{--</li>--}}
+                    {{--<li class="nav-item d-none d-lg-inline">--}}
+                    {{--<div class="icon-menu">--}}
+                    {{--<ul>--}}
+                    {{--<li><a href="#" class="search-btn search-box-btn"><i class="fa fa-search"></i></a></li>--}}
+                    {{--</ul>--}}
+                    {{--</div>--}}
+                    {{--</li>--}}
+                    <!--
                         <li class="nav-item d-none d-lg-inline">
                             <div class="icon-menu">
                                 <ul>
@@ -152,12 +156,12 @@
 
 
     <!-- page title & breadcrumbs start -->
-    <div class="about-bg page-head parallax overlay">
+    <div class="services-bg page-head parallax overlay">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center">
-                        <h3>about us</h3>
+                        <h3>Monthly Payment</h3>
                     </div>
                 </div>
                 <!-- /.colour-service-1-->
@@ -165,7 +169,7 @@
                     <ol class="breadcrumb">
                         <li><a href="/home">home</a></li>
                         <li>।</li>
-                        <li>About</li>
+                        <li>Payment</li>
                     </ol>
                 </div>
                 <!-- /.col -->
@@ -177,64 +181,93 @@
     <!-- /.page-header -->
     <!-- page title & breadcrumbs end -->
 
-    <!--about-area start-->
+    <!--payment-area start-->
     <div class="about-area pad90">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-center">
+
+                        {{--Flash message for success in payment start--}}
+                        @if (session('msg_success'))
+                            <div class="alert alert-success ml90 fs-15" role="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                {{ session('msg_success') }}
+                            </div>
+                        @endif
+                        {{--Flash message for success in payment end--}}
+
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
-                        <h3>Welcome to N Studio Zumba</h3>
-                        <p>Push Harder Than Yesterday If You Want A Better Tomorrow </p>
+                        <h3>Settle Monthly Payment</h3>
+                        <p>Monthly payment for the month of {{ now()->format('F') }}    </p>
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8 col-md-12">
-                    <div class="aboutus-box">
-                        <div class="about-desc">
-                            <p>"It is not a dance class it is a party! No one is judging you by your dance abilities just have fun and feel the music."</p> <br>
-                        </div>
-                        <div class="about-benefit">
-                            <a href="#"><span><i class="fa fa fa-stop-circle"></i></span>ZIN™ Since</a>
-                            <p>February 2018</p>
-                        </div>
-                        <div class="about-benefit">
-                            <a href="#"><span><i class="fa fa fa-stop-circle"></i></span>Location</a>
-                            <p>No. 176D, Negombo Road, Rilaulla, Kandana, Gampaha LK</p>
-                        </div>
-                        <div class="about-benefit">
-                            <a href="#"><span><i class="fa fa fa-stop-circle"></i></span>Licensed To Teach</a>
-                            <p>Zumba</p>
-                        </div>
-                        <div class="about-benefit mt50">
-                            <h4><p>Hello! I'm Nilru De Silva. I've been a ZIN™ Member since Feb 2018 and I absolutely love teaching Zumba classes. The reason is simple: Every class feels like a party! I am currently licensed to teach Zumba. Come join me, I guarantee you will have a blast! Got questions, don't hesitate to drop me a message!</p></h4>
-                            <p>We have been teaching women of all walks of life how to love themselves trough music & dance. That's very powerful and brings us joy and satisfaction. Music and dance helps us connect with people on a different level. It gives us an opportunity to empower them, rejuvenate them, brings them closer to their friends and family while improving their health and happiness. We hope to see you on the dance floor!
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            <div class="row pad60 justify-content-center">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="card shadow-lg pl-5">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p><strong>Month</strong></p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>{{now()->format('F')}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p><strong>Package</strong></p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>{{$user_payment[0]->name}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p><strong>Price</strong></p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <p>{{$user_payment[0]->amount}}</p>
+                                </div>
+                            </div>
 
-                <!--Side Image Start-->
-                <div class="col-lg-4 col-md-12">
-                    <div class="about-opening">
-                        <div class="opening-hours text-center">
-                            <h3>Nilru De Silva</h3>
-                        </div>
-                        <div class="opening-img">
-                            <img src="{{ URL::asset('images/about/1.jpg') }}" >
+                            <div class="container row justify-content-center">
+                                @if($user_payment[0]->payment_status == 0)
+
+                                    {{--Code segment for the stripe payment start--}}
+                                    <form action="/home/charge" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="amount" value="{{$user_payment[0]->amount}}">
+                                        <script
+                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                data-key="{{ env('STRIPE_PUB_KEY') }}"
+                                                data-amount=""
+                                                data-name="Monthly Payment"
+                                                data-description="Monthly payment for class package"
+                                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                data-locale="auto"
+                                                data-currency="usd">
+                                        </script>
+                                        <button type="submit" class="btn btn-primary active">Pay</button>
+                                    </form>
+                                    {{--Code segment for the stripe payment end--}}
+
+                                @else
+                                    <a href="#"><button class="btn btn-success disabled" >PAID</button></a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--Side Image End-->
 
             </div>
         </div>
     </div>
-    <!-- about-area end-->
+    <!-- payment-area end-->
 
 @endsection

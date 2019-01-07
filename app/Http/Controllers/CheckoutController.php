@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
-use App\SalaryPayment;
+use App\UserPayment;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -22,17 +23,17 @@ class CheckoutController extends Controller
 
         $charge = Charge::create(array(
             'customer' => $customer->id,
-            'amount'   => $request->amount,
+            'amount'   => ($request->amount)*0.0055*100, // Rupees to LKR
             'currency' => 'usd'
         ));
 
-        $salary_payment = SalaryPayment::where('receptionist_id','=',$request->receptionist_id)
+        $user_payment = UserPayment::where('user_id','=',Auth::user()->id)
             ->first()
             ->update(['payment_status'=>1]);
 
 //        Flash message for success in payment
-        Session::flash('msg_success', 'Salary Payment Successful!');
-        return redirect('/admin/payments');
+        Session::flash('msg_success', 'Payment Successful');
+        return redirect('/home/payment');
 
     }
 }
