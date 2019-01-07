@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ScheduleSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(FlagSeeder::class);
-        $this->call(ScheduleCounter::class);
+        $this->call(ScheduleCountSeeder::class);
     }
 }
