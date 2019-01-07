@@ -75,7 +75,7 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <a href="{{url('recep/customers/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                        <a href="{{url('recep/cusprofile/'.$user->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                                     </div>
                                                 </div>
                                             </td>
