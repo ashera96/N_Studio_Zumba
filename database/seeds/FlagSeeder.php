@@ -13,6 +13,7 @@ class FlagSeeder extends Seeder
     {
         $flag1 = new App\Flag;
         $flag2 = new App\Flag;
+        $flag3 = new App\Flag;
 
         $flag1->id = 1;
         $flag1->value = 0;
