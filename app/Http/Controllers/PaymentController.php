@@ -11,6 +11,7 @@ use Mail;
 use App\SalaryPayment;
 use App\Mail\unpaidSalaryReport;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -51,33 +52,33 @@ class PaymentController extends Controller
         // If start of month send email to admin with the list of unpaid active receptionists within current table
         // Drop all entries from the salary_payments table and add the currently active receptionists
         // This loop will execute once per month
-        if ($day == 7 && $flag->value == 0) {
-//            // Sending an email to the admin with a list of active receptionists who did not receive salary payments
-//
-//            // Retrieving the receptionists who did not receive a salary ( before dropping the table entries)
-//            $no_salary_email_list = DB::table('salary_payments')
-//                ->join('receptionists','receptionists.id','=','salary_payments.receptionist_id')
-//                ->select('receptionists.name')
-//                ->where('salary_payments.payment_status','=',0)
-//                ->get();
-////            dd($no_salary_email_list);
-//
-//            // Variable to pass to the email function - $data (associative array)
-//            $data_name = [];
-//            foreach ($no_salary_email_list as $ns){
-//                array_push($data_name,$ns->name);
-//            }
-//            $data = ['name' => $data_name];
-////            dd($data);
-//
-//            // Sending mail to admin
-//            Mail::send('email.unpaid_salary_report',$data,function($report)use($data){
-//                $admin = DB::table('system_users')
-//                    ->where('role_id',1)
-//                    ->first();
-//                $report -> to($admin->email);
-//                $report -> subject('List of Receptionists who did not receive their salary for the month of '.date('F'));
-//            });
+        if ($day == 1 && $flag->value == 0) {
+            // Sending an email to the admin with a list of active receptionists who did not receive salary payments
+
+            // Retrieving the receptionists who did not receive a salary ( before dropping the table entries)
+            $no_salary_email_list = DB::table('salary_payments')
+                ->join('receptionists','receptionists.id','=','salary_payments.receptionist_id')
+                ->select('receptionists.name')
+                ->where('salary_payments.payment_status','=',0)
+                ->get();
+//            dd($no_salary_email_list);
+
+            // Variable to pass to the email function - $data (associative array)
+            $data_name = [];
+            foreach ($no_salary_email_list as $ns){
+                array_push($data_name,$ns->name);
+            }
+            $data = ['name' => $data_name];
+//            dd($data);
+
+            // Sending mail to admin
+            Mail::send('email.unpaid_salary_report',$data,function($report)use($data){
+                $admin = DB::table('system_users')
+                    ->where('role_id',1)
+                    ->first();
+                $report -> to($admin->email);
+                $report -> subject('List of Receptionists who did not receive their salary for the month of '.date('F'));
+            });
 
 
             // Delete entries in salary_payments table if any exists
@@ -111,7 +112,7 @@ class PaymentController extends Controller
             Session::flash('msg_updated', 'Receptionist list updated successfully for the current month!');
         }
 
-        elseif ( $day != 7 ){
+        elseif ( $day != 1 ){
             // If any day other than 1 make the flag variable 0
             $flag_obj = Flag::findOrFail(3);
             $flag_obj -> value = 0;
@@ -123,4 +124,29 @@ class PaymentController extends Controller
 
         return view('admin_panel.payment', compact('eligible_receptionists','no_salary_array'));
     }
+
+    public function update_payment_status($id){
+        //Updating the given receptionist's payment_status in the salary_payments table from 0 to 1 for the current month
+        $salary_payment = SalaryPayment::where('receptionist_id','=',$id)->first();
+        $salary_payment -> payment_status = 1;
+        $salary_payment -> save();
+
+        // Passing the flash message for success in the updating process
+        Session::flash('msg_paid', 'Payment Successfully Stored');
+        return redirect('/admin/payments');
+    }
+
+    public function show_payment(){
+
+        $current_user = Auth::user()->id;
+        $user_payment =DB::table('user_payments')
+            ->join('packages','user_payments.package_id','=','packages.id')
+            ->select('user_payments.*','packages.*')
+            ->where('user_payments.user_id','=',$current_user)
+            ->get();
+//        dd($user_payment);
+
+        return view('customer_pages.package_payment',compact('user_payment'));
+    }
+
 }
