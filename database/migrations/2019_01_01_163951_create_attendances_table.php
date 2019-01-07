@@ -15,8 +15,8 @@ class CreateAttendancesTable extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->integer('id');
-            $table->string('month')->unsigned();
-            $table->integer('year')->unsigned();
+            $table->string('month');
+            $table->integer('year');
             $table->integer('totalclasses');
             $table->integer('attendanceclasses');
             $table->double('percentage');

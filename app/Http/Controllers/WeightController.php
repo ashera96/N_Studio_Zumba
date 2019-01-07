@@ -139,9 +139,9 @@ class WeightController extends Controller
 
             ]);
 
-            $weightfind = DB::table('weights')->where('id', '=', $id)
+            $weightfind = \App\Weight::where('id', '=', $id)
                 ->where('month', '=', $month)
-                ->where('year', '=', $year);
+                ->where('year', '=', $year)->first();
 
             $weightfind ->id =$request ->id;
             $weightfind ->month =$request ->month;
@@ -160,9 +160,9 @@ class WeightController extends Controller
 
             ]);
 
-            $weightfind2 =DB::table('weights')->where('id', '=', $id)
+            $weightfind2 =\App\Weight::where('id', '=', $id)
                 ->where('month', '=', $month)
-                ->where('year', '=', $year);
+                ->where('year', '=', $year)->first();
 
             $weightfind2 ->id =$request ->id;
             $weightfind2 ->month =$request ->month;

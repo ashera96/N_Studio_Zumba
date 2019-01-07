@@ -228,10 +228,9 @@ class AttendanceController extends Controller
 
             ]);
 
-            $attfind =DB::table('attendances')->where('id', '=', $id)
+            $attfind =\App\Attendance::where('id', '=', $id)
                 ->where('month', '=', $month)
-                ->where('year', '=', $year);
-
+                ->where('year', '=', $year)->first();
             $attfind->id =$request ->id;
             $attfind ->month =$request ->month;
             $attfind ->year =$request ->year;
@@ -240,7 +239,7 @@ class AttendanceController extends Controller
             $attfind ->percentage =$request ->percentage;
             $attfind ->save();
 
-            return redirect('admin/reports_attendance')->with('success','Weight Updated');
+            return redirect('admin/reports_attendance')->with('success','Attendance Updated');
         }
         else if($role_id==3) {
             $this->validate($request,[
@@ -253,19 +252,20 @@ class AttendanceController extends Controller
 
             ]);
 
-            $attfind =DB::table('attendances')->where('id', '=', $id)
+            $attfind1 =\App\Attendance::where('id', '=', $id)
                 ->where('month', '=', $month)
-                ->where('year', '=', $year);
+                ->where('year', '=', $year)->first();
 
-            $attfind->id =$request ->id;
-            $attfind ->month =$request ->month;
-            $attfind ->year =$request ->year;
-            $attfind ->totalclasses =$request ->totalclasses;
-            $attfind ->attendanceclasses =$request ->attendanceclasses;
-            $attfind ->percentage =$request ->percentage;
-            $attfind ->save();
+            $attfind1->id =$request ->id;
+            $attfind1->month =$request ->month;
+            $attfind1->year =$request ->year;
+            $attfind1->totalclasses =$request ->totalclasses;
+            $attfind1->attendanceclasses =$request ->attendanceclasses;
+            $attfind1->percentage =$request ->percentage;
+            $attfind1->save();
 
-            return redirect('recep/recep_reports_attendance')->with('success','Weight Updated');
+
+            return redirect('recep/recep_reports_attendance')->with('success','Attendance Updated');
         }
     }
 

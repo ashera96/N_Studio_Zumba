@@ -43,11 +43,7 @@
                 <div class="col-md-8 offset-md-2">
                     <div class="contact-form mt20">
                         <div class="appointment-schedule">
-                            {{--<form class="appointment-form" method="POST" {{--action="{{ route('reports.update',$weight->id,$weight->month,$weight->year) }}">
-
-                                @csrf
-                                @method('PUT')--}}
-                            {{ Form::open(['route' => ['recep_reports.update',$weight->id,$weight->month,$weight->year], 'method' => 'put']) }}
+                            {{ Form::open(['route' => ['recep_reports.update',$weight->id,$weight->month,$weight->year], 'method' => 'post']) }}
 
                             <div class="row">
 
@@ -99,7 +95,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <h5 style="color: #343a40">Weight</h5>
-                                        <input type="weight" name="text" value="{{ $weight->weight }}" class ="form-control " value="{{Request::old('weight')}}">
+                                        <input type="text" name="weight" value="{{ $weight->weight }}" class ="form-control " value="{{Request::old('weight')}}">
                                         @if ($errors->has('weight'))
                                             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('weight') }}</strong>

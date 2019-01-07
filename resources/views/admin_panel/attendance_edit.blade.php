@@ -59,11 +59,8 @@
                 <div class="col-md-8 offset-md-2">
                     <div class="contact-form mt20">
                         <div class="appointment-schedule">
-                            <form class="appointment-form" method="POST" {{--action="{{ route('recep_reports_attendance.update',$attendance->id,$attendance->month,$attendance->year) }}"--}}>
 
-                                @csrf
-                                @method('PUT')
-                        {{--    {{ Form::open(['route' => ['reports_attendance.update',$attendance->id,$attendance->month,$attendance->year], 'method' => 'put']) }}--}}
+                            {{ Form::open(['route' => ['reports_attendance.update',$attendance->id,$attendance->month,$attendance->year], 'method' => 'post']) }}
 
                                 <div class="row">
 
@@ -161,8 +158,7 @@
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
-                                {{--{{ Form::close() }}--}}
-                            </form>
+                                {{ Form::close() }}
                         </div>
                     </div>
                 </div>

@@ -120,8 +120,9 @@ Route::prefix('admin')->group(function() {
     Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
     Route::get('/reports/{id}/{month}/{year}/see','WeightController@see')->name('reports.see');
     Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
+    Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
     Route::get('/reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('reports_attendance.edit');
-    Route::get('/reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('reports_attendance.update');
+    Route::post('/reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('reports_attendance.update');
 
 
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
@@ -195,7 +196,6 @@ Route::prefix('recep')->group(function() {
     Route::post('/recep_reports/{id}/{month}/{year}','WeightController@update')->name('recep_reports.update');
     Route::get('/recep_reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('recep_reports_attendance.edit');
     Route::post('/recep_reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('recep_reports_attendance.update');
-
 
    // Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
    // Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
