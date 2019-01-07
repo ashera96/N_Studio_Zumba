@@ -1,4 +1,4 @@
-@extends('layouts.admin_app');
+@extends('layouts.recep_app');
 
 @section('content');
 
@@ -11,8 +11,8 @@
 <div class="schedule-area parallax pad90">
     <div class="container" style="margin-left: 150px">
         <div class="row">
-            @extends('layouts.vertical_sidebar');
-            <div class="col-md-12">
+            @extends('layouts.recep_vertical_sidebar');
+            <div class="col-lg-10 col-md-9 mar30 mb-5">
                 <div class="section-title text-center">
                     <div class="title-bar full-width mb20">
                         <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">

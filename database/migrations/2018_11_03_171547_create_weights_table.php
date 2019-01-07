@@ -19,7 +19,7 @@ class CreateWeightsTable extends Migration
             $table->integer('year');
             $table->double('weight');
             $table->primary(['id', 'month','year']);
-            //$table->foreign('id')->references('id')->on('system_users');
+            //$table->foreign('id')->references('id')->on('system_users')->onDelete('cascade');
             $table->timestamps();
         });
     }

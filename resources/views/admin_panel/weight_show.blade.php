@@ -3,10 +3,41 @@
 @section('content');
 
 @extends('layouts.hori_sidebar');
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
-<script src ="js/canvasjs.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['month', 'weight'],
+                    @foreach($details as $weight)
+                    ['{{$weight->month}}',{{$weight->weight}}],
+                    @endforeach
 
+
+            ]);
+
+            var options = {
+                title: 'Customers Weight Graph',
+                curveType: 'function',
+                hAxis: {
+                    title: 'Month'
+                },
+                vAxis: {
+                    title: 'Weight'
+                },
+
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+</head>
 
 <div class="container-fluid">
     <div class="row">
@@ -20,7 +51,6 @@
 
                 <h3>Show Weight</h3>
             </div>
-
             <div>
                 <br>
                 <div class="col-md-12" align="center">
@@ -67,15 +97,31 @@
                                                 @endforeach
                                                 </tbody>
                                             </table>
+
                                         @endif
+                                    </div>
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
+
+                <body>
+                <div id="curve_chart" style="width: 1000px; height: 500px"></div>
+                </body>
+
+
+
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+</html>
 @endsection

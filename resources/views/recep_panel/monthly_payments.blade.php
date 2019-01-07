@@ -34,6 +34,34 @@
                 @endif
                 {{--Flash message for success in payment end--}}
 
+                {{--Flash message for success in data refresh--}}
+                @if (session('msg_abt_refresh'))
+                    <div class="alert alert-success ml90 fs-15" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ session('msg_abt_refresh') }}
+                    </div>
+                @endif
+                {{--Flash message for success in data refresh end--}}
+
+                {{--Flash message for success in payment delay list sending--}}
+                @if (session('msg_to_admin'))
+                    <div class="alert alert-success ml90 fs-15" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ session('msg_to_admin') }}
+                    </div>
+                @endif
+                {{--Flash message for success in payment delay list sending--}}
+
+                {{--Flash message for success in alert sending--}}
+                @if (session('alert_to_delay'))
+                    <div class="alert alert-success ml90 fs-15" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ session('alert_to_delay') }}
+                    </div>
+                @endif
+                {{--Flash message for success in alert sending--}}
+
+
                 <div class="section-title text-center">
                     <div class="title-bar full-width mb20">
                         <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">

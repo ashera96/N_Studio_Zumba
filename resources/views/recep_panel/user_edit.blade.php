@@ -19,7 +19,7 @@
                     <img src="{{ URL::asset('images/logo/ttl-bar.png') }}"  alt="title-img">
                 </div>
 
-                <h3>Edit Receptionist</h3>
+                <h3>Edit Customer</h3>
             </div>
 
 

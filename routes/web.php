@@ -20,7 +20,7 @@ use App\Attendance;
 Auth::routes();
 
 //provides security for after login re-directions by auth middleware
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth','prevent_back_history');
 
 
 
@@ -50,21 +50,21 @@ Route::post('/index/contact','MessagesController@submit');
 |--------------------------------------------------------------------------
 */
 Route::prefix('home')->group(function() {
-    Route::get('/about', 'CustomerPageController@show_about')->middleware('customer');
-    Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer');
-    Route::get('/class_packages', 'PackageController@customer')->middleware('customer');
-    Route::post('/add_package', 'UserPackageController@create')->middleware('customer');
-    Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer');
-    Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer');
-    Route::get('/schedule', 'UserScheduleController@index')->middleware('customer');
-    Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer');
-    Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer');
-    Route::put('/update_schedule','UserScheduleController@update')->middleware('customer');
+    Route::get('/about', 'CustomerPageController@show_about')->middleware('customer','prevent_back_history');
+    Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer','prevent_back_history');
+    Route::get('/class_packages', 'PackageController@customer')->middleware('customer','prevent_back_history');
+    Route::post('/add_package', 'UserPackageController@create')->middleware('customer','prevent_back_history');
+    Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer','prevent_back_history');
+    Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer','prevent_back_history');
+    Route::get('/schedule', 'UserScheduleController@index')->middleware('customer','prevent_back_history');
+    Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer','prevent_back_history');
+    Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer','prevent_back_history');
+    Route::put('/update_schedule','UserScheduleController@update')->middleware('customer','prevent_back_history');
     //Users table column for registration_fee_payment_status -> either 1 or 0 -> boolean value, depending on weather the fee has been settled or not
-    Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer');
-    Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer');
+    Route::get('/testimonials', 'CustomerPageController@show_testimonials')->middleware('customer','prevent_back_history');
+    Route::get('/contact', 'CustomerPageController@show_contact')->middleware('customer','prevent_back_history');
 //    Route::get('/profile', 'CustomerPageController@show_profile')->middleware('customer');
-    Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer');
+    Route::get('/reports', 'CustomerPageController@show_reports')->middleware('customer','prevent_back_history');
     Route::get('markAsRead',function(){
        auth()->user()->unreadNotifications->markAsRead();
        return redirect()->back();
@@ -118,6 +118,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/updatePer/{id}/{month}/{year}','AttendanceController@UpdatePercent');
     Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
     Route::post('/reports/{id}/{month}/{year}','WeightController@update')->name('reports.update');
+    Route::get('/reports/{id}/{month}/{year}/see','WeightController@see')->name('reports.see');
+    Route::get('/reports/{id}/{month}/{year}/edit','WeightController@edit')->name('reports.edit');
+    Route::get('/reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('reports_attendance.edit');
+    Route::get('/reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('reports_attendance.update');
 
 
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
@@ -128,12 +132,14 @@ Route::prefix('admin')->group(function() {
 
 
     Route::get('/payments','PaymentController@load_receptionists')->middleware('admin');
+    Route::post('/charge', 'CheckoutController@charge')->middleware('admin');
 
     Route::any('/reports/search',function(){
         $search = Input::get ('search');
         $weight = Weight::where('id','LIKE','%'.$search.'%')
-            ->orWhere('month','LIKE','%'.$search.'%')
-            ->orWhere('year','LIKE','%'.$search.'%')
+            //->orWhere('month','LIKE','%'.$search.'%')
+            //->orWhere('year','LIKE','%'.$search.'%')
+            ->orderBy('created_at', 'ASC')
             ->get();
         if(count($weight) > 0)
             return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);
@@ -143,8 +149,8 @@ Route::prefix('admin')->group(function() {
     Route::any('/reports_attendance/search',function(){
         $title = Input::get ('title');
         $attendance = Attendance::where('id','LIKE','%'.$title.'%')
-            ->orWhere('month','LIKE','%'.$title.'%')
-            ->orWhere('year','LIKE','%'.$title.'%')
+            //->orWhere('month','LIKE','%'.$title.'%')
+            //->orWhere('year','LIKE','%'.$title.'%')
             ->get();
         if(count($attendance) > 0)
             return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
@@ -164,7 +170,11 @@ Route::prefix('admin')->group(function() {
 Route::prefix('recep')->group(function() {
     Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist');
     Route::resource('/profile','ReceptionistController')->middleware('receptionist');
+
     Route::resource('/cusprofile', 'UserController')->middleware('receptionist');
+
+    //Route::resource('/customers', 'UserController')->middleware('receptionist');
+
     Route::get('/fees','UserController@index2')->middleware('receptionist');
     Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist');
     Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist');
