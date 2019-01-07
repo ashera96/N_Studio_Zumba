@@ -59,7 +59,7 @@
             var height = document.bmiForm.height.value
             if(weight > 0 && height > 0){
                 var finalBmi = weight/(height/100*height/100)
-                document.bmiForm.bmi.value = finalBmi
+                document.bmiForm.bmi.value = finalBmi.toFixed(2)
                 if(finalBmi < 18.5){
                     document.bmiForm.meaning.value = "Under Weight"
                 }

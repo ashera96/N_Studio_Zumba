@@ -133,6 +133,7 @@
             <!-- /.row -->
         </div>
     </div>
+    </div>
 
 @endsection
 
