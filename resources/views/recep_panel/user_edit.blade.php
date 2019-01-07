@@ -29,7 +29,7 @@
                 <div class="col-md-8 offset-md-2">
                     <div class="contact-form mt20">
                         <div class="appointment-schedule">
-                            <form class="appointment-form" method="POST" action="{{ route('customers.update',$user->id) }}">
+                            <form class="appointment-form" method="POST" action="{{ route('cusprofile.update',$user->id) }}">
 
                                 @csrf
                                 @method('PUT')

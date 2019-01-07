@@ -182,7 +182,7 @@ class UserController extends Controller
             $cusfind->save();
             //$system_users ->save();
 
-            return redirect('admin/customers')->with('success', 'Customer Updated');
+            return redirect('admin/customers');
         }
         else if($role_id==3) {
             $this->validate($request, [
@@ -208,7 +208,7 @@ class UserController extends Controller
             $cusfind->save();
             //$system_users ->save();
 
-            return redirect('recep/customers')->with('success', 'Customer Updated');
+            return redirect('recep/cusprofile');
         }
 
 
