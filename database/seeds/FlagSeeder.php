@@ -22,5 +22,8 @@ class FlagSeeder extends Seeder
         $flag2->value = 0;
         $flag2->save();
 
+        $flag3->id = 3;
+        $flag3->value = 0;
+        $flag3->save();
     }
 }
