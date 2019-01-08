@@ -144,7 +144,9 @@ Route::prefix('admin')->group(function() {
             ->get();
         if(count($weight) > 0)
             return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);
-        else return view ('admin_panel.weight_show')->withMessage('No Details found. Try to search again !');
+        else
+            Session::flash('message','No details found. Please try again!');
+        return redirect('/admin/reports');
     });
 
     Route::any('/reports_attendance/search',function(){
@@ -155,7 +157,9 @@ Route::prefix('admin')->group(function() {
             ->get();
         if(count($attendance) > 0)
             return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
-        else return view ('admin_panel.attendance_show')->withMessage('No Details found. Try to search again !');
+        else
+            Session::flash('message1','No details found. Please try again!');
+        return redirect('/admin/reports_attendance');
     });
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
@@ -227,7 +231,9 @@ Route::prefix('recep')->group(function() {
             ->get();
         if(count($weight) > 0)
             return view('recep_panel.weight_show')->withDetails($weight)->withQuery ($search);
-        else return view ('recep_panel.weight_show')->withMessage('No Details found. Try to search again !');
+        else
+            Session::flash('message3','No details found. Please try again!');
+        return redirect('/recep/recep_reports');
     });
 
     Route::any('/recep_reports_attendance/search1',function(){
@@ -238,7 +244,9 @@ Route::prefix('recep')->group(function() {
             ->get();
         if(count($attendance) > 0)
             return view('recep_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
-        else return view ('recep_panel.attendance_show')->withMessage('No Details found. Try to search again !');
+        else
+            Session::flash('message4','No details found. Please try again!');
+        return redirect('/recep/recep_reports_attendance');
     });
 
 });

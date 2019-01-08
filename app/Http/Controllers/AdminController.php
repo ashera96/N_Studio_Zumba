@@ -7,6 +7,7 @@ use App\ScheduleCount;
 use App\SystemUser;
 use App\User;
 use Illuminate\Http\Request;
+use DB;
 
 
 class AdminController extends Controller
@@ -66,6 +67,19 @@ class AdminController extends Controller
         $schedule_saturday_count = ScheduleCount::select('counter')->where('schedule_id',11)->first();
         $schedule_sunday_count = ScheduleCount::select('counter')->where('schedule_id',12)->first();
 
+        $users1 = DB::table('user_schedules')
+            ->join('system_users','user_schedules.user_id','=','system_users.id')
+            ->select('system_users.username')
+            ->where('user_schedules.schedule_id','=',1)
+            ->get();
+
+        $users11 = [];
+        foreach($users1 as $u) {
+            array_push($users11, $u);
+        }
+
+
+
             return view('admin_panel.class_schedules', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday',
                 'schedule_monday1_count','schedule_limit',
                 'schedule_monday2_count','schedule_tuesday1_count',
@@ -73,7 +87,7 @@ class AdminController extends Controller
                 'schedule_wednesday2_count','schedule_thursday1_count',
                 'schedule_thursday2_count','schedule_friday1_count',
                 'schedule_friday2_count','schedule_saturday_count',
-                'schedule_sunday_count'
+                'schedule_sunday_count', 'users11'
             ));
     }
 
