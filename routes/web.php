@@ -84,6 +84,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/customers','UserController@show_user_index')->middleware('admin','prevent_back_history');
     Route::resource('/customers', 'UserController')->middleware('admin','prevent_back_history');
     Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin','prevent_back_history');
+    Route::get('/delete_package/{id}', 'PackageController@delete')->middleware('admin','prevent_back_history');
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin','prevent_back_history');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin','prevent_back_history');
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin','prevent_back_history');

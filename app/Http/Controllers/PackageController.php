@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Package;
 use App\UserPackage;
 use Illuminate\Support\Facades\Session;
+use DB;
 
 class PackageController extends Controller
 {
@@ -16,20 +17,51 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $packages = Package::all();
+        // Retrieve only entries which have status 0
+        $packages = Package::all()->where('status','=',0);
         return view('static_pages.class_packages')->with('packages', $packages);
     }
 
     public function admin()
     {
-        $packages = Package::all();
+        // Retrieve only entries which have status 0
+        $packages = Package::all()->where('status','=',0);
         return view('admin_panel.class_packages')->with('packages', $packages);
     }
 
     public function customer()
     {
-        $packages = Package::all();
+        // Retrieve only entries which have status 0
+        $packages = Package::all()->where('status','=',0);
         return view('customer_pages.class_packages',compact('packages'));
+    }
+
+    public function delete($id)
+    {
+        // Make the status column of the packages table for this entry 1
+        $package = Package::find($id);
+        $package -> status = 1;
+        $package -> save();
+
+        // Remove all current selection entries from user_packages table if it includes the deleted package
+        $user_packages = DB::table('user_packages')
+            ->where('package_id','=',$id)
+            ->get();
+//        dd($user_packages);
+
+        // If count is >0 delete all related entries
+        if(count($user_packages)>0){
+            for( $i=0;$i<count($user_packages);$i++ ){
+//            dd($user_packages[$i]->user_id);
+                $user_package = UserPackage::findOrFail($user_packages[$i]->user_id);
+                $user_package->delete();
+
+            }
+        }
+
+        // FLash message for success in deletion
+        Session::flash('msg_deleted', 'Class Package Deleted Successfully!');
+        return redirect()->back();
     }
 
     /**
