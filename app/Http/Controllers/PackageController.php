@@ -159,7 +159,7 @@ class PackageController extends Controller
     public function destroy($id)
     {
         $package = Package::findOrFail($id);
-        $package->delete();
+        $package -> delete();
         Session::flash('msg_deleted', 'Class Package Deleted Successfully!');
         return redirect('/admin/dashboard/class_packages');
     }

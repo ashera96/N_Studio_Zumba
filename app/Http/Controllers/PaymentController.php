@@ -34,7 +34,7 @@ class PaymentController extends Controller
             ->select('receptionists.*','salary_payments.*')
             ->get();
 
-        // Retrieving receptionist_id of those who did not receive their salaru
+        // Retrieving receptionist_id of those who did not receive their salary
         $no_salary = DB::table('salary_payments')
             ->join('receptionists','receptionists.id','=','salary_payments.receptionist_id')
             ->select('receptionist_id')

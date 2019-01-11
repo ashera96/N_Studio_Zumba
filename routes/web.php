@@ -87,8 +87,13 @@ Route::prefix('admin')->group(function() {
    // Route::resource('/uploada','UploadController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin','prevent_back_history');
     Route::resource('/customers', 'UserController')->middleware('admin','prevent_back_history');
+
+
+//    Class Packages related routes start
     Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin','prevent_back_history');
     Route::get('/delete_package/{id}', 'PackageController@delete')->middleware('admin','prevent_back_history');
+//    Class Packages related routes end
+
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin','prevent_back_history');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin','prevent_back_history');
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin','prevent_back_history');
@@ -136,9 +141,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
 
+//    Payment related routes start
     Route::get('/payments','PaymentController@load_receptionists')->middleware('admin','prevent_back_history');
     Route::get('/salary_payment/{id}','PaymentController@update_payment_status')->middleware('admin','prevent_back_history');
-
+//    Payment related routes end
 
     Route::any('/reports/search',function(){
         $search = Input::get ('search');
