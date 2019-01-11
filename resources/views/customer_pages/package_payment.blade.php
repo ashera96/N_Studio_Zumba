@@ -209,60 +209,64 @@
             <!-- /.row -->
             <div class="row pad60 justify-content-center">
                 <div class="col-md-6 col-md-offset-3">
-                    <div class="card shadow-lg pl-5">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p><strong>Month</strong></p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p>{{now()->format('F')}}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p><strong>Package</strong></p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p>{{$user_payment[0]->name}}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p><strong>Price</strong></p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p>{{$user_payment[0]->amount}}</p>
-                                </div>
-                            </div>
 
-                            <div class="container row justify-content-center">
-                                @if($user_payment[0]->payment_status == 0)
+                    {{--Checking if the user have subscribed to a class package for the current month--}}
+                    @if(count($user_payment)>0)
+                        <div class="card shadow-lg pl-5">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p><strong>Month</strong></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>{{now()->format('F')}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p><strong>Package</strong></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>{{$user_payment[0]->name}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p><strong>Price</strong></p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>{{$user_payment[0]->amount}}</p>
+                                    </div>
+                                </div>
 
-                                    {{--Code segment for the stripe payment start--}}
-                                    <form action="/home/charge" method="POST">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="amount" value="{{$user_payment[0]->amount}}">
-                                        <script
-                                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                                data-key="{{ env('STRIPE_PUB_KEY') }}"
-                                                data-amount=""
-                                                data-name="Monthly Payment"
-                                                data-description="Monthly payment for class package"
-                                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                                data-locale="auto"
-                                                data-currency="usd">
-                                        </script>
-                                        <button type="submit" class="btn btn-primary active">Pay</button>
-                                    </form>
-                                    {{--Code segment for the stripe payment end--}}
+                                <div class="container row justify-content-center">
+                                    @if($user_payment[0]->payment_status == 0)
 
-                                @else
-                                    <a href="#"><button class="btn btn-success disabled" >PAID</button></a>
-                                @endif
+                                        {{--Code segment for the stripe payment start--}}
+                                        <form action="/home/charge" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="amount" value="{{$user_payment[0]->amount}}">
+                                            <script
+                                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                    data-key="{{ env('STRIPE_PUB_KEY') }}"
+                                                    data-amount=""
+                                                    data-name="Monthly Payment"
+                                                    data-description="Monthly payment for class package"
+                                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                                    data-locale="auto"
+                                                    data-currency="usd">
+                                            </script>
+                                            <button type="submit" class="btn btn-primary active">Pay</button>
+                                        </form>
+                                        {{--Code segment for the stripe payment end--}}
+
+                                    @else
+                                        <a href="#"><button class="btn btn-success disabled" >PAID</button></a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
             </div>

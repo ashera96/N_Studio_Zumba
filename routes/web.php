@@ -52,10 +52,14 @@ Route::post('/index/contact','MessagesController@submit');
 Route::prefix('home')->group(function() {
     Route::get('/about', 'CustomerPageController@show_about')->middleware('customer','prevent_back_history');
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer','prevent_back_history');
+
+    //Routes for package module start
     Route::get('/class_packages', 'PackageController@customer')->middleware('customer','prevent_back_history');
     Route::post('/add_package', 'UserPackageController@create')->middleware('customer','prevent_back_history');
     Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer','prevent_back_history');
     Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer','prevent_back_history');
+    //Routes for package module end
+
     Route::get('/schedule', 'UserScheduleController@index')->middleware('customer','prevent_back_history');
     Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer','prevent_back_history');
     Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer','prevent_back_history');
@@ -182,14 +186,17 @@ Route::prefix('recep')->group(function() {
     //Route::resource('/customers', 'UserController')->middleware('receptionist');
 
     Route::get('/fees','UserController@index2')->middleware('receptionist','prevent_back_history');
-    Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist','prevent_back_history');
     Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist','prevent_back_history');
 
     Route::get('/markpay/{id}','UserController@PayRegFees');
     Route::get('/markrefund/{id}','UserController@RefundRegFees');
 
 
+    // Monthly Payment Routes start
+    Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist','prevent_back_history');
     Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist','prevent_back_history');
+    // Monthly Payment Routes end
+
 
     Route::resource('/recep_reports','WeightController')->middleware('receptionist','prevent_back_history');
     Route::get('dashboard/recep_reports','WeightController@create')->name('recep_panel.add_weight')->middleware('receptionist','prevent_back_history');
