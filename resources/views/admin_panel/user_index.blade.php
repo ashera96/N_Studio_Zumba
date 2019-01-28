@@ -26,7 +26,6 @@
                         <p>Manage Customers</p>
                     </div>
 
-
                     <!-- Latest Users -->
 
                             {{--<div class="panel panel-default">--}}
@@ -47,6 +46,7 @@
                             </div>
 
                             </form>--}}
+
 
                             <div class="row mb-0" style="padding-left: 50px">
                                 <div class="card overview-block pad30 rounded" >
