@@ -21,6 +21,12 @@
                         </div>
                     @endif
 
+                        @if (session('deactivated'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('deactivated') }}
+                            </div>
+                        @endif
+
                     <form method="POST" action="{{ route('password.email') }}" aria-label="{{ __('Reset Password') }}" style="background-color: transparent;">
                         @csrf
 
@@ -35,6 +41,7 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
+
                             </div>
                         </div>
 

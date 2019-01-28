@@ -203,7 +203,7 @@ myInput5.onkeypress = function () {
         var todayYear = today.getFullYear();
         var todayMonth = today.getMonth();
         var todayDay = today.getDate();
-        var birthDate = new Date(yearThen, monthThen - 1, dayThen);
+        var birthDate = new Date(yearThen, monthThen - 1, dayThen); //month count is begin from 0 to 11
 
         /*var differenceInMilisecond = today.valueOf() - birthDate.valueOf();
 
@@ -216,7 +216,7 @@ myInput5.onkeypress = function () {
 
         var age_in_year = today.getFullYear() - birthDate.getFullYear();
         var m = today.getMonth() - birthDate.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {  //validate for actual birthday
             age_in_year = age_in_year - 1;
         }
 

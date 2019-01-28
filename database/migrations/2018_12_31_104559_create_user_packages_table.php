@@ -27,6 +27,6 @@ class CreateUserPackagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_package');
+        Schema::dropIfExists('user_packages'); //drop user packages
     }
 }

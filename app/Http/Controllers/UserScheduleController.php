@@ -35,9 +35,20 @@ class UserScheduleController extends Controller
         $current_user = Auth::user(); //current user
         $finds = UserSchedule::where("user_id", $current_user->id)->get(); //data corresponding to current user
 
+        //single object instance
         $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
 
-        if(!is_null($selected_package)) {
+        //dd($selected_package);
+
+        $schedule_monday = Schedule::all()->where('day', '=', 'Monday');
+        $schedule_tuesday = Schedule::all()->where('day', '=', 'Tuesday');
+        $schedule_wednesday = Schedule::all()->where('day', '=', 'Wednesday');
+        $schedule_thursday = Schedule::all()->where('day', '=', 'Thursday');
+        $schedule_friday = Schedule::all()->where('day', '=', 'Friday');
+        $schedule_saturday = Schedule::all()->where('day', '=', 'Saturday');
+        $schedule_sunday = Schedule::all()->where('day', '=', 'Sunday');
+
+        if(!is_null($selected_package)) { //to handle exception
             $selected_package_id = $selected_package->package_id;
             $pkg_name = DB::table('packages')->select('name')->where("id", $selected_package_id)->first();
             $selected_package_name = $pkg_name->name;
@@ -70,36 +81,34 @@ class UserScheduleController extends Controller
                     array_push($Checkbox, $find->schedule_id); //push schedule ids to the empty stack
                 }
             }
+            return view('customer_pages.class_schedule', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name','selected_package_id'));
+        }else{
+            return view('customer_pages.schedule_blocked', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name','selected_package_id'));
         }
-
-        $schedule_monday = Schedule::all()->where('day', '=', 'Monday');
-        $schedule_tuesday = Schedule::all()->where('day', '=', 'Tuesday');
-        $schedule_wednesday = Schedule::all()->where('day', '=', 'Wednesday');
-        $schedule_thursday = Schedule::all()->where('day', '=', 'Thursday');
-        $schedule_friday = Schedule::all()->where('day', '=', 'Friday');
-        $schedule_saturday = Schedule::all()->where('day', '=', 'Saturday');
-        $schedule_sunday = Schedule::all()->where('day', '=', 'Sunday');
-
-        return view('customer_pages.class_schedule', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name','selected_package_id'));
     }//index
 
     //---------------start of store function---------------------------------
     public function store(Request $request)
     {
-        $client_limit = DB::table('schedules')->select('client_limit')->first(); //to future use
+        $client_limit = DB::table('schedules')->select('client_limit')->first(); //to future use(client limit)
 
-        $inspect = 0;
-        $limited = [];
-        foreach ($request->Checkbox as $c) {
-            $counterx = DB::table('schedule_counts')->select('counter')->where("schedule_id", $c)->first();
+        $inspect = 0; //inspect checker
+        $limited = []; //array showing the limit exceeded schedules
 
-            if ($counterx->counter >= $client_limit->client_limit) {
-                $inspect++;
-                array_push($limited, $c);
-            }
-        }
+      if($request->Checkbox != null) { //handle exception
+          foreach ($request->Checkbox as $c) {
 
-        $s = implode(",", $limited);
+              //get each counter variable value from schedule_counts
+              $counterx = DB::table('schedule_counts')->select('counter')->where("schedule_id", $c)->first();
+
+              if ($counterx->counter >= $client_limit->client_limit) {
+                  $inspect++;
+                  array_push($limited, $c);
+              } //if inspect is incremented,at least one schedule is filled.
+          }
+
+          $s = implode(",", $limited); //returns a string
+      }
 
         $j = 0;
 
@@ -108,55 +117,56 @@ class UserScheduleController extends Controller
         $classes_to_cover = DB::table('packages')->select('classes_to_cover')->where("id", $selected_package->package_id)->first();
 
         //this is for except the weekend package
-        if ((($classes_to_cover->classes_to_cover) / 4) == count($request->Checkbox) && ($selected_package->package_id !=4)) {
+        if($request->Checkbox != null) {
+            if ((($classes_to_cover->classes_to_cover) / 4) == count($request->Checkbox) && ($selected_package->package_id != 4)) {
 
-        foreach ($request->Checkbox as $check) {
-            $current_user = Auth::user();
-            $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
+                foreach ($request->Checkbox as $check) {
+                     $current_user = Auth::user();
+                     $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
 
-            $user_schedule = new UserSchedule;
+                     $user_schedule = new UserSchedule;
 
-            if ($inspect == 0) {
-                $user_schedule->schedule_id = $check;
-                $user_schedule->user_id = $current_user->id;
-                $user_schedule->package_id = $selected_package->package_id;
+                     if ($inspect == 0) {
 
-                    $user_schedule->save();
+                        $user_schedule->schedule_id = $check;
+                        $user_schedule->user_id = $current_user->id;
+                        $user_schedule->package_id = $selected_package->package_id;
 
-                    DB::table('schedule_counts')
-                        ->where('schedule_id', $check)
-                        ->increment('counter');
+                        $user_schedule->save();
 
-                    Session::flash('msgsuccess', 'Schedules Booked Successfully!');
+                        DB::table('schedule_counts')
+                            ->where('schedule_id', $check)
+                            ->increment('counter');
 
-            }//end if
-            else { //client_limit exceeded
+                        Session::flash('msgsuccess', 'Schedules Booked Successfully!');
 
-                Session::flash('msgfail2', 'Schedule Client Limit In Schedule => ' . $s . ' Exceeded..');
+                    } //end if
+                    else { //client_limit exceeded
 
-                if ($j == count($limited)) {
-                    break;
-                }
+                        Session::flash('msgfail2', 'Schedule Client Limit In Schedule => ' . $s . ' Exceeded..');
 
-                /*$wait = new WaitingQueue;
 
-                $wait->schedule_id = $check;
-                $wait->user_id = $current_user->id;
+                            if ($j == count($limited)) {
+                                break;
+                            }
 
-                $wait->save(); */
+                            //need a optimisation... do not add twice the same person to q
 
-                WaitingQueue::updateOrCreate(
-                    ['schedule_id' => $check], ['user_id' =>$current_user->id]
-                );
+                    $wait = new WaitingQueue;
 
-                $j++;
+                    $wait->schedule_id = $check;
+                    $wait->user_id = $current_user->id;
 
-            } //end of else
+                    $wait->save();
 
-        }//end of foreach
-    }//end of if
+                        $j++;
+
+                } //end of else
+
+            }//end of foreach
+        }//end of if
         //this is for the weekend package
-    elseif((($classes_to_cover->classes_to_cover) / 4) == count($request->Checkbox)&&($selected_package->package_id ==4) && (in_array(11,$request->Checkbox)) && (in_array(12,$request->Checkbox))){
+        elseif ((($classes_to_cover->classes_to_cover) / 4) == count($request->Checkbox) && ($selected_package->package_id == 4) && (in_array(11, $request->Checkbox)) && (in_array(12, $request->Checkbox))) {
 
             foreach ($request->Checkbox as $check) {
                 $current_user = Auth::user();
@@ -186,16 +196,16 @@ class UserScheduleController extends Controller
                         break;
                     }
 
-                   /* if(isset())
-                    $wait = new WaitingQueue;
+                    /*
+                     $wait = new WaitingQueue;
 
-                    $wait->schedule_id = $check;
-                    $wait->user_id = $current_user->id;
+                     $wait->schedule_id = $check;
+                     $wait->user_id = $current_user->id;
 
-                    $wait->save(); */
+                     $wait->save(); */
 
                     WaitingQueue::updateOrCreate(
-                        ['schedule_id' => $check], ['user_id' =>$current_user->id]
+                        ['schedule_id' => $check], ['user_id' => $current_user->id]
                     );
 
                     $j++;
@@ -203,10 +213,13 @@ class UserScheduleController extends Controller
                 } //end of else
 
             }//end of foreach
-        }
-    else{
+        } else {
             Session::flash('msgfail', 'Schedules Booking Is Failed! Try again..');
         }
+    }
+    else{
+        Session::flash('msgfail', 'Schedules Booking Is Failed! Try again..');
+    }
             return redirect()->back();
 
     }//end of store function
@@ -218,9 +231,11 @@ class UserScheduleController extends Controller
         $Checkbox = []; //initialized empty stack
         $current_user = Auth::user(); //current user
         $finds = UserSchedule::where("user_id", $current_user->id)->get(); //data corresponding to current user
+
         foreach ($finds as $find) {
             array_push($Checkbox, $find->schedule_id); //push schedule ids to the empty stack
         }
+
         $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
         $selected_package_id = $selected_package->package_id;
         $pkg_name =  DB::table('packages')->select('name')->where("id", $selected_package_id)->first();
@@ -233,6 +248,7 @@ class UserScheduleController extends Controller
         $schedule_friday = Schedule::all()->where('day', '=', 'Friday');
         $schedule_saturday = Schedule::all()->where('day', '=', 'Saturday');
         $schedule_sunday = Schedule::all()->where('day', '=', 'Sunday');
+
         return view('customer_pages.schedule_update', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name'));
     }//edit
 
@@ -253,29 +269,33 @@ class UserScheduleController extends Controller
             array_push($selected_schedules, $find->schedule_id); //push schedule ids to the empty stack
         }
 
-        foreach($request->Checkbox as $c){
-            $counterx = DB::table('schedule_counts')->select('counter')->where("schedule_id",$c)->first();
+        if($request->Checkbox != null) {
+            foreach ($request->Checkbox as $c) {
+                $counterx = DB::table('schedule_counts')->select('counter')->where("schedule_id", $c)->first();
 
-            if($counterx->counter >= $client_limit->client_limit && !in_array($c,$selected_schedules)){
-                $inspect++;
-                array_push($limited,$c);
+                if ($counterx->counter >= $client_limit->client_limit && !in_array($c, $selected_schedules)) {
+                    $inspect++;
+                    array_push($limited, $c);
+                }
+
             }
 
+            $s = implode(",", $limited);
+
+
+            $new_selections = $request->Checkbox; //updated checkboxes
         }
-
-        $s = implode(",",$limited);
-
-        $new_selections = $request->Checkbox; //updated checkboxes
 
         //$difference = array_diff($selected_schedules,$new_selections);
 
-        if(count($new_selections) == count($selected_schedules)) {
+        if($request->Checkbox != null) {
+            if (count($new_selections) == count($selected_schedules)) {
                 $i = 0;
                 while ($i < count($selected_schedules)) {
-                    if($inspect == 0) {
-                        if ($selected_schedules[$i] != $new_selections[$i] && !in_array($new_selections[$i],$selected_schedules) ) {
+                    if ($inspect == 0) {
+                        if ($selected_schedules[$i] != $new_selections[$i] && !in_array($new_selections[$i], $selected_schedules)) {
 
-                            $x = UserSchedule::select('id')->where([['schedule_id','=', $selected_schedules[$i]],["user_id",'=',$current_user->id]])->first();
+                            $x = UserSchedule::select('id')->where([['schedule_id', '=', $selected_schedules[$i]], ["user_id", '=', $current_user->id]])->first();
                             $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
                             //$classes_to_cover = DB::table('packages')->select('classes_to_cover')->where("id", $selected_package->package_id)->first();
                             $user_schedule = UserSchedule::find($x->id);
@@ -291,7 +311,7 @@ class UserScheduleController extends Controller
                                 ->increment('counter');
 
                             DB::table('schedule_counts')
-                                ->where('schedule_id',$selected_schedules[$i])
+                                ->where('schedule_id', $selected_schedules[$i])
                                 ->decrement('counter');
 
                             Session::flash('msgsuccess', 'Schedules Updated Successfully!');
@@ -301,24 +321,24 @@ class UserScheduleController extends Controller
 
                             $monday1_queue = [];
 
-                                $x1 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",1)->get();
+                            $x1 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 1)->get();
 
-                                foreach($x1 as $t1) {
-                                    array_push($monday1_stack, $t1);
-                                    $monday1_queue = array_reverse($monday1_stack);
-                                }
-                                $k = count($monday1_queue);
-                                //dd($monday1_queue[$k-1]->user_id);
-                                $counterx1 = DB::table('schedule_counts')->select('counter')->where("schedule_id",1)->first();
+                            foreach ($x1 as $t1) {
+                                array_push($monday1_stack, $t1);
+                                $monday1_queue = array_reverse($monday1_stack);
+                            }
+                            $k = count($monday1_queue);
+                            //dd($monday1_queue[$k-1]->user_id);
+                            $counterx1 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 1)->first();
 
-                                if($counterx1->counter < $client_limit->client_limit && $k>0){
-                                    $system_user = SystemUser::where([['role_id','=',2],['id','=',$monday1_queue[$k-1]->user_id]])->get();
-                                    Notification::send($system_user, new WaitListNotice());
+                            if ($counterx1->counter < $client_limit->client_limit && $k > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $monday1_queue[$k - 1]->user_id]])->get();
+                                Notification::send($system_user, new WaitListNotice());
 
-                                    DB::table('waiting_queues')
-                                        ->where([['schedule_id','=','1'],['user_id','=',$monday1_queue[$k-1]->user_id]])
-                                        ->delete();
-                                } //pop the top element from queue
+                                DB::table('waiting_queues')
+                                    ->where([['schedule_id', '=', '1'], ['user_id', '=', $monday1_queue[$k - 1]->user_id]])
+                                    ->delete();
+                            } //pop the top element from queue
 
                             //end of monday-1 scenario
 
@@ -327,21 +347,21 @@ class UserScheduleController extends Controller
 
                             $monday2_queue = [];
 
-                            $x2 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",2)->get();
-                            foreach($x2 as $t2) {
+                            $x2 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 2)->get();
+                            foreach ($x2 as $t2) {
                                 array_push($monday2_stack, $t2);
                                 $monday2_queue = array_reverse($monday2_stack);
                             }
                             $k2 = count($monday2_queue);
                             //dd($monday2_queue[$k2 -1]->user_id);
-                            $counterx2 = DB::table('schedule_counts')->select('counter')->where("schedule_id",2)->first();
+                            $counterx2 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 2)->first();
 
-                            if($counterx2->counter < $client_limit->client_limit && $k2 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$monday2_queue[$k2-1]->user_id]])->get();
+                            if ($counterx2->counter < $client_limit->client_limit && $k2 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $monday2_queue[$k2 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice2());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','2'],['user_id','=',$monday2_queue[$k2-1]->user_id]])
+                                    ->where([['schedule_id', '=', '2'], ['user_id', '=', $monday2_queue[$k2 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -352,21 +372,21 @@ class UserScheduleController extends Controller
 
                             $tuesday1_queue = [];
 
-                            $x3 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",3)->get();
-                            foreach($x3 as $t3) {
+                            $x3 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 3)->get();
+                            foreach ($x3 as $t3) {
                                 array_push($tuesday1_stack, $t3);
                                 $tuesday1_queue = array_reverse($tuesday1_stack);
                             }
                             $k3 = count($tuesday1_queue);
                             //dd($tuesday1_queue[$k3 -1]->user_id);
-                            $counterx3 = DB::table('schedule_counts')->select('counter')->where("schedule_id",3)->first();
+                            $counterx3 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 3)->first();
 
-                            if($counterx3->counter < $client_limit->client_limit && $k3 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$tuesday1_queue[$k3-1]->user_id]])->get();
+                            if ($counterx3->counter < $client_limit->client_limit && $k3 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $tuesday1_queue[$k3 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice3());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','3'],['user_id','=',$tuesday1_queue[$k3-1]->user_id]])
+                                    ->where([['schedule_id', '=', '3'], ['user_id', '=', $tuesday1_queue[$k3 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -377,21 +397,21 @@ class UserScheduleController extends Controller
 
                             $tuesday2_queue = [];
 
-                            $x4 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",4)->get();
-                            foreach($x4 as $t4) {
+                            $x4 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 4)->get();
+                            foreach ($x4 as $t4) {
                                 array_push($tuesday2_stack, $t4);
                                 $tuesday2_queue = array_reverse($tuesday2_stack);
                             }
                             $k4 = count($tuesday2_queue);
                             //dd($tuesday1_queue[$k4 -1]->user_id);
-                            $counterx4 = DB::table('schedule_counts')->select('counter')->where("schedule_id",4)->first();
+                            $counterx4 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 4)->first();
 
-                            if($counterx4->counter < $client_limit->client_limit && $k4 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$tuesday2_queue[$k4-1]->user_id]])->get();
+                            if ($counterx4->counter < $client_limit->client_limit && $k4 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $tuesday2_queue[$k4 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice4());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','4'],['user_id','=',$tuesday2_queue[$k4-1]->user_id]])
+                                    ->where([['schedule_id', '=', '4'], ['user_id', '=', $tuesday2_queue[$k4 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -403,21 +423,21 @@ class UserScheduleController extends Controller
 
                             $wednesday1_queue = [];
 
-                            $x5 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",5)->get();
-                            foreach($x5 as $t5) {
+                            $x5 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 5)->get();
+                            foreach ($x5 as $t5) {
                                 array_push($wednesday1_stack, $t5);
                                 $wednesday1_queue = array_reverse($wednesday1_stack);
                             }
                             $k5 = count($wednesday1_queue);
                             //dd($wednesday1_queue[$k5 -1]->user_id);
-                            $counterx5 = DB::table('schedule_counts')->select('counter')->where("schedule_id",5)->first();
+                            $counterx5 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 5)->first();
 
-                            if($counterx5->counter < $client_limit->client_limit && $k5 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$wednesday1_queue[$k5-1]->user_id]])->get();
+                            if ($counterx5->counter < $client_limit->client_limit && $k5 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $wednesday1_queue[$k5 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice5());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','5'],['user_id','=',$wednesday1_queue[$k5-1]->user_id]])
+                                    ->where([['schedule_id', '=', '5'], ['user_id', '=', $wednesday1_queue[$k5 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -428,21 +448,21 @@ class UserScheduleController extends Controller
 
                             $wednesday2_queue = [];
 
-                            $x6 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",6)->get();
-                            foreach($x6 as $t6) {
+                            $x6 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 6)->get();
+                            foreach ($x6 as $t6) {
                                 array_push($wedensday2_stack, $t6);
                                 $wednesday2_queue = array_reverse($wednesday2_stack);
                             }
                             $k6 = count($wednesday2_queue);
                             //dd($wednesday2_queue[$k6 -1]->user_id);
-                            $counterx6 = DB::table('schedule_counts')->select('counter')->where("schedule_id",6)->first();
+                            $counterx6 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 6)->first();
 
-                            if($counterx6->counter < $client_limit->client_limit && $k6 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$wednesday2_queue[$k6-1]->user_id]])->get();
+                            if ($counterx6->counter < $client_limit->client_limit && $k6 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $wednesday2_queue[$k6 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice6());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','6'],['user_id','=',$wednesday2_queue[$k6-1]->user_id]])
+                                    ->where([['schedule_id', '=', '6'], ['user_id', '=', $wednesday2_queue[$k6 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -453,21 +473,21 @@ class UserScheduleController extends Controller
 
                             $thursday1_queue = [];
 
-                            $x7 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",7)->get();
-                            foreach($x7 as $t7) {
+                            $x7 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 7)->get();
+                            foreach ($x7 as $t7) {
                                 array_push($thursday1_stack, $t7);
                                 $thursday1_queue = array_reverse($thursday1_stack);
                             }
                             $k7 = count($thursday1_queue);
                             //dd($thursday1_queue[$k7 -1]->user_id);
-                            $counterx7 = DB::table('schedule_counts')->select('counter')->where("schedule_id",7)->first();
+                            $counterx7 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 7)->first();
 
-                            if($counterx7->counter < $client_limit->client_limit && $k7 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$thursday1_queue[$k7-1]->user_id]])->get();
+                            if ($counterx7->counter < $client_limit->client_limit && $k7 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $thursday1_queue[$k7 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice7());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','7'],['user_id','=',$thursday1_queue[$k7-1]->user_id]])
+                                    ->where([['schedule_id', '=', '7'], ['user_id', '=', $thursday1_queue[$k7 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -478,21 +498,21 @@ class UserScheduleController extends Controller
 
                             $thursday2_queue = [];
 
-                            $x8 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",8)->get();
-                            foreach($x8 as $t8) {
+                            $x8 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 8)->get();
+                            foreach ($x8 as $t8) {
                                 array_push($thursday2_stack, $t8);
                                 $thursday2_queue = array_reverse($thursday2_stack);
                             }
                             $k8 = count($thursday2_queue);
                             //dd($thursday2_queue[$k8 -1]->user_id);
-                            $counterx8 = DB::table('schedule_counts')->select('counter')->where("schedule_id",8)->first();
+                            $counterx8 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 8)->first();
 
-                            if($counterx8->counter < $client_limit->client_limit && $k8 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$thursday1_queue[$k8-1]->user_id]])->get();
+                            if ($counterx8->counter < $client_limit->client_limit && $k8 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $thursday1_queue[$k8 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice8());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','8'],['user_id','=',$thursday1_queue[$k8-1]->user_id]])
+                                    ->where([['schedule_id', '=', '8'], ['user_id', '=', $thursday1_queue[$k8 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -503,21 +523,21 @@ class UserScheduleController extends Controller
 
                             $friday1_queue = [];
 
-                            $x9 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",9)->get();
-                            foreach($x9 as $t9) {
+                            $x9 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 9)->get();
+                            foreach ($x9 as $t9) {
                                 array_push($friday1_stack, $t9);
                                 $friday1_queue = array_reverse($friday1_stack);
                             }
                             $k9 = count($friday1_queue);
                             //dd($friday1_queue[$k9 -1]->user_id);
-                            $counterx9 = DB::table('schedule_counts')->select('counter')->where("schedule_id",9)->first();
+                            $counterx9 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 9)->first();
 
-                            if($counterx9->counter < $client_limit->client_limit && $k9 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$friday1_queue[$k9-1]->user_id]])->get();
+                            if ($counterx9->counter < $client_limit->client_limit && $k9 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $friday1_queue[$k9 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice9());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','9'],['user_id','=',$thursday1_queue[$k9-1]->user_id]])
+                                    ->where([['schedule_id', '=', '9'], ['user_id', '=', $thursday1_queue[$k9 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -528,21 +548,21 @@ class UserScheduleController extends Controller
 
                             $friday2_queue = [];
 
-                            $x10 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",10)->get();
-                            foreach($x10 as $t10) {
+                            $x10 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 10)->get();
+                            foreach ($x10 as $t10) {
                                 array_push($friday2_stack, $t10);
                                 $friday2_queue = array_reverse($friday2_stack);
                             }
                             $k10 = count($friday2_queue);
                             //dd($friday2_queue[$k10 -1]->user_id);
-                            $counterx10 = DB::table('schedule_counts')->select('counter')->where("schedule_id",10)->first();
+                            $counterx10 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 10)->first();
 
-                            if($counterx10->counter < $client_limit->client_limit && $k10 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$friday2_queue[$k10-1]->user_id]])->get();
+                            if ($counterx10->counter < $client_limit->client_limit && $k10 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $friday2_queue[$k10 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice10());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','10'],['user_id','=',$friday2_queue[$k10-1]->user_id]])
+                                    ->where([['schedule_id', '=', '10'], ['user_id', '=', $friday2_queue[$k10 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -553,21 +573,21 @@ class UserScheduleController extends Controller
 
                             $saturday_queue = [];
 
-                            $x11 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",11)->get();
-                            foreach($x11 as $t11) {
+                            $x11 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 11)->get();
+                            foreach ($x11 as $t11) {
                                 array_push($saturday_stack, $t11);
                                 $saturday_queue = array_reverse($saturday_stack);
                             }
                             $k11 = count($saturday_queue);
                             //dd($saturday_queue[$k11 -1]->user_id);
-                            $counterx11 = DB::table('schedule_counts')->select('counter')->where("schedule_id",11)->first();
+                            $counterx11 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 11)->first();
 
-                            if($counterx11->counter < $client_limit->client_limit && $k11 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$saturday_queue[$k11-1]->user_id]])->get();
+                            if ($counterx11->counter < $client_limit->client_limit && $k11 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $saturday_queue[$k11 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice11());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','11'],['user_id','=',$saturday_queue[$k11-1]->user_id]])
+                                    ->where([['schedule_id', '=', '11'], ['user_id', '=', $saturday_queue[$k11 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -578,21 +598,21 @@ class UserScheduleController extends Controller
 
                             $sunday_queue = [];
 
-                            $x12 = DB::table('waiting_queues')->select('user_id')->where("schedule_id",12)->get();
-                            foreach($x12 as $t12) {
+                            $x12 = DB::table('waiting_queues')->select('user_id')->where("schedule_id", 12)->get();
+                            foreach ($x12 as $t12) {
                                 array_push($sunday_stack, $t12);
                                 $sunday_queue = array_reverse($sunday_stack);
                             }
                             $k12 = count($sunday_queue);
                             //dd($sunday_queue[$k12 -1]->user_id);
-                            $counterx12 = DB::table('schedule_counts')->select('counter')->where("schedule_id",12)->first();
+                            $counterx12 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 12)->first();
 
-                            if($counterx12->counter < $client_limit->client_limit && $k12 > 0){
-                                $system_user = SystemUser::where([['role_id','=',2],['id','=',$sunday_queue[$k12-1]->user_id]])->get();
+                            if ($counterx12->counter < $client_limit->client_limit && $k12 > 0) {
+                                $system_user = SystemUser::where([['role_id', '=', 2], ['id', '=', $sunday_queue[$k12 - 1]->user_id]])->get();
                                 Notification::send($system_user, new WaitListNotice12());
 
                                 DB::table('waiting_queues')
-                                    ->where([['schedule_id','=','12'],['user_id','=',$sunday_queue[$k12-1]->user_id]])
+                                    ->where([['schedule_id', '=', '12'], ['user_id', '=', $sunday_queue[$k12 - 1]->user_id]])
                                     ->delete();
                             } //pop the top element from queue
 
@@ -601,7 +621,7 @@ class UserScheduleController extends Controller
                         }
                         $i++;
                     }//end if of inspect checking
-                    else{ //client limit exceeded
+                    else { //client limit exceeded
 
                         Session::flash('msgfail2', 'Schedule Client Limit In Schedule => ' . $s . ' Exceeded..');
 
@@ -617,7 +637,7 @@ class UserScheduleController extends Controller
                         $wait->save(); */
 
                         WaitingQueue::updateOrCreate(
-                            ['schedule_id' =>  $new_selections[$i]], ['user_id' =>$current_user->id]
+                            ['schedule_id' => $new_selections[$i]], ['user_id' => $current_user->id]
                         );
 
                         $i++;
@@ -626,9 +646,14 @@ class UserScheduleController extends Controller
 
                 }//end of while loop
             }// end if
-        else {
+            else {
+                Session::flash('msgfail', 'Schedules Updating Is Failed! Try again..');
+            }
+        }
+        else{
             Session::flash('msgfail', 'Schedules Updating Is Failed! Try again..');
         }
+
         return redirect()->back();
     }//update
 
