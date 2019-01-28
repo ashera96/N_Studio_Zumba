@@ -52,7 +52,7 @@
                                 classes<span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item {{Request::is('home/schedule') ? "active" : ""}}">
+                        <li class="nav-item active {{Request::is('home/schedule') ? "active" : ""}}">
                             <a class="nav-link " href="/home/schedule">
                                 schedule<span class="sr-only">(current)</span>
                             </a>

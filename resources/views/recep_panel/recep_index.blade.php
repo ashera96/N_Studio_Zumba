@@ -52,7 +52,7 @@
 
 
 
-                <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0">
+                <div class="col-sm-8 offset-sm-2 col-xs-12 offset-xs-0" style="margin-left: 275px;">
                     <div class="row">
                         <div class="col-lg-10">
                             <div class="about-opening">

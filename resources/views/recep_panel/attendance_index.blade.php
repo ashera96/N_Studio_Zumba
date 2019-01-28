@@ -67,6 +67,12 @@
                     <div>
                         <div>
                             <br>
+                            @if(session('message4'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type=" button" class="close" data-dismiss="alert">x</button>
+                                    {{session('message4')}}
+                                </div>
+                            @endif
                             <div class="col-md-12" align="center">
                                 <div class="row mb-0">
                                     <div class="card overview-block pad30 rounded">
@@ -158,6 +164,7 @@
             <!-- /.row -->
         </div>
     </div>
+</div>
 
     @endsection
 

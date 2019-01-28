@@ -36,7 +36,7 @@
         function addSelectedPackage(packageId){
             var confirm_add = confirm("Confirm Selection?");
             if ( confirm_add == true ){
-                var data = $('#'+packageId+'f').serialize();
+                var data = $('#'+packageId+'f').serialize();  // Serializing form data of the selected button
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
@@ -79,6 +79,7 @@
                     }
                 };
 
+                // user_id is common to all packages
                 var userId = document.getElementById("user_id").value;
                 xhttp.open("GET", "/home/delete_package/"+userId, true);
                 xhttp.send();
@@ -337,6 +338,7 @@
     <!--pricing area end-->
 
     <script>
+        // Calling the onload() javascript function to get the currently selected package if any for the logged in user
         onLoad();
     </script>
 

@@ -28,7 +28,7 @@
                         <div class="col-md-8 offset-md-2">
                             <div class="contact-form mt20">
                                 <div class="appointment-schedule">
-                                    <form action="{{route('class_packages.update', $package->id)}}" class="appointment-form" method="POST">
+                                    <form action="{{route('class_packages.update', $package->id)}}" class="appointment-form" method="POST"> {{--update method in PackageController--}}
                                         @csrf
                                         @method('PUT')
                                         <div class="row">

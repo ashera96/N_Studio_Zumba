@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-2 col-md-3 ">
+        <div class="col-lg-2 col-md-3 sideFix">
             <div class="list-group shadow-sm">
                 <a href="/recep/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                 <a href="/recep/profile" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Profile</a>
@@ -22,7 +22,7 @@
         </div>
         <!--Sidebar-area end-->
 
-        <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 ">
+        <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 mainFix">
             <div class="col-lg-10 col-md-9 mar30" style="margin-left: 140px">
 
 

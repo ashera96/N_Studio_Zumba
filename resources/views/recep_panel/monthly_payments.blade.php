@@ -2,8 +2,9 @@
 
 @section('content');
 
-
+{{--Horizontal Sidebar start--}}
 @extends('layouts.hori_sidebar');
+{{--Horizontal Sidebar end--}}
 
 <script>
     // Javascript function to refresh the page daily
@@ -12,7 +13,7 @@
     }
 
     // Calling the function
-    window.onload = timeRefresh(86400000);//Days in milliseconds
+    window.onload = timeRefresh(86400000);//Day in milliseconds
 </script>
 
 <!--Receptionist monthly payment-area start-->
@@ -20,8 +21,10 @@
     <div class="container-fluid">
 
         <div class="row">
-            @extends('layouts.recep_vertical_sidebar');
 
+            {{--Vertical Sidebar start--}}
+            @extends('layouts.recep_vertical_sidebar');
+            {{--Vertical Sidebar end--}}
 
             <div class="col-lg-10 col-md-9 mar30 mb-5">
 
@@ -34,7 +37,7 @@
                 @endif
                 {{--Flash message for success in payment end--}}
 
-                {{--Flash message for success in data refresh--}}
+                {{--Flash message for success in data refresh start--}}
                 @if (session('msg_abt_refresh'))
                     <div class="alert alert-success ml90 fs-15" role="alert">
                         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -76,11 +79,11 @@
 
                         {{--Displaying current month and year start--}}
                         <div class="panel panel-default ml-5">
-                            <table class="table shadow-sm mb-5" width="50%" style="font-size: 25px;">
+                            <table class="table shadow-sm mb-5" style="font-size: 25px;">
                                 <thead>
                                     <tr>
                                         <th class="text-center">{{ now()->format('F') }}</th> {{--Retrieving the current month--}}
-                                        <th>{{ now()->year }}</th>
+                                        <th>{{ now()->year }}</th>{{--Retrieving the current year--}}
                                     </tr>
                                 </thead>
                             </table>
@@ -91,13 +94,13 @@
                             <div class="panel-body">
                                 <table class="table table-striped table-hover" width="80%"  >
                                     <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Username</th>
-                                        <th>Email</th>
-                                        <th>Amount</th>
-                                        <th></th>
-                                    </tr>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Amount</th>
+                                            <th></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
 

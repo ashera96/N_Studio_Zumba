@@ -155,27 +155,26 @@ class RecepMainController extends Controller
                     array_push($data_name,$not_paid_list[$i]->name);
                     array_push($data_amount,$not_paid_list[$i]->amount);
                 }
-            }
 
-            // Forming the associative array
-            $data = [
-                'name' => $data_name,
-                'amount' => $data_amount
-            ];
+                // Forming the associative array
+                $data = [
+                    'name' => $data_name,
+                    'amount' => $data_amount
+                ];
 //            dd($data);
 
-            //Sending mail to admin
-            Mail::send('email.payment_delay_report',$data,function($report)use($data){
-                $admin = DB::table('system_users')
-                    ->where('role_id',1)
-                    ->first();
-                $report->to($admin->email);
-                $report->subject('Payment delay list for the month of '.date('F'));
-            });
+                //Sending mail to admin
+                Mail::send('email.payment_delay_report',$data,function($report)use($data){
+                    $admin = DB::table('system_users')
+                        ->where('role_id',1)
+                        ->first();
+                    $report->to($admin->email);
+                    $report->subject('Payment delay list for the month of '.date('F'));
+                });
 
-            Session::flash('msg_to_admin', 'Payment delay list sent to admin successfully!');
+                Session::flash('msg_to_admin', 'Payment delay list sent to admin successfully!');
 
-
+            }
 
 //            Delete entries in user_payments table if any exists
             DB::table('user_payments') -> truncate(); // truncate - Auto-increment id is reassigned to 1
