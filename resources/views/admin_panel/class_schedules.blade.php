@@ -34,12 +34,39 @@
                                     <div class="tab-content1">
                                         <div class="tab-pane1 fade active show">
                                             @if(count($schedule_monday)>0)
-                                                <div class="schdl-box1">
+                                                {{--<div class="schdl-box1">--}}
+                                                    {{--<h5>1</h5>--}}
+                                                    {{--<h5>{{$schedule_monday[0]->type}}</h5>--}}
+                                                    {{--<p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>--}}
+                                                    {{--<p class="mb-0">Count: {{$schedule_monday1_count->counter}}/{{$schedule_limit->client_limit}}</p>--}}
+                                                {{--</div>--}}
+
+                                                <div class="schdl-box1" data-toggle="modal" data-target="#myModal">
                                                     <h5>1</h5>
                                                     <h5>{{$schedule_monday[0]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>
                                                     <p class="mb-0">Count: {{$schedule_monday1_count->counter}}/{{$schedule_limit->client_limit}}</p>
                                                 </div>
+
+                                                <div class="modal fade" id="myModal">
+                                                    <div class="modal-dialog modal-sm">
+                                                        <div class="modal-content">
+
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <button type="button" class="close" data-dismiss="modal">×</button>
+                                                            </div>
+
+                                                            <div class="modal-body" style="color: black">
+                                                                @foreach($users11 as $u)
+                                                                    <li>{{$u->username}}</li>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
                                                 <div class="schdl-box1">
                                                     <h5>2</h5>
                                                     <h5>{{$schedule_monday[1]->type}}</h5>

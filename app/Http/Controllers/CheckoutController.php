@@ -23,10 +23,11 @@ class CheckoutController extends Controller
 
         $charge = Charge::create(array(
             'customer' => $customer->id,
-            'amount'   => ($request->amount)*0.0055*100, // Rupees to LKR
+            'amount'   => ($request->amount)*0.0055*100, // Rupees(LKR) to USD
             'currency' => 'usd'
         ));
 
+//        Updating the payment_status column in the user_payments table to 1 ( indicates payment settled )
         $user_payment = UserPayment::where('user_id','=',Auth::user()->id)
             ->first()
             ->update(['payment_status'=>1]);

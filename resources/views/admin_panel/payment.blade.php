@@ -37,6 +37,15 @@
                     @endif
                     {{--Flash message for success in payment end--}}
 
+                    {{--Flash message for success in payment start--}}
+                    @if (session('msg_paid'))
+                        <div class="alert alert-success ml90 fs-15" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msg_paid') }}
+                        </div>
+                    @endif
+                    {{--Flash message for success in payment end--}}
+
 
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">

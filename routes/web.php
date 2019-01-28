@@ -52,10 +52,14 @@ Route::post('/index/contact','MessagesController@submit');
 Route::prefix('home')->group(function() {
     Route::get('/about', 'CustomerPageController@show_about')->middleware('customer','prevent_back_history');
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer','prevent_back_history');
+
+    //Routes for package module start
     Route::get('/class_packages', 'PackageController@customer')->middleware('customer','prevent_back_history');
     Route::post('/add_package', 'UserPackageController@create')->middleware('customer','prevent_back_history');
     Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer','prevent_back_history');
     Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer','prevent_back_history');
+    //Routes for package module end
+
     Route::get('/schedule', 'UserScheduleController@index')->middleware('customer','prevent_back_history');
     Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer','prevent_back_history');
     Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer','prevent_back_history');
@@ -79,37 +83,43 @@ Route::prefix('home')->group(function() {
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->group(function() {
-    Route::resource('/receptionist','ReceptionistController')->middleware('admin');
+    Route::resource('/receptionist','ReceptionistController')->middleware('admin','prevent_back_history');
    // Route::resource('/uploada','UploadController')->middleware('admin');
-    Route::get('/customers','UserController@show_user_index')->middleware('admin');
-    Route::resource('/customers', 'UserController')->middleware('admin');
-    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin');
-    Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin');
-    Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin');
-    Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin');
-    Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin');
+    Route::get('/customers','UserController@show_user_index')->middleware('admin','prevent_back_history');
+    Route::resource('/customers', 'UserController')->middleware('admin','prevent_back_history');
+
+
+//    Class Packages related routes start
+    Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin','prevent_back_history');
+    Route::get('/delete_package/{id}', 'PackageController@delete')->middleware('admin','prevent_back_history');
+//    Class Packages related routes end
+
+    Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin','prevent_back_history');
+    Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin','prevent_back_history');
+    Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin','prevent_back_history');
+    Route::post('dashboard/receptionist','ReceptionistController@store')->middleware('admin','prevent_back_history');
     //routes for notification scenario
-    Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin');
-    Route::get('/show_posts','PostController@index')->name('admin_panel.show_posts')->middleware('admin');
-    Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin');
-    Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin');
-    Route::post('/create_post','PostController@store')->middleware('admin');
-    Route::get('/create_notifications/{id}/update','PostController@update')->middleware('admin');
-    Route::put('/create_notifications/{id}/update','PostController@edit')->name('post.edit')->middleware('admin');
-    Route::resource('/show_posts','PostController')->middleware('admin');
-    Route::get('/send_health_advices','MedicalAdviceController@index')->middleware('admin');
-    Route::post('/create_medical_advice','MedicalAdviceController@store')->middleware('admin');
+    Route::get('/create_notifications','NotificationController@index')->name('admin_panel.create_notifications')->middleware('admin','prevent_back_history');
+    Route::get('/show_posts','PostController@index')->name('admin_panel.show_posts')->middleware('admin','prevent_back_history');
+    Route::post('/create_health_tips','NotificationController@store_health_tips')->middleware('admin','prevent_back_history');
+    Route::post('/create_general_notifications','NotificationController@store_general_news')->middleware('admin','prevent_back_history');
+    Route::post('/create_post','PostController@store')->middleware('admin','prevent_back_history');
+    Route::get('/create_notifications/{id}/update','PostController@update')->middleware('admin','prevent_back_history');
+    Route::put('/create_notifications/{id}/update','PostController@edit')->name('post.edit')->middleware('admin','prevent_back_history');
+    Route::resource('/show_posts','PostController')->middleware('admin','prevent_back_history');
+    Route::get('/send_health_advices','MedicalAdviceController@index')->middleware('admin','prevent_back_history');
+    Route::post('/create_medical_advice','MedicalAdviceController@store')->middleware('admin','prevent_back_history');
     //end of routes for notifications
-    Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
-    Route::get('/schedules','AdminController@show_schedules')->middleware('admin');
-    Route::get('/reports','WeightController@show_weight_index')->middleware('admin');
-    Route::resource('/reports','WeightController')->middleware('admin');
-    Route::get('dashboard/reports','WeightController@create')->name('admin_panel.add_weight')->middleware('admin');
-    Route::post('dashboard/reports','WeightController@store')->middleware('admin');
+    Route::get('dashboard/admin_gallery', 'AdminController@show_gallery','prevent_back_history');
+    Route::get('/schedules','AdminController@show_schedules')->middleware('admin','prevent_back_history');
+    Route::get('/reports','WeightController@show_weight_index')->middleware('admin','prevent_back_history');
+    Route::resource('/reports','WeightController')->middleware('admin','prevent_back_history');
+    Route::get('dashboard/reports','WeightController@create')->name('admin_panel.add_weight')->middleware('admin','prevent_back_history');
+    Route::post('dashboard/reports','WeightController@store')->middleware('admin','prevent_back_history');
     //Route::get('/weight_view','WeightController@view')->middleware('admin');
 
-    Route::get('/reports_attendance','AttendanceController@show_attendance_index')->middleware('admin');
-    Route::resource('/reports_attendance','AttendanceController')->middleware('admin');
+    Route::get('/reports_attendance','AttendanceController@show_attendance_index')->middleware('admin','prevent_back_history');
+    Route::resource('/reports_attendance','AttendanceController')->middleware('admin','prevent_back_history');
 
     Route::get('/markasactive/{id}','UserController@UpdateCustomerActive');
     Route::get('/markasnotactive/{id}','UserController@UpdateCustomerNotActive');
@@ -131,9 +141,10 @@ Route::prefix('admin')->group(function() {
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
 
-    Route::get('/payments','PaymentController@load_receptionists')->middleware('admin');
-    Route::get('/salary_payment/{id}','PaymentController@update_payment_status')->middleware('admin');
-
+//    Payment related routes start
+    Route::get('/payments','PaymentController@load_receptionists')->middleware('admin','prevent_back_history');
+    Route::get('/salary_payment/{id}','PaymentController@update_payment_status')->middleware('admin','prevent_back_history');
+//    Payment related routes end
 
     Route::any('/reports/search',function(){
         $search = Input::get ('search');
@@ -173,29 +184,32 @@ Route::prefix('admin')->group(function() {
 */
 
 Route::prefix('recep')->group(function() {
-    Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist');
-    Route::resource('/profile','ReceptionistController')->middleware('receptionist');
+    Route::get('/dashboard','RecepMainController@show_recep_dash')->middleware('receptionist','prevent_back_history');
+    Route::resource('/profile','ReceptionistController')->middleware('receptionist','prevent_back_history');
 
-    Route::resource('/cusprofile', 'UserController')->middleware('receptionist');
+    Route::resource('/cusprofile', 'UserController')->middleware('receptionist','prevent_back_history');
 
     //Route::resource('/customers', 'UserController')->middleware('receptionist');
 
-    Route::get('/fees','UserController@index2')->middleware('receptionist');
-    Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist');
-    Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist');
+    Route::get('/fees','UserController@index2')->middleware('receptionist','prevent_back_history');
+    Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist','prevent_back_history');
 
     Route::get('/markpay/{id}','UserController@PayRegFees');
     Route::get('/markrefund/{id}','UserController@RefundRegFees');
 
 
-    Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist');
+    // Monthly Payment Routes start
+    Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist','prevent_back_history');
+    Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist','prevent_back_history');
+    // Monthly Payment Routes end
 
-    Route::resource('/recep_reports','WeightController')->middleware('receptionist');
-    Route::get('dashboard/recep_reports','WeightController@create')->name('recep_panel.add_weight')->middleware('receptionist');
-    Route::post('dashboard/recep_reports','WeightController@store')->middleware('receptionist');
+
+    Route::resource('/recep_reports','WeightController')->middleware('receptionist','prevent_back_history');
+    Route::get('dashboard/recep_reports','WeightController@create')->name('recep_panel.add_weight')->middleware('receptionist','prevent_back_history');
+    Route::post('dashboard/recep_reports','WeightController@store')->middleware('receptionist','prevent_back_history');
     //Route::get('/weight_view','WeightController@view')->middleware('receptionist');
 
-    Route::resource('/recep_reports_attendance','AttendanceController')->middleware('receptionist');
+    Route::resource('/recep_reports_attendance','AttendanceController')->middleware('receptionist','prevent_back_history');
     Route::delete('recep_reports/{id}/{month}/{year}', 'WeightController@destroy')->name('recep_reports.destroy');
     Route::delete('recep_reports_attendance/{id}/{month}/{year}', 'AttendanceController@destroy')->name('recep_reports_attendance.destroy');
     Route::get('/increTot/{id}/{month}/{year}','AttendanceController@UpdateTotal');

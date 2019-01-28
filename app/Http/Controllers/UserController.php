@@ -29,7 +29,7 @@ class UserController extends Controller
                 ->join('system_users', 'users.id', '=', 'system_users.id')
                 ->select('system_users.*', 'users.*')
                 //->get();
-                ->paginate(2);
+                ->paginate(5);
 
 
             return view('admin_panel.user_index', ['users' => $new]);
@@ -39,7 +39,7 @@ class UserController extends Controller
                 ->join('system_users', 'users.id', '=', 'system_users.id')
                 ->select('system_users.*', 'users.*')
                 //->get();
-                ->paginate(2);
+                ->paginate(5);
 
 
             return view('recep_panel.user_index', ['users' => $new]);
