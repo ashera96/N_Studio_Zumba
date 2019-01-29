@@ -16,6 +16,7 @@
         .pagination > li.active > a,
         .pagination > li.active > span {
             color: #000 !important;
+            border: solid 1px #707d82!important;
         }
     </style>
 
@@ -71,12 +72,12 @@
                                                     <td>
                                                         <div class="row">
                                                             <div class="col">
-                                                                <a href="{{url('admin/create_notifications/'.$post->id.'/update')}}"><button class="editbtn" >UPDATE</button></a>
+                                                                <a href="{{url('admin/create_notifications/'.$post->id.'/update')}}"><button class="btn btn-success" >UPDATE</button></a>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <button type="button" class="delbtn" data-toggle="modal" data-target="#myModal-{{ $post->id }}">DELETE</button>
+                                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal-{{ $post->id }}">DELETE</button>
                                                         <!--modal-->
                                                         <div class="modal fade" id="myModal-{{ $post->id }}">
                                                             <div class="modal-dialog">
@@ -88,8 +89,8 @@
                                                                     </div>
 
                                                                     <!-- Modal body -->
-                                                                    <div class="modal-body" style="color: black">
-                                                                        <b>Are you sure you want to delete this post?</b>
+                                                                    <div class="modal-body">
+                                                                        <p>Are you sure you want to delete this post?</p>
                                                                     </div>
 
                                                                     <!-- Modal footer -->
@@ -99,9 +100,9 @@
                                                                             <form method="POST" action="{{action('PostController@destroy',$post->id)}}">
                                                                                 @csrf
                                                                                 {{ method_field('DELETE') }}
-                                                                                <button type="submit" class="delbtn mr-1">Yes</button>
+                                                                                <button type="submit" class="btn btn-danger mr-1 mb-0" style="height: 35px;">Yes</button>
                                                                             </form>
-                                                                            <button type="button" class="delbtn ml-1" data-dismiss="modal">No</button>
+                                                                            <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">No</button>
                                                                         </div>
                                                                     </div>
 
