@@ -52,6 +52,42 @@
                         </div>
                         <div>
                             <br>
+
+                            @if (session('msgb'))
+                                <div class="alert alert-success" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgb') }}
+                                </div>
+                            @endif
+
+                            @if (session('msgd'))
+                                <div class="alert alert-success" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgd') }}
+                                </div>
+                            @endif
+
+                            @if (session('msgf'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgf') }}
+                                </div>
+                            @endif
+
+                            @if (session('message2'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('message2') }}
+                                </div>
+                            @endif
+
+                            @if (session('msgy'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgy') }}
+                                </div>
+                            @endif
+
                             @if(session('message3'))
                                 <div class="alert alert-danger" role="alert">
                                     <button type=" button" class="close" data-dismiss="alert">x</button>

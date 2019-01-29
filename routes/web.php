@@ -156,7 +156,7 @@ Route::prefix('admin')->group(function() {
         if(count($weight) > 0)
             return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);
         else
-            Session::flash('message','No details found. Please try again!');
+            Session::flash ( 'message', 'No Users found. Please try your search again !' );
         return redirect('/admin/reports');
     });
 
@@ -167,9 +167,9 @@ Route::prefix('admin')->group(function() {
             //->orWhere('year','LIKE','%'.$title.'%')
             ->get();
         if(count($attendance) > 0)
-            return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
+            return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);//magic function is equal to ('weight',$details)
         else
-            Session::flash('message1','No details found. Please try again!');
+            Session::flash ( 'message1', 'No Users found. Please try your search again !' );
         return redirect('/admin/reports_attendance');
     });
 });
@@ -246,7 +246,7 @@ Route::prefix('recep')->group(function() {
         if(count($weight) > 0)
             return view('recep_panel.weight_show')->withDetails($weight)->withQuery ($search);
         else
-            Session::flash('message3','No details found. Please try again!');
+            Session::flash ( 'message2', 'No Details found. Please try your search again !' );
         return redirect('/recep/recep_reports');
     });
 
@@ -259,7 +259,7 @@ Route::prefix('recep')->group(function() {
         if(count($attendance) > 0)
             return view('recep_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
         else
-            Session::flash('message4','No details found. Please try again!');
+            Session::flash ( 'message3', 'No Details found. Please try your search again !' );
         return redirect('/recep/recep_reports_attendance');
     });
 

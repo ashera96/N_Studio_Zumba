@@ -67,6 +67,49 @@
                     <div>
                         <div>
                             <br>
+
+                            @if (session('msgj'))
+                                <div class="alert alert-success" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgj') }}
+                                </div>
+                            @endif
+
+                            @if (session('message3'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('message3') }}
+                                </div>
+                            @endif
+
+                            @if (session('msgl'))
+                                <div class="alert alert-success" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgl') }}
+                                </div>
+                            @endif
+
+                            @if (session('msgn'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgn') }}
+                                </div>
+                            @endif
+
+                            @if (session('msgw'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgw') }}
+                                </div>
+                            @endif
+
+                            @if (session('msgB'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgB') }}
+                                </div>
+                            @endif
+
                             @if(session('message4'))
                                 <div class="alert alert-danger" role="alert">
                                     <button type=" button" class="close" data-dismiss="alert">x</button>
