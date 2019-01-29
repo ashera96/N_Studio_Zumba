@@ -73,7 +73,7 @@
                                     <div class="form-group row mb-0">
                                         <div class="row">
                                             <div class="col-md-6 offset-md-4">
-                                                <button type="submit" class="btn active btn-primary" id="create1" style="margin-left: 330px">
+                                                <button type="submit" class="btn active btn-primary" id="create1">
                                                     {{ __('Create') }}
                                                 </button>
                                             </div>
@@ -114,7 +114,7 @@
                                     <div class="form-group row mb-0">
                                         <div class="row">
                                             <div class="col-md-6 offset-md-4">
-                                                <button type="submit" class="btn active btn-primary" id="create1" style="margin-left: 330px">
+                                                <button type="submit" class="btn active btn-primary" id="create1">
                                                     {{ __('Create') }}
                                                 </button>
                                             </div>
@@ -172,7 +172,7 @@
                                     <div class="form-group row mb-0">
                                         <div class="row">
                                             <div class="col-md-6 offset-md-4">
-                                                <button type="submit" class="btn active btn-primary" id="create1" style="margin-left: 330px">
+                                                <button type="submit" class="btn active btn-primary" id="create1">
                                                     {{ __('Create') }}
                                                 </button>
                                             </div>
@@ -182,7 +182,7 @@
                                 </div>
 
                             </form>
-                            <div class="row"style="margin-left: 430px">
+                            <div class="row"style="margin-left: 515px">
                                 <a href="/admin/show_posts"><button class="btn active btn-primary" >View Posts</button></a>
                             </div>
 

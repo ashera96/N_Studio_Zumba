@@ -53,11 +53,11 @@
                     </div>
 
                     <!--packages area start-->
-                    <div class="row float-right pad30">
+                    <div class="row pad30 float-right pb-0" style="margin-bottom: -70px; margin-top: -40px;margin-right: 120px;">
                         <a href="/index/class_packages/create" class="btn active btn-primary " style="font-size: large; height: 40px; width: 150px">Add</a>
                     </div>
                     <div class="pricing-area text-center pad30 col-md-10 px-4 ml-4">
-                        <div class="container">
+                        <div class="container" style="margin-left: 110px;">
 
                             <div class="row">
 
