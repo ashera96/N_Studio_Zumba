@@ -87,11 +87,15 @@
                                                             <a href="/index/class_packages/{{$package->id}}/edit" class="btn btn-primary">Edit</a>
                                                         </div>
                                                         <div class="price-btn bttn">
-                                                            <form method="POST" action="{{route('class_packages.destroy',$package->id)}}">
+                                                            <form action="{{url('/admin/delete_package',$package->id)}}" method="GET">
                                                                 @csrf
-                                                                @method('DELETE')
-                                                                <button type="submit" class="btn button-delete">Delete</button>
+                                                                <button type="submit" class="btn btn-delete">Delete</button>
                                                             </form>
+                                                            {{--<form method="POST" action="{{route('class_packages.destroy',$package->id)}}">--}}
+                                                                {{--@csrf--}}
+                                                                {{--@method('DELETE')--}}
+                                                                {{--<button type="submit" class="btn button-delete">Delete</button>--}}
+                                                            {{--</form>--}}
                                                         </div>
 
                                                     </div>

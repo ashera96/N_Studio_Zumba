@@ -117,7 +117,7 @@
                                                         @if(!$receptionist->status)
                                                             <a href="markasactive/{{$receptionist->id}}"><button class="activebtn" style="width: 60px">Activate</button></a>
                                                         @else
-                                                            <a href="markasnotactive/{{$receptionist->id}}" ><button class="inactivebtn" style="width: 60px">Deactivate</button></a>
+                                                            <a href="markasnotactive/{{$receptionist->id}}" ><button class="inactivebtn" style="width: 65px">Deactivate</button></a>
                                                         @endif
 
                                                     </td>

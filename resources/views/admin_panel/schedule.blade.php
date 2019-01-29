@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_app')
+@extends('layouts.dashboard_app');
 
 
 
@@ -139,7 +139,7 @@
                     </div>
 
                     <!--schedule-area start-->
-                    <div class="schedule-area parallax pad90">
+                    <div class="schedule-area parallax ">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">

@@ -21,69 +21,75 @@
 
     {{--JS functions related to packages start--}}
     <script>
+        function confirm_selection(packageId){
+            var data = $('#'+packageId+'f').serialize();  // Serializing form data of the selected button
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // catch JSON response
+                    // var temp=JSON.parse(this.response);
+                    // Use Json response
+                    document.getElementById(packageId+'b').innerHTML = "Cancel";
+                    document.getElementById(packageId).setAttribute('class','price-box selected-package');
+                    onLoad();
+                    $('#add-modal').modal('hide')
+                    // alert(this.response);
+                }
+            };
+
+            xhttp.open("POST", "/home/add_package", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(data);
+        }
+
+        function confirm_deletion(){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // catch JSON response
+                    var temp=JSON.parse(this.response);
+                    // Use Json response
+                    // alert(temp.success);
+                    for (var i=1;i<=4;i++){
+                        document.getElementById(i+'b').innerHTML = "Buy Now";
+                        document.getElementById(i+'b').setAttribute('class','btn btn-primary');
+                        document.getElementById(i).setAttribute('class','price-box');
+                    }
+                    $('#delete-modal').modal('hide')
+
+                    // alert(this.response);
+                }
+            };
+
+            // user_id is common to all packages
+            var userId = document.getElementById("user_id").value;
+            xhttp.open("GET", "/home/delete_package/"+userId, true);
+            xhttp.send();
+        }
         // Function called when the button is clicked
-        function buttonClicked(packageId) {
+        function buttonClicked(packageId,packageName) {
             var buttonType = document.getElementById(packageId+'b').innerHTML;
             if(buttonType=="Cancel"){
-                removeSelectedPackage();
+                removeSelectedPackage(packageName);
             }
             else{
-                addSelectedPackage(packageId);
+                addSelectedPackage(packageId,packageName);
             }
         }
 
         // Function to add the selection start
-        function addSelectedPackage(packageId){
-            var confirm_add = confirm("Confirm Selection?");
-            if ( confirm_add == true ){
-                var data = $('#'+packageId+'f').serialize();
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        // catch JSON response
-                        // var temp=JSON.parse(this.response);
-                        // Use Json response
-                        document.getElementById(packageId+'b').innerHTML = "Cancel";
-                        document.getElementById(packageId).setAttribute('class','price-box selected-package');
-                        onLoad();
-
-                        // alert(this.response);
-                    }
-                };
-
-                xhttp.open("POST", "/home/add_package", true);
-                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhttp.send(data);
-            }
+        function addSelectedPackage(packageId,packageName){
+            $('#add-modal').modal('show')
+            document.getElementById('add-body').innerHTML = '<p>Are you sure you want to select <b>'+packageName+'</b> package?</p>'
+            document.getElementById('add').innerHTML = '<button type="button" class="btn btn-success mr-1 mb-0" style="height: 35px;" onclick="confirm_selection(\''+packageId+'\')">OK</button>'
         }
         // Function to add the selection end
 
         // Function to delete the selection start
-        function removeSelectedPackage(){
-            var confirm_deletion = confirm("Confirm Deletion?");
-            if( confirm_deletion == true){
-                var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        // catch JSON response
-                        var temp=JSON.parse(this.response);
-                        // Use Json response
-                        alert(temp.success);
-                        for (var i=1;i<=4;i++){
-                            document.getElementById(i+'b').innerHTML = "Buy Now";
-                            document.getElementById(i+'b').setAttribute('class','btn btn-primary');
-                            document.getElementById(i).setAttribute('class','price-box');
-                        }
-
-                        // alert(this.response);
-                    }
-                };
-
-                var userId = document.getElementById("user_id").value;
-                xhttp.open("GET", "/home/delete_package/"+userId, true);
-                xhttp.send();
-            }
-
+        function removeSelectedPackage(packageName){
+            $('#delete-modal').modal('show')
+            document.getElementById('delete-body').innerHTML = '<p>Are you sure you want to remove <b>'+packageName+'</b> package selection?</p>'
+            document.getElementById('delete').innerHTML = '<button type="button" class="btn btn-success mr-1 mb-0" style="height: 35px;" onclick="confirm_deletion()">OK</button>'
         }
         // Function to delete the selection end
 
@@ -117,6 +123,67 @@
 
     </script>
     {{--JS functions related to packages end--}}
+
+    <div class="modal fade" id="add-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: black">Package Selection</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div id="add-body">
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+                    <div class="row">
+
+                        <div id="add">
+                        </div>
+                        <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="delete-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: black">Remove Selection</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" style="color: black">
+                    <div id="delete-body">
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+                    <div class="row">
+
+                        <div id="delete">
+                        </div>
+                        <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
     <header class="header fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -319,7 +386,7 @@
                                                 <input type="hidden" id="user_id" name="user_id" value="{{Auth::user()->id}}">
                                                 <input type="hidden" id="package_id" name="package_id" value="{{$package->id}}">
                                             </form>
-                                            <a href="#" class="btn btn-primary" name="buy" id={{$package->id.'b'}} onclick="buttonClicked({{$package->id}})">Buy Now</a>
+                                            <a href="#" class="btn btn-primary" name="buy" id={{$package->id.'b'}} onclick="buttonClicked({{$package->id}},'{{$package->name}}')">Buy Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -337,6 +404,7 @@
     <!--pricing area end-->
 
     <script>
+        // Calling the onload() javascript function to get the currently selected package if any for the logged in user
         onLoad();
     </script>
 

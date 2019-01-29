@@ -1,4 +1,4 @@
-@extends('layouts.admin_app');
+@extends('layouts.recep_app');
 
 @section('content')
 
@@ -61,7 +61,7 @@
                                                     @if(!$user->regstatus)
                                                         <a href="markpay/{{$user->id}}"><button class="activebtn">Pay</button></a>
                                                     @else
-                                                        <a href="markrefund/{{$user->id}}" ><button class="inactivebtn">Refund</button></a>
+                                                        <a href="markrefund/{{$user->id}}" ><button class="inactivebtn">Undo</button></a>
                                                     @endif
 
                                                 </td>

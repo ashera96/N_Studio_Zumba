@@ -52,10 +52,14 @@ Route::post('/index/contact','MessagesController@submit');
 Route::prefix('home')->group(function() {
     Route::get('/about', 'CustomerPageController@show_about')->middleware('customer','prevent_back_history');
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer','prevent_back_history');
+
+    //Routes for package module start
     Route::get('/class_packages', 'PackageController@customer')->middleware('customer','prevent_back_history');
     Route::post('/add_package', 'UserPackageController@create')->middleware('customer','prevent_back_history');
     Route::get('/add_package/{id}', 'UserPackageController@on_load')->middleware('customer','prevent_back_history');
     Route::get('/delete_package/{id}', 'UserPackageController@delete')->middleware('customer','prevent_back_history');
+    //Routes for package module end
+
     Route::get('/schedule', 'UserScheduleController@index')->middleware('customer','prevent_back_history');
     Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer','prevent_back_history');
     Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer','prevent_back_history');
@@ -102,7 +106,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/send_health_advices','MedicalAdviceController@index')->middleware('admin','prevent_back_history');
     Route::post('/create_medical_advice','MedicalAdviceController@store')->middleware('admin','prevent_back_history');
     //end of routes for notifications
-    Route::get('dashboard/admin_gallery', 'AdminController@show_gallery');
+    Route::get('dashboard/admin_gallery', 'AdminController@show_gallery','prevent_back_history');
     Route::get('/schedules','AdminController@show_schedules')->middleware('admin','prevent_back_history');
     Route::get('/reports','WeightController@show_weight_index')->middleware('admin','prevent_back_history');
     Route::resource('/reports','WeightController')->middleware('admin','prevent_back_history');
@@ -128,14 +132,15 @@ Route::prefix('admin')->group(function() {
     Route::get('/reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('reports_attendance.edit');
     Route::post('/reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('reports_attendance.update');
 
-
+    Route::post('/dashboard/admin_gallery','UploadController@upload')->middleware('admin');
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
 
+//    Payment related routes start
     Route::get('/payments','PaymentController@load_receptionists')->middleware('admin','prevent_back_history');
     Route::get('/salary_payment/{id}','PaymentController@update_payment_status')->middleware('admin','prevent_back_history');
-
+//    Payment related routes end
 
     Route::any('/reports/search',function(){
         $search = Input::get ('search');
@@ -146,7 +151,9 @@ Route::prefix('admin')->group(function() {
             ->get();
         if(count($weight) > 0)
             return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);
-        else return view ('admin_panel.weight_show')->withMessage('No Details found. Try to search again !');
+        else
+            Session::flash ( 'message', 'No Users found. Please try your search again !' );
+        return redirect('/admin/reports');
     });
 
     Route::any('/reports_attendance/search',function(){
@@ -156,8 +163,10 @@ Route::prefix('admin')->group(function() {
             //->orWhere('year','LIKE','%'.$title.'%')
             ->get();
         if(count($attendance) > 0)
-            return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
-        else return view ('admin_panel.attendance_show')->withMessage('No Details found. Try to search again !');
+            return view('admin_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);//magic function is equal to ('weight',$details)
+        else
+            Session::flash ( 'message1', 'No Users found. Please try your search again !' );
+        return redirect('/admin/reports_attendance');
     });
 });
 //Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard');
@@ -179,14 +188,16 @@ Route::prefix('recep')->group(function() {
     //Route::resource('/customers', 'UserController')->middleware('receptionist');
 
     Route::get('/fees','UserController@index2')->middleware('receptionist','prevent_back_history');
-    Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist','prevent_back_history');
     Route::get('/schedules','RecepMainController@show_schedules')->middleware('receptionist','prevent_back_history');
 
     Route::get('/markpay/{id}','UserController@PayRegFees');
     Route::get('/markrefund/{id}','UserController@RefundRegFees');
 
 
+    // Monthly Payment Routes start
+    Route::get('/payments','RecepMainController@show_payments')->middleware('receptionist','prevent_back_history');
     Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist','prevent_back_history');
+    // Monthly Payment Routes end
 
     Route::resource('/recep_reports','WeightController')->middleware('receptionist','prevent_back_history');
     Route::get('dashboard/recep_reports','WeightController@create')->name('recep_panel.add_weight')->middleware('receptionist','prevent_back_history');
@@ -229,7 +240,9 @@ Route::prefix('recep')->group(function() {
             ->get();
         if(count($weight) > 0)
             return view('recep_panel.weight_show')->withDetails($weight)->withQuery ($search);
-        else return view ('recep_panel.weight_show')->withMessage('No Details found. Try to search again !');
+        else
+            Session::flash ( 'message2', 'No Details found. Please try your search again !' );
+        return redirect('/recep/recep_reports');
     });
 
     Route::any('/recep_reports_attendance/search1',function(){
@@ -240,7 +253,9 @@ Route::prefix('recep')->group(function() {
             ->get();
         if(count($attendance) > 0)
             return view('recep_panel.attendance_show')->withDetails($attendance)->withQuery ($attendance);
-        else return view ('recep_panel.attendance_show')->withMessage('No Details found. Try to search again !');
+        else
+            Session::flash ( 'message3', 'No Details found. Please try your search again !' );
+        return redirect('/recep/recep_reports_attendance');
     });
 
 });
@@ -251,6 +266,6 @@ Route::prefix('receptionist')->group(function() {
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist','prevent_back_history');
 });
 
-Route::post('uploadss','UploadController@upload');
+//Route::post('uploadss','UploadController@upload');
 
 

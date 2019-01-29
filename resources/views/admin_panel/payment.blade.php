@@ -2,10 +2,46 @@
 
 @section('content');
 
+    <script>
+        function confirm_payment(receptionist_id){
+            alert('Hi');
+            document.getElementById('payment').innerHTML = '<a href="admin/salary_payment/'+receptionist_id+'"><button class="btn btn-success">PAY</button></a>';
+            $('#confirm-modal').modal('show')
+        }
+    </script>
+
     <!-- /.header start -->
     @extends('layouts.hori_sidebar');
     <!--header end-->
 
+    <div class="modal fade" id="confirm-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" style="color: black">Confirm Payment</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>Are you sure you want to make the payment?</p>
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+                    <div class="row">
+
+                        <div id="payment">
+                        </div>
+                        <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
@@ -33,6 +69,15 @@
                         <div class="alert alert-success ml90 fs-15" role="alert">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             {{ session('msg_success') }}
+                        </div>
+                    @endif
+                    {{--Flash message for success in payment end--}}
+
+                    {{--Flash message for success in payment start--}}
+                    @if (session('msg_paid'))
+                        <div class="alert alert-success ml90 fs-15" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msg_paid') }}
                         </div>
                     @endif
                     {{--Flash message for success in payment end--}}
@@ -141,7 +186,7 @@
                                                     <td>
                                                         <div class="row">
                                                             <div class="col">
-                                                                <a href="{{url('admin/salary_payment/'.$receptionist->receptionist_id)}}"><button class="btn btn-danger" >PAY</button></a>
+                                                                <button class="btn btn-danger" onclick="confirm_payment({{$receptionist->receptionist_id}})">PAY</button>
                                                             </div>
                                                         </div>
                                                     </td>

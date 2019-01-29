@@ -30,7 +30,7 @@ class ReceptionistController extends Controller
                 ->join('system_users','receptionists.id','=','system_users.id')
                 ->select('system_users.*','receptionists.*')
                 //->get();
-                ->paginate(2);
+                ->paginate(5);
 
 
             return view('admin_panel.index', ['receptionists' => $receps]);

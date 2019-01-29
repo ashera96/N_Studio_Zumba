@@ -7,6 +7,7 @@ use App\Attendance;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 class AttendanceController extends Controller
 {
@@ -20,11 +21,11 @@ class AttendanceController extends Controller
         //$new  =Attendance::all();
         $role_id = Auth::user()->role->id;
         if($role_id==1) {
-            $new = DB::table('attendances')->orderBy('id', 'asc')->paginate(6);
+            $new = DB::table('attendances')->orderBy('created_at', 'asc')->paginate(6);
             return view('admin_panel.attendance_index',['attendances'=>$new]);
         }
         else if($role_id==3){
-            $new1 = DB::table('attendances')->orderBy('id', 'asc')->paginate(6);
+            $new1 = DB::table('attendances')->orderBy('created_at', 'asc')->paginate(6);
             return view('recep_panel.attendance_index',['attendances'=>$new1]);
         }
 
@@ -57,52 +58,72 @@ class AttendanceController extends Controller
     {
         $role_id = Auth::user()->role->id;
         if($role_id==1) {
-            $this->validate($request,[
-                'id' => 'required',
-                'month' => 'required',
-                'year' => 'required',
-                'totalclasses' => 'required',
-                'attendanceclasses' => 'required',
-                'percentage' => 'required',
-            ]);
+            try
+            {
+                $this->validate($request,[
+                    'id' => 'required',
+                    'month' => 'required',
+                    'year' => 'required',
+                    'totalclasses' => 'required',
+                    'attendanceclasses' => 'required',
+                    'percentage' => 'required',
+                ]);
 
-            $attend = new Attendance;
+                $attend = new Attendance;
+                //$attend = Attendance::firstOrCreate(array('id' => Input::get('id'),'month' => Input::get('month'),'year' => Input::get('year')));
 
-            $attend ->id =$request ->id;
-            $attend ->month =$request ->month;
-            $attend->year =$request ->year;
-            $attend ->totalclasses =$request ->totalclasses;
-            $attend ->attendanceclasses =$request ->attendanceclasses;
-            $attend ->percentage =$request ->percentage;
+                $attend ->id =$request ->id;
+                $attend ->month =$request ->month;
+                $attend->year =$request ->year;
+                $attend ->totalclasses =$request ->totalclasses;
+                $attend ->attendanceclasses =$request ->attendanceclasses;
+                $attend ->percentage =$request ->percentage;
 
-            $attend ->save();
+                $attend ->save();
 
-            return redirect('/admin/reports_attendance/')->with('success','Attendance Added');
+                Session::flash ( 'msgi', 'Attendance Successfully added!' );
+                return redirect('/admin/reports_attendance/');
+            }
+            catch(\Exception $e)
+            {
+                Session::flash ( 'msgz', 'Record already exists!' );
+                return redirect('/admin/reports_attendance/');
+            }
+
         }
+
         else if($role_id==3){
-            $this->validate($request,[
-                'id' => 'required',
-                'month' => 'required',
-                'year' => 'required',
-                'totalclasses' => 'required',
-                'attendanceclasses' => 'required',
-                'percentage' => 'required',
-            ]);
+            try{
+                $this->validate($request,[
+                    'id' => 'required',
+                    'month' => 'required',
+                    'year' => 'required',
+                    'totalclasses' => 'required',
+                    'attendanceclasses' => 'required',
+                    'percentage' => 'required',
+                ]);
 
-            $attend = new Attendance;
+                $attend = new Attendance;
 
-            $attend ->id =$request ->id;
-            $attend ->month =$request ->month;
-            $attend->year =$request ->year;
-            $attend ->totalclasses =$request ->totalclasses;
-            $attend ->attendanceclasses =$request ->attendanceclasses;
-            $attend ->percentage =$request ->percentage;
+                $attend ->id =$request ->id;
+                $attend ->month =$request ->month;
+                $attend->year =$request ->year;
+                $attend ->totalclasses =$request ->totalclasses;
+                $attend ->attendanceclasses =$request ->attendanceclasses;
+                $attend ->percentage =$request ->percentage;
 
-            $attend ->save();
+                $attend ->save();
 
-            return redirect('/recep/recep_reports_attendance/')->with('success','Attendance Added');
+                Session::flash ( 'msgj', 'Attendance Successfully added!' );
+                return redirect('/recep/recep_reports_attendance/');
+            }
+            catch (\Exception $e)
+            {
+                Session::flash ( 'msgw', 'Record already exists!' );
+                return redirect('/recep/recep_reports_attendance/');
+            }
+
         }
-
     }
 
     public function UpdateTotal($id,$month,$year){
@@ -115,6 +136,7 @@ class AttendanceController extends Controller
 
             return redirect()->back();
         }
+
         else if($role_id==3)
         {
             Attendance::where('id', '=', $id)
@@ -124,50 +146,76 @@ class AttendanceController extends Controller
 
             return redirect()->back();
         }
-
-
     }
 
     public function UpdateAttend($id,$month,$year){
         $role_id = Auth::user()->role->id;
-        if($role_id==1) {
-            Attendance::where('id', '=', $id)
-                ->where('month', '=', $month)
-                ->where('year', '=', $year)
-                ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
+        $tot1 = DB::table('attendances')
+            ->select('totalclasses')
+            ->where('id','=',$id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->first();
 
-            return redirect()->back();
+        $att1 = DB::table('attendances')
+            ->select('attendanceclasses')
+            ->where('id','=',$id)
+            ->where('month', '=', $month)
+            ->where('year', '=', $year)
+            ->first();
+
+        if($role_id==1) {
+            if($tot1->totalclasses > $att1->attendanceclasses) {
+                Attendance::where('id', '=', $id)
+                    ->where('month', '=', $month)
+                    ->where('year', '=', $year)
+                    ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
+
+                return redirect()->back();
+            }
+            else{
+                Session::flash('msgA',"Cannot increase!!!");
+                return redirect()->back();
+            }
+
         }
         else if($role_id==3) {
-            Attendance::where('id', '=', $id)
-                ->where('month', '=', $month)
-                ->where('year', '=', $year)
-                ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
+            if ($tot1->totalclasses > $att1->attendanceclasses) {
+                Attendance::where('id', '=', $id)
+                    ->where('month', '=', $month)
+                    ->where('year', '=', $year)
+                    ->update(['attendanceclasses' => DB::raw('attendanceclasses + 1')]);
 
+                return redirect()->back();
+            }
+        }
+        else{
+            Session::flash('msgB',"Cannot increase!!!");
             return redirect()->back();
         }
 
     }
 
     public function UpdatePercent($id,$month,$year){
-            $role_id = Auth::user()->role->id;
-            if($role_id==1) {
-                Attendance::where('id', '=', $id)
-                    ->where('month', '=', $month)
-                    ->where('year', '=', $year)
-                    ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
+        $role_id = Auth::user()->role->id;
+        if($role_id==1) {
+            Attendance::where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
 
-                return redirect()->back();
-            }
-            else if($role_id==3) {
-                Attendance::where('id', '=', $id)
-                    ->where('month', '=', $month)
-                    ->where('year', '=', $year)
-                    ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
 
-                return redirect()->back();
-            }
+            return redirect()->back();
+        }
 
+        else if($role_id==3) {
+            Attendance::where('id', '=', $id)
+                ->where('month', '=', $month)
+                ->where('year', '=', $year)
+                ->update(['percentage' => DB::raw('round((attendanceclasses*100/totalclasses),2)')]);
+
+            return redirect()->back();
+        }
 
     }
     /**
@@ -180,6 +228,15 @@ class AttendanceController extends Controller
     {
         //
     }
+
+
+    /* public function total($id)
+     {
+         $new = DB::table('attendances')->where('id','=',$id)->select('totalclasses')
+         ->get();
+         return view('admin_panel.attendance_show',['attendances'=>$new]);
+     }
+ */
 
     /**
      * Show the form for editing the specified resource.
@@ -195,6 +252,7 @@ class AttendanceController extends Controller
                 ->where('month', '=', $month)
                 ->where('year', '=', $year)
                 ->get()->first();
+
             return view('admin_panel.attendance_edit', ['attendance' => $attfind]);
         }
 
@@ -203,6 +261,7 @@ class AttendanceController extends Controller
                 ->where('month', '=', $month)
                 ->where('year', '=', $year)
                 ->get()->first();
+
             return view('recep_panel.attendance_edit', ['attendance' => $attfind]);
         }
     }
@@ -231,6 +290,7 @@ class AttendanceController extends Controller
             $attfind =\App\Attendance::where('id', '=', $id)
                 ->where('month', '=', $month)
                 ->where('year', '=', $year)->first();
+
             $attfind->id =$request ->id;
             $attfind ->month =$request ->month;
             $attfind ->year =$request ->year;
@@ -239,7 +299,8 @@ class AttendanceController extends Controller
             $attfind ->percentage =$request ->percentage;
             $attfind ->save();
 
-            return redirect('admin/reports_attendance')->with('success','Attendance Updated');
+            Session::flash ( 'msgk', 'Attendance Successfully updated!' );
+            return redirect('admin/reports_attendance');
         }
         else if($role_id==3) {
             $this->validate($request,[
@@ -264,8 +325,8 @@ class AttendanceController extends Controller
             $attfind1->percentage =$request ->percentage;
             $attfind1->save();
 
-
-            return redirect('recep/recep_reports_attendance')->with('success','Attendance Updated');
+            Session::flash ( 'msgl', 'Attendance Successfully updated!' );
+            return redirect('recep/recep_reports_attendance');
         }
     }
 
@@ -284,6 +345,7 @@ class AttendanceController extends Controller
                 ->where('year', '=', $year)
                 ->delete();
 
+            Session::flash ( 'msgm', 'Attendance Successfully Deleted!' );
             return redirect('admin/reports_attendance');
         }
         else if($role_id==3){
@@ -292,9 +354,9 @@ class AttendanceController extends Controller
                 ->where('year', '=', $year)
                 ->delete();
 
+            Session::flash ( 'msgn', 'Attendance Successfully Deleted!' );
             return redirect('recep/recep_reports_attendance');
         }
-
 
     }
 }
