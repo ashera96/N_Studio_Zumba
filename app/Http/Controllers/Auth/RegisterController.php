@@ -86,7 +86,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role_id' =>2,
-            'status' => true,
+            'status' => true, //set newly registered user's status as true
         ]);
 
         //put the data in to the users table
@@ -105,8 +105,8 @@ class RegisterController extends Controller
             'medicissue' => $data['medicissue'],
         ]);
 
-        $thisUser = SystemUser::findOrFail($systemuser->id);
-        $this->sendMail($thisUser);
+        $thisUser = SystemUser::findOrFail($systemuser->id); //select the newly registered user
+        $this->sendMail($thisUser); //send email(welcome to the system)
 
         return $systemuser;
     }

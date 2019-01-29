@@ -83,17 +83,13 @@ Route::prefix('home')->group(function() {
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->group(function() {
+    Route::get('/show_wait_lists','AdminController@show_wait_lists')->middleware('admin','prevent_back_history');
     Route::resource('/receptionist','ReceptionistController')->middleware('admin','prevent_back_history');
    // Route::resource('/uploada','UploadController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin','prevent_back_history');
     Route::resource('/customers', 'UserController')->middleware('admin','prevent_back_history');
-
-
-//    Class Packages related routes start
     Route::get('dashboard/class_packages', 'PackageController@admin')->middleware('admin','prevent_back_history');
     Route::get('/delete_package/{id}', 'PackageController@delete')->middleware('admin','prevent_back_history');
-//    Class Packages related routes end
-
     Route::get('dashboard/schedule', 'ScheduleController@admin')->middleware('admin','prevent_back_history');
     Route::get('/dashboard', 'AdminController@show_dashboard')->name('admin.dashboard')->middleware('admin','prevent_back_history');
     Route::get('dashboard/receptionist','ReceptionistController@create')->name('admin_panel.add')->middleware('admin','prevent_back_history');
@@ -203,7 +199,6 @@ Route::prefix('recep')->group(function() {
     Route::get('/monthly_payment/{id}','RecepMainController@update_payment_status')->middleware('receptionist','prevent_back_history');
     // Monthly Payment Routes end
 
-
     Route::resource('/recep_reports','WeightController')->middleware('receptionist','prevent_back_history');
     Route::get('dashboard/recep_reports','WeightController@create')->name('recep_panel.add_weight')->middleware('receptionist','prevent_back_history');
     Route::post('dashboard/recep_reports','WeightController@store')->middleware('receptionist','prevent_back_history');
@@ -268,7 +263,7 @@ Route::prefix('recep')->group(function() {
 
 
 Route::prefix('receptionist')->group(function() {
-    Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');
+    Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist','prevent_back_history');
 });
 
 //Route::post('uploadss','UploadController@upload');
