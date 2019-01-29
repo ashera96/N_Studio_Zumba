@@ -39,7 +39,7 @@
 
                     @endif
 
-                    <div class="gallery" style="width: 850px;margin-left: 80px">
+                    <div class="gallery" style="width: 850px;margin-left: 200px">
                         <br><br>
                         <form class="uploadFormStyle" action="{{URL::to('admin/dashboard/admin_gallery')}}" method="post" enctype="multipart/form-data">
                             <label class="labelStyle">Select image to upload</label>

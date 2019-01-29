@@ -48,7 +48,7 @@
                                                             <div class="modal-content">
 
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                    <h4 class="modal-title" style="color: #fc328a;">User List</h4>
                                                                     <button type="button" class="close" data-dismiss="modal">×</button>
                                                                 </div>
 
@@ -74,7 +74,7 @@
                                                             <div class="modal-content">
 
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                    <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                     <button type="button" class="close" data-dismiss="modal">×</button>
                                                                 </div>
 
@@ -109,7 +109,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -136,7 +136,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a;">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -172,7 +172,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -199,7 +199,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -234,7 +234,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -260,7 +260,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -296,7 +296,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -322,7 +322,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -364,7 +364,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
@@ -398,7 +398,7 @@
                                                         <div class="modal-content">
 
                                                             <div class="modal-header">
-                                                                <h4 class="modal-title" style="color: deeppink">Users List</h4>
+                                                                <h4 class="modal-title" style="color: #fc328a">User List</h4>
                                                                 <button type="button" class="close" data-dismiss="modal">×</button>
                                                             </div>
 
