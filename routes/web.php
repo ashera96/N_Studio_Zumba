@@ -136,7 +136,7 @@ Route::prefix('admin')->group(function() {
     Route::get('/reports_attendance/{id}/{month}/{year}/edit','AttendanceController@edit')->name('reports_attendance.edit');
     Route::post('/reports_attendance/{id}/{month}/{year}','AttendanceController@update')->name('reports_attendance.update');
 
-
+    Route::post('/dashboard/admin_gallery','UploadController@upload')->middleware('admin');
     Route::get('/markasactive/{id}','ReceptionistController@UpdateRecepActive');
     Route::get('/markasnotactive/{id}','ReceptionistController@UpdateRecepNotActive');
 
@@ -271,6 +271,6 @@ Route::prefix('receptionist')->group(function() {
     Route::get('/', 'EmployeeController@index')->name('receptionist.dashboard')->middleware('receptionist');
 });
 
-Route::post('uploadss','UploadController@upload');
+//Route::post('uploadss','UploadController@upload');
 
 

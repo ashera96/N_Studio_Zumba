@@ -2,10 +2,46 @@
 
 @section('content');
 
+    <script>
+        function confirm_payment(receptionist_id){
+            alert(receptionist_id);
+            document.getElementById('payment').innerHTML = '<a href="admin/salary_payment/'+receptionist_id+'" class="btn btn-success">PAY</a>';
+            $('#confirm-modal').modal('show')
+        }
+    </script>
+
     <!-- /.header start -->
     @extends('layouts.hori_sidebar');
     <!--header end-->
 
+    <div class="modal fade" id="confirm-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    {{--<h4 class="modal-title" style="color: black">Delete Post</h4>--}}
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body" style="color: black">
+                    <b>Are you sure you want to make the payment?</b>
+                </div>
+
+                <!-- Modal footer -->
+
+                <div class="modal-footer">
+                    <div class="row">
+
+                        <div id="payment">
+                        </div>
+                        <button type="button" class="delbtn ml-1" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!--Admin dashboard-area start-->
     <div class="about-area pad90">
@@ -150,7 +186,7 @@
                                                     <td>
                                                         <div class="row">
                                                             <div class="col">
-                                                                <a href="{{url('admin/salary_payment/'.$receptionist->receptionist_id)}}"><button class="btn btn-danger" >PAY</button></a>
+                                                                <button class="btn btn-danger" onclick="confirm_payment({{$receptionist->receptionist_id}})">PAY</button>
                                                             </div>
                                                         </div>
                                                     </td>

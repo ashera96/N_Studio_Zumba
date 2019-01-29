@@ -236,7 +236,7 @@
         -->
 
 
-        <div class="gallery">
+        <div class="gallery" style="padding: 50px;margin-left: 190px;">
 
             <?php
             $c=count(scandir('uploads/')) - 2;
@@ -251,7 +251,7 @@
             ?>
 
 
-        </div>we
+        </div>
 
 
 
