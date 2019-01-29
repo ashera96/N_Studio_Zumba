@@ -4,8 +4,8 @@
 
     <script>
         function confirm_payment(receptionist_id){
-            alert(receptionist_id);
-            document.getElementById('payment').innerHTML = '<a href="admin/salary_payment/'+receptionist_id+'" class="btn btn-success">PAY</a>';
+            alert('Hi');
+            document.getElementById('payment').innerHTML = '<a href="admin/salary_payment/'+receptionist_id+'"><button class="btn btn-success">PAY</button></a>';
             $('#confirm-modal').modal('show')
         }
     </script>
@@ -19,13 +19,13 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    {{--<h4 class="modal-title" style="color: black">Delete Post</h4>--}}
+                    <h4 class="modal-title" style="color: black">Confirm Payment</h4>
                     <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
 
                 <!-- Modal body -->
-                <div class="modal-body" style="color: black">
-                    <b>Are you sure you want to make the payment?</b>
+                <div class="modal-body">
+                    <p>Are you sure you want to make the payment?</p>
                 </div>
 
                 <!-- Modal footer -->
@@ -35,7 +35,7 @@
 
                         <div id="payment">
                         </div>
-                        <button type="button" class="delbtn ml-1" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
 
