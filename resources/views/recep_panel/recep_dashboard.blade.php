@@ -22,7 +22,7 @@
                         <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                     </div>
                     <h3>Receptionist Dashboard</h3>
-                    <p>Users Overview</p>
+                    <h4 class="text-dark mt-5 mb-2">Users Overview</h4>
                 </div>
 
 
@@ -87,7 +87,7 @@
                             var options = {
                                 title: '',
                                 slices:{
-                                    0:{color:'deeppink'},
+                                    0:{color:'#fc328a'},
                                     1:{color: 'grey'}
                                 }
                             };
@@ -99,7 +99,7 @@
                     </script>
                 </head>
                 <body>
-                <div id="piechart" style="width: 1100px; height: 400px;"></div>
+                <div id="piechart" style="width: 1100px; height: 400px;margin-left: 70px;"></div>
                 </body>
                 </html>
 
@@ -109,7 +109,7 @@
                 <!-- Latest users start -->
                 <div class="row mb-0">
                     <div class="card overview-block pad30 rounded">
-                        <div class="card-header rounded mr-1 ml-1"  style="background-color: deeppink">Latest Online Users</div>
+                        <div class="card-header rounded mr-1 ml-1"  style="background-color: #fc328a">Latest Online Users</div>
                         <div class="row card-body">
 
 
@@ -120,26 +120,28 @@
 
 
 
-                                <tr class="text-dark">
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th>Name</th>
+                                        <th>Email</th>
 
-                                </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if($users)
+                                        @foreach($users as $user)
 
+                                            @if($user->isOnline())
 
+                                                <tr class="text-dark">
+                                                    <td>{{$user->username}}</td>
+                                                    <td>{{$user->email}}</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </tbody>
 
-                                @if($users)
-                                    @foreach($users as $user)
-
-                                        @if($user->isOnline())
-
-                                            <tr class="text-dark">
-                                                <th>{{$user->username}}</th>
-                                                <th>{{$user->email}}</th>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                @endif
 
 
                             </table>
