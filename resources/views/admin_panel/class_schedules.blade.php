@@ -24,7 +24,7 @@
                     </div>
                     <!-- /.row -->
 
-                    <p><a href="/admin/show_wait_lists"><button class="btn active btn-primary" style="margin-left: 750px">Show waiting queues</button></a></p>
+                    <p class="text-center mt-5"><a href="/admin/show_wait_lists"><button class="btn active btn-primary" style="">Adjust Client Limit</button></a></p>
 
                     {{--Schdeule Timetable Start--}}
                     <div class="container-fluid">
