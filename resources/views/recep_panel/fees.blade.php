@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <!-- /.header start -->
     @extends('layouts.hori_sidebar');
     <!--header end-->
@@ -33,7 +34,17 @@
 
                             <div class="panel panel-default ml90">
                                 <div class="panel-body">
-                                    <table class="table table-striped table-hover" width="80%"  >
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon" style="background-color: #fc328a;color: white;height: 38px;border-radius:5px;padding: 8px;margin-right: -2px;">
+                                                <i class="fa fa-search icon" style="color: white;"></i>
+                                            </div>
+                                            <input id="search" type="search" placeholder="Search By Name" class="form-control mb-3 fa-search" onkeyup="searchFunction()" style="max-width: 300px;">
+                                        </div>
+                                    </div>
+                                    
+                                    <table id="search-table" class="table table-striped table-hover" width="80%" >
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -47,7 +58,7 @@
                                             <tr>
                                                 <td>{{ $user->name }}</td>
 
-                                                <td>{{ $user->email }}</td>
+                                                <td class="text-lowercase">{{ $user->email }}</td>
 
 
                                                 <td>
@@ -82,6 +93,27 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function searchFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("search-table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 @endsection
 
 @section('js_styling')
