@@ -56,6 +56,9 @@
                                                                     @foreach($users11 as $u)
                                                                         <li>{{$u->username}}</li>
                                                                     @endforeach
+                                                                    @if(count($users11)==0)
+                                                                        <p>No users</p>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -82,6 +85,9 @@
                                                                     @foreach($users12 as $u)
                                                                         <li>{{$u->username}}</li>
                                                                     @endforeach
+                                                                    @if(count($users12)==0)
+                                                                        <p>No users</p>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
