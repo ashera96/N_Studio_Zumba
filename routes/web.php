@@ -61,6 +61,7 @@ Route::prefix('home')->group(function() {
     //Routes for package module end
 
     Route::get('/schedule', 'UserScheduleController@index')->middleware('customer','prevent_back_history');
+    Route::post('/send_inquiries','UserScheduleController@sendInquiry')->middleware('customer','prevent_back_history');
     Route::post('/submit_schedules','UserScheduleController@store')->middleware('customer','prevent_back_history');
     Route::get('/change_schedule', 'UserScheduleController@edit')->middleware('customer','prevent_back_history');
     Route::put('/update_schedule','UserScheduleController@update')->middleware('customer','prevent_back_history');
