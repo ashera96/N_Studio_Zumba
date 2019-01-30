@@ -33,6 +33,11 @@
                     document.getElementById(packageId).setAttribute('class','price-box selected-package');
                     onLoad();
                     $('#add-modal').modal('hide')
+                    window.scrollTo(0,0);
+                    document.getElementById('message').innerHTML = "Selected package will be valid from next month onwards, make due payments before 10th of each month either through online or cash payments";
+                    document.getElementById('message2').innerHTML = "Select a scheduling plan depending on the selected package from next month onwards";
+                    document.getElementById('flash-message').style.display = "block";
+                    document.getElementById('flash-message2').style.display = "block";
                     // alert(this.response);
                 }
             };
@@ -56,7 +61,9 @@
                         document.getElementById(i).setAttribute('class','price-box');
                     }
                     $('#delete-modal').modal('hide')
-
+                    window.scrollTo(0,0);
+                    document.getElementById('message').innerHTML = "You haven't selected any packages to activate from next month onwards";
+                    document.getElementById('flash-message').style.display = "block";
                     // alert(this.response);
                 }
             };
@@ -343,6 +350,16 @@
 
 
     <!--pricing area start-->
+    <div id="flash-message" style="display: none;" class="alert alert-success fs-15" role="alert">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <div id="message">
+        </div>
+    </div>
+    <div id="flash-message2" style="display: none;" class="alert alert-success fs-15" role="alert">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <div id="message2">
+        </div>
+    </div>
     <div class="pricing-area text-center pad90">
         <div class="container">
             <div class="row">

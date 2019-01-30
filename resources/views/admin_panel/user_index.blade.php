@@ -2,6 +2,24 @@
 
 @section('content')
 
+    <style>
+        .pagination > li > a,
+        .pagination > li > span {
+            background: none !important;
+            border: none !important;
+            color: deeppink !important;
+        }
+        .pagination > li > a:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:hover,
+        .pagination > li > span:focus,
+        .pagination > li.active > a,
+        .pagination > li.active > span {
+            color: #000 !important;
+            border: solid 1px #707d82!important;
+        }
+    </style>
+
     <!-- /.header start -->
     @extends('layouts.hori_sidebar');
     <!--header end-->
@@ -50,14 +68,20 @@
 
                             <div class="row mb-0" style="padding-left: 50px">
                                 <div class="card overview-block pad30 rounded" >
-                                    <div class="card-header rounded mr-1 ml-1"  style="background-color: deeppink">Customers Details</div>
                                     <div class="row card-body">
 
 
 
+                                        <div class="form-group" style="margin-top: -50px;">
+                                            <div class="input-group">
+                                                <div class="input-group-addon" style="background-color: #fc328a;color: white;height: 38px;border-radius:5px;padding: 8px;margin-right: -2px;">
+                                                    <i class="fa fa-search icon" style="color: white;"></i>
+                                                </div>
+                                                <input id="search" type="search" placeholder="Search By Name" class="form-control mb-3 fa-search" onkeyup="searchFunction()" style="max-width: 300px;">
+                                            </div>
+                                        </div>
 
-
-                                        <table class="table table-striped table-hover">
+                                        <table id="search-table" class="table table-striped table-hover">
                                         <thead>
                                         <tr>
                                             <th>ID</th>
@@ -73,7 +97,7 @@
                                                     <td>{{ $user->id }}</td>
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->username }}</td>
-                                                    <td>{{ $user->email }}</td>
+                                                    <td class="text-lowercase">{{ $user->email }}</td>
                                                     <td>
                                                         <div class="row">
                                                             <div class="col">
@@ -102,11 +126,12 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                        {{$users->links()}}
                                 </div>
                             </div>
 
                             <br><br>
-                            {{$users->links()}}
+
 
                         </div>
                 <!-- /.col -->
@@ -115,7 +140,27 @@
                 </div>
             </div>
         </div>
-    </div>
+
+    <script>
+        function searchFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("search-table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[1];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 @endsection
 
 @section('js_styling')

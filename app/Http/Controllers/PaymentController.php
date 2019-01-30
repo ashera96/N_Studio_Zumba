@@ -32,7 +32,7 @@ class PaymentController extends Controller
         $eligible_receptionists = DB::table('salary_payments')
             ->join('receptionists','salary_payments.receptionist_id','=','receptionists.id')
             ->select('receptionists.*','salary_payments.*')
-            ->get();
+            ->paginate(5);
 
         // Retrieving receptionist_id of those who did not receive their salary
         $no_salary = DB::table('salary_payments')
@@ -52,7 +52,7 @@ class PaymentController extends Controller
         // If start of month send email to admin with the list of unpaid active receptionists within current table
         // Drop all entries from the salary_payments table and add the currently active receptionists
         // This loop will execute once per month
-        if ($day == 1 && $flag->value == 0) {
+        if ($day == 2 && $flag->value == 0) {
             // Sending an email to the admin with a list of active receptionists who did not receive salary payments
 
             // Retrieving the receptionists who did not receive a salary ( before dropping the table entries)
@@ -112,7 +112,7 @@ class PaymentController extends Controller
             Session::flash('msg_updated', 'Receptionist list updated successfully for the current month!');
         }
 
-        elseif ( $day != 1 ){
+        elseif ( $day != 2 ){
             // If any day other than 1 make the flag variable 0
             $flag_obj = Flag::findOrFail(3);
             $flag_obj -> value = 0;

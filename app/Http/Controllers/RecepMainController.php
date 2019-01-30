@@ -113,7 +113,7 @@ class RecepMainController extends Controller
             ->join('system_users','user_payments.user_id','=','system_users.id')
             ->select('system_users.*','user_payments.*')
             ->where('system_users.status','=',1)
-            ->get();
+            ->paginate(10);
 
         //retrieving user ids of those who had not paid
         $not_paid = DB::table('user_payments')
@@ -134,7 +134,7 @@ class RecepMainController extends Controller
 //        If start of month send email to admin with the list of unpaid customers
 //        Drop all entries from the user_payments table and add the current selections from users with their relevant package
 //        This loop is executed once per month, and view is refreshed every day through a javascript method
-        if( $day == 1 && $flag->value == 0 ){
+        if( $day == 2 && $flag->value == 0 ){
 
 //            Sending an email to the admin for the previous month's non settled payments of customers
 
@@ -204,7 +204,7 @@ class RecepMainController extends Controller
             $flags->value = 1;
             $flags->save();
         }
-        elseif ( $day != 1 ){
+        elseif ( $day != 2 ){
             // If any day which is not 1 make the flag variable 0
             //DB::table('flags')->where('id',1)->decrement('value');
 
