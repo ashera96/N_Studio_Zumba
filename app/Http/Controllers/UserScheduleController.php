@@ -186,6 +186,8 @@ class UserScheduleController extends Controller
             array_push($Checkbox, $find->schedule_id); //push schedule ids to the empty stack
         }
 
+        $sys_user_email = DB::table('system_users')->select('email')->where("id", $current_user->id)->first();
+
         $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
         $selected_package_id = $selected_package->package_id;
         $pkg_name =  DB::table('packages')->select('name')->where("id", $selected_package_id)->first();
@@ -216,7 +218,7 @@ class UserScheduleController extends Controller
 
         return view('customer_pages.schedule_update', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name',
             'schedule_limit','counter1','counter2','counter3','counter4','counter5','counter6','counter7','counter8','counter9','counter10',
-            'counter11','counter12'));
+            'counter11','counter12','sys_user_email'));
     }//edit
 
 
