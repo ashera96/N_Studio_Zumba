@@ -113,7 +113,7 @@ class RecepMainController extends Controller
             ->join('system_users','user_payments.user_id','=','system_users.id')
             ->select('system_users.*','user_payments.*')
             ->where('system_users.status','=',1)
-            ->get();
+            ->paginate(10);
 
         //retrieving user ids of those who had not paid
         $not_paid = DB::table('user_payments')

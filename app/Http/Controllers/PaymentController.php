@@ -32,7 +32,7 @@ class PaymentController extends Controller
         $eligible_receptionists = DB::table('salary_payments')
             ->join('receptionists','salary_payments.receptionist_id','=','receptionists.id')
             ->select('receptionists.*','salary_payments.*')
-            ->get();
+            ->paginate(5);
 
         // Retrieving receptionist_id of those who did not receive their salary
         $no_salary = DB::table('salary_payments')

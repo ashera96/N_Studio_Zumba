@@ -2,6 +2,24 @@
 
 @section('content')
 
+    <style>
+        .pagination > li > a,
+        .pagination > li > span {
+            background: none !important;
+            border: none !important;
+            color: deeppink !important;
+        }
+        .pagination > li > a:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:hover,
+        .pagination > li > span:focus,
+        .pagination > li.active > a,
+        .pagination > li.active > span {
+            color: #000 !important;
+            border: solid 1px #707d82!important;
+        }
+    </style>
+
 
     <!-- /.header start -->
     @extends('layouts.hori_sidebar');

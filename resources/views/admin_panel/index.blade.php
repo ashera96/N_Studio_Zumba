@@ -1,6 +1,23 @@
 @extends('layouts.admin_app');
 
 @section('content');
+<style>
+    .pagination > li > a,
+    .pagination > li > span {
+        background: none !important;
+        border: none !important;
+        color: deeppink !important;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li.active > a,
+    .pagination > li.active > span {
+        color: #000 !important;
+        border: solid 1px #707d82!important;
+    }
+</style>
 
 
     @extends('layouts.hori_sidebar');
@@ -55,6 +72,7 @@
                         </div>
 
 
+
                     <br><br><br><br>
 
                     <!-- Cart Main Area Start Here
@@ -66,14 +84,20 @@
                                         <div class="table-content table-responsive">  -->
                     <div class="row mb-0">
                         <div class="card overview-block pad30 rounded" >
-                            <div class="card-header rounded mr-1 ml-1"  style="background-color: deeppink">Receptionists Details</div>
                             <div class="row card-body">
 
 
 
+                                <div class="form-group" style="margin-top: -40px;">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="background-color: #fc328a;color: white;height: 37px;border-radius:5px;padding: 8px;margin-right: -2px;">
+                                            <i class="fa fa-search icon" style="color: white;"></i>
+                                        </div>
+                                        <input id="search" type="search" placeholder="Search By Name" class="form-control mb-3 fa-search" onkeyup="searchFunction()" style="max-width: 300px;">
+                                    </div>
+                                </div>
 
-
-                                <table class="table table-striped table-hover">
+                                <table id="search-table" class="table table-striped table-hover">
                                                 <thead>
                                                 <tr>
                                                     <th class="product-thumbnail">Name</th>
@@ -90,7 +114,7 @@
                                                 <tr>
 
                                                     <td class="product-subtotal">{{ $receptionist->name }}</td>
-                                                    <td class="product-subtotal">{{ $receptionist->email }}</td>
+                                                    <td class="product-subtotal text-lowercase">{{ $receptionist->email }}</td>
                                                     <td class="product-subtotal">{{ $receptionist->nic }}</td>
                                                     <td class="product-subtotal">{{ $receptionist->dob }}</td>
                                                     <td class="product-subtotal">{{ $receptionist->address }}</td>
@@ -142,6 +166,7 @@
 
                                                 </tbody>
                                             </table>
+                                {!! $receptionists->links(); !!}
                                         </div>
 
 
@@ -150,7 +175,7 @@
                                 </div>
 
                                 <br><br>
-                                {{$receptionists->links()}}
+
                             </div>
 
                         </div>
@@ -165,10 +190,28 @@
                     ///////////////////////////////////////
                 </div>
             </div>
-        </div>
-    <!--Admin dashboard-area end-->
-    </div>
 
+    <!--Admin dashboard-area end-->
+    <script>
+        function searchFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("search-table");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 @endsection
 
 @section('js_styling')
