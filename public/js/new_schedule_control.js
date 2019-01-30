@@ -16,6 +16,7 @@ function f1() {
     if (myInput.checked) {
 
         document.getElementById("b1").innerText = "Booked";
+
     }else{
 
         document.getElementById("b1").innerText = "Book Now";
