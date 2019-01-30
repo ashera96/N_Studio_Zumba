@@ -1,4 +1,4 @@
-+@extends('layouts.admin_app');
++@extends('layouts.recep_app');
 
 @section('content');
 
