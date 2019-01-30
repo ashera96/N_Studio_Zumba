@@ -104,26 +104,28 @@
 
 
 
-                                <tr class="text-dark">
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                <thead>
+                                    <tr class="text-dark">
+                                        <th>Name</th>
+                                        <th>Email</th>
 
-                                </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if($users)
+                                        @foreach($users as $user)
 
+                                            @if($user->isOnline())
 
+                                                <tr class="text-dark">
+                                                    <td>{{$user->username}}</td>
+                                                    <td>{{$user->email}}</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </tbody>
 
-                                @if($users)
-                                    @foreach($users as $user)
-
-                                        @if($user->isOnline())
-
-                                            <tr class="text-dark">
-                                                <th>{{$user->username}}</th>
-                                                <th>{{$user->email}}</th>
-                                            </tr>
-                                        @endif
-                                    @endforeach
-                                @endif
 
 
                             </table>

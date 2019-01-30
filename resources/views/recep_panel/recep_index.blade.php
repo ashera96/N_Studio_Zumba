@@ -20,7 +20,7 @@
                         <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                     </div>
                     <h3>Update Profile</h3>
-                    <p>Profile Settings</p>
+                    <p>Manage Profile</p>
                 </div>
 
 
@@ -60,49 +60,49 @@
                                     <div class="table-content table-responsive">
                                         <table>
                                             <thead>
-                                            <tr>
-                                                <th class="product-thumbnail">Category</th>
-                                                <th class="product-name">Details</th>
-                                            </tr>
+                                                <tr>
+                                                    <th class="product-thumbnail">Category</th>
+                                                    <th class="product-name">Details</th>
+                                                </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($receptionists as $receptionist)
-                                            <tr>
-                                                <td class="product-subtotal">Name</td>
-                                                <td class="product-subtotal">{{ $receptionist->name }}</td>
-                                            </tr>
-                                            <tr><td></td></tr>
-                                            <tr>
-                                                <td class="product-subtotal">Email</td>
-                                                <td class="product-subtotal">{{ $receptionist->email }}</td>
-                                            </tr>
-                                            <tr><td></td></tr>
-                                            <tr>
-                                                <td class="product-subtotal">NIC</td>
-                                                <td class="product-subtotal">{{ $receptionist->nic }}</td>
-                                            </tr>
-                                            <tr><td></td></tr>
-                                            <tr>
-                                                <td class="product-subtotal">DOB</td>
-                                                <td class="product-subtotal">{{ $receptionist->dob }}</td>
-                                            </tr>
-                                            <tr><td></td></tr>
-                                            <tr>
-                                                <td class="product-subtotal">Address</td>
-                                                <td class="product-subtotal">{{ $receptionist->address }}</td>
-                                            </tr>
-                                            <tr><td></td></tr>
-                                            <tr>
-                                                <td class="product-subtotal">Phone</td>
-                                                <td class="product-subtotal">{{ $receptionist->tpno }}</td>
-                                            </tr>
-                                            <tr><td></td></tr>
-                                            <tr>
-                                            <td class="product-subtotal" colspan="2">
+                                                <tr>
+                                                    <td class="product-subtotal">Name</td>
+                                                    <td class="product-subtotal">{{ $receptionist->name }}</td>
+                                                </tr>
+                                                <tr><td></td></tr>
+                                                <tr>
+                                                    <td class="product-subtotal">Email</td>
+                                                    <td class="product-subtotal">{{ $receptionist->email }}</td>
+                                                </tr>
+                                                <tr><td></td></tr>
+                                                <tr>
+                                                    <td class="product-subtotal">NIC</td>
+                                                    <td class="product-subtotal">{{ $receptionist->nic }}</td>
+                                                </tr>
+                                                <tr><td></td></tr>
+                                                <tr>
+                                                    <td class="product-subtotal">DOB</td>
+                                                    <td class="product-subtotal">{{ $receptionist->dob }}</td>
+                                                </tr>
+                                                <tr><td></td></tr>
+                                                <tr>
+                                                    <td class="product-subtotal">Address</td>
+                                                    <td class="product-subtotal">{{ $receptionist->address }}</td>
+                                                </tr>
+                                                <tr><td></td></tr>
+                                                <tr>
+                                                    <td class="product-subtotal">Phone</td>
+                                                    <td class="product-subtotal">{{ $receptionist->tpno }}</td>
+                                                </tr>
+                                                <tr><td></td></tr>
+                                                <tr>
+                                                <td class="product-subtotal" colspan="2">
 
-                                                <a href="{{url('recep/profile/'.$receptionist->id.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                    <a href="{{url('recep/profile/'.$receptionist->id.'/edit')}}"><button class="btn btn-success" >EDIT</button></a>
 
-                                            </td>
+                                                </td>
                                             </tr>
                                             @endforeach
                                             </tbody>

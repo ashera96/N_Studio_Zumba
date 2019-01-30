@@ -60,18 +60,21 @@
                                 <table class="table table-striped table-hover">
                                     <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Name</th>
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th></th>
+                                        <th>Active / Inactive</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach($users as $user)
                                         <tr>
+                                            <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->username }}</td>
-                                            <td>{{ $user->email }}</td>
+                                            <td class="text-lowercase">{{ $user->email }}</td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col">
@@ -83,6 +86,7 @@
                                             <td><a  class="btn btn-warning">Mark as not active</a></td>--}}
                                             <td>
                                                 @if($user->status)
+                                                    {{--<strong>Active</strong>--}}
                                                     <button class="markactive">Active</button>
                                                 @else
                                                     <button class="markinactive">Inactive</button>

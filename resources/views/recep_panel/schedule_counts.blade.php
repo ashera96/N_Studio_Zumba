@@ -8,7 +8,7 @@
 
 <!--Admin dashboard-area start-->
 <!--schedule-area start-->
-<div class="schedule-area parallax pad90"  style="margin-left: 120px;">
+<div class="schedule-area parallax pad90"  style="margin-left: 140px;">
     <div class="container" style="margin-left: 150px">
         <div class="row">
             @extends('layouts.recep_vertical_sidebar');

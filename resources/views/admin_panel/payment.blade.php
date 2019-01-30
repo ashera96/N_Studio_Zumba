@@ -208,16 +208,6 @@
         </div>
     </div>
 
-    <script>
-        function confirm_payment(receptionist_id){
-            alert(receptionist_id)
-            $('#confirm-modal').modal('show');
-            // alert(receptionist_id)
-            document.getElementById('payment').innerHTML = '<button class="btn btn-success" onclick="confirmed()">Okay</button>';
-            // document.getElementById('payment').innerHTML = '<a href="admin/salary_payment/'+receptionist_id+'"><button  class="btn btn-success">PAY</button></a>';
-        }
-    </script>
-
 @endsection
 
 @section('js_styling')
