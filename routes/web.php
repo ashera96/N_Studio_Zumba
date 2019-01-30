@@ -84,7 +84,7 @@ Route::prefix('home')->group(function() {
 |--------------------------------------------------------------------------
 */
 Route::prefix('admin')->group(function() {
-    Route::get('/show_wait_lists','AdminController@show_wait_lists')->middleware('admin','prevent_back_history');
+    Route::post('/adjust_count','AdminController@adjustCount')->middleware('admin','prevent_back_history');
     Route::resource('/receptionist','ReceptionistController')->middleware('admin','prevent_back_history');
    // Route::resource('/uploada','UploadController')->middleware('admin');
     Route::get('/customers','UserController@show_user_index')->middleware('admin','prevent_back_history');

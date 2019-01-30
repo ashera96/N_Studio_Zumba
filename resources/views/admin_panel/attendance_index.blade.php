@@ -109,6 +109,7 @@
                                 <div class="alert alert-danger" role="alert">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
                                     {{ session('msgA') }}
+                            @endif
 
                             @if(session('message1'))
                                 <div class="alert alert-danger" role="alert">
@@ -205,8 +206,10 @@
             </div>
             <!-- /.row -->
         </div>
+         </div>
     </div>
     </div>
+
 @endsection
 
 @section('js_styling')
