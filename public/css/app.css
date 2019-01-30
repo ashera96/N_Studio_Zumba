@@ -10536,6 +10536,20 @@ a.text-dark:focus {
   color: #fff;
 }
 
+.schedule-active {
+    background: #fc328a;
+    border: 1px solid transparent !important;
+}
+
+.schedule-active p{
+    color: #fff;
+}
+
+.schedule-active h5{
+    color: #fff !important;
+}
+
+
 .schedule-area .tab-content1 .tab-pane1 .schdl-box1 h5 {
   font-size: 20px;
   color: #000;

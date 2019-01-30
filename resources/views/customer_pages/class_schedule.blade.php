@@ -240,18 +240,18 @@
                         <div class="col-lg-2 offset-lg-1 offset-md-0">
                             <h3 class="text-uppercase text-center pad30">Monday</h3>
                             <div class="tab-content1">
-                                <div class="tab-pane1 fade active show">
+                                <div class="tab-pane1 fade active show ">
                                     @if(count($schedule_monday)>0)
                                         @if($counter1->counter < $schedule_limit->client_limit)
-                                            <div class="schdl-box1" id="sb1">
-                                                <h5>1</h5>
+                                            <div class="schdl-box1 schdule-active" id="sb1">
+                                                <h5>1xx</h5>
                                                 <h5>{{$schedule_monday[0]->type}}</h5>
                                                 <p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>
                                                 <label style="color: black" id="b1">Book Now</label> <input type="checkbox" id="Checkbox1" name="Checkbox[]" value="1" onclick="f1()" {{in_array("1",$Checkbox)?"checked":""}}>
                                             </div>
                                         @else
                                             <div class="schdl-box1" id="sb1">
-                                                <h5>1</h5>
+                                                <h5>1yy</h5>
                                                 <h5>{{$schedule_monday[0]->type}}</h5>
                                                 <p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>
                                                 <label style="color: black" id="d1">Filled</label>
@@ -605,7 +605,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_monday)>0)
                                             @if(in_array(1,$Checkbox))
-                                                <div class="schdl-box1" id="sb1">
+                                                <div class="schdl-box1 schedule-active" id="sb1">
                                                     <h5>1</h5>
                                                     <h5>{{$schedule_monday[0]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>
