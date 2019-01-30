@@ -114,7 +114,38 @@
                                                 <td>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <a href="{{url('recep/monthly_payment/'.$user->user_id)}}"><button class="btn btn-danger" >PAY</button></a>
+                                                            {{--<a href="{{url('recep/monthly_payment/'.$user->user_id)}}"><button class="btn btn-danger" >PAY</button></a>--}}
+
+                                                            <button class="btn btn-danger" data-toggle="modal" data-target="#confirm-modal-{{$user->user_id}}">PAY</button>
+
+                                                            <div class="modal fade" id="confirm-modal-{{$user->user_id}}">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <!-- Modal Header -->
+                                                                        <div class="modal-header">
+                                                                            <h4 class="modal-title" style="color: black">Confirm Payment</h4>
+                                                                            <button type="button" class="close" data-dismiss="modal">×</button>
+                                                                        </div>
+
+                                                                        <!-- Modal body -->
+                                                                        <div class="modal-body">
+                                                                            <p>Are you sure you collected the payment from {{ $user->username }}?</p>
+                                                                        </div>
+
+                                                                        <!-- Modal footer -->
+
+                                                                        <div class="modal-footer">
+                                                                            <div class="row">
+
+                                                                                <a href="{{url('recep/monthly_payment/'.$user->user_id)}}"><button class="btn btn-success mr-1 mr-2" style="height: 35px;">Confirm</button></a>
+                                                                                <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">Cancel</button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
                                                         </div>
                                                     </div>
                                                 </td>

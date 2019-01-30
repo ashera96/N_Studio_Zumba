@@ -209,15 +209,18 @@
             var height = document.bmiForm.height.value
             if(weight > 0 && height > 0){
                 var finalBmi = weight/(height/100*height/100)
-                document.bmiForm.bmi.value = finalBmi
+                document.bmiForm.bmi.value = finalBmi.toFixed(2)
                 if(finalBmi < 18.5){
                     document.bmiForm.meaning.value = "Under Weight"
                 }
-                if(finalBmi > 18.5 && finalBmi < 25){
+                else if(finalBmi >= 18.5 && finalBmi < 25){
                     document.bmiForm.meaning.value = "Healthy"
                 }
-                if(finalBmi > 25){
+                else if(finalBmi >= 25 && finalBmi < 30){
                     document.bmiForm.meaning.value = "Over Weight"
+                }
+                else{
+                    document.bmiForm.meaning.value = "Obese"
                 }
             }
             else{
@@ -268,7 +271,7 @@
                                                 <label>Your BMI</label>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input  type="text" name="bmi" class="form-control" placeholder="BMI Value" size="10" ><br />
+                                                <input  type="text" name="bmi" class="form-control" disabled placeholder="BMI Value" size="10" ><br />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -276,7 +279,7 @@
                                                 <label>Your Status</label>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input  type="text" name="meaning" class="form-control"  placeholder="BMI Status" size="25" ><br />
+                                                <input  type="text" name="meaning" class="form-control" disabled placeholder="BMI Status" size="25" ><br />
                                             </div>
                                         </div>
                                         <input type="reset" class="btn active btn-success" id="bmi-button" value="Reset" /><br />
