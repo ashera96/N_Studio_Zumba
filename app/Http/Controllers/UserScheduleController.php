@@ -24,6 +24,7 @@ use Auth;
 use DB;
 use Notification;
 use Illuminate\Support\Facades\Session;
+use Mail;
 
 class UserScheduleController extends Controller
 {
@@ -39,6 +40,9 @@ class UserScheduleController extends Controller
         $selected_package = DB::table('user_payments')->select('package_id')->where("user_id", $current_user->id)->first();
 
         $schedule_limit = Schedule::select('client_limit')->where('id',1)->first(); //get the client limit
+
+        $sys_user_email = DB::table('system_users')->select('email')->where("id", $current_user->id)->first();
+        $sys_user_username = DB::table('system_users')->select('username')->where("id", $current_user->id)->first();
 
         $counter1 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 1)->first();
         $counter2 = DB::table('schedule_counts')->select('counter')->where("schedule_id", 2)->first();
@@ -98,7 +102,7 @@ class UserScheduleController extends Controller
                 }
             }
             return view('customer_pages.class_schedule', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name','selected_package_id','schedule_limit','counter1'
-                ,'counter2','counter3','counter4','counter5','counter6','counter7','counter8','counter9','counter10','counter11','counter12'
+                ,'counter2','counter3','counter4','counter5','counter6','counter7','counter8','counter9','counter10','counter11','counter12','sys_user_email','sys_user_username'
             ));
         }else{
             return view('customer_pages.schedule_blocked', compact('schedule_monday', 'schedule_tuesday', 'schedule_wednesday', 'schedule_thursday', 'schedule_friday', 'schedule_saturday', 'schedule_sunday', 'Checkbox','selected_package_name','selected_package_id'));
@@ -279,6 +283,26 @@ class UserScheduleController extends Controller
                 return redirect()->back();
             }
     }//update
+
+    public function sendInquiry(Request $request){
+        $data = [
+            'email'=>$request->email_data,
+            'inquiry'=>$request->inquiry,
+        ];
+
+        Mail::send('email.inquiry',$data,function ($inq) use ($data){
+
+            $inq -> from($data['email']);
+            $inq -> to('nstudioz950@gmail.com');
+            $inq -> subject('Inquiry');
+            $inq->replyTo($data['email']);
+        });
+
+        Session::flash('msginq', 'Inquiry has been sent successfully! We will consider this immediately.');
+
+        //Redirect
+        return redirect()->back();
+    }
 
 }//controller
 
