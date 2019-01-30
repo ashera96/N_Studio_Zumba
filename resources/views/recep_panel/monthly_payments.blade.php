@@ -79,6 +79,8 @@
 
                         {{--Displaying current month and year start--}}
                         <div class="panel panel-default ml-5">
+
+
                             <table class="table shadow-sm mb-5" style="font-size: 25px;">
                                 <thead>
                                     <tr>
@@ -90,9 +92,20 @@
                         </div>
                         {{--Displaying current month and year end--}}
 
+
                         <div class="panel panel-default ml-5">
                             <div class="panel-body">
-                                <table class="table table-striped table-hover" width="80%"  >
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="background-color: #fc328a;color: white;height: 37px;border-radius:5px;padding: 8px;margin-right: -2px;">
+                                            <i class="fa fa-search icon" style="color: white;"></i>
+                                        </div>
+                                        <input id="search" type="search" placeholder="Search By Email" class="form-control mb-3 fa-search" onkeyup="searchFunction()" style="max-width: 300px;">
+                                    </div>
+                                </div>
+
+                                <table id="search-table" class="table table-striped table-hover" width="80%"  >
                                     <thead>
                                         <tr>
                                             <th>Id</th>
@@ -108,7 +121,7 @@
                                         <tr>
                                             <td>{{ $user->user_id }}</td>
                                             <td>{{ $user->username }}</td>
-                                            <td>{{ $user->email }}</td>
+                                            <td class="text-lowercase">{{ $user->email }}</td>
                                             <td>{{ $user->amount}}</td>
                                             @if(in_array($user->user_id,$not_paid_stack))
                                                 <td>
@@ -176,6 +189,27 @@
     </div>
     <!--Receptionist monthly payment-area end-->
 </div>
+
+<script>
+    function searchFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("search-table");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 
 @endsection
 
