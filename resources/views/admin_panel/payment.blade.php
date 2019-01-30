@@ -198,7 +198,7 @@
                                                                     <div class="modal-footer">
                                                                         <div class="row">
 
-                                                                            <a href="{{url('admin/salary_payment/'.$receptionist->receptionist_id)}}"><button class="btn btn-danger mr-1 mr-2" style="height: 35px;">Confirm</button></a>
+                                                                            <a href="{{url('admin/salary_payment/'.$receptionist->receptionist_id)}}"><button class="btn btn-success mr-1 mr-2" style="height: 35px;">Confirm</button></a>
                                                                             <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">Cancel</button>
                                                                         </div>
                                                                     </div>
