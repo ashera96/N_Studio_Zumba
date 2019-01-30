@@ -54,6 +54,9 @@
                                                 @foreach($users11 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users11)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -80,6 +83,9 @@
                                                 @foreach($users12 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users12)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -115,6 +121,9 @@
                                                 @foreach($users21 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users21)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -142,6 +151,9 @@
                                                 @foreach($users22 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users22)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -178,6 +190,9 @@
                                                 @foreach($users31 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users31)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -205,6 +220,9 @@
                                                 @foreach($users32 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users32)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -240,6 +258,9 @@
                                                 @foreach($users41 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users41)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -266,6 +287,9 @@
                                                 @foreach($users42 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users42)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -302,6 +326,9 @@
                                                 @foreach($users51 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users51)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -328,6 +355,9 @@
                                                 @foreach($users52 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users52)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -370,6 +400,9 @@
                                                 @foreach($users61 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users61)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -404,6 +437,9 @@
                                                 @foreach($users62 as $u)
                                                     <li>{{$u->username}}</li>
                                                 @endforeach
+                                                @if(count($users62)==0)
+                                                    <p>No users</p>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
