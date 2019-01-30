@@ -647,7 +647,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="background-color: deeppink;border:none;margin-left: 150px" id="submit">
+                                <button type="submit" class="btn btn-primary" style="background-color:#fc328a ;border:none;margin-left: 135px;margin-top: 30px;margin-bottom: 30px;" id="submit">
                                     {{ __('UPDATE') }}
                                 </button>
                             </div>
@@ -660,6 +660,52 @@
 
         </div>
         <!-- /.container -->
+
+        <div class="col-md-12">
+            <div class="section-title text-center">
+                <p>Any inquiries about filled slots?</p>
+                <button type="button" class="btn btn-primary" style="margin-top: -55px;background-color:#fc328a;border: none;" data-toggle="modal" data-target="#myModal">
+                    Contact Admin
+                </button>
+            </div>
+        </div>
+
+        <!--modal-->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content" style="height: 300px;background-color: lightyellow">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" style="color: deeppink">Send Inquiries</h4>
+                        <button type="button" class="close" style="color:#fc328a" data-dismiss="modal">×</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" style="color: black">
+                        <form method="POST" action="{{ url('home/send_inquiries') }}"  aria-label="{{ __('Send_Inquiry') }}">
+                            {{csrf_field()}}
+                            <div class="form-horizontal">
+                                <div>
+                                    <!--take  hidden input-->
+                                    <input type="hidden" name="email_data" value={{$sys_user_email->email}} >
+                                    <!-- done -->
+                                    <textarea id="inquiry" type="text" style="height: 150px; width:465px; background-color: lightyellow"  placeholder="Inquiry" name="inquiry" required autofocus></textarea>
+                                    <br>
+                                </div>
+
+                                <div class="form-horizontal">
+                                    <button type="submit" class="btn btn-primary" style="background-color:#fc328a;border:none;margin-left: 200px" id="create1">
+                                        {{ __('Send') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of the modal -->
+
     </div>
     <!--schedule-area end-->
 

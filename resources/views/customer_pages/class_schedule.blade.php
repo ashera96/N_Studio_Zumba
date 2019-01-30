@@ -249,15 +249,15 @@
                                 <div class="tab-pane1 fade active show ">
                                     @if(count($schedule_monday)>0)
                                         @if($counter1->counter < $schedule_limit->client_limit)
-                                            <div class="schdl-box1 schdule-active" id="sb1">
-                                                <h5>1xx</h5>
+                                            <div class="schdl-box1" id="sb1">
+                                                <h5>1</h5>
                                                 <h5>{{$schedule_monday[0]->type}}</h5>
                                                 <p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>
                                                 <label style="color: black" id="b1">Book Now</label> <input type="checkbox" id="Checkbox1" name="Checkbox[]" value="1" onclick="f1()" {{in_array("1",$Checkbox)?"checked":""}}>
                                             </div>
                                         @else
                                             <div class="schdl-box1" id="sb1">
-                                                <h5>1yy</h5>
+                                                <h5>1</h5>
                                                 <h5>{{$schedule_monday[0]->type}}</h5>
                                                 <p class="mb-0">{{$schedule_monday[0]->time_slot}}</p>
                                                 <label style="color: black" id="d1">Filled</label>
@@ -506,7 +506,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="background-color: deeppink;border:none;margin-left: 150px" id="submit">
+                                <button type="submit" class="btn btn-primary" style="background-color:#fc328a ;border:none;margin-left: 135px;margin-top: 30px;margin-bottom: 30px;" id="submit">
                                     {{ __('SUBMIT') }}
                                 </button>
                             </div>
@@ -515,7 +515,52 @@
                 </form>
             </div>
 
-            {{--Schdeule Timetable End--}}
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <p>Any inquiries about filled slots?</p>
+                        <button type="button" class="btn btn-primary" style="margin-top: -55px;background-color:#fc328a;border: none;" data-toggle="modal" data-target="#myModal">
+                            Contact Admin
+                        </button>
+                    </div>
+                </div>
+
+                <!--modal-->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: 300px;background-color: lightyellow">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title" style="color: deeppink">Send Inquiries</h4>
+                                <button type="button" class="close" style="color:#fc328a" data-dismiss="modal">×</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" style="color: black">
+                                <form method="POST" action="{{ url('home/send_inquiries') }}"  aria-label="{{ __('Send_Inquiry') }}">
+                                    {{csrf_field()}}
+                                    <div class="form-horizontal">
+                                        <div>
+                                            <!--take  hidden input-->
+                                            <input type="hidden" name="email_data" value={{$sys_user_email->email}} >
+                                            <!-- done -->
+                                            <textarea id="inquiry" type="text" style="height: 150px; width:465px; background-color: lightyellow"  placeholder="Inquiry" name="inquiry" required autofocus></textarea>
+                                            <br>
+                                        </div>
+
+                                        <div class="form-horizontal">
+                                            <button type="submit" class="btn btn-primary" style="background-color:#fc328a;border:none;margin-left: 200px" id="create1">
+                                                {{ __('Send') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of the modal -->
+
+                {{--Schdeule Timetable End--}}
         @endif
 
 
@@ -583,14 +628,60 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="background-color: deeppink;border:none;margin-left: 150px" id="submit">
-                                    {{ __('SUBMIT') }}
+                                <button type="submit" class="btn btn-primary" style="background-color:#fc328a ;border:none;margin-left: 135px;margin-top: 30px;margin-bottom: 30px;" id="submit">
+                                {{ __('SUBMIT') }}
                                 </button>
                             </div>
                         </div>
 
                     </form>
                 </div>
+
+
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <p>Any inquiries about filled slots?</p>
+                        <button type="button" class="btn btn-primary" style="margin-top: -55px;background-color:#fc328a;border: none;" data-toggle="modal" data-target="#myModal">
+                            Contact Admin
+                        </button>
+                    </div>
+                </div>
+
+                <!--modal-->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="height: 300px;background-color: lightyellow">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title" style="color: deeppink">Send Inquiries</h4>
+                                <button type="button" class="close" style="color:#fc328a" data-dismiss="modal">×</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body" style="color: black">
+                                <form method="POST" action="{{ url('home/send_inquiries') }}"  aria-label="{{ __('Send_Inquiry') }}">
+                                    {{csrf_field()}}
+                                    <div class="form-horizontal">
+                                        <div>
+                                            <!--take  hidden input-->
+                                            <input type="hidden" name="email_data" value={{$sys_user_email->email}} >
+                                            <!-- done -->
+                                            <textarea id="inquiry" type="text" style="height: 150px; width:465px; background-color: lightyellow"  placeholder="Inquiry" name="inquiry" required autofocus></textarea>
+                                            <br>
+                                        </div>
+
+                                        <div class="form-horizontal">
+                                            <button type="submit" class="btn btn-primary" style="background-color:#fc328a;border:none;margin-left: 200px" id="create1">
+                                                {{ __('Send') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of the modal -->
 
                 {{--Schdeule Timetable End--}}
             @endif
@@ -624,7 +715,7 @@
                                                 </div>
                                             @endif
                                             @if(in_array(2,$Checkbox))
-                                                <div class="schdl-box1" id="sb2">
+                                                <div class="schdl-box1 schedule-active" id="sb2">
                                                     <h5>2</h5>
                                                     <h5>{{$schedule_monday[1]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_monday[1]->time_slot}}</p>
@@ -646,7 +737,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_tuesday)>0)
                                             @if(in_array(3,$Checkbox))
-                                                <div class="schdl-box1" id="sb3">
+                                                <div class="schdl-box1 schedule-active" id="sb3">
                                                     <h5>3</h5>
                                                     <h5>{{$schedule_tuesday[2]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_tuesday[2]->time_slot}}</p>
@@ -660,7 +751,7 @@
                                             @endif
 
                                             @if(in_array(4,$Checkbox))
-                                                <div class="schdl-box1" id="sb4">
+                                                <div class="schdl-box1 schedule-active" id="sb4">
                                                     <h5>4</h5>
                                                     <h5>{{$schedule_tuesday[3]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_tuesday[3]->time_slot}}</p>
@@ -683,7 +774,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_wednesday)>0)
                                             @if(in_array(5,$Checkbox))
-                                                <div class="schdl-box1" id="sb5">
+                                                <div class="schdl-box1 schedule-active" id="sb5">
                                                     <h5>5</h5>
                                                     <h5>{{$schedule_wednesday[4]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_wednesday[4]->time_slot}}</p>
@@ -697,7 +788,7 @@
                                             @endif
 
                                             @if(in_array(6,$Checkbox))
-                                                <div class="schdl-box1" id="sb6">
+                                                <div class="schdl-box1 schedule-active" id="sb6">
                                                     <h5>6</h5>
                                                     <h5>{{$schedule_wednesday[5]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_wednesday[5]->time_slot}}</p>
@@ -720,7 +811,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_thursday)>0)
                                             @if(in_array(7,$Checkbox))
-                                                <div class="schdl-box1" id="sb7">
+                                                <div class="schdl-box1 schedule-active" id="sb7">
                                                     <h5>7</h5>
                                                     <h5>{{$schedule_thursday[6]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_thursday[6]->time_slot}}</p>
@@ -734,7 +825,7 @@
                                             @endif
 
                                             @if(in_array(8,$Checkbox))
-                                                <div class="schdl-box1" id="sb8">
+                                                <div class="schdl-box1 schedule-active" id="sb8">
                                                     <h5>8</h5>
                                                     <h5>{{$schedule_thursday[7]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_thursday[7]->time_slot}}</p>
@@ -757,7 +848,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_friday)>0)
                                             @if(in_array(9,$Checkbox))
-                                                <div class="schdl-box1" id="sb9">
+                                                <div class="schdl-box1 schedule-active" id="sb9">
                                                     <h5>9</h5>
                                                     <h5>{{$schedule_friday[8]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_friday[8]->time_slot}}</p>
@@ -771,7 +862,7 @@
                                             @endif
 
                                             @if(in_array(10,$Checkbox))
-                                                <div class="schdl-box1" id="sb10">
+                                                <div class="schdl-box1 schedule-active" id="sb10">
                                                     <h5>10</h5>
                                                     <h5>{{$schedule_friday[9]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_friday[9]->time_slot}}</p>
@@ -800,7 +891,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_saturday)>0)
                                             @if(in_array(11,$Checkbox))
-                                                <div class="schdl-box1" id="sb11">
+                                                <div class="schdl-box1 schedule-active" id="sb11">
                                                     <h5>11</h5>
                                                     <h5>{{$schedule_saturday[10]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_saturday[10]->time_slot}}</p>
@@ -822,7 +913,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_sunday)>0)
                                             @if(in_array(12,$Checkbox))
-                                                <div class="schdl-box1" id="sb12">
+                                                <div class="schdl-box1 schedule-active" id="sb12">
                                                     <h5>12</h5>
                                                     <h5>{{$schedule_sunday[11]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_sunday[11]->time_slot}}</p>
@@ -865,7 +956,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_saturday)>0)
                                             @if(in_array(11,$Checkbox))
-                                                <div class="schdl-box1" id="sb11">
+                                                <div class="schdl-box1 schedule-active" id="sb11">
                                                     <h5>11</h5>
                                                     <h5>{{$schedule_saturday[10]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_saturday[10]->time_slot}}</p>
@@ -887,7 +978,7 @@
                                     <div class="tab-pane1 fade active show">
                                         @if(count($schedule_sunday)>0)
                                             @if(in_array(12,$Checkbox))
-                                                <div class="schdl-box1" id="sb12">
+                                                <div class="schdl-box1 schedule-active" id="sb12">
                                                     <h5>12</h5>
                                                     <h5>{{$schedule_sunday[11]->type}}</h5>
                                                     <p class="mb-0">{{$schedule_sunday[11]->time_slot}}</p>
@@ -913,53 +1004,6 @@
                 {{--Schdeule Timetable End--}}
             @endif
             <!--end of weekend pkg -->
-
-            <div class="col-md-12">
-                <div class="section-title text-center">
-                    <p>Any inquiries about filled slots?</p>
-                    <button type="button" class="btn btn-primary" style="background-color:#fc328a;border: none;" data-toggle="modal" data-target="#myModal">
-                        Contact Admin
-                    </button>
-                </div>
-            </div>
-
-            <!--modal-->
-            <div class="modal fade" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content" style="height: 300px;background-color: lightyellow">
-                        <!-- Modal Header -->
-                        <div class="modal-header">
-                            <h4 class="modal-title" style="color: deeppink">Send Inquiries</h4>
-                            <button type="button" class="close" style="color:#fc328a" data-dismiss="modal">×</button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div class="modal-body" style="color: black">
-                            <form method="POST" action="{{ url('home/send_inquiries') }}"  aria-label="{{ __('Send_Inquiry') }}">
-                                {{csrf_field()}}
-                                <div class="form-horizontal">
-                                    <div>
-                                        <!--take  hidden input-->
-                                        <input type="hidden" name="email_data" value={{$sys_user_email->email}} >
-                                        <!-- done -->
-                                        <textarea id="inquiry" type="text" style="height: 150px; width:465px; background-color: lightyellow"  placeholder="Inquiry" name="inquiry" required autofocus></textarea>
-                                        <br>
-                                    </div>
-
-                                    <div class="form-horizontal">
-                                        <button type="submit" class="btn btn-primary" style="background-color:#fc328a;border:none;margin-left: 200px" id="create1">
-                                            {{ __('Send') }}
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end of the modal -->
-
-
 
         </div>
         <!-- /.container -->

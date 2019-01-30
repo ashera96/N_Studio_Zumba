@@ -136,7 +136,6 @@ function f11(){
 //sunday
 function f12(){
     if (myInput12.checked) {
-
         document.getElementById("b12").innerText = "Booked";
     }else{
 
