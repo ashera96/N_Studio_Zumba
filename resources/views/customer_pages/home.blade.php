@@ -22,6 +22,39 @@
         },15000);
     </script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['month','weight'],
+                    @foreach($details as $weight)
+                ['{{$weight->month}}',{{$weight->weight}}],
+                @endforeach
+
+
+            ]);
+
+            var options = {
+                title: 'Your Weight Progress',
+                curveType: 'function',
+                hAxis: {
+                    title: 'Month'
+                },
+                vAxis: {
+                    title: 'Weight'
+                },
+
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
     <header class="header fixed-top">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
@@ -297,6 +330,10 @@
         <!-- /.port carousel -->
     </div>
     <!--BMI calculating area end-->
+
+    @if(count($details)>0)
+    <div id="curve_chart" style="width: 1000px; height: 500px;margin-left: 150px;"></div>
+    @endif
 
     {{--Notifications area start--}}
     <div class="about-area pad90">
