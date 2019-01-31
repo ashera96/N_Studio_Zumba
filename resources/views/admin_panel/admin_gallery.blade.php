@@ -76,7 +76,7 @@
                     </div>
 
 
-                        <div class="card mt15 shadow-lg fs-15" style="width: 700px;margin-left: 280px;">
+                        <div class="card mt15 shadow-lg fs-15" style="width: 700px;margin-left: 270px;">
                             <div class="card-body">
                                 <div class="card-text ml-4 mr-4" style="color: #343a40">
                                     <div class="row mb-4">
@@ -99,7 +99,7 @@
                         </div>
 
                         <br>
-                        <div class="col-md-6" style="margin-left: 265px">
+                        <div class="col-md-6 offset-md-3">
                         <table  class="table table-striped table-hover">
                             <thead>
                             <tr>
@@ -113,7 +113,7 @@
                                     @if($image->image)
                                         <td><img src="{{asset('uploads/' . $image->image)}}" style="height: 150px;width: 150px"/></td>
                                     @endif
-                                    <td>
+                                    <td class="text-center ">
                                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal-{{ $image->id }}">DELETE</button>
                                         <!--modal-->
                                         <div class="modal fade" id="myModal-{{ $image->id }}">
@@ -152,7 +152,10 @@
                             </tbody>
                         </table>
                         </div>
-                        <h3 style="margin-right: 200px">{!! $images->links(); !!}</h3>
+                        <div style="margin-left: 150px;">
+                            {!! $images->links(); !!}
+                        </div>
+                        {{--<h3 style="margin-right: 200px">{!! $images->links(); !!}</h3>--}}
                     {{--<div class="gallery" style="width: 850px;margin-left: 200px">--}}
                         {{--<br><br>--}}
                         {{--<form class="uploadFormStyle" action="{{URL::to('admin/dashboard/admin_gallery')}}" method="post" enctype="multipart/form-data">--}}
