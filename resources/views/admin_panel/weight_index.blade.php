@@ -17,6 +17,31 @@
             color: #000 !important;
             border: solid 1px #707d82!important;
         }
+
+        .nav-tabs .nav-item li > a {
+            text-transform: capitalize;
+            color: #fc328a;
+            transition: background-color .2s, color .2s;
+        }
+
+        .nav-tabs .nav-item li > a:hover {
+            text-transform: capitalize;
+            color: #fc328a;
+            transition: background-color .2s, color .2s;
+        }
+
+        .nav-tabs .nav-item li > a:focus {
+            text-transform: capitalize;
+            color: #fc328a;
+            transition: background-color .2s, color .2s;
+            /*background-color: #333;*/
+        }
+
+
+        .nav-tabs .nav-item li.active > a {
+            background-color: #fc328a;
+            color: white;
+        }
     </style>
 
     @extends('layouts.hori_sidebar');
@@ -31,175 +56,171 @@
                 <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 mainFix">
                     <!-- Website Overview -->
 
+
+                    @if (session('msga'))
+                        <div class="alert alert-success fs-15 ml90" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msga') }}
+                        </div>
+                    @endif
+
+                    @if (session('msgf'))
+                        <div class="alert alert-danger fs-15 ml90" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msgf') }}
+                        </div>
+                    @endif
+
+                    @if (session('msgc'))
+                        <div class="alert alert-success fs-15 ml90" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msgc') }}
+                        </div>
+                    @endif
+
+                    @if (session('msge'))
+                        <div class="alert alert-danger fs-15 ml90" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msge') }}
+                        </div>
+                    @endif
+
+                    @if (session('message'))
+                        <div class="alert alert-danger fs-15 ml90" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
+                    @if (session('msgx'))
+                        <div class="alert alert-danger fs-15 ml90" role="alert">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            {{ session('msgx') }}
+                        </div>
+                    @endif
+
+                    {{--@if(session('message'))--}}
+                        {{--<div class="alert alert-danger fs-15 ml90" role="alert">--}}
+                            {{--<button type=" button" class="close" data-dismiss="alert">x</button>--}}
+                            {{--{{session('message')}}--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
+
+
+                    <div class="col-lg-10 col-md-9 offset-lg-1 offset-md-1">
+                        <div class="nav nav-tabs">
+                            <div class="nav-item">
+                                <li class="nav-link active">
+                                    <a class="nav-link " href="/admin/reports">
+                                        Weight<span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                            </div>
+                            <div class="nav-item">
+                                <li class="nav-link">
+                                    <a class="nav-link " href="/admin/income_report">
+                                        Income<span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="section-title text-center">
-                        <div class="title-bar full-width mb20">
+                        <div class="title-bar full-width mb20 mt20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
                         </div>
-                        <h3>Weight Reports</h3>
-                        <p>Manage Weights Reports</p>
+                        <h3>Weight Report</h3>
+                        <p>Manage Weight Reports</p>
                     </div>
 
 
-                    <div class="col-lg-10 col-md-9 pad30" style="margin-left: 140px">
-                    <!-- Website Overview -->
-                    <div class="new">
-                    <div class="panel panel-default">
-                        <nav class="navbar navbar-default ">
-                            <div class="container">
-                                <nav class="navbar navbar-expand-lg navbar-dark">
-                                    <div class="container-fluid">
-                                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                                            <ul class="navbar-nav ml-auto">
-                                                <li class="nav-item active">
-                                                    <a class="nav-link " href="/admin/reports">
-                                                        Weight<span class="sr-only">(current)</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link " href="/admin/reports_attendance">
-                                                        Attendance<span class="sr-only">(current)</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
+                    <div>
+                        <div class="col-md-11"  style="margin-left: 100px;">
+                            <div class="row mb-0">
+                                <div class="card overview-block pad30 rounded">
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <div class = "col-md-12 text-right">
+
+                                                <form method="post" class ="form-inline" action="{{url('admin/reports/search')}}">
+                                                    @csrf
+
+                                                    <div class="form-group" style="margin-top: -50px;">
+                                                        <input type="text" class="form-control" placeholder ="Search By User Id" name="search" id="search">
+                                                        <button class="btn" style="background-color: #fc328a;height: 37px;border-radius:5px;padding: 8px;" type="submit"><i class="fa fa-search" style="color: white;"></i> </button>
+                                                    </div>
+                                                    {{--<div class="form-group">--}}
+                                                        {{--<input type="text" class="form-control" placeholder ="Search By User Id" name="search" id="search">--}}
+                                                        {{--<button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>--}}
+                                                    {{--</div>--}}
+
+                                                </form>
+
+                                                <a href="{{url('/admin/reports/create')}}" class="btn active btn-primary float-right" style="margin-top: -60px;">ADD WEIGHT</a>
+                                                {{----}}
+                                {{--<div class="row float-right pad30">--}}
+                                    {{--<a href="{{url('/admin/reports/create')}}" class="btn active btn-primary " style="font-size: large; height: 40px; width: 150px">ADD WEIGHT</a>--}}
+                                {{--</div>--}}
+                                            </div>
+                                            <table class="table table-striped table-hover" width="80%"  >
+                                                <thead>
+                                                <tr>
+                                                    <th>User Id</th>
+                                                    <th>Month</th>
+                                                    <th>Year</th>
+                                                    <th>Weight</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                @foreach($weights as $weight)
+                                                    <tr>
+                                                        <td>{{$weight->id}}</td>
+                                                        <td>{{$weight->month}}</td>
+                                                        <td>{{$weight->year}}</td>
+                                                        <td>{{$weight->weight}}</td>
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        {{--<td>--}}
+                                                            {{--<div class="row">--}}
+                                                                {{--<div class="col">--}}
+                                                                    {{--<a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/see')}}"><button class="editbtn" >VIEW</button></a>--}}
+                                                                {{--</div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</td>--}}
+
+                                                        <td>
+                                                            {{ Form::open(['route' => ['reports.destroy',$weight->id,$weight->month,$weight->year], 'method' => 'delete']) }}
+                                                            <button type="submit" class="delbtn">Delete</button>
+                                                            {{ Form::close() }}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+
+                                            {{$weights->links()}}
+
                                         </div>
                                     </div>
-                                </nav>
-                            </div>
-                        </nav>
-                    </div>
-                    </div>
-                    <div>
-                        <br>
-
-                        @if (session('msga'))
-                            <div class="alert alert-success" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                {{ session('msga') }}
-                            </div>
-                        @endif
-
-                        @if (session('msgf'))
-                            <div class="alert alert-danger" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                {{ session('msgf') }}
-                            </div>
-                        @endif
-
-                        @if (session('msgc'))
-                            <div class="alert alert-success" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                {{ session('msgc') }}
-                            </div>
-                        @endif
-
-                        @if (session('msge'))
-                            <div class="alert alert-danger" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                {{ session('msge') }}
-                            </div>
-                        @endif
-
-                        @if (session('message'))
-                            <div class="alert alert-danger" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                {{ session('message') }}
-                            </div>
-                        @endif
-
-                        @if (session('msgx'))
-                            <div class="alert alert-danger" role="alert">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
-                                {{ session('msgx') }}
-                            </div>
-                        @endif
-
-                        @if(session('message'))
-                            <div class="alert alert-danger" role="alert">
-                                <button type=" button" class="close" data-dismiss="alert">x</button>
-                                {{session('message')}}
-                            </div>
-                        @endif
-
-                        <div class="col-md-12" align="right" >
-                        <div class="row mb-0">
-                        <div class="card overview-block pad30 rounded">
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class = "col-md-8 text-right">
-
-                                <form method="post" class ="form-inline" action="{{url('admin/reports/search')}}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder ="Search By User Id" name="search" id="search">
-                                        <button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>
-                                    </div>
-
-                                </form>
-
-                                <div class="row float-right pad30">
-                                    <a href="{{url('/admin/reports/create')}}" class="btn active btn-primary " style="font-size: large; height: 40px; width: 150px">ADD WEIGHT</a>
                                 </div>
                             </div>
-                            <table class="table table-striped table-hover" width="80%"  >
-                                <thead>
-                                <tr>
-                                    <th>User Id</th>
-                                    <th>Month</th>
-                                    <th>Year</th>
-                                    <th>Weight</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                @foreach($weights as $weight)
-                                    <tr>
-                                        <td>{{$weight->id}}</td>
-                                        <td>{{$weight->month}}</td>
-                                        <td>{{$weight->year}}</td>
-                                        <td>{{$weight->weight}}</td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/see')}}"><button class="editbtn" >VIEW</button></a>
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            {{ Form::open(['route' => ['reports.destroy',$weight->id,$weight->month,$weight->year], 'method' => 'delete']) }}
-                                            <button type="submit" class="delbtn">Delete</button>
-                                            {{ Form::close() }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-
-                            {{$weights->links()}}
-
                         </div>
-                    </div>
-                        </div>
-                        </div>
-
-                </div>
                     </div>
                 </div>
                 <!-- /.col -->
             </div>
             <!-- /.row -->
         </div>
-    </div>
     </div>
 
 @endsection

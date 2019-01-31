@@ -2,11 +2,32 @@
 
 @section('content');
 
-
-@extends('layouts.hori_sidebar');
-<!--header end-->
-
 <style>
+    .nav-tabs .nav-item li > a {
+        text-transform: capitalize;
+        color: #fc328a;
+        transition: background-color .2s, color .2s;
+    }
+
+    .nav-tabs .nav-item li > a:hover {
+        text-transform: capitalize;
+        color: #fc328a;
+        transition: background-color .2s, color .2s;
+    }
+
+    .nav-tabs .nav-item li > a:focus {
+        text-transform: capitalize;
+        color: #fc328a;
+        transition: background-color .2s, color .2s;
+        /*background-color: #333;*/
+    }
+
+
+    .nav-tabs .nav-item li.active > a {
+        background-color: #fc328a;
+        color: white;
+    }
+
     #chartdiv {
         width: 100%;
         max-height: 500px;
@@ -14,40 +35,77 @@
     }
 </style>
 
+@extends('layouts.hori_sidebar');
+
+
 <!--Admin dashboard-area start-->
 <div class="about-area pad90">
     <div class="container-fluid">
         <div class="row">
             <!--Sidebar-area start-->
-            @extends('layouts.vertical_sidebar');
+            <div class="col-lg-2 col-md-3 sideFix" style="margin-top: -25px;">
+                <div class="list-group shadow-sm">
+                    <a href="/admin/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
+                    <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
+                    <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
+                    <a href="/admin/dashboard/admin_gallery" class="list-group-item side-bar"><i class="fa fa-image fa-lg mr-1"></i> Gallery</a>
+                    <a href="/admin/dashboard/class_packages" class="list-group-item side-bar"><i class="fa fa-clipboard fa-lg mr-1"></i> Classes</a>
+                    <a href="/admin/schedules" class="list-group-item side-bar"><i class="fa fa-calendar fa-lg mr-1"></i> Schedules</a>
+                    <a href="/admin/create_notifications" class="list-group-item side-bar"><i class="fa fa-bell fa-lg mr-1"></i> Notifications</a>
+                    <a href="/admin/payments" class="list-group-item side-bar"><i class="fa fa-dollar fa-lg mr-1"></i> Payments</a>
+                    <a href="/admin/reports" class="list-group-item active side-bar active"><i class="fa fa-file fa-lg mr-1"></i> Reports</a>
+
+                </div>
+            </div>
             <!--Sidebar-area end-->
 
-            <div class="col-lg-10 col-md-9 mar30">
+            <!-- Website Overview -->
 
-                <div class="section-title text-center">
-                    <div class="title-bar full-width mb20">
-                        <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
+            <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 mainFix">
+
+                <div class="col-lg-10 col-md-9 offset-lg-1 offset-md-1">
+                    <div class="nav nav-tabs">
+                        <div class="nav-item">
+                            <li class="nav-link">
+                                <a class="nav-link " href="/admin/reports">
+                                    Weight<span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        </div>
+                        <div class="nav-item">
+                            <li class="nav-link active">
+                                <a class="nav-link " href="/admin/income_report">
+                                    Income<span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        </div>
                     </div>
-                    <h3>Income Report</h3>
-                    <p>Income Report of N Studio Zumba</p>
                 </div>
 
-                <div class="row mb-5">
-                    <div class="card overview-block pad30 rounded">
+                <div class="col-lg-10 col-md-9 pad30" style="margin-left: 140px" >
+
+                    <div class="section-title text-center">
+                        <div class="title-bar full-width mb20">
+                            <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
+                        </div>
+                        <h3>Income Report</h3>
+                        <p>View Income Report of past 6 months</p>
+                    </div>
+                    <div>
                         <div id="chartdiv">
                         </div>
                         <script src="{{asset('amcharts4/core.js')}}"></script>
                         <script src="{{asset('amcharts4/charts.js')}}"></script>
                         <script src="{{asset('amcharts4/themes/animated.js')}}"></script>
                         <script src="{{asset('amcharts4/themes/kelly.js')}}"></script>
+
+
                     </div>
+                    <!-- /.col -->
                 </div>
-
-
+                <!-- /.row -->
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
     </div>
 </div>
 
@@ -93,14 +151,14 @@
             "income": '{{$income[0]->amount-$expenses[0]->amount}}',
             "expenses": '{{$income[0]->amount-$expenses[0]->amount}}',
             "lineDash": "5,5",
-        // }, {
-        //     "year": "2014",
-        //     "income": 34.1,
-        //     "expenses": 32.9,
-        //     "strokeWidth": 1,
-        //     "columnDash": "5,5",
-        //     "fillOpacity": 0.2,
-        //     "additional": "(projection)"
+            // }, {
+            //     "year": "2014",
+            //     "income": 34.1,
+            //     "expenses": 32.9,
+            //     "strokeWidth": 1,
+            //     "columnDash": "5,5",
+            //     "fillOpacity": 0.2,
+            //     "additional": "(projection)"
         } ];
 
         /* Create axes */

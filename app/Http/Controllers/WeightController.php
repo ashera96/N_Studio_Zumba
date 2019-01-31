@@ -17,11 +17,11 @@ class WeightController extends Controller
     {
         $role_id = Auth::user()->role->id;
         if($role_id==1) {
-            $weights = DB::table('weights')->orderBy('created_at', 'asc')->paginate(6);
+            $weights = DB::table('weights')->orderBy('created_at', 'asc')->paginate(5);
             return view('admin_panel.weight_index', ['weights' => $weights]);
         }
         else if($role_id==3){
-            $weights1 = DB::table('weights')->orderBy('created_at', 'asc')->paginate(6);
+            $weights1 = DB::table('weights')->orderBy('created_at', 'asc')->paginate(5);
             return view('recep_panel.weight_index', ['weights' => $weights1]);
         }
     }

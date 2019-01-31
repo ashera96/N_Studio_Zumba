@@ -42,10 +42,10 @@
                         <div class="card overview-block pad30 rounded">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <div class="col-md-12 text-center">
+                                    <div class="col-md-12 text-center" style="min-height: 350px;">
                                         @if(isset($details))
-                                            <br>
-                                            <h3 class="myone">The Weight Search results</h3>
+                                        <h4 class="text-dark">Search Results</h4>
+
                                             <br>
 
                                             <table class="table table-striped table-hover" width="100%"  >
