@@ -2,6 +2,24 @@
 
 @section('content');
 
+<style>
+    .pagination > li > a,
+    .pagination > li > span {
+        background: none !important;
+        border: none !important;
+        color: deeppink !important;
+    }
+    .pagination > li > a:hover,
+    .pagination > li > a:focus,
+    .pagination > li > span:hover,
+    .pagination > li > span:focus,
+    .pagination > li.active > a,
+    .pagination > li.active > span {
+        color: #000 !important;
+        border: solid 1px #707d82!important;
+    }
+</style>
+
     @extends('layouts.hori_sidebar');
 
     <div class="about-area pad90">
@@ -32,6 +50,23 @@
 
                     @endif
 
+                        @if (session('msgim'))
+                            <div class="alert alert-success fs-15" role="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                {{ session('msgim') }}
+                            </div>
+
+                        @endif
+                        @if (session('msgdel'))
+                            <div class="alert alert-success fs-15" role="alert">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                {{ session('msgdel') }}
+                            </div>
+
+                        @endif
+
+
+
                     <div class="section-title text-center">
                         <div class="title-bar full-width mb20">
                             <img src="{{ URL::asset('images/logo/ttl-bar.png') }}" alt="title-img">
@@ -46,9 +81,14 @@
                                 <div class="card-text ml-4 mr-4" style="color: #343a40">
                                     <div class="row mb-4">
                                         <div class="col-sm-6 offset-sm-3 text-center">
-                                            <form action="{{URL::to('admin/dashboard/admin_gallery')}}" method="post" enctype="multipart/form-data">
+                                            <form action="{{ url('admin/uploading_images') }}" method="post" enctype="multipart/form-data">
                                                 <label style="font-size: 16px;" class="mt-4"><h4>Select image to upload</h4></label>
-                                                <input style="font-size: 16px;" class="mt-2 ml-5" type="file" name="file" id="file">
+                                                <input style="font-size: 16px;" class="mt-2 ml-5" type="file" name="image" id="image">
+                                                @if ($errors->has('image'))
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $errors->first('image') }}</strong>
+                                                    </span>
+                                                @endif
                                                 <input class="btn btn-primary active mt-3" type="submit" value="Upload" name="submit">
                                                 <input type="hidden" value="{{ csrf_token() }}" name="_token">
                                             </form>
@@ -58,6 +98,61 @@
                             </div>
                         </div>
 
+                        <br>
+                        <div class="col-md-6" style="margin-left: 265px">
+                        <table  class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th width="250" style="color: gray">Image</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($images as $image)
+                                <tr>
+                                    @if($image->image)
+                                        <td><img src="{{asset('uploads/' . $image->image)}}" style="height: 150px;width: 150px"/></td>
+                                    @endif
+                                    <td>
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal-{{ $image->id }}">DELETE</button>
+                                        <!--modal-->
+                                        <div class="modal fade" id="myModal-{{ $image->id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <!-- Modal Header -->
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" style="color: black">Delete Image</h4>
+                                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                                    </div>
+
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <p>Are you sure you want to delete this image?</p>
+                                                    </div>
+
+                                                    <!-- Modal footer -->
+
+                                                    <div class="modal-footer">
+                                                        <div class="row">
+                                                            <form method="POST" action="{{action('GalleryUploadController@destroy',$image->id)}}">
+                                                                @csrf
+                                                                {{ method_field('DELETE') }}
+                                                                <button type="submit" class="btn btn-danger mr-1 mb-0" style="height: 35px;">Yes</button>
+                                                            </form>
+                                                            <button type="button" class="btn btn-danger ml-1 mr-2" style="height: 35px;" data-dismiss="modal">No</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        </div>
+                        <h3 style="margin-right: 200px">{!! $images->links(); !!}</h3>
                     {{--<div class="gallery" style="width: 850px;margin-left: 200px">--}}
                         {{--<br><br>--}}
                         {{--<form class="uploadFormStyle" action="{{URL::to('admin/dashboard/admin_gallery')}}" method="post" enctype="multipart/form-data">--}}

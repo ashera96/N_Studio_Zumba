@@ -108,7 +108,12 @@ Route::prefix('admin')->group(function() {
     Route::get('/send_health_advices','MedicalAdviceController@index')->middleware('admin','prevent_back_history');
     Route::post('/create_medical_advice','MedicalAdviceController@store')->middleware('admin','prevent_back_history');
     //end of routes for notifications
-    Route::get('dashboard/admin_gallery', 'AdminController@show_gallery','prevent_back_history');
+
+
+    Route::get('/dashboard/admin_gallery','GalleryUploadController@index')->middleware('admin','prevent_back_history');
+    Route::post('/uploading_images','GalleryUploadController@store')->middleware('admin','prevent_back_history');
+    Route::resource('/dashboard/admin_gallery','GalleryUploadController')->middleware('admin','prevent_back_history');
+    //Route::get('dashboard/admin_gallery', 'AdminController@show_gallery','prevent_back_history');
     Route::get('/schedules','AdminController@show_schedules')->middleware('admin','prevent_back_history');
     Route::get('/reports','WeightController@show_weight_index')->middleware('admin','prevent_back_history');
     Route::resource('/reports','WeightController')->middleware('admin','prevent_back_history');

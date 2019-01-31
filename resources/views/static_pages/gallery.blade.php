@@ -117,19 +117,11 @@
 
             <div class="gallery">
 
-            <?php
-            $c=count(scandir('uploads/')) - 2;
-            // echo "<h1>value is $c</h1>";
-
-            for ($x = 1; $x <= $c; $x++) {
-                echo ' <a href="/uploads/'.$x.'.png">';
-                echo '<img src="/uploads/'.$x.'.png"/>';
-
-            }
-
-            ?>
-
-
+                @if(count($images)>0)
+                   @foreach($images as $img)
+                        <img src="{{asset('uploads/' . $img->image)}}">
+                    @endforeach
+                @endif
             </div>
 
 
