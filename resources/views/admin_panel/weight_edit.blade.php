@@ -53,8 +53,8 @@
 
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <h5 style="color: #343a40">Id</h5>
-                                            <input type="text" name="id" value="{{ $weight->id }}" class="form-control" value="{{Request::old('id')}}">
+                                            <h5 style="color: #343a40">User Id</h5>
+                                            <input type="number" name="id" value="{{ $weight->id }}" class="form-control" value="{{Request::old('id')}}">
                                             @if ($errors->has('id'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('id') }}</strong>
@@ -87,7 +87,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <h5 style="color: #343a40">Year</h5>
-                                            <input type="text" name="year" value="{{ $weight->year }}" class="form-control " value="{{Request::old('year')}}">
+                                            <input type="number" name="year" value="{{ $weight->year }}" class="form-control " value="{{Request::old('year')}}">
                                             @if ($errors->has('year'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('year') }}</strong>

@@ -6,6 +6,7 @@ use App\Schedule;
 use App\ScheduleCount;
 use App\SystemUser;
 use App\User;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use DB;
 
@@ -284,5 +285,17 @@ class AdminController extends Controller
 
             ));
     }
+
+    public function adjustCount(Request $request){
+
+        DB::table('schedules')
+            ->update(['client_limit' => $request->count]);
+
+        Session::flash('msgcount', 'Client limit of schedules have been changed.');
+
+        return redirect()->back();
+    }
+
+
 
 }

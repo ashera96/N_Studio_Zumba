@@ -2,6 +2,24 @@
 
 @section('content')
 
+    <style>
+        .pagination > li > a,
+        .pagination > li > span {
+            background: none !important;
+            border: none !important;
+            color: deeppink !important;
+        }
+        .pagination > li > a:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:hover,
+        .pagination > li > span:focus,
+        .pagination > li.active > a,
+        .pagination > li.active > span {
+            color: #000 !important;
+            border: solid 1px #707d82!important;
+        }
+    </style>
+
     @extends('layouts.hori_sidebar');
 
 
@@ -60,6 +78,13 @@
                                 </div>
                             @endif
 
+                            @if (session('msgff'))
+                                <div class="alert alert-danger" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    {{ session('msgff') }}
+                                </div>
+                            @endif
+
                             @if (session('msgd'))
                                 <div class="alert alert-success" role="alert">
                                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -104,7 +129,7 @@
                                                     <form method="post" class ="form-inline" action="{{url('recep/recep_reports/search1')}}">
                                                         @csrf
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" placeholder ="Enter data" name="search1" id="search1">
+                                                            <input type="text" class="form-control" placeholder ="Search By User Id" name="search1" id="search1">
                                                             <button class="btn btn-success" type="submit"><i class="fa fa-search"></i> </button>
                                                         </div>
 

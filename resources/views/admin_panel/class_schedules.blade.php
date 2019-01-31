@@ -9,6 +9,12 @@
 <!--Admin dashboard-area start-->
             <!--schedule-area start-->
             <div class="schedule-area parallax pad90 "  style="margin-left: 140px;">
+                @if (session('msgcount'))
+                    <div class="alert alert-success ml200" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{ session('msgcount') }}
+                    </div>
+                @endif
                 <div class="container" style="margin-left: 150px">
                     <div class="row">
                         @extends('layouts.vertical_sidebar');
@@ -24,7 +30,43 @@
                     </div>
                     <!-- /.row -->
 
-                    <p class="text-center mt-5"><a href="/admin/show_wait_lists"><button class="btn active btn-primary" style="">Adjust Client Limit</button></a></p>
+                    <p class="text-center mt-5"><button class="btn active btn-primary" data-toggle="modal" data-target="#myModal">Adjust Client Limit</button></p>
+
+                    <!--modal-->
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content" style="background-color: lightyellow">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title" style="color: black">Adjust Client Limit</h4>
+                                    <button type="button" class="close" style="color:black" data-dismiss="modal">×</button>
+                                </div>
+
+                                <!-- Modal body -->
+                                <div class="modal-body" style="color: black">
+                                    <form method="POST" action="{{ url('admin/adjust_count') }}"  aria-label="{{ __('Adjust_Count') }}">
+                                        {{csrf_field()}}
+                                        <div class="form-horizontal">
+                                            <div>
+                                                <input type="number" name="count" min="1" style="margin-left: 55px">
+                                                <br>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-horizontal">
+                                                <button type="submit" class="btn btn-primary" style="background-color:#fc328a;border:none;margin-left: 100px" id="create1">
+                                                    {{ __('Change') }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end of the modal -->
+
+
 
                     {{--Schdeule Timetable Start--}}
                     <div class="container-fluid">
@@ -56,6 +98,9 @@
                                                                     @foreach($users11 as $u)
                                                                         <li>{{$u->username}}</li>
                                                                     @endforeach
+                                                                    @if(count($users11)==0)
+                                                                        <p>No users</p>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -82,6 +127,9 @@
                                                                     @foreach($users12 as $u)
                                                                         <li>{{$u->username}}</li>
                                                                     @endforeach
+                                                                    @if(count($users12)==0)
+                                                                        <p>No users</p>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -117,6 +165,9 @@
                                                                 @foreach($users21 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users21)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -144,6 +195,9 @@
                                                                 @foreach($users22 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users22)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -180,6 +234,9 @@
                                                                 @foreach($users31 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users31)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -207,6 +264,9 @@
                                                                 @foreach($users32 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users32)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -242,6 +302,9 @@
                                                                 @foreach($users41 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users41)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -268,6 +331,9 @@
                                                                 @foreach($users42 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users42)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -304,6 +370,9 @@
                                                                 @foreach($users51 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users51)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -330,6 +399,9 @@
                                                                 @foreach($users52 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users52)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -372,6 +444,9 @@
                                                                 @foreach($users61 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users61)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -406,6 +481,9 @@
                                                                 @foreach($users62 as $u)
                                                                     <li>{{$u->username}}</li>
                                                                 @endforeach
+                                                                @if(count($users62)==0)
+                                                                        <p>No users</p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>

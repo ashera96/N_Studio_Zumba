@@ -47,7 +47,7 @@ class MedicalAdviceController extends Controller
                 $med_advice->to($data['email_data']);
                 $med_advice->subject('Medical Advice For You');
 
-                Session::flash('msg1', 'Sent Successfully!'); //print flas msg after successfully send
+                Session::flash('msg1', 'Sent Successfully!'); //print flash msg after successfully send
             });
 
         //$user = SystemUser::where("id","==",Auth::user()->id)->orWhere("id",$data['id_data'])->first();//select the specific user by checking the id

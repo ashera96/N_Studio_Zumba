@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\SystemUser;
+use App\User;
 use Illuminate\Http\Request;
 use App\Weight;
 use DB;
@@ -46,15 +48,23 @@ class WeightController extends Controller
     public function store(Request $request)
     {
         $role_id = Auth::user()->role->id;
-        if($role_id==1) {
-            try {
-                $this->validate($request, [
-                    'id' => 'required',
-                    'month' => 'required',
-                    'year' => 'required',
-                    'weight' => 'required',
-                ]);
 
+        $users = DB::table('system_users')->where([['role_id',2],['status',1]])->get();
+
+        $user_stack = [];
+
+        foreach ($users as $user) {
+            array_push($user_stack, $user->id); //push user ids to the empty stack
+        }
+
+        if($role_id==1) {
+            $this->validate($request, [
+                'id' => 'required|integer|min:0',
+                'month' => 'required',
+                'year' => 'required|regex:/^[2]{1}[0-9]{3}$/',
+                'weight' => 'required|numeric|min:0',
+            ]);
+            try {
                 //$weightnew = Weight::firstOrCreate(array('id' => Input::get('id'),'month' => Input::get('month'),'year' => Input::get('year')));
                 $weightnew = new Weight;
 
@@ -63,9 +73,12 @@ class WeightController extends Controller
                 $weightnew->year = $request->year;
                 $weightnew->weight = $request->weight;
 
-                $weightnew->save();
-
-                Session::flash('msga', 'Weight Successfully added!');//print flash msg after successfully added
+                if(in_array($request->id,$user_stack)) {
+                    $weightnew->save();
+                    Session::flash('msga', 'Weight Successfully added!');//print flash msg after successfully added
+                }else{
+                    Session::flash('msgf', 'This user is not exist');
+                }
                 return redirect('/admin/reports');
             }
             catch (\Exception $e) {
@@ -75,14 +88,14 @@ class WeightController extends Controller
         }
 
         else if($role_id==3) {
-            try {
-                $this->validate($request, [
-                    'id' => 'required',
-                    'month' => 'required',
-                    'year' => 'required',
-                    'weight' => 'required',
-                ]);
+            $this->validate($request, [
+                'id' => 'required|integer|min:0',
+                'month' => 'required',
+                'year' => 'required|regex:/^[2]{1}[0-9]{3}$/',
+                'weight' => 'required|numeric|min:0',
+            ]);
 
+            try {
                 $weightnew1 = new Weight;
 
                 $weightnew1->id = $request->id;
@@ -90,9 +103,12 @@ class WeightController extends Controller
                 $weightnew1->year = $request->year;
                 $weightnew1->weight = $request->weight;
 
-                $weightnew1->save();
-
-                Session::flash('msgb', 'Weight Successfully added!');//print flash msg after successfully added
+                if(in_array($request->id,$user_stack)) {
+                    $weightnew1->save();
+                    Session::flash('msgb', 'Weight Successfully added!');//print flash msg after successfully added
+                }else{
+                    Session::flash('msgff', 'This user is not exist');
+                }
                 return redirect('/recep/recep_reports');
             }
             catch (\Exception $e)
@@ -139,14 +155,14 @@ class WeightController extends Controller
     {
         $role_id = Auth::user()->role->id;
         if($role_id==1) {
-            $this->validate($request,[
-                'id' => 'required',
-                'month'=>'required',
-                'year'=>'required',
-                'weight' =>'required',
-
+            $this->validate($request, [
+                'id' => 'required|integer|min:0',
+                'month' => 'required',
+                'year' => 'required|regex:/^[2]{1}[0-9]{3}$/',
+                'weight' => 'required|numeric|min:0',
             ]);
 
+            /*
             $weightfind = \App\Weight::where('id', '=', $id)
                 ->where('month', '=', $month)
                 ->where('year', '=', $year)->first();
@@ -156,19 +172,24 @@ class WeightController extends Controller
             $weightfind ->year =$request ->year;
             $weightfind ->weight =$request ->weight;
             $weightfind ->save();
+            */
+
+            DB::table('weights')
+                ->where([['id',$id],['month',$month],['year',$year]])
+                ->update(['id' => $request->id,'month'=>$request ->month,'year'=>$request ->year,'weight'=>$request ->weight]);
 
             Session::flash ( 'msgc', 'Weight Successfully updated!' );
             return redirect('admin/reports');
         }
         else if ($role_id==3){
-            $this->validate($request,[
-                'id' => 'required',
-                'month'=>'required',
-                'year'=>'required',
-                'weight' =>'required',
-
+            $this->validate($request, [
+                'id' => 'required|integer|min:0',
+                'month' => 'required',
+                'year' => 'required|regex:/^[2]{1}[0-9]{3}$/',
+                'weight' => 'required|numeric|min:0',
             ]);
 
+            /*
             $weightfind2 =\App\Weight::where('id', '=', $id)
                 ->where('month', '=', $month)
                 ->where('year', '=', $year)->first();
@@ -178,6 +199,12 @@ class WeightController extends Controller
             $weightfind2 ->year =$request ->year;
             $weightfind2 ->weight =$request ->weight;
             $weightfind2 ->save();
+
+            */
+
+            DB::table('weights')
+                ->where([['id',$id],['month',$month],['year',$year]])
+                ->update(['id' => $request->id,'month'=>$request ->month,'year'=>$request ->year,'weight'=>$request ->weight]);
 
             Session::flash ( 'msgd', 'Weight Successfully updated!' );
             return redirect('recep/recep_reports');
