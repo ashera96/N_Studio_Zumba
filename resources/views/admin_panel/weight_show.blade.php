@@ -13,9 +13,12 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['month', 'weight'],
-                    @foreach($details as $weight)
-                    ['{{$weight->month}}',{{$weight->weight}}],
-                    @endforeach
+                    {{--@foreach($details as $weight)--}}
+                    {{--['{{$weight->month}}',{{$weight->weight}}],--}}
+                    {{--@endforeach--}}
+                    @for($i=3;$i>=0;$i--)
+                    ['{{$details[$i]->month}}',{{$details[$i]->weight}}],
+                    @endfor
 
 
             ]);
@@ -92,26 +95,46 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($details as $weight)
+                                                @for($i=3;$i>=0;$i--)
                                                     <tr>
-                                                        <td>{{$weight->id}}</td>
-                                                        <td>{{$weight->month}}</td>
-                                                        <td>{{$weight->year}}</td>
-                                                        <td>{{$weight->weight}}</td>
+                                                        <td>{{$details[$i]->id}}</td>
+                                                        <td>{{$details[$i]->month}}</td>
+                                                        <td>{{$details[$i]->year}}</td>
+                                                        <td>{{$details[$i]->weight}}</td>
                                                         <td>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
+                                                                    <a href="{{url('admin/reports/'.$details[$i] ->id .'/'.$details[$i] ->month.'/'. $details[$i] ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            {{ Form::open(['route' => ['reports.destroy',$weight->id,$weight->month,$weight->year], 'method' => 'delete']) }}
+                                                            {{ Form::open(['route' => ['reports.destroy',$details[$i]->id,$details[$i]->month,$details[$i]->year], 'method' => 'delete']) }}
                                                             <button type="submit" class="delbtn">Delete</button>
                                                             {{ Form::close() }}
                                                         </td>
                                                     </tr>
-                                                @endforeach
+                                                @endfor
+                                                {{--@foreach($details as $weight)--}}
+                                                    {{--<tr>--}}
+                                                        {{--<td>{{$weight->id}}</td>--}}
+                                                        {{--<td>{{$weight->month}}</td>--}}
+                                                        {{--<td>{{$weight->year}}</td>--}}
+                                                        {{--<td>{{$weight->weight}}</td>--}}
+                                                        {{--<td>--}}
+                                                            {{--<div class="row">--}}
+                                                                {{--<div class="col">--}}
+                                                                    {{--<a href="{{url('admin/reports/'.$weight ->id .'/'.$weight ->month.'/'. $weight ->year.'/edit')}}"><button class="editbtn" >EDIT</button></a>--}}
+                                                                {{--</div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</td>--}}
+                                                        {{--<td>--}}
+                                                            {{--{{ Form::open(['route' => ['reports.destroy',$weight->id,$weight->month,$weight->year], 'method' => 'delete']) }}--}}
+                                                            {{--<button type="submit" class="delbtn">Delete</button>--}}
+                                                            {{--{{ Form::close() }}--}}
+                                                        {{--</td>--}}
+                                                    {{--</tr>--}}
+                                                {{--@endforeach--}}
                                                 </tbody>
                                             </table>
 

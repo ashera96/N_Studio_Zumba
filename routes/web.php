@@ -144,12 +144,14 @@ Route::prefix('admin')->group(function() {
     Route::get('/salary_payment/{id}','PaymentController@update_payment_status')->middleware('admin','prevent_back_history');
 //    Payment related routes end
 
+    Route::get('/income_report','IncomeReportController@show_report')->middleware('admin','prevent_back_history');
+
     Route::any('/reports/search',function(){
         $search = Input::get ('search');
         $weight = Weight::where('id','LIKE','%'.$search.'%')
             //->orWhere('month','LIKE','%'.$search.'%')
             //->orWhere('year','LIKE','%'.$search.'%')
-            ->orderBy('created_at', 'ASC')
+            ->orderBy('created_at', 'DESC')->limit(4)
             ->get();
         if(count($weight) > 0)
             return view('admin_panel.weight_show')->withDetails($weight)->withQuery ($search);

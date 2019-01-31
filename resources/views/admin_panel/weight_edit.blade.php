@@ -9,8 +9,8 @@
 <div class="container-fluid">
     <div class="row">
         <!--Sidebar-area start-->
-        <div class="col-lg-2 col-md-3 ">
-            <div class="list-group shadow-sm">
+        <div class="col-lg-2 col-md-3 sideFix">
+            <div class="list-group shadow-sm" >
                 <a href="/admin/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                 <a href="/admin/receptionist" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Receptionist</a>
                 <a href="/admin/customers" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
@@ -54,7 +54,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <h5 style="color: #343a40">User Id</h5>
-                                            <input type="number" name="id" value="{{ $weight->id }}" class="form-control" value="{{Request::old('id')}}">
+                                            <input type="number" disabled name="id" value="{{ $weight->id }}" class="form-control" value="{{Request::old('id')}}">
                                             @if ($errors->has('id'))
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('id') }}</strong>
