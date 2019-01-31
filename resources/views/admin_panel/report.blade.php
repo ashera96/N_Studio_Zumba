@@ -9,8 +9,8 @@
 <style>
     #chartdiv {
         width: 100%;
-        max-height: 600px;
-        height: 100vh;
+        max-height: 500px;
+        height: 80vh;
     }
 </style>
 
@@ -39,6 +39,7 @@
                         <script src="{{asset('amcharts4/core.js')}}"></script>
                         <script src="{{asset('amcharts4/charts.js')}}"></script>
                         <script src="{{asset('amcharts4/themes/animated.js')}}"></script>
+                        <script src="{{asset('amcharts4/themes/kelly.js')}}"></script>
                     </div>
                 </div>
 
@@ -57,6 +58,7 @@
     function chart() {
         // Themes begin
         am4core.useTheme(am4themes_animated);
+        am4core.useTheme(am4themes_kelly);
 // Themes end
 
 // Create chart instance
@@ -127,13 +129,13 @@
         lineSeries.dataFields.valueY = "expenses";
         lineSeries.dataFields.categoryX = "year";
 
-        lineSeries.stroke = am4core.color("#fc328a");
+        lineSeries.stroke = am4core.color("rgba(0,0,0,0.66)");
         lineSeries.strokeWidth = 3;
         lineSeries.propertyFields.strokeDasharray = "lineDash";
         lineSeries.tooltip.label.textAlign = "middle";
 
         var bullet = lineSeries.bullets.push(new am4charts.Bullet());
-        bullet.fill = am4core.color("#fc328a"); // tooltips grab fill from parent by default
+        bullet.fill = am4core.color("rgba(0,0,0,0.66)"); // tooltips grab fill from parent by default
         // bullet.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
         var circle = bullet.createChild(am4core.Circle);
         circle.radius = 4;

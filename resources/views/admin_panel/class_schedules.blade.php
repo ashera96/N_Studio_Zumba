@@ -37,24 +37,24 @@
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content" style="background-color: lightyellow">
                                 <!-- Modal Header -->
-                                <div class="modal-header">
+                                <div class="modal-header bg-white">
                                     <h4 class="modal-title" style="color: black">Adjust Client Limit</h4>
                                     <button type="button" class="close" style="color:black" data-dismiss="modal">×</button>
                                 </div>
 
                                 <!-- Modal body -->
-                                <div class="modal-body" style="color: black">
+                                <div class="modal-body" style="color: black;background: white;">
                                     <form method="POST" action="{{ url('admin/adjust_count') }}"  aria-label="{{ __('Adjust_Count') }}">
                                         {{csrf_field()}}
                                         <div class="form-horizontal">
                                             <div>
-                                                <input type="number" name="count" min="1" style="margin-left: 55px">
+                                                <input type="number" name="count" min="1" class="form-control mb-0" placeholder="30" style="margin-left: 55px;width: 160px;">
                                                 <br>
                                             </div>
                                             <br>
 
                                             <div class="form-horizontal">
-                                                <button type="submit" class="btn btn-primary" style="background-color:#fc328a;border:none;margin-left: 100px" id="create1">
+                                                <button type="submit" class="btn btn-primary" style="background-color:#fc328a;border:none;margin-left: 100px;margin-top: -20px;" id="create1">
                                                     {{ __('Change') }}
                                                 </button>
                                             </div>

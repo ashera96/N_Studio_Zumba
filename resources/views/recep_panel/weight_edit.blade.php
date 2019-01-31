@@ -9,8 +9,8 @@
 <div class="container-fluid">
     <div class="row">
         <!--Sidebar-area start-->
-        <div class="col-lg-2 col-md-3 ">
-            <div class="list-group shadow-sm">
+        <div class="col-lg-2 col-md-3 sideFix">
+            <div class="list-group shadow-sm ">
                 <a href="/recep/dashboard" class="list-group-item  side-bar"><i class="fa fa-cog fa-lg mr-1"></i> Dashboard</a>
                 <a href="/recep/profile" class="list-group-item side-bar"><i class="fa fa-user fa-lg mr-1"></i> Profile</a>
                 <a href="/recep/cusprofile" class="list-group-item side-bar"><i class="fa fa-users fa-lg mr-1"></i> Customers</a>
@@ -23,8 +23,8 @@
         </div>
         <!--Sidebar-area end-->
 
-        <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 ">
-            <div class="col-lg-10 col-md-9 mar30" style="margin-left: 140px">
+        <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3" style="margin-left: 200px;">
+            <div class="col-lg-10 col-md-9 mar30 offset-lg-1 offset-md-1" style="margin-left: 140px">
 
 
             <div class="section-title text-center">
@@ -50,7 +50,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <h5 style="color: #343a40">Id</h5>
-                                        <input type="text" name="id" value="{{ $weight->id }}" class="form-control" value="{{Request::old('id')}}">
+                                        <input type="text" disabled="" name="id" value="{{ $weight->id }}" class="form-control" value="{{Request::old('id')}}">
                                         @if ($errors->has('id'))
                                             <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $errors->first('id') }}</strong>
