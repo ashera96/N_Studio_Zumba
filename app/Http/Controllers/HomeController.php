@@ -37,7 +37,7 @@ class HomeController extends Controller
 
 
         if ($role_id == '2') {
-            $posts = Post::orderBy('updated_at','DESC')->paginate(2); //display posts in the customer's home page
+            $posts = Post::orderBy('updated_at','DESC')->paginate(5); //display posts in the customer's home page
             //$posts = Post::all();
 
             $weight = DB::table('weights')->where('id', '=',Auth::user()->id)->orderBy('year','ASC')->limit(5)->get();
@@ -66,7 +66,7 @@ class HomeController extends Controller
     {
         if($request->ajax())
         {
-            $posts = DB::table('posts')->paginate(2);
+            $posts = DB::table('posts')->paginate(5);
             try {
                 return view('customer_pages.pagination_data', compact('posts'))->render();
             } catch (\Throwable $e) {

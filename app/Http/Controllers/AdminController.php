@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GalleryUpload;
 use App\Schedule;
 use App\ScheduleCount;
 use App\SystemUser;
@@ -41,7 +42,8 @@ class AdminController extends Controller
     }
     public function show_gallery()
     {
-        return view('admin_panel.admin_gallery');
+        $images = DB::table('gallery_uploads')->select('image')->get();
+        return view('admin_panel.admin_gallery',compact('images'));
     }
 
     public function show_schedules()
