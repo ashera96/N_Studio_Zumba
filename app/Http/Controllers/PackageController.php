@@ -7,6 +7,7 @@ use App\Package;
 use App\UserPackage;
 use Illuminate\Support\Facades\Session;
 use DB;
+use Mail;
 
 class PackageController extends Controller
 {
@@ -41,7 +42,34 @@ class PackageController extends Controller
         // Make the status column of the packages table for this entry 1
         $package = Package::find($id);
         $package -> status = 1;
-        $package -> save();
+
+        if($package -> save()) {
+
+            $package_name = DB::table('packages')->select('name')->where('id',$id)->first();
+            //$package_id = DB::table('packages')->select('name')->where('id',$id)->first();
+
+            $data = [
+                'package_name' => $package_name->name,
+            ];
+
+            Mail::send('email.notifyDelPkg', $data, function ($del) use ($id,$data) {
+                //$current_user = Auth::user();
+
+                $users=DB::table('system_users')
+                    ->join('user_packages','system_users.id','=','user_packages.user_id')
+                    ->select('system_users.*','user_packages.*')
+                    ->where('user_packages.package_id',$id)
+                    ->get();
+
+                foreach ($users as $u) {
+
+                    $del->bcc($u->email); //for hide others email addresses
+                    $del->subject('Class Package Notification');
+                }
+
+            });
+
+        }
 
         // Remove all current selection entries from user_packages table if it includes the deleted package
         $user_packages = DB::table('user_packages')
