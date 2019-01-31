@@ -12,14 +12,57 @@
             text-align:left;
         }
     </style>
+
+    <style>
+        .pagination > li > a,
+        .pagination > li > span {
+            background: none !important;
+            border: none !important;
+            color: deeppink !important;
+        }
+        .pagination > li > a:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:hover,
+        .pagination > li > span:focus,
+        .pagination > li.active > a,
+        .pagination > li.active > span {
+            color: #000 !important;
+            border: solid 1px #707d82!important;
+        }
+    </style>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script>
         setInterval(function(){
             $('#x').load('/home #x')
         },15000);
-        setInterval(function(){
+        /*setInterval(function(){
             $('#posts').load('/home #posts')
-        },15000);
+        },15000);*/
+    </script>
+
+    <script>
+        $(document).ready(function(){
+
+            $(document).on('click', '.pagination a', function(event){
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                fetch_data(page);
+            });
+
+            function fetch_data(page)
+            {
+                $.ajax({
+                    url:"/home/fetch_data?page="+page,
+                    success:function(posts)
+                    {
+                        $('#posts').html(posts);
+                    }
+                });
+            }
+
+        });
     </script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -31,7 +74,7 @@
             var data = google.visualization.arrayToDataTable([
                 ['month','weight'],
                     @foreach($details as $weight)
-                ['{{$weight->month}}',{{$weight->weight}}],
+                ['{{$weight->month." ".$weight->year}}',{{$weight->weight}}],
                 @endforeach
 
 
@@ -346,29 +389,7 @@
                         </div>
                         <h3>Notifications</h3>
                         <div id="posts" style="color: gray ;padding: 15px;background-clip: padding-box;font-size: medium">
-                            @foreach($posts as $post)
-                                <div>
-                                    <div class="card mt15 shadow-lg">
-                                        <h4 class="card-header mt20" style="color: #fc328a">{{$post->title}}</h4>
-                                        <div class="card-body">
-                                            <div class="card-text ml-4 mr-4" style="color: #343a40">
-                                                <div class="row mb-4">
-                                                    {{$post->post_body}}
-                                                </div>
-                                                @if($post->image)
-                                                    <img src="{{asset('images/posts/' . $post->image)}}" style="max-height: 100%;max-width: 100%;" />
-                                                    <br><br>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                            Posted at : {{$post->updated_at}}
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div>
-                                <br>
-                            @endforeach
+                            @include('customer_pages.pagination_data')
                         </div>
                     </div>
                 </div>

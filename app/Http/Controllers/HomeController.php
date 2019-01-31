@@ -37,10 +37,10 @@ class HomeController extends Controller
 
 
         if ($role_id == '2') {
-            $posts = Post::orderBy('updated_at','DESC')->get(); //display posts in the customer's home page
+            $posts = Post::orderBy('updated_at','DESC')->paginate(2); //display posts in the customer's home page
             //$posts = Post::all();
 
-            $weight = DB::table('weights')->where('id', '=',Auth::user()->id)->orderBy('year','ASC')->orderBy('updated_at', 'ASC')->limit(5)->get();
+            $weight = DB::table('weights')->where('id', '=',Auth::user()->id)->orderBy('year','ASC')->limit(5)->get();
 
             return view('customer_pages.home')->with('posts', $posts)->withDetails($weight);
         }
@@ -58,6 +58,20 @@ class HomeController extends Controller
         else {
             return view('index');
 
+        }
+    }
+
+
+    public function fetch_data(Request $request)
+    {
+        if($request->ajax())
+        {
+            $posts = DB::table('posts')->paginate(2);
+            try {
+                return view('customer_pages.pagination_data', compact('posts'))->render();
+            } catch (\Throwable $e) {
+
+            }
         }
     }
 
