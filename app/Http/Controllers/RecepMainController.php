@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Mail;
 use App\Mail\welcome;
 use App\SystemUser;
+use App\Income;
 use DB;
 use App\UserPayment;
 use App\Flag;
@@ -332,6 +333,29 @@ class RecepMainController extends Controller
                 Session::flash('msg_to_admin', 'Payment delay list sent to admin successfully!');
 
             }
+
+
+            $last_date = date("Y-F-j", strtotime("first day of previous month"));
+            $last_date = explode('-', $last_date);
+            $year = $last_date[0];
+            $month = $last_date[1];
+
+//            Retrieving the users who have made the payment (before dropping the tables entries)
+            $income = 0;
+            $income_list = DB::table('users')
+                ->join('user_payments','users.id','=','user_payments.user_id')
+                ->select('user_payments.*','users.*')
+                ->where('user_payments.payment_status','=',1)
+                ->get();
+            foreach ($income_list as $user_income){
+                $income += $user_income->amount;
+            }
+
+            $income_entry = new Income;
+            $income_entry -> year = $year;
+            $income_entry -> month = $month;
+            $income_entry -> amount = $income;
+            $income_entry -> save();
 
 //            Delete entries in user_payments table if any exists
             DB::table('user_payments') -> truncate(); // truncate - Auto-increment id is reassigned to 1

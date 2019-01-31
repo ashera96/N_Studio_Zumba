@@ -7,6 +7,7 @@ use App\Receptionist;
 use App\SystemUser;
 use DB;
 use App\Flag;
+use App\Expenses;
 use Mail;
 use App\SalaryPayment;
 use App\Mail\unpaidSalaryReport;
@@ -18,6 +19,7 @@ class PaymentController extends Controller
     // Function to load the active receptionists as of the start of the month and manage payments month wise
     public function load_receptionists()
     {
+
         //Retrieving the current date
         $date_array = getdate();
         $day = $date_array['mday'];//Current day
@@ -40,6 +42,7 @@ class PaymentController extends Controller
             ->select('receptionist_id')
             ->where('payment_status','=',0)
             ->get();
+
 
         //Converting the collection to an associative array
         $no_salary_array = [];
@@ -81,6 +84,35 @@ class PaymentController extends Controller
             });
 
 
+            //
+
+
+            $last_date = date("Y-F-j", strtotime("first day of previous month"));
+            $last_date = explode('-', $last_date);
+            $year = $last_date[0];
+            $month = $last_date[1];
+
+            //Retrieving the receptionists who have received the payment (before dropping the tables entries)
+            $expenses = 0;
+            $expense_list = DB::table('salary_payments')
+                ->join('receptionists','receptionists.id','=','salary_payments.receptionist_id')
+                ->select('salary_payments.*','receptionists.*')
+                ->where('payment_status','=',1)
+                ->get();
+
+            foreach ($expense_list as $recep_expense){
+                $expenses += $recep_expense->amount;
+            }
+
+            $expense_entry = new Expenses;
+            $expense_entry -> year = $year;
+            $expense_entry -> month = $month;
+            $expense_entry -> amount = $expenses;
+            $expense_entry -> save();
+
+            //
+
+
             // Delete entries in salary_payments table if any exists
             DB::table('salary_payments') -> truncate(); // truncate - Auto-increment id is reassigned to 1
 
@@ -98,7 +130,7 @@ class PaymentController extends Controller
             foreach ($active_receptionists as $receptionist){
                 $salary_payment = new SalaryPayment;
                 $salary_payment -> receptionist_id = $receptionist->id;
-                $salary_payment -> amount = 50;
+                $salary_payment -> amount = 5000;
                 $salary_payment -> payment_status = 0;
                 $salary_payment -> save();
             }
@@ -112,7 +144,7 @@ class PaymentController extends Controller
             Session::flash('msg_updated', 'Receptionist list updated successfully for the current month!');
         }
 
-        elseif ( $day != 2 ){
+        elseif ( $day != 2   ){
             // If any day other than 1 make the flag variable 0
             $flag_obj = Flag::findOrFail(3);
             $flag_obj -> value = 0;
