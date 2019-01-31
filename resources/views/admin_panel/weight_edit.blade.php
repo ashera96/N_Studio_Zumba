@@ -25,8 +25,8 @@
         </div>
         <!--Sidebar-area end-->
 
-        <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 ">
-            <div class="col-lg-10 col-md-9 mar30" style="margin-left: 140px">
+        <div class="col-lg-10 col-md-9 pad30 col-lg-offset-2 col-md-offset-3 " style="margin-left: 140px">
+            <div class="col-lg-10 col-md-9 mar30">
 
 
 
