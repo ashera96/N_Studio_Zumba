@@ -50,6 +50,7 @@ Route::post('/index/contact','MessagesController@submit');
 |--------------------------------------------------------------------------
 */
 Route::prefix('home')->group(function() {
+    Route::get('/fetch_data', 'HomeController@fetch_data')->middleware('customer','prevent_back_history');
     Route::get('/about', 'CustomerPageController@show_about')->middleware('customer','prevent_back_history');
     Route::get('/gallery', 'CustomerPageController@show_gallery')->middleware('customer','prevent_back_history');
 
