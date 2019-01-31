@@ -98,7 +98,7 @@ class PaymentController extends Controller
             foreach ($active_receptionists as $receptionist){
                 $salary_payment = new SalaryPayment;
                 $salary_payment -> receptionist_id = $receptionist->id;
-                $salary_payment -> amount = 50;
+                $salary_payment -> amount = 5000;
                 $salary_payment -> payment_status = 0;
                 $salary_payment -> save();
             }
@@ -112,7 +112,7 @@ class PaymentController extends Controller
             Session::flash('msg_updated', 'Receptionist list updated successfully for the current month!');
         }
 
-        elseif ( $day != 2 ){
+        elseif ( $day != 2   ){
             // If any day other than 1 make the flag variable 0
             $flag_obj = Flag::findOrFail(3);
             $flag_obj -> value = 0;
