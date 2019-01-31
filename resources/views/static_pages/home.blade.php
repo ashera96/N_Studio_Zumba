@@ -11,7 +11,114 @@
     </style>
 
 
+    <style>
+        .pagination > li > a,
+        .pagination > li > span {
+            background: none !important;
+            border: none !important;
+            color: deeppink !important;
+        }
+        .pagination > li > a:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:hover,
+        .pagination > li > span:focus,
+        .pagination > li.active > a,
+        .pagination > li.active > span {
+            color: #000 !important;
+            border: solid 1px #707d82!important;
+        }
+    </style>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(window).on('hashchange', function() {
+
+            if (window.location.hash) {
+
+                var page = window.location.hash.replace('#', '');
+
+                if (page == Number.NaN || page <= 0) {
+
+                    return false;
+
+                }else{
+
+                    getData(page);
+
+                }
+
+            }
+
+        });
+
+
+
+        $(document).ready(function()
+
+        {
+
+            $(document).on('click', '.pagination a',function(event)
+
+            {
+
+                event.preventDefault();
+
+                $('li').removeClass('active');
+
+                $(this).parent('li').addClass('active');
+
+                var myurl = $(this).attr('href');
+
+                var page=$(this).attr('href').split('page=')[1];
+
+                getData(page);
+
+            });
+
+        });
+
+
+
+        function getData(page){
+
+            $.ajax(
+
+                {
+
+                    url: '?page=' + page,
+
+                    type: "get",
+
+                    datatype: "html"
+
+                })
+
+                .done(function(data)
+
+                {
+
+                    $("#posts").empty().html(data);
+
+                    location.hash = page;
+
+                })
+
+                .fail(function(jqXHR, ajaxOptions, thrownError)
+
+                {
+
+                    alert('No response from server');
+
+                });
+
+        }
+
+    </script>
+
 
     <!-- /.header start -->
     @include('static_pages.navbar');
@@ -170,29 +277,7 @@
                         </div>
                         <h3>Notifications</h3>
                         <div id="posts" style="color: gray ;padding: 15px;background-clip: padding-box;font-size: medium">
-                            @foreach($posts as $post)
-                                <div>
-                                    <div class="card mt15 shadow-lg">
-                                        <h4 class="card-header mt20" style="color: #fc328a">{{$post->title}}</h4>
-                                        <div class="card-body">
-                                            <div class="card-text ml-4 mr-4" style="color: #343a40">
-                                                <div class="row mb-4">
-                                                    {{$post->post_body}}
-                                                </div>
-                                                @if($post->image)
-                                                    <img src="{{asset('images/posts/' . $post->image)}}" style="max-height: 100%;max-width: 100%;" />
-                                                    <br><br>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                            Posted at : {{$post->updated_at}}
-                                        </div>
-                                    </div>
-                                    <br>
-                                </div>
-                                <br>
-                            @endforeach
+                            @include('customer_pages.pagination_data')
                         </div>
                     </div>
                 </div>

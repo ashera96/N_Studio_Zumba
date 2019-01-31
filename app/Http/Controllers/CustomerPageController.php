@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use DB;
 
 class CustomerPageController extends Controller
 {
@@ -25,7 +26,9 @@ class CustomerPageController extends Controller
 
     public function show_gallery()
     {
-        return view('customer_pages.gallery');
+        $images = DB::table('gallery_uploads')->select('*')->get();
+
+        return view('customer_pages.gallery',compact('images'));
     }
 
     /*public function show_schedule()
