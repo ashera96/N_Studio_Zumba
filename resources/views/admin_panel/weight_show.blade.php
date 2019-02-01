@@ -24,9 +24,12 @@
                     {{--@foreach($details as $weight)--}}
                     {{--['{{$weight->month}}',{{$weight->weight}}],--}}
                     {{--@endforeach--}}
+
+                    @if(count($details)>0)
                     @for($i=3;$i>=0;$i--)
                     ['{{$details[$i]->month}}',{{$details[$i]->weight}}],
                     @endfor
+                    @endif
 
 
             ]);
