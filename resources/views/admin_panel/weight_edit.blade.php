@@ -67,18 +67,18 @@
                                         <div class="form-group">
                                             <h5 style="color: #343a40">Month</h5>
                                             <select id="month" type="text" value="{{ $weight->month }}"  class="form-control" name="month" value="{{Request::old('month') }}" >
-                                                <option value="Jan">Jan</option>
-                                                <option value="Feb">Feb</option>
-                                                <option value="Mar">Mar</option>
-                                                <option value="Apr">Apr</option>
-                                                <option value="May">May</option>
-                                                <option value="Jun">Jun</option>
-                                                <option value="Jul">Jul</option>
-                                                <option value="Aug">Aug</option>
-                                                <option value="Sep">Sep</option>
-                                                <option value="Oct">Oct</option>
-                                                <option value="Nov">Nov</option>
-                                                <option value="Dec">Dec</option>
+                                                <option value="Jan" {{old('month',$weight->month)=="Jan"? 'selected':''}}>Jan</option>
+                                                <option value="Feb" {{old('month',$weight->month)=="Feb"? 'selected':''}}>Feb</option>
+                                                <option value="Mar" {{old('month',$weight->month)=="Mar"? 'selected':''}}>Mar</option>
+                                                <option value="Apr" {{old('month',$weight->month)=="Apr"? 'selected':''}}>Apr</option>
+                                                <option value="May" {{old('month',$weight->month)=="May"? 'selected':''}}>May</option>
+                                                <option value="Jun" {{old('month',$weight->month)=="Jun"? 'selected':''}}>Jun</option>
+                                                <option value="Jul" {{old('month',$weight->month)=="Jul"? 'selected':''}}>Jul</option>
+                                                <option value="Aug" {{old('month',$weight->month)=="Aug"? 'selected':''}}>Aug</option>
+                                                <option value="Sep" {{old('month',$weight->month)=="Sep"? 'selected':''}}>Sep</option>
+                                                <option value="Oct" {{old('month',$weight->month)=="Oct"? 'selected':''}}>Oct</option>
+                                                <option value="Nov" {{old('month',$weight->month)=="Nov"? 'selected':''}}>Nov</option>
+                                                <option value="Dec" {{old('month',$weight->month)=="Dec"? 'selected':''}}>Dec</option>
                                             </select>
 
                                         </div>
