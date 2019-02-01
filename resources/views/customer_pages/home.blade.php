@@ -73,9 +73,14 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['month','weight'],
-                    @foreach($details as $weight)
+                {{--@foreach($details as $weight)
                 ['{{$weight->month." ".$weight->year}}',{{$weight->weight}}],
-                @endforeach
+                @endforeach --}}
+
+                    @for($i=3;$i>=0;$i--)
+                ['{{$details[$i]->month}}',{{$details[$i]->weight}}],
+                @endfor
+
 
 
             ]);

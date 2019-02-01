@@ -527,7 +527,7 @@
                 <!--modal-->
                 <div class="modal fade" id="myModal">
                     <div class="modal-dialog">
-                        <div class="modal-content" style="height: 300px;background-color: lightyellow">
+                        <div class="modal-content" style="height: 300px;">
                             <!-- Modal Header -->
                             <div class="modal-header bg-white">
                                 <h4 class="modal-title" style="color: deeppink">Send Inquiries</h4>
@@ -652,13 +652,13 @@
                     <div class="modal-dialog">
                         <div class="modal-content" style="height: 300px;background-color: lightyellow">
                             <!-- Modal Header -->
-                            <div class="modal-header">
+                            <div class="modal-header bg-white">
                                 <h4 class="modal-title" style="color: deeppink">Send Inquiries</h4>
                                 <button type="button" class="close" style="color:#fc328a" data-dismiss="modal">×</button>
                             </div>
 
                             <!-- Modal body -->
-                            <div class="modal-body" style="color: black">
+                            <div class="modal-body bg-white" style="color: black">
                                 <form method="POST" action="{{ url('home/send_inquiries') }}"  aria-label="{{ __('Send_Inquiry') }}">
                                     {{csrf_field()}}
                                     <div class="form-horizontal">
@@ -666,7 +666,7 @@
                                             <!--take  hidden input-->
                                             <input type="hidden" name="email_data" value={{$sys_user_email->email}} >
                                             <!-- done -->
-                                            <textarea id="inquiry" type="text" style="height: 150px; width:465px; background-color: lightyellow"  placeholder="Inquiry" name="inquiry" required autofocus></textarea>
+                                            <textarea id="inquiry" type="text" style="height: 150px; width:465px;"  placeholder="Inquiry" name="inquiry" required autofocus></textarea>
                                             <br>
                                         </div>
 
