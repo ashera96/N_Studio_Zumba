@@ -40,7 +40,7 @@ class HomeController extends Controller
             $posts = Post::orderBy('updated_at','DESC')->paginate(5); //display posts in the customer's home page
             //$posts = Post::all();
 
-            $weight = DB::table('weights')->where('id', '=',Auth::user()->id)->orderBy('year','ASC')->limit(5)->get();
+            $weight = DB::table('weights')->where('id', '=',Auth::user()->id)->orderBy('created_at','DSC')->limit(4)->get();
 
             return view('customer_pages.home')->with('posts', $posts)->withDetails($weight);
         }
