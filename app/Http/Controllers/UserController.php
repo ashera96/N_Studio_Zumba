@@ -39,7 +39,7 @@ class UserController extends Controller
                 ->join('system_users', 'users.id', '=', 'system_users.id')
                 ->select('system_users.*', 'users.*')
                 //->get();
-                ->paginate(5);
+                ->paginate(3);
 
 
             return view('recep_panel.user_index', ['users' => $new]);

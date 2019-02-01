@@ -73,7 +73,7 @@
                                         @foreach($medical_issues as $medical_issue)
                                             <tr>
                                                 <td>{{ $medical_issue->username }}</td>
-                                                <td>{{ $medical_issue->email }}</td>
+                                                <td class="text-lowercase">{{ $medical_issue->email }}</td>
                                                 <td>{{ $medical_issue->medicissue }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-primary" style="background-color: #5c9ccc;border: none;" data-toggle="modal" data-target="#myModal-{{ $medical_issue->id }}">
@@ -81,16 +81,16 @@
                                                     </button>
                                                     <!--modal-->
                                                     <div class="modal fade" id="myModal-{{ $medical_issue->id }}">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-dialog bg-white">
                                                             <div class="modal-content" style="height: 300px;background-color: lightyellow">
                                                                 <!-- Modal Header -->
-                                                                <div class="modal-header">
-                                                                    <h4 class="modal-title" style="color: deeppink">Send Medical Advice</h4>
+                                                                <div class="modal-header bg-white">
+                                                                    <h4 class="modal-title bg-white" style="color: deeppink">Send Medical Advice</h4>
                                                                     <button type="button" class="close" style="color: deeppink" data-dismiss="modal">×</button>
                                                                 </div>
 
                                                                 <!-- Modal body -->
-                                                                <div class="modal-body" style="color: black">
+                                                                <div class="modal-body bg-white" style="color: black">
                                                                     <form method="POST" action="{{ url('admin/create_medical_advice') }}"  aria-label="{{ __('Send_Health_Advice') }}">
                                                                         {{csrf_field()}}
                                                                         <div class="form-horizontal">
@@ -99,7 +99,7 @@
                                                                                 <input type="hidden" name="email_data" value={{$medical_issue->email}} >
                                                                                 <input type="hidden" name="id_data" value={{$medical_issue->id}} >
                                                                                 <!-- done -->
-                                                                                <textarea id="advice" type="text" style="height: 150px;background-color: lightyellow"  class="form-control{{ $errors->has('advice') ? ' is-invalid' : '' }}" placeholder="Medical Advice" name="advice" required autofocus>{{ old('advice') }}</textarea>
+                                                                                <textarea id="advice" type="text" style="height: 150px;background-color: lightyellow"  class="bg-white form-control{{ $errors->has('advice') ? ' is-invalid' : '' }}" placeholder="Medical Advice" name="advice" required autofocus>{{ old('advice') }}</textarea>
                                                                                 <br>
                                                                                 @if ($errors->has('advice'))
                                                                                     <span class="invalid-feedback" role="alert">
